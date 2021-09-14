@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SourceFile>C:/Users/Jake/Source/Repos/ThasianX/CSE-3902-Project/JakeSprint0/Project1/Content/KeyBinds.xml</SourceFile>
+  <SourceTime>2020-08-10T12:17:28-04:00</SourceTime>
+  <DestFile>C:/Users/Jake/Source/Repos/ThasianX/CSE-3902-Project/JakeSprint0/Project1/Content/bin/Windows/Content/KeyBinds.xnb</DestFile>
+  <DestTime>2021-09-13T21:05:40.6151378-04:00</DestTime>
+  <Importer>XmlImporter</Importer>
+  <ImporterTime>2020-08-10T12:17:54-04:00</ImporterTime>
+  <Processor>PassThroughProcessor</Processor>
+  <ProcessorTime>2020-08-10T12:17:54-04:00</ProcessorTime>
+  <Dependencies />
+  <BuildAsset />
+  <BuildOutput />
+</PipelineBuildEvent>
