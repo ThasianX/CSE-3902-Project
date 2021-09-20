@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Project1.Commands;
 using Project1.Controllers;
 using Project1.Interfaces;
 using Project1.Sprites;
@@ -52,12 +53,8 @@ namespace Project1
             spriteSheet = Content.Load<Texture2D>("smb_enemies_sheet");
             font = Content.Load<SpriteFont>("Name");
             //sprite = new StillSprite(spriteSheet);
-            sprite = new AnimatedSprite(spriteSheet, new ArrayList()
-            {
-                new Rectangle(176, 118, SpriteDimensions.WIDTH, SpriteDimensions.HEIGHT),
-                new Rectangle(206, 118, SpriteDimensions.WIDTH, SpriteDimensions.HEIGHT),
-                new Rectangle(236, 118, SpriteDimensions.WIDTH, SpriteDimensions.HEIGHT)
-            }, 60);
+            ICommand initialCommand = new AnimatedSpriteCommand(this);
+            initialCommand.Execute();
         }
 
         protected override void Update(GameTime gameTime)

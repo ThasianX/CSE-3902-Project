@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework;
 
 namespace Project1.Commands
 {
+    //This command will never get used. Used for testing purposes only
     class AnimatedSpriteCommand: ICommand
     {
         private readonly Game1 myGame;
