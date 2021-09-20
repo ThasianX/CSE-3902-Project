@@ -51,7 +51,13 @@ namespace Project1
             spriteBatch = new SpriteBatch(GraphicsDevice);
             spriteSheet = Content.Load<Texture2D>("smb_enemies_sheet");
             font = Content.Load<SpriteFont>("Name");
-            sprite = new StillSprite(spriteSheet);
+            //sprite = new StillSprite(spriteSheet);
+            sprite = new AnimatedSprite(spriteSheet, new ArrayList()
+            {
+                new Rectangle(176, 118, SpriteDimensions.WIDTH, SpriteDimensions.HEIGHT),
+                new Rectangle(206, 118, SpriteDimensions.WIDTH, SpriteDimensions.HEIGHT),
+                new Rectangle(236, 118, SpriteDimensions.WIDTH, SpriteDimensions.HEIGHT)
+            }, 60);
         }
 
         protected override void Update(GameTime gameTime)

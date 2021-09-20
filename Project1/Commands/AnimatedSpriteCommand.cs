@@ -1,5 +1,7 @@
 ﻿using Project1.Interfaces;
 using Project1.Sprites;
+using System.Collections;
+using Microsoft.Xna.Framework;
 
 namespace Project1.Commands
 {
@@ -14,7 +16,14 @@ namespace Project1.Commands
 
         public void Execute()
         {
-            myGame.SetSprite(new AnimatedSprite(myGame.spriteSheet));
+            ArrayList sources = new ArrayList()
+            {
+                new Rectangle(176, 118, SpriteDimensions.WIDTH, SpriteDimensions.HEIGHT),
+                new Rectangle(206, 118, SpriteDimensions.WIDTH, SpriteDimensions.HEIGHT),
+                new Rectangle(236, 118, SpriteDimensions.WIDTH, SpriteDimensions.HEIGHT)
+            };
+
+            myGame.SetSprite(new AnimatedSprite(myGame.spriteSheet, sources, 60));
         }
     }
 }
