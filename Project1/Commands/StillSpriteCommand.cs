@@ -14,7 +14,7 @@ namespace Project1.Commands
 
         public void Execute()
         {
-            myGame.SetSprite(new StillSprite(myGame.spriteSheet));
+            //myGame.SetSprite(new StillSprite(myGame.spriteSheet));
         }
     }
 }

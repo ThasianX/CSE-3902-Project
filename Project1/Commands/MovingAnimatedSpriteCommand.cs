@@ -14,7 +14,7 @@ namespace Project1.Commands
 
         public void Execute()
         {
-            myGame.SetSprite(new MovingAnimatedSprite(myGame.spriteSheet, myGame.ShiftPosition));
+            //myGame.SetSprite(new MovingAnimatedSprite(myGame.spriteSheet, myGame.ShiftPosition));
         }
     }
 }

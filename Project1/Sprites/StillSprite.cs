@@ -6,11 +6,12 @@ namespace Project1.Sprites
 {
     class StillSprite: ISprite
     {
-        private readonly Rectangle source = new Rectangle(206, 118, SpriteDimensions.WIDTH, SpriteDimensions.HEIGHT);
+        private readonly Rectangle source;
         private readonly Texture2D spriteSheet;
 
-        public StillSprite(Texture2D spriteSheet)
+        public StillSprite(Texture2D spriteSheet, Rectangle source)
         {
+            this.source = source;
             this.spriteSheet = spriteSheet;
         }
 
