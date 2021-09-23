@@ -8,29 +8,33 @@ namespace Project1.Sprites
     class AnimatedSprite: ISprite
     {
         private int currentFrame = 0;
-        private readonly int cycleLength;
 
         private readonly Texture2D spriteSheet;
-        private readonly ArrayList sources;
 
-        public AnimatedSprite(Texture2D spriteSheet, ArrayList sources, int cycleLength)
+        IAnimation animation;
+
+        public AnimatedSprite(Texture2D spriteSheet, IAnimation animation)
         {
-            this.cycleLength = cycleLength;
-            this.sources = sources;
+            this.animation = animation;
             this.spriteSheet = spriteSheet;
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
-            Rectangle destination = new Rectangle((int)location.X, (int)location.Y, SpriteDimensions.WIDTH, SpriteDimensions.HEIGHT);
-            int index = currentFrame / (cycleLength / sources.Count);
-            spriteBatch.Draw(spriteSheet, destination, (Rectangle)sources[index], Color.White);
+            // define the space on the screen to draw the sprite
+            Rectangle destination = new Rectangle((int)location.X, (int)location.Y, animation.Width, animation.Height);
+
+            // choose which frame of animation to use
+            int index = currentFrame / (animation.CycleLength / animation.FrameCount);
+
+            // Draw
+            spriteBatch.Draw(spriteSheet, destination, animation.Sources[index], Color.White);
         }
 
         public void Update()
         {
             currentFrame++;
-            if (currentFrame == cycleLength)
+            if (currentFrame == animation.CycleLength)
                 currentFrame = 0;
         }
     }

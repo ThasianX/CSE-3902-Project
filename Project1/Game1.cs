@@ -52,9 +52,8 @@ namespace Project1
             spriteBatch = new SpriteBatch(GraphicsDevice);
             spriteSheet = Content.Load<Texture2D>("smb_enemies_sheet");
             font = Content.Load<SpriteFont>("Name");
-            //sprite = new StillSprite(spriteSheet);
-            ICommand initialCommand = new AnimatedSpriteCommand(this);
-            initialCommand.Execute();
+            SpriteFactory.Instance.LoadAllTextures(Content);
+            sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkWalkingUpAnimation());
         }
 
         protected override void Update(GameTime gameTime)
