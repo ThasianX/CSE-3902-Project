@@ -24,7 +24,7 @@ namespace Project1.Commands
                 new Rectangle(236, 118, SpriteDimensions.WIDTH, SpriteDimensions.HEIGHT)
             };
 
-            myGame.SetSprite(new AnimatedSprite(myGame.spriteSheet, sources, 60));
+            //myGame.SetSprite(new AnimatedSprite(myGame.spriteSheet, sources, 60));
         }
     }
 }
