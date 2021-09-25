@@ -22,8 +22,8 @@ namespace Project1
         {
             // put the file names of spritesheets to load here
             "link_spritesheet",
-            "smb_enemies_sheet"
-
+            "smb_enemies_sheet",
+            "dungeon_sheet"
         };
 
         private Dictionary<string, Texture2D> loadedTextures = new Dictionary<string, Texture2D>();
@@ -46,10 +46,11 @@ namespace Project1
             return new AnimatedSprite(spritesheet, animation);
         }
 
-        public ISprite CreateStillSprite()
+        public ISprite CreateStillSprite(IStillSprite stillSprite)
         {
-            // TODO
-            return null;
+            Texture2D spritesheet = loadedTextures[stillSprite.SpritesheetFileName];
+
+            return new StillSprite(spritesheet, stillSprite.Source);
         }
 
         public void LoadAllTextures(ContentManager content)
