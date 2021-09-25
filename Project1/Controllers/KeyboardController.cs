@@ -9,12 +9,14 @@ namespace Project1
 	{
 		private readonly Dictionary<Keys, ICommand> controllerMappings;
 		private readonly Game1 myGame;
+		private KeyboardState oldState;
 
 		public KeyboardController(Game1 game)
 		{
 			myGame = game;
 			controllerMappings = new Dictionary<Keys, ICommand>();
 			RegisterCommands();
+			oldState = Keyboard.GetState();
 		}
 
 		private void RegisterCommands()
@@ -25,18 +27,19 @@ namespace Project1
 			controllerMappings.Add(Keys.Y, new BlockCycleRightCommand(myGame));
 		}
 
-		//We need to modify controller so it includes key release
 		public void Update()
 		{
 			Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
 
 			foreach (Keys key in pressedKeys)
 			{
-				if(controllerMappings.ContainsKey(key))
+				if(!(oldState.IsKeyDown(key)) && controllerMappings.ContainsKey(key))
 				{
 					controllerMappings[key].Execute();
 				}
 			}
+
+			oldState = Keyboard.GetState();
 		}
 	}
 }

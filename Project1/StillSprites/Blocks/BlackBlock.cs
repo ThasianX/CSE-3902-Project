@@ -7,15 +7,9 @@ using Project1.Interfaces;
 namespace Project1
 {
     class BlackBlock : IStillSprite
-    {
-        
+    {        
         public string SpritesheetFileName { get; } = "dungeon_sheet";
 
         public Rectangle Source { get; } = new Rectangle(485, 1104, 16, 16);
-
-        public int Width { get; }  = 16;
-
-        public int Height { get; } = 16;
-
     }
 }

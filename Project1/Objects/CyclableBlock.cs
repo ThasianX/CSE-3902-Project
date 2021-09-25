@@ -14,7 +14,7 @@ namespace Project1.Objects
         public CyclableBlock()
         {
             cycle = 0;
-            this.blockSprite = SpriteFactory.Instance.CreateStillSprite(new PlainBlock());
+            this.blockSprite = SpriteFactory.Instance.CreateStillSprite(new HorizontalWoodArrow());
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
@@ -27,7 +27,7 @@ namespace Project1.Objects
             switch (cycle)
             {
                 case 0:
-                    this.blockSprite = SpriteFactory.Instance.CreateStillSprite(new PlainBlock());
+                    this.blockSprite = SpriteFactory.Instance.CreateStillSprite(new HorizontalWoodArrow());
                     break;
                 case 1:
                     this.blockSprite = SpriteFactory.Instance.CreateStillSprite(new PyramidBlock());
@@ -45,7 +45,7 @@ namespace Project1.Objects
                     this.blockSprite = SpriteFactory.Instance.CreateStillSprite(new LadderBlock());
                     break;
                 default:
-                    this.blockSprite = SpriteFactory.Instance.CreateStillSprite(new PlainBlock());
+                    this.blockSprite = SpriteFactory.Instance.CreateStillSprite(new HorizontalWoodArrow());
                     break;
             }
 
