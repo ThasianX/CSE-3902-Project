@@ -21,8 +21,11 @@ namespace Project1
 		{
 			controllerMappings.Add(Keys.D0, new QuitCommand(myGame));
 			controllerMappings.Add(Keys.D2, new AnimatedSpriteCommand(myGame));
+			controllerMappings.Add(Keys.T, new BlockCycleLeftCommand(myGame));
+			controllerMappings.Add(Keys.Y, new BlockCycleRightCommand(myGame));
 		}
 
+		//We need to modify controller so it includes key release
 		public void Update()
 		{
 			Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
