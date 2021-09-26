@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 
 namespace Project1.Interfaces
 {
-    interface ISprite
+    public interface ISprite
     {
         void Draw(SpriteBatch spriteBatch, Vector2 location);
         void Update();
