@@ -8,6 +8,7 @@ namespace Project1.Objects
     public class CyclableBlock : ISprite
     {
         private int cycle;
+        private int lastCycle;
 
         ISprite blockSprite;
 
@@ -24,32 +25,35 @@ namespace Project1.Objects
 
         public void Update()
         {
-            switch (cycle)
+            if (cycle != lastCycle)
             {
-                case 0:
-                    this.blockSprite = SpriteFactory.Instance.CreateStillSprite(new HorizontalWoodArrow());
-                    break;
-                case 1:
-                    this.blockSprite = SpriteFactory.Instance.CreateStillSprite(new PyramidBlock());
-                    break;
-                case 2:
-                    this.blockSprite = SpriteFactory.Instance.CreateStillSprite(new StairBlock());
-                    break;
-                case 3:
-                    this.blockSprite = SpriteFactory.Instance.CreateStillSprite(new BlackBlock());
-                    break;
-                case 4:
-                    this.blockSprite = SpriteFactory.Instance.CreateStillSprite(new StoneBlock());
-                    break;
-                case 5:
-                    this.blockSprite = SpriteFactory.Instance.CreateStillSprite(new LadderBlock());
-                    break;
-                default:
-                    this.blockSprite = SpriteFactory.Instance.CreateStillSprite(new HorizontalWoodArrow());
-                    break;
+                switch (cycle)
+                {
+                    case 0:
+                        this.blockSprite = SpriteFactory.Instance.CreateStillSprite(new HorizontalWoodArrow());
+                        break;
+                    case 1:
+                        this.blockSprite = SpriteFactory.Instance.CreateStillSprite(new PyramidBlock());
+                        break;
+                    case 2:
+                        this.blockSprite = SpriteFactory.Instance.CreateStillSprite(new StairBlock());
+                        break;
+                    case 3:
+                        this.blockSprite = SpriteFactory.Instance.CreateStillSprite(new BlackBlock());
+                        break;
+                    case 4:
+                        this.blockSprite = SpriteFactory.Instance.CreateStillSprite(new StoneBlock());
+                        break;
+                    case 5:
+                        this.blockSprite = SpriteFactory.Instance.CreateStillSprite(new LadderBlock());
+                        break;
+                    default:
+                        this.blockSprite = SpriteFactory.Instance.CreateStillSprite(new HorizontalWoodArrow());
+                        break;
+                }
             }
-
             blockSprite.Update();
+            lastCycle = cycle;
         }
 
         public void CycleLeft()
