@@ -4,12 +4,12 @@ using Project1.Interfaces;
 
 namespace Project1.Sprites
 {
-    class StillSprite: ISprite
+    class TileSprite: ISprite
     {
         private readonly Rectangle source;
         private readonly Texture2D spriteSheet;
 
-        public StillSprite(Texture2D spriteSheet, Rectangle source)
+        public TileSprite(Texture2D spriteSheet, Rectangle source)
         {
             this.source = source;
             this.spriteSheet = spriteSheet;

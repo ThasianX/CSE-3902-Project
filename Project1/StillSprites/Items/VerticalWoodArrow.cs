@@ -6,7 +6,7 @@ using Project1.Interfaces;
 
 namespace Project1
 {
-    class VerticalWoodArrow : IStillSprite
+    class VerticalWoodArrow : ITileData
     {        
         public string SpritesheetFileName { get; } = "link_spritesheet";
 

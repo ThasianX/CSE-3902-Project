@@ -6,7 +6,7 @@ using Project1.Interfaces;
 
 namespace Project1
 {
-    class BlueRubyItem : IStillSprite
+    class BlueRubyItem : ITileData
     {        
         public string SpritesheetFileName { get; } = "item_spritesheet";
 

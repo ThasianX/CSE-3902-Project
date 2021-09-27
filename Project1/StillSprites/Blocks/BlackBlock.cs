@@ -6,7 +6,7 @@ using Project1.Interfaces;
 
 namespace Project1
 {
-    class BlackBlock : IStillSprite
+    class BlackBlock : ITileData
     {        
         public string SpritesheetFileName { get; } = "dungeon_sheet";
 

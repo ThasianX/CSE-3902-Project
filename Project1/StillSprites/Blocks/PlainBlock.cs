@@ -6,7 +6,7 @@ using Project1.Interfaces;
 
 namespace Project1
 {
-    class HorizontalWoodArrow : IStillSprite
+    class HorizontalWoodArrow : ITileData
     {        
         public string SpritesheetFileName { get; } = "dungeon_sheet";
 
