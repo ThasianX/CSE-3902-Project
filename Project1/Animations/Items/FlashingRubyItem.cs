@@ -9,7 +9,7 @@ namespace Project1
     class FlashingRubyItem : IAnimation
     {
         public string SpritesheetFileName { get; } = "item_spritesheet";
-        public int CycleLength { get; } = 60;
+        public int CycleLength { get; } = 30;
 
         public Rectangle[] Sources { get; } =
 {

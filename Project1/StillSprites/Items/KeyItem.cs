@@ -10,6 +10,6 @@ namespace Project1
     {        
         public string SpritesheetFileName { get; } = "item_spritesheet";
 
-        public Rectangle Source { get; } = new Rectangle(485, 1104, 16, 16);
+        public Rectangle Source { get; } = new Rectangle(240, 0, 8, 16);
     }
 }
