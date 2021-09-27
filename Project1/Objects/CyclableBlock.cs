@@ -5,7 +5,7 @@ using Project1.Interfaces;
 
 namespace Project1.Objects
 {
-    public class CyclableBlock : ISprite
+    public class CyclableBlock
     {
         private int cycle;
         private int lastCycle;
