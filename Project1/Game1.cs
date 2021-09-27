@@ -16,6 +16,7 @@ namespace Project1
         private SpriteBatch spriteBatch;
         private ISprite sprite;
         public CyclableBlock cyclableBlock;
+        public CyclableItems cyclableItem;
 
         private Vector2 position;
 
@@ -57,6 +58,7 @@ namespace Project1
             SpriteFactory.Instance.LoadAllTextures(Content);
             sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkWalkingUpAnimation());
             cyclableBlock = new CyclableBlock();
+            cyclableItem = new CyclableItems();
         }
 
         protected override void Update(GameTime gameTime)
@@ -71,6 +73,7 @@ namespace Project1
 
             sprite.Update();
             cyclableBlock.Update();
+            cyclableItem.Update();
 
             base.Update(gameTime);
         }
@@ -82,6 +85,7 @@ namespace Project1
             spriteBatch.Begin();
             sprite.Draw(spriteBatch, position);
             cyclableBlock.Draw(spriteBatch, new Vector2 (position.X - 100, position.Y));
+            cyclableItem.Draw(spriteBatch, new Vector2(position.X - 200, position.Y));
             spriteBatch.DrawString(font, "Credits", new Vector2(100, 100), Color.Black);
             spriteBatch.DrawString(font, "Program Made By Kevin Li", new Vector2(100, 120), Color.Black);
             spriteBatch.DrawString(font, "Sprites from: http://www.mariouniverse.com/wp-content/img/sprites/nes/smb/enemies.png", new Vector2(100, 140), Color.Black);

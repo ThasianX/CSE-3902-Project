@@ -23,7 +23,9 @@ namespace Project1
             // put the file names of spritesheets to load here
             "link_spritesheet",
             "smb_enemies_sheet",
-            "dungeon_sheet"
+            "dungeon_sheet",
+            "item_spritesheet"
+
         };
 
         private Dictionary<string, Texture2D> loadedTextures = new Dictionary<string, Texture2D>();

@@ -25,7 +25,9 @@ namespace Project1
 			controllerMappings.Add(Keys.D2, new AnimatedSpriteCommand(myGame));
 			controllerMappings.Add(Keys.T, new BlockCycleLeftCommand(myGame));
 			controllerMappings.Add(Keys.Y, new BlockCycleRightCommand(myGame));
-		}
+			controllerMappings.Add(Keys.U, new ItemCycleLeftCommand(myGame));
+            controllerMappings.Add(Keys.I, new ItemCycleRightCommand(myGame));
+			}
 
 		public void Update()
 		{
