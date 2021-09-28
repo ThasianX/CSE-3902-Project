@@ -42,28 +42,6 @@ namespace Project1.PlayerStates
 
         public void  SetMoveInput(Direction direction, bool isPressed)
         {
-            /*switch (direction)
-            {
-                case Direction.Up:
-                    player.movement += new Vector2(0, -1);
-                    break;
-
-                case Direction.Right:
-                    player.movement += new Vector2(1, 0);
-                    break;
-
-                case Direction.Down:
-                    player.movement += new Vector2(0, 1);
-                    break;
-
-                case Direction.Left:
-                    player.movement += new Vector2(-1, 0);
-                    break;
-
-                default:
-                    break;
-            }*/
-
             player.activeMoveInputs[direction] = isPressed;
         }
 
@@ -78,7 +56,8 @@ namespace Project1.PlayerStates
 
         public void SwordAttack()
         {
-            //TODO
+            player.state = new SwordAttackPlayerState(player);
+
         }
         public void ShootArrow()
         {
@@ -116,7 +95,7 @@ namespace Project1.PlayerStates
             sprite.Update();
 
             // Switch to still state if there is no movement input
-            if (!player.activeMoveInputs[Direction.Up] && !player.activeMoveInputs[Direction.Right] && !player.activeMoveInputs[Direction.Down] && !player.activeMoveInputs[Direction.Left])
+            if (player.hasAnyMoveInput())
                 player.state = new StillPlayerState(player);
         }
 

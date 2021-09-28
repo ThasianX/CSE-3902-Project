@@ -7,32 +7,34 @@ using System.Text;
 
 namespace Project1.PlayerStates
 {
-    public class StillPlayerState : IPlayerState
+    public class SwordAttackPlayerState : IPlayerState
     {
         private Player player;
 
         private ISprite sprite;
 
-        public StillPlayerState(Player player)
+        private int activeFrameCount = 60, counter = 0;
+
+        public SwordAttackPlayerState(Player player)
         {
             this.player = player;
 
             switch (player.facingDirection)
             {
                 case Direction.Up:
-                    sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkIdleUpAnimation());
+                    sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkAttackUpAnimation());
                     break;
 
                 case Direction.Right:
-                    sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkIdleRightAnimation());
+                    sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkAttackUpAnimation());
                     break;
 
                 case Direction.Down:
-                    sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkIdleDownAnimation());
+                    sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkAttackUpAnimation());
                     break;
 
                 case Direction.Left:
-                    sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkIdleLeftAnimation());
+                    sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkAttackUpAnimation());
                     break;
 
                 default:
@@ -40,24 +42,20 @@ namespace Project1.PlayerStates
             }
         }
 
-        public void FaceDirection(Direction direction)
-        {
-            player.facingDirection = direction;
-            player.state = new StillPlayerState(player);
-        }
-
         public void SetMoveInput(Direction direction, bool isPressed)
         {
             player.activeMoveInputs[direction] = isPressed;
+        }
 
-            // switch to walking state if a movement key is pressed
-            if (isPressed)
-                player.state = new WalkingPlayerState(player);
+        public void FaceDirection(Direction direction)
+        {
+            // Do nothing
         }
 
         public void SwordAttack()
         {
-            player.state = new SwordAttackPlayerState(player);
+            // Do nothing
+
         }
         public void ShootArrow()
         {
@@ -66,7 +64,23 @@ namespace Project1.PlayerStates
 
         public void Update()
         {
+            // TODO: Deal damage here
+
+            // End the attack after reacing its active frame count
+            if (counter++ >= activeFrameCount)
+            {
+                if (player.hasAnyMoveInput())
+                {
+                    player.state = new WalkingPlayerState(player);
+                }
+                else
+                {
+                    player.state = new StillPlayerState(player);
+                }
+            }
+
             sprite.Update();
+
         }
 
         public void Draw()

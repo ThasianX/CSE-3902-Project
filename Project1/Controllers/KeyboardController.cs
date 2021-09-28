@@ -35,6 +35,7 @@ namespace Project1
 			onPressMappings.Add(Keys.D, new PlayerMoveRightCommand(myGame));
 			onPressMappings.Add(Keys.S, new PlayerMoveDownCommand(myGame));
 			onPressMappings.Add(Keys.A, new PlayerMoveLeftCommand(myGame));
+			onPressMappings.Add(Keys.Z, new PlayerAttackCommand(myGame));
 
 			// COMMANDS THAT EXECUTE ON RELEASE
 			onReleaseMappings.Add(Keys.W, new PlayerStopMoveUpCommand(myGame));

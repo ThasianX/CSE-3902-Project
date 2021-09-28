@@ -55,6 +55,14 @@ namespace Project1
             position += delta * speed;
         }
 
+        public bool hasAnyMoveInput()
+        {
+            return (!activeMoveInputs[Direction.Up]
+                && !activeMoveInputs[Direction.Right]
+                && !activeMoveInputs[Direction.Down]
+                && !activeMoveInputs[Direction.Left]);
+        }
+
 
         // Redirect to state behaviors
         public void FaceDirection(Direction direction)
