@@ -4,8 +4,9 @@ using System.Text;
 using Project1.Interfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Project1.PlayerStates;
 
-namespace Project1.Player
+namespace Project1
 {
     public class Player
     {
@@ -21,6 +22,17 @@ namespace Project1.Player
 
         public float speed = 1f;
 
+        public Player(Vector2 position, SpriteBatch spriteBatch)
+        {
+            this.spriteBatch = spriteBatch;
+            this.position = position;
+
+            facingDirection = Direction.Down;
+
+            state = new StillPlayerState(this);
+
+        }
+
         public void Move(Vector2 delta)
         {
             position += delta * speed;
@@ -28,28 +40,28 @@ namespace Project1.Player
 
 
 
-        void FaceDirection(Direction direction)
+        public void FaceDirection(Direction direction)
         {
             state.FaceDirection(direction);
         }
 
-        void SwordAttack()
+        public void SwordAttack()
         {
             state.SwordAttack();
         }
-        void ShootArrow()
+        public void ShootArrow()
         {
             state.ShootArrow();
         }
 
-        void Update()
+        public void Update()
         {
             state.Update();
         }
 
-        void Draw()
+        public void Draw()
         {
-            state.Update();
+            state.Draw();
         }
 
     }

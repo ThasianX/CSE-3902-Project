@@ -14,8 +14,9 @@ namespace Project1
 
         public Rectangle[] Sources { get; } =
         {
-            new Rectangle(35,11,16,16),
-            new Rectangle(52,11,16,16)
+            new Rectangle(52,11,16,16),
+            new Rectangle(35,11,16,16)
+            
         };
         
     }

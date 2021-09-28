@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.Xna.Framework;
@@ -6,7 +6,7 @@ using Project1.Interfaces;
 
 namespace Project1
 {
-    class LinkWalkingUpAnimation : IAnimation
+    class LinkIdleLeftAnimation : IAnimation
     {
 
         public string SpritesheetFileName { get; } = "link_spritesheet";
@@ -14,9 +14,7 @@ namespace Project1
 
         public Rectangle[] Sources { get; } =
         {
-            new Rectangle(86,11,16,16),
-            new Rectangle(69,11,16,16)
-            
+            new Rectangle(103,11,16,16)
         };
 
     }

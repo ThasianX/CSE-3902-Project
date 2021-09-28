@@ -15,6 +15,8 @@ namespace Project1
         private SpriteBatch spriteBatch;
         private ISprite sprite;
 
+        public Player link;
+
         private Vector2 position;
 
         private ArrayList controllerList;
@@ -37,12 +39,14 @@ namespace Project1
 
         protected override void Initialize()
         {
+
             position = new Vector2(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
             controllerList = new ArrayList
             {
                 new KeyboardController(this),
                 new MouseController(this)
             };
+
 
             base.Initialize();
         }
@@ -53,7 +57,8 @@ namespace Project1
             spriteSheet = Content.Load<Texture2D>("smb_enemies_sheet");
             font = Content.Load<SpriteFont>("Name");
             SpriteFactory.Instance.LoadAllTextures(Content);
-            sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkWalkingUpAnimation());
+
+            link = new Player(position, spriteBatch);
         }
 
         protected override void Update(GameTime gameTime)
@@ -66,7 +71,7 @@ namespace Project1
                 controller.Update();
             }
 
-            sprite.Update();
+            link.Update();
 
             base.Update(gameTime);
         }
@@ -76,7 +81,7 @@ namespace Project1
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             spriteBatch.Begin();
-            sprite.Draw(spriteBatch, position);
+            link.Draw();
             spriteBatch.DrawString(font, "Credits", new Vector2(100, 100), Color.Black);
             spriteBatch.DrawString(font, "Program Made By Kevin Li", new Vector2(100, 120), Color.Black);
             spriteBatch.DrawString(font, "Sprites from: http://www.mariouniverse.com/wp-content/img/sprites/nes/smb/enemies.png", new Vector2(100, 140), Color.Black);

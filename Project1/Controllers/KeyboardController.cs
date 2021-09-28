@@ -21,6 +21,11 @@ namespace Project1
 		{
 			controllerMappings.Add(Keys.D0, new QuitCommand(myGame));
 			controllerMappings.Add(Keys.D2, new AnimatedSpriteCommand(myGame));
+			controllerMappings.Add(Keys.Up, new PlayerFaceUpCommand(myGame));
+			controllerMappings.Add(Keys.Right, new PlayerFaceRightCommand(myGame));
+			controllerMappings.Add(Keys.Down, new PlayerFaceDownCommand(myGame));
+			controllerMappings.Add(Keys.Left, new PlayerFaceLeftCommand(myGame));
+
 		}
 
 		public void Update()
