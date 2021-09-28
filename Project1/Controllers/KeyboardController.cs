@@ -9,19 +9,25 @@ namespace Project1
 	{
 		private readonly Dictionary<Keys, ICommand> controllerMappings;
 		private readonly Game1 myGame;
+		private KeyboardState oldState;
 
 		public KeyboardController(Game1 game)
 		{
 			myGame = game;
 			controllerMappings = new Dictionary<Keys, ICommand>();
 			RegisterCommands();
+			oldState = Keyboard.GetState();
 		}
 
 		private void RegisterCommands()
 		{
 			controllerMappings.Add(Keys.D0, new QuitCommand(myGame));
 			controllerMappings.Add(Keys.D2, new AnimatedSpriteCommand(myGame));
-		}
+			controllerMappings.Add(Keys.T, new BlockCycleLeftCommand(myGame));
+			controllerMappings.Add(Keys.Y, new BlockCycleRightCommand(myGame));
+			controllerMappings.Add(Keys.U, new ItemCycleLeftCommand(myGame));
+            controllerMappings.Add(Keys.I, new ItemCycleRightCommand(myGame));
+			}
 
 		public void Update()
 		{
@@ -29,11 +35,13 @@ namespace Project1
 
 			foreach (Keys key in pressedKeys)
 			{
-				if(controllerMappings.ContainsKey(key))
+				if(!(oldState.IsKeyDown(key)) && controllerMappings.ContainsKey(key))
 				{
 					controllerMappings[key].Execute();
 				}
 			}
+
+			oldState = Keyboard.GetState();
 		}
 	}
 }

@@ -29,4 +29,7 @@
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Project1.csproj" />
+  </ItemGroup>
 </Project>
