@@ -19,9 +19,9 @@ namespace Project1.Commands
         {
             ArrayList sources = new ArrayList()
             {
-                new Rectangle(176, 118, SpriteDimensions.WIDTH, SpriteDimensions.HEIGHT),
-                new Rectangle(206, 118, SpriteDimensions.WIDTH, SpriteDimensions.HEIGHT),
-                new Rectangle(236, 118, SpriteDimensions.WIDTH, SpriteDimensions.HEIGHT)
+                new Rectangle(176, 118, Constants.SPRITE_WIDTH, Constants.SPRITE_HEIGHT),
+                new Rectangle(206, 118, Constants.SPRITE_WIDTH, Constants.SPRITE_HEIGHT),
+                new Rectangle(236, 118, Constants.SPRITE_WIDTH, Constants.SPRITE_HEIGHT)
             };
 
             //myGame.SetSprite(new AnimatedSprite(myGame.spriteSheet, sources, 60));

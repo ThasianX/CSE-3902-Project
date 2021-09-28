@@ -22,7 +22,6 @@ namespace Project1
         private ArrayList controllerList;
 
         private SpriteFont font;
-        private int score = 0;
 
         private Viewport ViewPort => graphics.GraphicsDevice.Viewport;
         public int SCREEN_WIDTH => ViewPort.Width;
@@ -82,42 +81,9 @@ namespace Project1
 
             spriteBatch.Begin();
             link.Draw();
-            spriteBatch.DrawString(font, "Credits", new Vector2(100, 100), Color.Black);
-            spriteBatch.DrawString(font, "Program Made By Kevin Li", new Vector2(100, 120), Color.Black);
-            spriteBatch.DrawString(font, "Sprites from: http://www.mariouniverse.com/wp-content/img/sprites/nes/smb/enemies.png", new Vector2(100, 140), Color.Black);
             spriteBatch.End();
 
             base.Draw(gameTime);
-        }
-
-        internal void SetSprite(ISprite sprite)
-        {
-            this.sprite = sprite;
-        }
-
-        internal void ShiftPosition(int x, int y)
-        {
-            int newX = (int)position.X + x;
-            if (newX < -SpriteDimensions.WIDTH)
-            {
-                newX = SCREEN_WIDTH;
-            }
-            else if (newX > SCREEN_WIDTH)
-            {
-                newX = -SpriteDimensions.WIDTH;
-            }
-
-            int newY = (int)position.Y + y;
-            if (newY < -SpriteDimensions.HEIGHT)
-            {
-                newY = SCREEN_HEIGHT;
-            }
-            else if (newY > SCREEN_HEIGHT)
-            {
-                newY = -SpriteDimensions.HEIGHT;
-            }
-
-            position = new Vector2(newX, newY);
         }
     }
 }
