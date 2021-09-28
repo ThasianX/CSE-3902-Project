@@ -46,6 +46,15 @@ namespace Project1.PlayerStates
             player.state = new StillPlayerState(player);
         }
 
+        public void SetMoveInput(Direction direction, bool isPressed)
+        {
+            player.activeMoveInputs[direction] = isPressed;
+
+            // switch to walking state if a movement key is pressed
+            if (isPressed)
+                player.state = new WalkingPlayerState(player);
+        }
+
         public void SwordAttack()
         {
             //TODO

@@ -13,8 +13,6 @@ namespace Project1.PlayerStates
 
         private ISprite sprite;
 
-        private Vector2 movement;
-
         public WalkingPlayerState(Player player)
         {
             this.player = player;
@@ -34,13 +32,39 @@ namespace Project1.PlayerStates
                     break;
 
                 case Direction.Left:
-                    // spritesheet is missing left walking sprite
-                    //sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkWalkingLeftAnimation());
+                    sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkWalkingLeftAnimation());
                     break;
 
                 default:
                     break;
             }
+        }
+
+        public void  SetMoveInput(Direction direction, bool isPressed)
+        {
+            /*switch (direction)
+            {
+                case Direction.Up:
+                    player.movement += new Vector2(0, -1);
+                    break;
+
+                case Direction.Right:
+                    player.movement += new Vector2(1, 0);
+                    break;
+
+                case Direction.Down:
+                    player.movement += new Vector2(0, 1);
+                    break;
+
+                case Direction.Left:
+                    player.movement += new Vector2(-1, 0);
+                    break;
+
+                default:
+                    break;
+            }*/
+
+            player.activeMoveInputs[direction] = isPressed;
         }
 
         public void FaceDirection(Direction direction)
@@ -63,8 +87,37 @@ namespace Project1.PlayerStates
 
         public void Update()
         {
-            player.Move(player.moveInput);
+            // Calculate the direction of the movement vector
+            Vector2 movement = new Vector2(0, 0);
+
+            if (player.activeMoveInputs[Direction.Up])
+                movement += new Vector2(0, -1);
+
+            if (player.activeMoveInputs[Direction.Right])
+                movement += new Vector2(1, 0);
+
+            if (player.activeMoveInputs[Direction.Down])
+                movement += new Vector2(0, 1);
+
+            if (player.activeMoveInputs[Direction.Left])
+                movement += new Vector2(-1, 0);
+
+            // Normalize the vector to prevent moving faster on diagnals
+            //movement = Vector2.Normalize(movement);
+
+            // Apply speed
+            movement *= player.speed;
+
+            // Round to int (pixel space)
+            movement = Vector2.Round(movement);
+
+            player.Move(movement);
+
             sprite.Update();
+
+            // Switch to still state if there is no movement input
+            if (!player.activeMoveInputs[Direction.Up] && !player.activeMoveInputs[Direction.Right] && !player.activeMoveInputs[Direction.Down] && !player.activeMoveInputs[Direction.Left])
+                player.state = new StillPlayerState(player);
         }
 
         public void Draw()

@@ -8,6 +8,8 @@ namespace Project1.PlayerStates
     {
         void FaceDirection(Direction direction);
 
+        void SetMoveInput(Direction direction, bool isPressed);
+
         void SwordAttack();
         void ShootArrow();
 
