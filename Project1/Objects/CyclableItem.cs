@@ -5,14 +5,14 @@ using Project1.Interfaces;
 
 namespace Project1.Objects
 {
-    public class CyclableItems
+    public class CyclableItem
     {
         private int cycle;
         private int lastCycle;
 
         ISprite itemSprite;
 
-        public CyclableItems()
+        public CyclableItem()
         {
             cycle = 0;
             this.itemSprite = SpriteFactory.Instance.CreateStillSprite(new VerticalWoodArrow());

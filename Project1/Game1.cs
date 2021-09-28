@@ -16,7 +16,7 @@ namespace Project1
         private SpriteBatch spriteBatch;
         private ISprite sprite;
         public CyclableBlock cyclableBlock;
-        public CyclableItems cyclableItem;
+        public CyclableItem cyclableItem;
 
         private Vector2 position;
 
@@ -58,7 +58,7 @@ namespace Project1
             SpriteFactory.Instance.LoadAllTextures(Content);
             sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkWalkingUpAnimation());
             cyclableBlock = new CyclableBlock();
-            cyclableItem = new CyclableItems();
+            cyclableItem = new CyclableItem();
         }
 
         protected override void Update(GameTime gameTime)

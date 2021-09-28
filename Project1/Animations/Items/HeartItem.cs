@@ -10,7 +10,6 @@ namespace Project1
     {        
         public string SpritesheetFileName { get; } = "item_spritesheet";
         public int CycleLength { get; } = 30;
-
         public Rectangle[] Sources { get; } =
 {
             new Rectangle(0, 0, 7, 8),
