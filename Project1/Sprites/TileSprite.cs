@@ -4,12 +4,12 @@ using Project1.Interfaces;
 
 namespace Project1.Sprites
 {
-    class StillSprite: ISprite
+    class TileSprite: ISprite
     {
         private readonly Rectangle source;
         private readonly Texture2D spriteSheet;
 
-        public StillSprite(Texture2D spriteSheet, Rectangle source)
+        public TileSprite(Texture2D spriteSheet, Rectangle source)
         {
             this.source = source;
             this.spriteSheet = spriteSheet;
@@ -17,7 +17,7 @@ namespace Project1.Sprites
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
-            Rectangle destination = new Rectangle((int)location.X, (int)location.Y, Constants.SPRITE_WIDTH, Constants.SPRITE_HEIGHT);
+            Rectangle destination = new Rectangle((int)location.X, (int)location.Y, source.Width, source.Height);
             spriteBatch.Draw(spriteSheet, destination, source, Color.White);
         }
 

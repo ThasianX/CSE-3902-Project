@@ -6,6 +6,7 @@ using Project1.Commands;
 using Project1.Controllers;
 using Project1.Interfaces;
 using Project1.Sprites;
+using Project1.Objects;
 
 namespace Project1
 {
@@ -13,9 +14,11 @@ namespace Project1
     {
         private readonly GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
-        private ISprite sprite;
 
+        // Game Objects
         public Player link;
+        public CyclableBlock cyclableBlock;
+        public CyclableItem cyclableItem;
 
         private Vector2 position;
 
@@ -58,6 +61,9 @@ namespace Project1
             SpriteFactory.Instance.LoadAllTextures(Content);
 
             link = new Player(position, spriteBatch);
+
+            cyclableBlock = new CyclableBlock();
+            cyclableItem = new CyclableItem();
         }
 
         protected override void Update(GameTime gameTime)
@@ -72,6 +78,9 @@ namespace Project1
 
             link.Update();
 
+            cyclableBlock.Update();
+            cyclableItem.Update();
+
             base.Update(gameTime);
         }
 
@@ -80,7 +89,12 @@ namespace Project1
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             spriteBatch.Begin();
+
             link.Draw();
+
+            cyclableBlock.Draw(spriteBatch, new Vector2 (position.X - 100, position.Y));
+            cyclableItem.Draw(spriteBatch, new Vector2(position.X - 200, position.Y));
+
             spriteBatch.End();
 
             base.Draw(gameTime);

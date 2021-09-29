@@ -20,13 +20,16 @@ namespace Project1
 			onPressMappings = new Dictionary<Keys, ICommand>();
 			onReleaseMappings = new Dictionary<Keys, ICommand>();
 			RegisterCommands();
+			oldState = Keyboard.GetState();
 		}
 
 		private void RegisterCommands()
 		{
-			// COMMANDS THAT EXECUTE ON PRESS
+			// COMMANDS THAT EXECUTE ON PRESS =============================================
 			onPressMappings.Add(Keys.D0, new QuitCommand(myGame));
 			onPressMappings.Add(Keys.D2, new AnimatedSpriteCommand(myGame));
+
+			// Player 
 			onPressMappings.Add(Keys.Up, new PlayerFaceUpCommand(myGame));
 			onPressMappings.Add(Keys.Right, new PlayerFaceRightCommand(myGame));
 			onPressMappings.Add(Keys.Down, new PlayerFaceDownCommand(myGame));
@@ -37,7 +40,14 @@ namespace Project1
 			onPressMappings.Add(Keys.A, new PlayerMoveLeftCommand(myGame));
 			onPressMappings.Add(Keys.Z, new PlayerAttackCommand(myGame));
 
-			// COMMANDS THAT EXECUTE ON RELEASE
+			// Block cycling
+			onPressMappings.Add(Keys.T, new BlockCycleLeftCommand(myGame));
+			onPressMappings.Add(Keys.Y, new BlockCycleRightCommand(myGame));
+			onPressMappings.Add(Keys.U, new ItemCycleLeftCommand(myGame));
+			onPressMappings.Add(Keys.I, new ItemCycleRightCommand(myGame));
+			// ============================================================================
+
+			// COMMANDS THAT EXECUTE ON RELEASE ===========================================
 			onReleaseMappings.Add(Keys.W, new PlayerStopMoveUpCommand(myGame));
 			onReleaseMappings.Add(Keys.D, new PlayerStopMoveRightCommand(myGame));
 			onReleaseMappings.Add(Keys.S, new PlayerStopMoveDownCommand(myGame));
