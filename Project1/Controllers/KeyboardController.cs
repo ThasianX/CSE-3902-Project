@@ -29,7 +29,6 @@ namespace Project1
 		{
 			// COMMANDS THAT EXECUTE ON PRESS =============================================
 			onPressMappings.Add(Keys.D0, new QuitCommand(myGame));
-			onPressMappings.Add(Keys.D2, new AnimatedSpriteCommand(myGame));
 
 			// Player 
 			onPressMappings.Add(Keys.Up, new PlayerFaceUpCommand(myGame));
@@ -42,7 +41,7 @@ namespace Project1
 			onPressMappings.Add(Keys.S, new PlayerMoveDownCommand(myGame));
 			onPressMappings.Add(Keys.A, new PlayerMoveLeftCommand(myGame));
 
-			onPressMappings.Add(Keys.Z, new PlayerAttackCommand(myGame));
+			onPressMappings.Add(Keys.D1, new PlayerSwordAttackCommand(myGame));
 
 			// Block cycling
 			onPressMappings.Add(Keys.T, new BlockCycleLeftCommand(myGame));

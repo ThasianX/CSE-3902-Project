@@ -4,6 +4,7 @@ using Project1.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Project1.Objects;
 
 namespace Project1.PlayerStates
 {
@@ -12,6 +13,7 @@ namespace Project1.PlayerStates
         private Player player;
 
         private ISprite sprite;
+        private IItem item;
 
         private int activeFrameCount = 15, counter = 0;
 
@@ -54,7 +56,7 @@ namespace Project1.PlayerStates
 
         public void SwordAttack()
         {
-            // Do nothing
+            this.item = new WoodSword(player.position, player.facingDirection);
 
         }
         public void ShootArrow()
@@ -78,13 +80,20 @@ namespace Project1.PlayerStates
                     player.state = new StillPlayerState(player);
                 }
             }
-
+            //This will crash game when SwordAttack is called because item is null
+            if (this.item)
+            {
+                item.Update();
+            }
             sprite.Update();
-
         }
 
         public void Draw()
         {
+            if (this.item)
+            {
+                item.Draw(player.spriteBatch);
+            }
             sprite.Draw(player.spriteBatch, player.position);
         }
 

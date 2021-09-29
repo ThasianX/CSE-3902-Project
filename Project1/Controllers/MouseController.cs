@@ -20,7 +20,6 @@ namespace Project1.Controllers
 		private void RegisterCommands()
 		{
 			controllerMappings.Add(0, new QuitCommand(myGame));
-			controllerMappings.Add(2, new AnimatedSpriteCommand(myGame));
 		}
 
 		public void Update()
