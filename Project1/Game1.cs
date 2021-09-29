@@ -22,7 +22,7 @@ namespace Project1
         public CyclableItem cyclableItem;
         //public CyclableEnemy cyclabeEnemy;
 
-        private Stalfos stalfos;
+        private IEnemy stalfos;
 
         private Vector2 position;
         private Vector2 enemyPosition;

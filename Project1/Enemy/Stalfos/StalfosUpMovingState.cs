@@ -13,8 +13,7 @@ namespace Project1.Enemy
         private ISprite sprite;
         private int choice;
         private Random rand = new Random();
-        private int cycleLength;
-        private int timer;
+        public int cycleLength { get; }
 
         public StalfosUpMovingState(Stalfos stalfos)
         {
@@ -22,7 +21,6 @@ namespace Project1.Enemy
             upMovingAnimation = new StalfosMovingAnimation();
             sprite = SpriteFactory.Instance.CreateAnimatedSprite(upMovingAnimation);
             cycleLength = upMovingAnimation.CycleLength;
-            timer = 0;
         }
 
         public void FireBallAttack()
@@ -51,11 +49,6 @@ namespace Project1.Enemy
 
         public void Update()
         {
-            timer++;
-            if (timer == cycleLength)
-            {
-                ChangeDirection();
-            }
             stalfos.position = stalfos.position + new Vector2(0, -1) * stalfos.movingSpeed;
             sprite.Update();
         }

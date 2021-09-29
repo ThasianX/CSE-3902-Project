@@ -2,9 +2,8 @@
 
 namespace Project1.Enemy
 {
-    public interface IEnemyState
+    public interface IEnemy
     {
-        public int cycleLength {get;}
         void FireBallAttack();
         void BoomerangAttack();
         void ChangeDirection();
