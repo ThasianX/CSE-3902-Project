@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Project1.Commands;
 using Project1.Controllers;
+using Project1.Enemy;
 using Project1.Interfaces;
 using Project1.Sprites;
 using Project1.Objects;
@@ -19,8 +20,12 @@ namespace Project1
         public Player link;
         public CyclableBlock cyclableBlock;
         public CyclableItem cyclableItem;
+        //public CyclableEnemy cyclabeEnemy;
+
+        private Stalfos stalfos;
 
         private Vector2 position;
+        private Vector2 enemyPosition;
 
         private ArrayList controllerList;
 
@@ -43,6 +48,7 @@ namespace Project1
         {
 
             position = new Vector2(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
+            enemyPosition = new Vector2(SCREEN_WIDTH / 4 * 3, SCREEN_HEIGHT / 4 * 3);
             controllerList = new ArrayList
             {
                 new KeyboardController(this),
@@ -60,7 +66,8 @@ namespace Project1
             SpriteFactory.Instance.LoadAllTextures(Content);
 
             link = new Player(position, spriteBatch);
-
+            //cyclabeEnemy = new CyclableEnemy(position);
+            stalfos = new Stalfos(enemyPosition);
             cyclableBlock = new CyclableBlock();
             cyclableItem = new CyclableItem();
         }
@@ -80,6 +87,8 @@ namespace Project1
             cyclableBlock.Update();
             cyclableItem.Update();
 
+            //cyclableEnemy.Update();
+            stalfos.Update();
             base.Update(gameTime);
         }
 
@@ -90,7 +99,8 @@ namespace Project1
             spriteBatch.Begin();
 
             link.Draw();
-
+            //cyclableEnemy.Draw(spriteBatch);
+            stalfos.Draw(spriteBatch);
             cyclableBlock.Draw(spriteBatch, new Vector2 (position.X - 100, position.Y));
             cyclableItem.Draw(spriteBatch, new Vector2(position.X - 200, position.Y));
 
