@@ -7,7 +7,6 @@ namespace Project1
 {
     class KeyboardController: IController
 	{
-
 		private readonly Dictionary<Keys, ICommand> onPressMappings;
 		private readonly Dictionary<Keys, ICommand> onReleaseMappings;
 		private readonly Game1 myGame;
@@ -17,9 +16,12 @@ namespace Project1
 		public KeyboardController(Game1 game)
 		{
 			myGame = game;
+
 			onPressMappings = new Dictionary<Keys, ICommand>();
 			onReleaseMappings = new Dictionary<Keys, ICommand>();
+
 			RegisterCommands();
+
 			oldState = Keyboard.GetState();
 		}
 
@@ -34,10 +36,12 @@ namespace Project1
 			onPressMappings.Add(Keys.Right, new PlayerFaceRightCommand(myGame));
 			onPressMappings.Add(Keys.Down, new PlayerFaceDownCommand(myGame));
 			onPressMappings.Add(Keys.Left, new PlayerFaceLeftCommand(myGame));
+
 			onPressMappings.Add(Keys.W, new PlayerMoveUpCommand(myGame));
 			onPressMappings.Add(Keys.D, new PlayerMoveRightCommand(myGame));
 			onPressMappings.Add(Keys.S, new PlayerMoveDownCommand(myGame));
 			onPressMappings.Add(Keys.A, new PlayerMoveLeftCommand(myGame));
+
 			onPressMappings.Add(Keys.Z, new PlayerAttackCommand(myGame));
 
 			// Block cycling
@@ -45,9 +49,10 @@ namespace Project1
 			onPressMappings.Add(Keys.Y, new BlockCycleRightCommand(myGame));
 			onPressMappings.Add(Keys.U, new ItemCycleLeftCommand(myGame));
 			onPressMappings.Add(Keys.I, new ItemCycleRightCommand(myGame));
-			// ============================================================================
 
-			// COMMANDS THAT EXECUTE ON RELEASE ===========================================
+			// COMMANDS THAT EXECUTE ON RELEASE
+
+			// Player
 			onReleaseMappings.Add(Keys.W, new PlayerStopMoveUpCommand(myGame));
 			onReleaseMappings.Add(Keys.D, new PlayerStopMoveRightCommand(myGame));
 			onReleaseMappings.Add(Keys.S, new PlayerStopMoveDownCommand(myGame));

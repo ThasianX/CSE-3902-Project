@@ -49,7 +49,6 @@ namespace Project1
                 new MouseController(this)
             };
 
-
             base.Initialize();
         }
 

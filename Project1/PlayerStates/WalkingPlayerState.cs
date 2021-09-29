@@ -49,15 +49,11 @@ namespace Project1.PlayerStates
         {
             player.facingDirection = direction;
             player.state = new WalkingPlayerState(player);
-            
-
-
         }
 
         public void SwordAttack()
         {
             player.state = new SwordAttackPlayerState(player);
-
         }
         public void ShootArrow()
         {
@@ -83,6 +79,7 @@ namespace Project1.PlayerStates
 
             // Normalize the vector to prevent moving faster on diagnals
             //movement = Vector2.Normalize(movement);
+            // ^^^ This causes the game to crash. Needs looked into...
 
             // Apply speed
             movement *= player.speed;

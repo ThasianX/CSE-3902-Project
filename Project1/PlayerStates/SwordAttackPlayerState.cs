@@ -13,7 +13,7 @@ namespace Project1.PlayerStates
 
         private ISprite sprite;
 
-        private int activeFrameCount = 60, counter = 0;
+        private int activeFrameCount = 15, counter = 0;
 
         public SwordAttackPlayerState(Player player)
         {
@@ -26,15 +26,15 @@ namespace Project1.PlayerStates
                     break;
 
                 case Direction.Right:
-                    sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkAttackUpAnimation());
+                    sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkAttackRightAnimation());
                     break;
 
                 case Direction.Down:
-                    sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkAttackUpAnimation());
+                    sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkAttackDownAnimation());
                     break;
 
                 case Direction.Left:
-                    sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkAttackUpAnimation());
+                    sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkAttackLeftAnimation());
                     break;
 
                 default:

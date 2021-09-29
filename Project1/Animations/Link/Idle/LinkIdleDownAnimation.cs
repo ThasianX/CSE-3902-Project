@@ -8,7 +8,6 @@ namespace Project1
 {
     class LinkIdleDownAnimation : IAnimation
     {
-
         public string SpritesheetFileName { get; } = "link_spritesheet";
         public int CycleLength { get; } = 30;
 

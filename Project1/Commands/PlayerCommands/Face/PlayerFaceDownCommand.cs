@@ -5,11 +5,11 @@ using System.Text;
 
 namespace Project1.Commands
 {
-    class PlayerFaceUpCommand : ICommand
+    class PlayerFaceDownCommand : ICommand
     {
         Game1 game;
 
-        public PlayerFaceUpCommand(Game1 game)
+        public PlayerFaceDownCommand(Game1 game)
         {
             this.game = game;
         }
@@ -17,8 +17,7 @@ namespace Project1.Commands
         public void Execute()
         {
             // COUPLING !!!!!!!!!!!!!!!!!!!!!!!!!
-            Player player = game.link;
-            player.FaceDirection(Direction.Up);
+            game.link.FaceDirection(Direction.Down);
         }
     }
 }
