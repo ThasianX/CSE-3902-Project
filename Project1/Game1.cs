@@ -14,7 +14,9 @@ namespace Project1
     {
         private readonly GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
-        private ISprite sprite;
+
+        // Game Objects
+        public Player link;
         public CyclableBlock cyclableBlock;
         public CyclableItem cyclableItem;
 
@@ -23,7 +25,6 @@ namespace Project1
         private ArrayList controllerList;
 
         private SpriteFont font;
-        private int score = 0;
 
         private Viewport ViewPort => graphics.GraphicsDevice.Viewport;
         public int SCREEN_WIDTH => ViewPort.Width;
@@ -40,6 +41,7 @@ namespace Project1
 
         protected override void Initialize()
         {
+
             position = new Vector2(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
             controllerList = new ArrayList
             {
@@ -56,7 +58,9 @@ namespace Project1
             spriteSheet = Content.Load<Texture2D>("smb_enemies_sheet");
             font = Content.Load<SpriteFont>("Name");
             SpriteFactory.Instance.LoadAllTextures(Content);
-            sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkWalkingUpAnimation());
+
+            link = new Player(position, spriteBatch);
+
             cyclableBlock = new CyclableBlock();
             cyclableItem = new CyclableItem();
         }
@@ -71,7 +75,8 @@ namespace Project1
                 controller.Update();
             }
 
-            sprite.Update();
+            link.Update();
+
             cyclableBlock.Update();
             cyclableItem.Update();
 
@@ -83,45 +88,15 @@ namespace Project1
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             spriteBatch.Begin();
-            sprite.Draw(spriteBatch, position);
+
+            link.Draw();
+
             cyclableBlock.Draw(spriteBatch, new Vector2 (position.X - 100, position.Y));
             cyclableItem.Draw(spriteBatch, new Vector2(position.X - 200, position.Y));
-            spriteBatch.DrawString(font, "Credits", new Vector2(100, 100), Color.Black);
-            spriteBatch.DrawString(font, "Program Made By Kevin Li", new Vector2(100, 120), Color.Black);
-            spriteBatch.DrawString(font, "Sprites from: http://www.mariouniverse.com/wp-content/img/sprites/nes/smb/enemies.png", new Vector2(100, 140), Color.Black);
+
             spriteBatch.End();
 
             base.Draw(gameTime);
-        }
-
-        internal void SetSprite(ISprite sprite)
-        {
-            this.sprite = sprite;
-        }
-
-        internal void ShiftPosition(int x, int y)
-        {
-            int newX = (int)position.X + x;
-            if (newX < -SpriteDimensions.WIDTH)
-            {
-                newX = SCREEN_WIDTH;
-            }
-            else if (newX > SCREEN_WIDTH)
-            {
-                newX = -SpriteDimensions.WIDTH;
-            }
-
-            int newY = (int)position.Y + y;
-            if (newY < -SpriteDimensions.HEIGHT)
-            {
-                newY = SCREEN_HEIGHT;
-            }
-            else if (newY > SCREEN_HEIGHT)
-            {
-                newY = -SpriteDimensions.HEIGHT;
-            }
-
-            position = new Vector2(newX, newY);
         }
     }
 }

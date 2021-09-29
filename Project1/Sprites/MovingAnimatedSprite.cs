@@ -26,7 +26,7 @@ namespace Project1.Sprites
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
-            Rectangle destination = new Rectangle((int)location.X, (int)location.Y, SpriteDimensions.WIDTH, SpriteDimensions.HEIGHT);
+            Rectangle destination = new Rectangle((int)location.X, (int)location.Y, Constants.SPRITE_WIDTH, Constants.SPRITE_HEIGHT);
 
             int index = currentFrame / (cycleLength / sources.Count);
             spriteBatch.Draw(spriteSheet, destination, (Rectangle)sources[index], Color.White);

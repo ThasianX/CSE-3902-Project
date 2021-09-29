@@ -9,13 +9,6 @@ using Project1.Sprites;
 
 namespace Project1
 {
-
-    // Is there a better place to put this? 
-    public enum Direction
-    {
-        Up, Right, Down, Left
-    }
-
     class SpriteFactory
     {
         private readonly string[] spritesheetFileNames =
