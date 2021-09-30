@@ -15,7 +15,7 @@ namespace Project1.Objects
         public CyclableBlock()
         {
             cycle = 0;
-            this.blockSprite = SpriteFactory.Instance.CreateTileSprite(new HorizontalWoodArrow());
+            this.blockSprite = SpriteFactory.Instance.CreateTileSprite(new PlainBlockSprite());
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
@@ -30,25 +30,25 @@ namespace Project1.Objects
                 switch (cycle)
                 {
                     case 0:
-                        this.blockSprite = SpriteFactory.Instance.CreateTileSprite(new HorizontalWoodArrow());
+                        this.blockSprite = SpriteFactory.Instance.CreateTileSprite(new PlainBlockSprite());
                         break;
                     case 1:
-                        this.blockSprite = SpriteFactory.Instance.CreateTileSprite(new PyramidBlock());
+                        this.blockSprite = SpriteFactory.Instance.CreateTileSprite(new PyramidBlockSprite());
                         break;
                     case 2:
-                        this.blockSprite = SpriteFactory.Instance.CreateTileSprite(new StairBlock());
+                        this.blockSprite = SpriteFactory.Instance.CreateTileSprite(new StairBlockSprite());
                         break;
                     case 3:
-                        this.blockSprite = SpriteFactory.Instance.CreateTileSprite(new BlackBlock());
+                        this.blockSprite = SpriteFactory.Instance.CreateTileSprite(new BlackBlockSprite());
                         break;
                     case 4:
-                        this.blockSprite = SpriteFactory.Instance.CreateTileSprite(new StoneBlock());
+                        this.blockSprite = SpriteFactory.Instance.CreateTileSprite(new StoneBlockSprite());
                         break;
                     case 5:
-                        this.blockSprite = SpriteFactory.Instance.CreateTileSprite(new LadderBlock());
+                        this.blockSprite = SpriteFactory.Instance.CreateTileSprite(new LadderBlockSprite());
                         break;
                     default:
-                        this.blockSprite = SpriteFactory.Instance.CreateTileSprite(new HorizontalWoodArrow());
+                        this.blockSprite = SpriteFactory.Instance.CreateTileSprite(new PlainBlockSprite());
                         break;
                 }
             }

@@ -15,7 +15,7 @@ namespace Project1.Objects
         public CyclableItem()
         {
             cycle = 0;
-            this.itemSprite = SpriteFactory.Instance.CreateTileSprite(new VerticalWoodArrow());
+            this.itemSprite = SpriteFactory.Instance.CreateTileSprite(new WoodArrowUp());
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
@@ -30,16 +30,16 @@ namespace Project1.Objects
                 switch (cycle)
                 {
                     case 0:
-                        this.itemSprite = SpriteFactory.Instance.CreateTileSprite(new VerticalWoodArrow());
+                        this.itemSprite = SpriteFactory.Instance.CreateTileSprite(new WoodArrowUp());
                         break;
                     case 1:
-                        this.itemSprite = SpriteFactory.Instance.CreateTileSprite(new KeyItem());
+                        this.itemSprite = SpriteFactory.Instance.CreateTileSprite(new KeySprite());
                         break;
                     case 2:
-                        this.itemSprite = SpriteFactory.Instance.CreateTileSprite(new YellowRubyItem());
+                        this.itemSprite = SpriteFactory.Instance.CreateTileSprite(new YellowRubySprite());
                         break;
                     case 3:
-                        this.itemSprite = SpriteFactory.Instance.CreateTileSprite(new BlueRubyItem());
+                        this.itemSprite = SpriteFactory.Instance.CreateTileSprite(new BlueRubySprite());
                         break;
                     case 4:
                         this.itemSprite = SpriteFactory.Instance.CreateAnimatedSprite(new FlashingRubyAnimation());
@@ -51,7 +51,7 @@ namespace Project1.Objects
                         this.itemSprite = SpriteFactory.Instance.CreateAnimatedSprite(new TriforceAnimation());
                         break;
                     default:
-                        this.itemSprite = SpriteFactory.Instance.CreateTileSprite(new VerticalWoodArrow());
+                        this.itemSprite = SpriteFactory.Instance.CreateTileSprite(new WoodArrowUp());
                         break;
                 }
             }
