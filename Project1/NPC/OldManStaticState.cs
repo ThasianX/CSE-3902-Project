@@ -12,8 +12,6 @@ namespace Project1.NPC
         private OldMan oldMan;
         private IAnimation oldManStillAnimation;
         private ISprite sprite;
-        private int choice;
-        private Random rand = new Random();
         public int cycleLength { get; }
 
         public OldManStaticState(OldMan oldMan)

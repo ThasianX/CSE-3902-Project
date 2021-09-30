@@ -10,19 +10,11 @@ namespace Project1.NPC
         public IEnemyState state;
         public Vector2 position;
         private Vector2 startPosition;
-        public float movingSpeed;
-        private int choice;
-        private Random rand = new Random();
-        private int timer;
-        //private bool isLinkNearby;
-
         public OldMan(Vector2 position)
         {
             this.position = position;
             startPosition = position;
-
             state = new OldManStaticState(this);
-
         }
 
         public void Update()

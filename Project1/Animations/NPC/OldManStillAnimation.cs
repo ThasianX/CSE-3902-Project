@@ -11,8 +11,6 @@ namespace Project1.Animations
         public Rectangle[] Sources { get; } =
         {
             new Rectangle(0,5,16,16)
-           
-            
         };
     }
 }
