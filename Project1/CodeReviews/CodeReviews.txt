@@ -1,0 +1,22 @@
+﻿Author: Keenan Anderson
+Date: 9/24/21
+Sprint2
+Reviewing: SpriteFactory.cs IAnimation.cs AnimatedSprite.cs
+Author of Code: Jake Suraba
+
+The IAnimation interface appears to be minimal and sufficient. In regards to you comment about instancing the same data multiple times: 
+I think that each animation will only need to be implemented once and when SpriteFactory creates a new instance of an animation it will 
+only be referencing the concrete data for the concrete class, rather than duplicating the data.
+
+Using one iteration of Sprite Factory for all animations seems to promote encapsulation, hopefully it is sufficient for all of our sprites. 
+It appears to coincide with the Abstract Factory design pattern. I think the directional ENUM should be placed in its own file as I think it will be more involved elsewhere.
+
+I like this implementation of AnimatedSprite as it allows us to use any number of frames and standardizes the frame rate for our animations. 
+However, it doesn't allow for non linear frame patterns, though I think this can be compensated for in our ArrayList for individual animations.
+
+Author: Keenan Anderson
+Date: 9/30/21
+Sprint2
+Reviewing: Feature/enemy V2
+Author of Code: Hongda Lin
+
