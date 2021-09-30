@@ -62,11 +62,6 @@ namespace Project1.Enemy
             state.ChangeDirection();
         }
 
-        public void BoomerangAttack()
-        {
-            state.BoomerangAttack();
-        }
-
         public void ResetPosition()
         {
             position = startPosition;

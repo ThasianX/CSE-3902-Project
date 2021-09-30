@@ -13,6 +13,7 @@ namespace Project1.Enemy
         private ISprite sprite;
         private int choice;
         private Random rand = new Random();
+        private Direction currenrDirection;
         public int cycleLength { get; }
 
         public RedGloriyaRightMovingState(RedGloriya redGloriya)
@@ -21,6 +22,7 @@ namespace Project1.Enemy
             rightMovingAnimation = new RedGloriyaRightMovingAnimation();
             sprite = SpriteFactory.Instance.CreateAnimatedSprite(rightMovingAnimation);
             cycleLength = rightMovingAnimation.CycleLength;
+            currenrDirection = Direction.Right;
         }
 
         public void FireBallAttack()

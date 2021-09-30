@@ -5,7 +5,7 @@ using Project1.Animations;
 using Project1.Interfaces;
 using Project1.Enemy;
 
-namespace Project1.Character
+namespace Project1.NPC
 {
     class OldManStaticState : IEnemyState
     {
@@ -34,8 +34,6 @@ namespace Project1.Character
 
         public void ChangeDirection()
         {
-            
-           
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -45,8 +43,6 @@ namespace Project1.Character
 
         public void Update()
         {
-            oldMan.position = oldMan.position + new Vector2(0, 1) * oldMan.movingSpeed;
-            sprite.Update();
         }
     }
 

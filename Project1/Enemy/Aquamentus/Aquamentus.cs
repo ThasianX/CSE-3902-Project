@@ -56,9 +56,9 @@ namespace Project1.Enemy
             state.ChangeDirection();
         }
 
-        public void BoomerangAttack()
+        public void FireBallAttack()
         {
-            state.BoomerangAttack();
+            state.FireBallAttack();
         }
 
         public void ResetPosition()

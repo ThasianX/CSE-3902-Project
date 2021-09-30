@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Project1.Enemy;
 
-namespace Project1.Character
+namespace Project1.NPC
 {
     public class OldMan : IEnemy
     {
@@ -33,16 +33,6 @@ namespace Project1.Character
         public void Draw(SpriteBatch spriteBatch)
         {
             state.Draw(spriteBatch);
-        }
-
-        public void ChangeDirection()
-        {
-            // The old man do not change direction
-        }
-
-        public void BoomerangAttack()
-        {
-            // The old man do not attack
         }
 
         public void ResetPosition()

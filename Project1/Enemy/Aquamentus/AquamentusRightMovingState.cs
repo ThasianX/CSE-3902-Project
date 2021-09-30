@@ -11,8 +11,7 @@ namespace Project1.Enemy
         private Aquamentus aquamentus;
         private IAnimation rightMovingAnimation;
         private ISprite sprite;
-        private int choice;
-        private Random rand = new Random();
+        private Direction currentDirection;
         public int cycleLength { get; }
 
         public AquamentusRightMovingState(Aquamentus aquamentus)
@@ -21,6 +20,7 @@ namespace Project1.Enemy
             rightMovingAnimation = new AquamentusMovingAnimation();
             sprite = SpriteFactory.Instance.CreateAnimatedSprite(rightMovingAnimation);
             cycleLength = rightMovingAnimation.CycleLength;
+            currentDirection = Direction.Right;
         }
 
         public void FireBallAttack()
@@ -33,11 +33,7 @@ namespace Project1.Enemy
 
         public void ChangeDirection()
         {
-            choice = rand.Next(1, 3);
-            switch (choice)
-            {               
-                case 2: aquamentus.state = new AquamentusLeftMovingState(aquamentus); break;
-            }
+            aquamentus.state = new AquamentusLeftMovingState(aquamentus);
         }
 
         public void Draw(SpriteBatch spriteBatch)

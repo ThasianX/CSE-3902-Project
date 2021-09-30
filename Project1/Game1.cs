@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Input;
 using Project1.Commands;
 using Project1.Controllers;
 using Project1.Enemy;
-using Project1.Character;
+using Project1.NPC;
 using Project1.Interfaces;
 using Project1.Sprites;
 using Project1.Objects;
