@@ -11,10 +11,11 @@ namespace Project1.Objects
         public Vector2 position;
 
         //Distance Boomerang travels from Link
-        private int maxRange = 100;
+        private int maxRange = 150;
         private bool inRange = true;
         private Direction direction;
         private Vector2 deltaVector;
+        private Vector2 initialPosition;
 
         ISprite boomerangSprite;
 
@@ -22,6 +23,7 @@ namespace Project1.Objects
         {
             this.direction = direction;
             this.position = position;
+            this.initialPosition = position;
             this.moveSpeed = (maxRange * 2) / frames;
             switch (this.direction)
             {
@@ -75,25 +77,25 @@ namespace Project1.Objects
             switch (this.direction)
             {
                 case Direction.Up:
-                    if (this.position.Y <= this.position.Y - maxRange)
+                    if (this.position.Y <= this.initialPosition.Y - maxRange)
                     {
                         this.inRange = false;
                     }
                     break;
                 case Direction.Right:
-                    if (this.position.X >= this.position.X + this.maxRange)
+                    if (this.position.X >= this.initialPosition.X + this.maxRange)
                     {
                         this.inRange = false;
                     }
                     break;
                 case Direction.Down:
-                    if(this.position.Y >= this.position.Y + this.maxRange)
+                    if(this.position.Y >= this.initialPosition.Y + this.maxRange)
                     {
                         this.inRange = false;
                     }
                     break;
                 case Direction.Left:
-                    if (this.position.X <= this.position.X - this.maxRange)
+                    if (this.position.X <= this.initialPosition.X - this.maxRange)
                     {
                         this.inRange = false;
                     }

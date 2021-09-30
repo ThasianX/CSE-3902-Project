@@ -9,7 +9,7 @@ namespace Project1
     class WoodBoomerangAnimation : IAnimation
     {        
         public string SpritesheetFileName { get; } = "link_spritesheet";
-        public int CycleLength { get; } = 24;
+        public int CycleLength { get; } = 32;
         public Rectangle[] Sources { get; } =
         {
             new Rectangle(69, 285, 16, 16),
