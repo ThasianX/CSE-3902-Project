@@ -49,7 +49,7 @@ namespace Project1.Enemy
 
         public void Update()
         {
-            blueBat.position = blueBat.position + new Vector2(1, 0) * blueBat.movingSpeed;
+            blueBat.position += new Vector2(1, 0) * blueBat.movingSpeed;
             sprite.Update();
         }
     }

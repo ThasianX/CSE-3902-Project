@@ -52,7 +52,7 @@ namespace Project1.Enemy
 
         public void Update()
         {
-            redGloriya.position = redGloriya.position + new Vector2(0, 1) * redGloriya.movingSpeed;
+            redGloriya.position += new Vector2(0, 1) * redGloriya.movingSpeed;
             sprite.Update();
         }
     }

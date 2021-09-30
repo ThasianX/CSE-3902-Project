@@ -49,7 +49,7 @@ namespace Project1.Enemy
 
         public void Update()
         {
-            stalfos.position = stalfos.position + new Vector2(0, 1) * stalfos.movingSpeed;
+            stalfos.position += new Vector2(0, 1) * stalfos.movingSpeed;
             sprite.Update();
         }
     }

@@ -26,11 +26,9 @@ namespace Project1
        
         private Vector2 position;
         private Vector2 enemyPosition;
-
-        private ArrayList controllerList;
         private List<IEnemy> enemyList;
 
-        private SpriteFont font;
+        private ArrayList controllerList;
 
         private Viewport ViewPort => graphics.GraphicsDevice.Viewport;
         public int SCREEN_WIDTH => ViewPort.Width;
@@ -62,8 +60,6 @@ namespace Project1
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            spriteSheet = Content.Load<Texture2D>("smb_enemies_sheet");
-            font = Content.Load<SpriteFont>("Name");
             SpriteFactory.Instance.LoadAllTextures(Content);
 
             link = new Player(position, spriteBatch);

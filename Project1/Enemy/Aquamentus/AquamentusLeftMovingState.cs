@@ -44,7 +44,7 @@ namespace Project1.Enemy
 
         public void Update()
         {
-            aquamentus.position = aquamentus.position + new Vector2(-1, 0) * aquamentus.movingSpeed;
+            aquamentus.position += new Vector2(-1, 0) * aquamentus.movingSpeed;
             sprite.Update();
         }
     }
