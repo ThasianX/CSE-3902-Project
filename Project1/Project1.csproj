@@ -11,11 +11,8 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Remove="Content\NewFolder\**" />
     <Compile Remove="NewFolder1\**" />
-    <EmbeddedResource Remove="Content\NewFolder\**" />
     <EmbeddedResource Remove="NewFolder1\**" />
-    <None Remove="Content\NewFolder\**" />
     <None Remove="NewFolder1\**" />
   </ItemGroup>
   <ItemGroup>
