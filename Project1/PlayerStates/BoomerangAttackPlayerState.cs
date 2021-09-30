@@ -8,16 +8,16 @@ using Project1.Objects;
 
 namespace Project1.PlayerStates
 {
-    public class SwordAttackPlayerState : IPlayerState
+    public class BoomerangAttackPlayerState : IPlayerState
     {
         private Player player;
-        private int swordOffset = 8;
+        private int boomerangOffset = 8;
         private ISprite sprite;
-        private WoodSword sword;
+        private WoodBoomerang boomerang;
 
-        private int activeFrameCount = 20, counter = 0;
+        private int activeFrameCount = 50, counter = 0;
 
-        public SwordAttackPlayerState(Player player)
+        public BoomerangAttackPlayerState(Player player)
         {
             this.player = player;
 
@@ -25,26 +25,26 @@ namespace Project1.PlayerStates
             {
                 case Direction.Up:
                     sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkAttackUpAnimation());
-                    this.sword = new WoodSword(player.position + new Vector2(0, -swordOffset), player.facingDirection, activeFrameCount);
+                    this.boomerang = new WoodBoomerang(player.position + new Vector2(0, -boomerangOffset), player.facingDirection, activeFrameCount);
                     break;
 
                 case Direction.Right:
                     sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkAttackRightAnimation());
-                    this.sword = new WoodSword(player.position + new Vector2(swordOffset, 0), player.facingDirection, activeFrameCount);
+                    this.boomerang = new WoodBoomerang(player.position + new Vector2(boomerangOffset, 0), player.facingDirection, activeFrameCount);
                     break;
 
                 case Direction.Down:
                     sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkAttackDownAnimation());
-                    this.sword = new WoodSword(player.position + new Vector2(0, swordOffset), player.facingDirection, activeFrameCount);
+                    this.boomerang = new WoodBoomerang(player.position + new Vector2(0, boomerangOffset), player.facingDirection, activeFrameCount);
                     break;
 
                 case Direction.Left:
                     sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkAttackLeftAnimation());
-                    this.sword = new WoodSword(player.position + new Vector2(-swordOffset, 0), player.facingDirection, activeFrameCount);
+                    this.boomerang = new WoodBoomerang(player.position + new Vector2(-boomerangOffset, 0), player.facingDirection, activeFrameCount);
                     break;
 
                 default:
-                    this.sword = new WoodSword(player.position + new Vector2(0, swordOffset), player.facingDirection, activeFrameCount);
+                    this.boomerang = new WoodBoomerang(player.position + new Vector2(0, boomerangOffset), player.facingDirection, activeFrameCount);
                     break;
             }
         }
@@ -89,13 +89,13 @@ namespace Project1.PlayerStates
                     player.state = new StillPlayerState(player);
                 }
             }
-            sword.Update();
+            boomerang.Update();
             sprite.Update();
         }
 
         public void Draw()
         {
-            sword.Draw(player.spriteBatch, player.position);
+            boomerang.Draw(player.spriteBatch, player.position);
             sprite.Draw(player.spriteBatch, player.position);
         }
 

@@ -41,11 +41,11 @@ namespace Project1
             return new AnimatedSprite(spritesheet, animation);
         }
 
-        public ISprite CreateStillSprite(ITileData stillSprite)
+        public ISprite CreateTileSprite(ITileData tileSprite)
         {
-            Texture2D spritesheet = loadedTextures[stillSprite.SpritesheetFileName];
+            Texture2D spritesheet = loadedTextures[tileSprite.SpritesheetFileName];
 
-            return new TileSprite(spritesheet, stillSprite.Source);
+            return new TileSprite(spritesheet, tileSprite.Source);
         }
 
         public void LoadAllTextures(ContentManager content)

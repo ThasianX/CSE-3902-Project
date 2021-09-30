@@ -6,18 +6,17 @@ using System.Text;
 
 namespace Project1.Commands
 {
-    class PlayerAttackCommand : ICommand
+    class PlayerSwordAttackCommand : ICommand
     {
         Game1 game;
 
-        public PlayerAttackCommand(Game1 game)
+        public PlayerSwordAttackCommand(Game1 game)
         {
             this.game = game;
         }
 
         public void Execute()
         {
-            // COUPLING !!!!!!!!!!!!!!!!!!!!!!!!!
             game.link.SwordAttack();
         }
     }

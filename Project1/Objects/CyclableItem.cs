@@ -5,7 +5,7 @@ using Project1.Interfaces;
 
 namespace Project1.Objects
 {
-    public class CyclableItem
+    public class CyclableItem : IItem
     {
         private int cycle;
         private int lastCycle;
@@ -15,7 +15,7 @@ namespace Project1.Objects
         public CyclableItem()
         {
             cycle = 0;
-            this.itemSprite = SpriteFactory.Instance.CreateStillSprite(new VerticalWoodArrow());
+            this.itemSprite = SpriteFactory.Instance.CreateTileSprite(new VerticalWoodArrow());
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
@@ -30,28 +30,28 @@ namespace Project1.Objects
                 switch (cycle)
                 {
                     case 0:
-                        this.itemSprite = SpriteFactory.Instance.CreateStillSprite(new VerticalWoodArrow());
+                        this.itemSprite = SpriteFactory.Instance.CreateTileSprite(new VerticalWoodArrow());
                         break;
                     case 1:
-                        this.itemSprite = SpriteFactory.Instance.CreateStillSprite(new KeyItem());
+                        this.itemSprite = SpriteFactory.Instance.CreateTileSprite(new KeyItem());
                         break;
                     case 2:
-                        this.itemSprite = SpriteFactory.Instance.CreateStillSprite(new YellowRubyItem());
+                        this.itemSprite = SpriteFactory.Instance.CreateTileSprite(new YellowRubyItem());
                         break;
                     case 3:
-                        this.itemSprite = SpriteFactory.Instance.CreateStillSprite(new BlueRubyItem());
+                        this.itemSprite = SpriteFactory.Instance.CreateTileSprite(new BlueRubyItem());
                         break;
                     case 4:
-                        this.itemSprite = SpriteFactory.Instance.CreateAnimatedSprite(new FlashingRubyItem());
+                        this.itemSprite = SpriteFactory.Instance.CreateAnimatedSprite(new FlashingRubyAnimation());
                         break;
                     case 5:
-                        this.itemSprite = SpriteFactory.Instance.CreateAnimatedSprite(new HeartItem());
+                        this.itemSprite = SpriteFactory.Instance.CreateAnimatedSprite(new HeartAnimation());
                         break;
                     case 6:
-                        this.itemSprite = SpriteFactory.Instance.CreateAnimatedSprite(new TriforceItem());
+                        this.itemSprite = SpriteFactory.Instance.CreateAnimatedSprite(new TriforceAnimation());
                         break;
                     default:
-                        this.itemSprite = SpriteFactory.Instance.CreateStillSprite(new VerticalWoodArrow());
+                        this.itemSprite = SpriteFactory.Instance.CreateTileSprite(new VerticalWoodArrow());
                         break;
                 }
             }

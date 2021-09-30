@@ -10,6 +10,7 @@ namespace Project1.PlayerStates
         void SetMoveInput(Direction direction, bool isPressed);
         void SwordAttack();
         void ShootArrow();
+        void BoomerangAttack();
         void Update();
         void Draw();
     }

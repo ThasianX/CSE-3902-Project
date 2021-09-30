@@ -5,7 +5,7 @@ using Project1.Interfaces;
 
 namespace Project1.Objects
 {
-    public class CyclableBlock
+    public class CyclableBlock : IBlock
     {
         private int cycle;
         private int lastCycle;
@@ -15,7 +15,7 @@ namespace Project1.Objects
         public CyclableBlock()
         {
             cycle = 0;
-            this.blockSprite = SpriteFactory.Instance.CreateStillSprite(new HorizontalWoodArrow());
+            this.blockSprite = SpriteFactory.Instance.CreateTileSprite(new HorizontalWoodArrow());
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
@@ -30,25 +30,25 @@ namespace Project1.Objects
                 switch (cycle)
                 {
                     case 0:
-                        this.blockSprite = SpriteFactory.Instance.CreateStillSprite(new HorizontalWoodArrow());
+                        this.blockSprite = SpriteFactory.Instance.CreateTileSprite(new HorizontalWoodArrow());
                         break;
                     case 1:
-                        this.blockSprite = SpriteFactory.Instance.CreateStillSprite(new PyramidBlock());
+                        this.blockSprite = SpriteFactory.Instance.CreateTileSprite(new PyramidBlock());
                         break;
                     case 2:
-                        this.blockSprite = SpriteFactory.Instance.CreateStillSprite(new StairBlock());
+                        this.blockSprite = SpriteFactory.Instance.CreateTileSprite(new StairBlock());
                         break;
                     case 3:
-                        this.blockSprite = SpriteFactory.Instance.CreateStillSprite(new BlackBlock());
+                        this.blockSprite = SpriteFactory.Instance.CreateTileSprite(new BlackBlock());
                         break;
                     case 4:
-                        this.blockSprite = SpriteFactory.Instance.CreateStillSprite(new StoneBlock());
+                        this.blockSprite = SpriteFactory.Instance.CreateTileSprite(new StoneBlock());
                         break;
                     case 5:
-                        this.blockSprite = SpriteFactory.Instance.CreateStillSprite(new LadderBlock());
+                        this.blockSprite = SpriteFactory.Instance.CreateTileSprite(new LadderBlock());
                         break;
                     default:
-                        this.blockSprite = SpriteFactory.Instance.CreateStillSprite(new HorizontalWoodArrow());
+                        this.blockSprite = SpriteFactory.Instance.CreateTileSprite(new HorizontalWoodArrow());
                         break;
                 }
             }
