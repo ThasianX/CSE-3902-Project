@@ -20,3 +20,7 @@ Sprint2
 Reviewing: Feature/enemy V2
 Author of Code: Hongda Lin
 
+Great implementation of state machine pattern for Enemies and NPCS. Good naming conventions. Cyclable enemy functions as intended. 
+I recommend putting the Enemy list that is passed into cyclableEnemy into cyclableEnemy, as it doesn't appear to serve any purpose in game.cs.
+
+
