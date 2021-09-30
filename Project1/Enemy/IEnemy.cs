@@ -4,10 +4,10 @@ namespace Project1.Enemy
 {
     public interface IEnemy
     {
-        void FireBallAttack();
-        void BoomerangAttack();
-        void ChangeDirection();
         void Update();
         void Draw(SpriteBatch spriteBatch);
+
+        // Only need this for sprint2
+        void ResetPosition();
     }
 }

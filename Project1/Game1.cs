@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -20,14 +21,13 @@ namespace Project1
         public Player link;
         public CyclableBlock cyclableBlock;
         public CyclableItem cyclableItem;
-        //public CyclableEnemy cyclabeEnemy;
-
-        private IEnemy stalfos;
-
+        public CyclableEnemy cyclableEnemy;
+       
         private Vector2 position;
         private Vector2 enemyPosition;
 
         private ArrayList controllerList;
+        private List<IEnemy> enemyList;
 
         private SpriteFont font;
 
@@ -66,8 +66,9 @@ namespace Project1
             SpriteFactory.Instance.LoadAllTextures(Content);
 
             link = new Player(position, spriteBatch);
-            //cyclabeEnemy = new CyclableEnemy(position);
-            stalfos = new Stalfos(enemyPosition);
+            enemyList = new List<IEnemy> { new Stalfos(enemyPosition), new RedGloriya(enemyPosition) };
+           
+            cyclableEnemy = new CyclableEnemy(enemyList);
             cyclableBlock = new CyclableBlock();
             cyclableItem = new CyclableItem();
         }
@@ -86,9 +87,9 @@ namespace Project1
 
             cyclableBlock.Update();
             cyclableItem.Update();
+          
+            cyclableEnemy.Update();
 
-            //cyclableEnemy.Update();
-            stalfos.Update();
             base.Update(gameTime);
         }
 
@@ -99,8 +100,8 @@ namespace Project1
             spriteBatch.Begin();
 
             link.Draw();
-            //cyclableEnemy.Draw(spriteBatch);
-            stalfos.Draw(spriteBatch);
+           
+            cyclableEnemy.Draw(spriteBatch);
             cyclableBlock.Draw(spriteBatch, new Vector2 (position.X - 100, position.Y));
             cyclableItem.Draw(spriteBatch, new Vector2(position.X - 200, position.Y));
 
