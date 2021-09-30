@@ -95,7 +95,7 @@ namespace Project1.PlayerStates
 
         public void Draw()
         {
-            sword.Draw(player.spriteBatch);
+            sword.Draw(player.spriteBatch, player.position);
             sprite.Draw(player.spriteBatch, player.position);
         }
 

@@ -25,25 +25,22 @@ namespace Project1.Objects
             this.position = position;
             this.initialPosition = position;
             this.moveSpeed = (maxRange * 2) / frames;
+            boomerangSprite = SpriteFactory.Instance.CreateAnimatedSprite(new WoodBoomerangAnimation());
             switch (this.direction)
             {
                 case Direction.Up:
-                    boomerangSprite = SpriteFactory.Instance.CreateAnimatedSprite(new WoodBoomerangAnimation());
                     this.deltaVector = new Vector2(0, -moveSpeed);
                     break;
 
                 case Direction.Right:
-                    boomerangSprite = SpriteFactory.Instance.CreateAnimatedSprite(new WoodBoomerangAnimation());
                     this.deltaVector = new Vector2(moveSpeed, 0);
                     break;
 
                 case Direction.Down:
-                    boomerangSprite = SpriteFactory.Instance.CreateAnimatedSprite(new WoodBoomerangAnimation());
                     this.deltaVector = new Vector2(0, moveSpeed);
                     break;
 
                 case Direction.Left:
-                    boomerangSprite = SpriteFactory.Instance.CreateAnimatedSprite(new WoodBoomerangAnimation());
                     this.deltaVector = new Vector2(-moveSpeed, 0);
                     break;
 
@@ -52,7 +49,7 @@ namespace Project1.Objects
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
             boomerangSprite.Draw(spriteBatch, this.position);
         }

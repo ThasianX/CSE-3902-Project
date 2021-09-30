@@ -95,7 +95,7 @@ namespace Project1.PlayerStates
 
         public void Draw()
         {
-            boomerang.Draw(player.spriteBatch);
+            boomerang.Draw(player.spriteBatch, player.position);
             sprite.Draw(player.spriteBatch, player.position);
         }
 

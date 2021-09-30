@@ -8,7 +8,7 @@ namespace Project1.Interfaces
 {
     interface IItem
     {
-        public void Draw(SpriteBatch spriteBatch) { }
+        public void Draw(SpriteBatch spriteBatch, Vector2 location) { }
 
         public void Update() { }
 

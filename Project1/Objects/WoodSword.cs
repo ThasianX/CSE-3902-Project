@@ -49,7 +49,7 @@ namespace Project1.Objects
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
             swordSprite.Draw(spriteBatch, this.position);
         }
