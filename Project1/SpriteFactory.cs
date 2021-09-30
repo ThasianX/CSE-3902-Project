@@ -18,7 +18,9 @@ namespace Project1
             "smb_enemies_sheet",
             "dungeon_sheet",
             "item_spritesheet",
-            "enemies"
+            "enemies",
+            "bosses",
+            "characters"
         };
 
         private Dictionary<string, Texture2D> loadedTextures = new Dictionary<string, Texture2D>();

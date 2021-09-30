@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Input;
 using Project1.Commands;
 using Project1.Controllers;
 using Project1.Enemy;
+using Project1.Character;
 using Project1.Interfaces;
 using Project1.Sprites;
 using Project1.Objects;
@@ -66,7 +67,9 @@ namespace Project1
             SpriteFactory.Instance.LoadAllTextures(Content);
 
             link = new Player(position, spriteBatch);
-            enemyList = new List<IEnemy> { new Stalfos(enemyPosition), new RedGloriya(enemyPosition) };
+            enemyList = new List<IEnemy> { new Stalfos(enemyPosition), new RedGloriya(enemyPosition), 
+                        new BlueGel(enemyPosition), new BlueBat(enemyPosition), new Aquamentus(enemyPosition),
+                        new OldMan(enemyPosition)};
            
             cyclableEnemy = new CyclableEnemy(enemyList);
             cyclableBlock = new CyclableBlock();
