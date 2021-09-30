@@ -42,6 +42,7 @@ namespace Project1
 			onPressMappings.Add(Keys.A, new PlayerMoveLeftCommand(myGame));
 
 			onPressMappings.Add(Keys.Z, new PlayerSwordAttackCommand(myGame));
+			onPressMappings.Add(Keys.N, new PlayerSwordAttackCommand(myGame));
 			onPressMappings.Add(Keys.D1, new PlayerBoomerangAttackCommand(myGame));
 
 			// Block cycling
