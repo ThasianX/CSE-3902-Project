@@ -42,13 +42,13 @@ namespace Project1.Objects
                         this.itemSprite = SpriteFactory.Instance.CreateTileSprite(new BlueRubyItem());
                         break;
                     case 4:
-                        this.itemSprite = SpriteFactory.Instance.CreateAnimatedSprite(new FlashingRubyItem());
+                        this.itemSprite = SpriteFactory.Instance.CreateAnimatedSprite(new FlashingRubyAnimation());
                         break;
                     case 5:
-                        this.itemSprite = SpriteFactory.Instance.CreateAnimatedSprite(new HeartItem());
+                        this.itemSprite = SpriteFactory.Instance.CreateAnimatedSprite(new HeartAnimation());
                         break;
                     case 6:
-                        this.itemSprite = SpriteFactory.Instance.CreateAnimatedSprite(new TriforceItem());
+                        this.itemSprite = SpriteFactory.Instance.CreateAnimatedSprite(new TriforceAnimation());
                         break;
                     default:
                         this.itemSprite = SpriteFactory.Instance.CreateTileSprite(new VerticalWoodArrow());

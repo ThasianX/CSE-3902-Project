@@ -40,7 +40,7 @@
 #begin link_spritesheet.png
 /importer:TextureImporter
 /processor:TextureProcessor
-/processorParam:ColorKeyColor=255,255,255,255
+/processorParam:ColorKeyColor=116,116,116,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True

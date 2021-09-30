@@ -6,7 +6,7 @@ using Project1.Interfaces;
 
 namespace Project1
 {
-    class Smoke : IAnimation
+    class BombAnimation : IAnimation
     {        
         public string SpritesheetFileName { get; } = "link_spritesheet";
         public int CycleLength { get; } = 30;

@@ -60,6 +60,11 @@ namespace Project1.PlayerStates
             //TODO
         }
 
+        public void BoomerangAttack()
+        {
+            player.state = new BoomerangAttackPlayerState(player);
+        }
+
         public void Update()
         {
             // Calculate the direction of the movement vector

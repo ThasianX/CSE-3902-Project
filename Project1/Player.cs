@@ -84,6 +84,10 @@ namespace Project1
             state.ShootArrow();
         }
 
+        public void BoomerangAttack()
+        {
+            state.BoomerangAttack();
+        }
         public void Update()
         {
             state.Update();

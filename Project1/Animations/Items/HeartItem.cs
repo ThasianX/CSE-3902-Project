@@ -6,7 +6,7 @@ using Project1.Interfaces;
 
 namespace Project1
 {
-    class HeartItem : IAnimation
+    class HeartAnimation : IAnimation
     {        
         public string SpritesheetFileName { get; } = "item_spritesheet";
         public int CycleLength { get; } = 30;
