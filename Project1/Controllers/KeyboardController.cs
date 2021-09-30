@@ -61,7 +61,9 @@ namespace Project1
 
 			// Enemy cycling
 			onReleaseMappings.Add(Keys.O, new EnemyCycleLeftCommand(myGame));
-            onReleaseMappings.Add(Keys.P, new EnemyCycleRightCommand(myGame));
+			onReleaseMappings.Add(Keys.P, new EnemyCycleRightCommand(myGame));
+
+			onReleaseMappings.Add(Keys.Q, new QuitCommand(myGame));
 		}
 
 		public void Update()
