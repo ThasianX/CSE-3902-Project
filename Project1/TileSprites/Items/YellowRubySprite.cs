@@ -6,10 +6,10 @@ using Project1.Interfaces;
 
 namespace Project1
 {
-    class BlueRubyItem : ITileData
+    class YellowRubySprite : ITileData
     {        
         public string SpritesheetFileName { get; } = "item_spritesheet";
 
-        public Rectangle Source { get; } = new Rectangle(72, 16, 8, 16);
+        public Rectangle Source { get; } = new Rectangle(72, 0, 8, 16);
     }
 }

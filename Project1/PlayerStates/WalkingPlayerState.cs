@@ -57,7 +57,7 @@ namespace Project1.PlayerStates
         }
         public void ShootArrow()
         {
-            //TODO
+            player.state = new ShootArrowPlayerState(player);
         }
 
         public void BoomerangAttack()

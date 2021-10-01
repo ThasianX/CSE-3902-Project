@@ -6,10 +6,10 @@ using Project1.Interfaces;
 
 namespace Project1
 {
-    class VerticalWoodArrow : ITileData
+    class WoodArrowUp : ITileData
     {        
         public string SpritesheetFileName { get; } = "link_spritesheet";
 
-        public Rectangle Source { get; } = new Rectangle(2, 185, 7, 16);
+        public Rectangle Source { get; } = new Rectangle(1, 302, 16, 16);
     }
 }

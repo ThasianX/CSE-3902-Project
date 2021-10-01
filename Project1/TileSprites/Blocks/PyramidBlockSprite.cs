@@ -6,10 +6,10 @@ using Project1.Interfaces;
 
 namespace Project1
 {
-    class StoneBlock : ITileData
+    class PyramidBlockSprite : ITileData
     {
         public string SpritesheetFileName { get; } = "dungeon_sheet";
 
-        public Rectangle Source { get; } = new Rectangle(421, 1009, 16, 16);
+        public Rectangle Source { get; } = new Rectangle(323, 91, 16, 16);
     }
 }
