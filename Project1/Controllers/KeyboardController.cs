@@ -42,6 +42,7 @@ namespace Project1
 			onPressMappings.Add(Keys.A, new PlayerMoveLeftCommand(myGame));
 
 			onPressMappings.Add(Keys.Z, new PlayerSwordAttackCommand(myGame));
+			onPressMappings.Add(Keys.N, new PlayerSwordAttackCommand(myGame));
 			onPressMappings.Add(Keys.D1, new PlayerBoomerangAttackCommand(myGame));
 			onPressMappings.Add(Keys.D2, new PlayerShootArrowCommand(myGame));
 
@@ -61,7 +62,9 @@ namespace Project1
 
 			// Enemy cycling
 			onReleaseMappings.Add(Keys.O, new EnemyCycleLeftCommand(myGame));
-            onReleaseMappings.Add(Keys.P, new EnemyCycleRightCommand(myGame));
+			onReleaseMappings.Add(Keys.P, new EnemyCycleRightCommand(myGame));
+
+			onReleaseMappings.Add(Keys.Q, new QuitCommand(myGame));
 		}
 
 		public void Update()
