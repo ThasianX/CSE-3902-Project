@@ -13,6 +13,7 @@ namespace Project1
     public class Player
     {
         public IPlayerState state;
+        public IHealthState healthState;
 
         public SpriteBatch spriteBatch;
 
@@ -33,10 +34,8 @@ namespace Project1
 
         public float speed = 1f;
 
-        public Player(Vector2 position, SpriteBatch spriteBatch)
+        public Player(Vector2 position)
         {
-            this.spriteBatch = spriteBatch;
-
             this.position = position;
             this.movement = new Vector2(0, 0);
 
@@ -46,7 +45,7 @@ namespace Project1
 
             // Set entry state
             state = new StillPlayerState(this);
-
+            healthState = new HealthState(this, 100);
         }
 
         // Does not appear in IPlayerState (helper method)
@@ -91,12 +90,18 @@ namespace Project1
         public void Update()
         {
             state.Update();
+            healthState.Update();
         }
 
-        public void Draw()
+        public void Draw(SpriteBatch spriteBatch)
         {
-            state.Draw();
+            state.Draw(spriteBatch);
+            healthState.Draw(spriteBatch);
         }
 
+        public void TakeDamage(int damage)
+        {
+            healthState.TakeDamage(damage);
+        }
     }
 }

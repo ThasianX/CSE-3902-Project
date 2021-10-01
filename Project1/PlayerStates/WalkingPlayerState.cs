@@ -101,10 +101,9 @@ namespace Project1.PlayerStates
                 player.state = new StillPlayerState(player);
         }
 
-        public void Draw()
+        public void Draw(SpriteBatch spriteBatch)
         {
-            sprite.Draw(player.spriteBatch, player.position);
+            sprite.Draw(spriteBatch, player.position);
         }
-
     }
 }
