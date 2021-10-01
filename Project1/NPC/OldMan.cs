@@ -27,6 +27,7 @@ namespace Project1.NPC
             state.Draw(spriteBatch);
         }
 
+        // Only need this for Sprint 2
         public void ResetPosition()
         {
             position = startPosition;

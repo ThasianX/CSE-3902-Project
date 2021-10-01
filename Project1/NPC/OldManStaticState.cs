@@ -12,14 +12,12 @@ namespace Project1.NPC
         private OldMan oldMan;
         private IAnimation oldManStillAnimation;
         private ISprite sprite;
-        public int cycleLength { get; }
 
         public OldManStaticState(OldMan oldMan)
         {
             this.oldMan = oldMan;
             oldManStillAnimation = new OldManStillAnimation();
             sprite = SpriteFactory.Instance.CreateAnimatedSprite(oldManStillAnimation);
-            cycleLength = oldManStillAnimation.CycleLength;
         }
 
         public void FireBallAttack()

@@ -9,30 +9,36 @@ namespace Project1.Enemy
     public class RedGloriyaRightMovingState : IEnemyState
     {
         private RedGloriya redGloriya;
+        // RedGloriya Right Moving animation data
         private IAnimation rightMovingAnimation;
         private ISprite sprite;
-        private int choice;
+        // Right moving state, so Direction.Right
+        private Direction currentDirection;
+        private Vector2 deltaVector;
         private Random rand = new Random();
-        private Direction currenrDirection;
-        public int cycleLength { get; }
+        private int choice;
+        private int timer;
 
         public RedGloriyaRightMovingState(RedGloriya redGloriya)
         {
             this.redGloriya = redGloriya;
             rightMovingAnimation = new RedGloriyaRightMovingAnimation();
             sprite = SpriteFactory.Instance.CreateAnimatedSprite(rightMovingAnimation);
-            cycleLength = rightMovingAnimation.CycleLength;
-            currenrDirection = Direction.Right;
+            currentDirection = Direction.Right;
+            deltaVector = new Vector2(1, 0);
         }
 
         public void FireBallAttack()
         {
         }
 
+        // Change current RedGloriya state to RedGloriyaAttackState
         public void BoomerangAttack()
         {
+            redGloriya.state = new RedGloriyaAttackState(redGloriya, currentDirection);
         }
 
+        // Change current RedGloriya state to a random direction state.
         public void ChangeDirection()
         {
             choice = rand.Next(1, 4);
@@ -44,15 +50,31 @@ namespace Project1.Enemy
             }
         }
 
+        public void Update()
+        {
+            // When complete an animation cycle length, make a choice
+            if (timer++ == rightMovingAnimation.CycleLength)
+            {
+                // 1/4 chance to do a BoomerangAttack
+                choice = rand.Next(4);
+                if (choice == 0)
+                {
+                    BoomerangAttack();
+                }
+                // 3/4 chance to do a ChangeDirection
+                else
+                {
+                    ChangeDirection();
+                }
+                timer = 0;
+            }
+            redGloriya.position += deltaVector * redGloriya.movingSpeed;
+            sprite.Update();
+        }
+
         public void Draw(SpriteBatch spriteBatch)
         {
             sprite.Draw(spriteBatch, redGloriya.position);
-        }
-
-        public void Update()
-        {
-            redGloriya.position += new Vector2(1, 0) * redGloriya.movingSpeed;
-            sprite.Update();
         }
     }
 }

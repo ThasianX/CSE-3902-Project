@@ -13,14 +13,19 @@ namespace Project1.Enemy
         private ISprite sprite;
         private int choice;
         private Random rand = new Random();
-        public int cycleLength { get; }
+        private int timer;
+        // Could later used to assemble all the direction moving state
+        private Direction currentDirection;
+        private Vector2 deltaVector;
 
         public StalfosRightMovingState(Stalfos stalfos)
         {
             this.stalfos = stalfos;
             rightMovingAnimation = new StalfosMovingAnimation();
             sprite = SpriteFactory.Instance.CreateAnimatedSprite(rightMovingAnimation);
-            cycleLength = rightMovingAnimation.CycleLength;
+            timer = 0;
+            currentDirection = Direction.Right;
+            deltaVector = new Vector2(1, 0);
         }
 
         public void FireBallAttack()
@@ -49,7 +54,13 @@ namespace Project1.Enemy
 
         public void Update()
         {
-            stalfos.position += new Vector2(1, 0) * stalfos.movingSpeed;
+            timer++;
+            if (timer == rightMovingAnimation.CycleLength)
+            {
+                ChangeDirection();
+                timer = 0;
+            }
+            stalfos.position += deltaVector * stalfos.movingSpeed;
             sprite.Update();
         }
     }

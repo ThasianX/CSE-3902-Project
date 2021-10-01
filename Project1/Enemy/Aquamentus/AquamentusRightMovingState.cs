@@ -11,16 +11,19 @@ namespace Project1.Enemy
         private Aquamentus aquamentus;
         private IAnimation rightMovingAnimation;
         private ISprite sprite;
+        private int timer;
+        // Could later used to assemble all the direction moving state
         private Direction currentDirection;
-        public int cycleLength { get; }
+        private Vector2 deltaVector;
 
         public AquamentusRightMovingState(Aquamentus aquamentus)
         {
             this.aquamentus = aquamentus;
             rightMovingAnimation = new AquamentusMovingAnimation();
             sprite = SpriteFactory.Instance.CreateAnimatedSprite(rightMovingAnimation);
-            cycleLength = rightMovingAnimation.CycleLength;
+            timer = 0;
             currentDirection = Direction.Right;
+            deltaVector = new Vector2(1, 0);
         }
 
         public void FireBallAttack()
@@ -43,7 +46,13 @@ namespace Project1.Enemy
 
         public void Update()
         {
-            aquamentus.position += new Vector2(1, 0) * aquamentus.movingSpeed;
+            timer++;
+            if (timer == rightMovingAnimation.CycleLength)
+            {
+                ChangeDirection();
+                timer = 0;
+            }
+            aquamentus.position += deltaVector * aquamentus.movingSpeed;
             sprite.Update();
         }
     }

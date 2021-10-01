@@ -13,14 +13,21 @@ namespace Project1.Enemy
         private ISprite sprite;
         private int choice;
         private Random rand = new Random();
-        public int cycleLength { get; }
+
+        private int timer;
+
+        // Could later used to assemble all the direction moving state
+        private Direction currentDirection;
+        private Vector2 deltaVector;
 
         public BlueBatRightMovingState(BlueBat blueBat)
         {
             this.blueBat = blueBat;
             rightMovingAnimation = new BlueBatMovingAnimation();
             sprite = SpriteFactory.Instance.CreateAnimatedSprite(rightMovingAnimation);
-            cycleLength = rightMovingAnimation.CycleLength;
+            timer = 0;
+            currentDirection = Direction.Right;
+            deltaVector = new Vector2(1, 0);
         }
 
         public void FireBallAttack()
@@ -36,21 +43,33 @@ namespace Project1.Enemy
             choice = rand.Next(1, 4);
             switch (choice)
             {
-                case 1: blueBat.state = new BlueBatUpMovingState(blueBat); break;
-                case 2: blueBat.state = new BlueBatDownMovingState(blueBat); break;
-                case 3: blueBat.state = new BlueBatLeftMovingState(blueBat); break;
+                case 1:
+                    blueBat.state = new BlueBatUpMovingState(blueBat);
+                    break;
+                case 2:
+                    blueBat.state = new BlueBatDownMovingState(blueBat);
+                    break;
+                case 3:
+                    blueBat.state = new BlueBatLeftMovingState(blueBat);
+                    break;
             }
+        }
+        public void Update()
+        {
+            timer++;
+            if (timer == rightMovingAnimation.CycleLength)
+            {
+                ChangeDirection();
+                timer = 0;
+            }
+
+            blueBat.position += deltaVector * blueBat.movingSpeed;
+            sprite.Update();
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             sprite.Draw(spriteBatch, blueBat.position);
-        }
-
-        public void Update()
-        {
-            blueBat.position += new Vector2(1, 0) * blueBat.movingSpeed;
-            sprite.Update();
         }
     }
 }

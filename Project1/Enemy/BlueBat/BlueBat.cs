@@ -12,13 +12,13 @@ namespace Project1.Enemy
         public float movingSpeed;
         private int choice;
         private Random rand = new Random();
-        private int timer;
         //private bool isLinkNearby;
 
         public BlueBat(Vector2 position)
         {
             this.position = position;
             startPosition = position;
+            // When initialize, choose a random direction
             choice = rand.Next(4);
             switch (choice)
             {
@@ -37,18 +37,12 @@ namespace Project1.Enemy
             }
 
             movingSpeed = 1f;
-            timer = 0;
         }
 
         public void Update()
         {
-            timer++;
-            if (timer == state.cycleLength)
-            {
-                ChangeDirection();
-                timer = 0;
-            }
-
+            // Update the current state
+            // Possible state: direction
             state.Update();
         }
 
@@ -57,11 +51,7 @@ namespace Project1.Enemy
             state.Draw(spriteBatch);
         }
 
-        public void ChangeDirection()
-        {
-            state.ChangeDirection();
-        }
-
+        // Only need this for Sprint 2
         public void ResetPosition()
         {
             position = startPosition;
