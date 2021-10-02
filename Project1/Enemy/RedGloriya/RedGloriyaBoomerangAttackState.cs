@@ -7,7 +7,7 @@ using Project1.Objects;
 
 namespace Project1.Enemy
 {
-    public class RedGloriyaAttackState : IEnemyState
+    public class RedGloriyaBoomerangAttackState : IEnemyState
     {
         private RedGloriya redGloriya;
         // RedGloriya current animation data will be determined by the direction passed in
@@ -25,7 +25,7 @@ namespace Project1.Enemy
         private int timer;
         private Random rand = new Random();
 
-        public RedGloriyaAttackState(RedGloriya redGloriya, Direction currentDirection)
+        public RedGloriyaBoomerangAttackState(RedGloriya redGloriya, Direction currentDirection)
         {
             this.redGloriya = redGloriya;
             this.direction = currentDirection;

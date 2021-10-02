@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.Xna.Framework;
+﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Project1.Interfaces;
@@ -20,7 +17,8 @@ namespace Project1
             "item_spritesheet",
             "enemies",
             "bosses",
-            "characters"
+            "characters",
+            "Enemy and Projectile"
         };
 
         private readonly string[] fontNames =
