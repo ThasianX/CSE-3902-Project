@@ -12,7 +12,6 @@ namespace Project1.Enemy
         public float movingSpeed;
         private int choice;
         private Random rand = new Random();
-        private int timer;
         //private bool isLinkNearby;
 
         public RedGloriya(Vector2 position)
@@ -20,6 +19,7 @@ namespace Project1.Enemy
             this.position = position;
             startPosition = position;
             choice = rand.Next(4);
+            // When initialize, choose a random direction
             switch (choice)
             {
                 case 0:
@@ -37,18 +37,12 @@ namespace Project1.Enemy
             }
 
             movingSpeed = 1f;
-            timer = 0;
         }
 
         public void Update()
         {
-            timer++;
-            if (timer == state.cycleLength)
-            {
-                ChangeDirection();
-                timer = 0;
-            }
-
+            // Update the current state
+            // Possible state: direction, attack
             state.Update();
         }
 
@@ -57,16 +51,7 @@ namespace Project1.Enemy
             state.Draw(spriteBatch);
         }
 
-        public void ChangeDirection()
-        {
-            state.ChangeDirection();
-        }
-
-        public void BoomerangAttack()
-        {
-            state.BoomerangAttack();
-        }
-
+        // Only need this for Sprint 2
         public void ResetPosition()
         {
             position = startPosition;

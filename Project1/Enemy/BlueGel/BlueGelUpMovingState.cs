@@ -13,14 +13,19 @@ namespace Project1.Enemy
         private ISprite sprite;
         private int choice;
         private Random rand = new Random();
-        public int cycleLength { get; }
+        private int timer;
+        // Could later used to assemble all the direction moving state
+        private Direction currentDirection;
+        private Vector2 deltaVector;
 
         public BlueGelUpMovingState(BlueGel blueGel)
         {
             this.blueGel = blueGel;
             upMovingAnimation = new BlueGelMovingAnimation();
             sprite = SpriteFactory.Instance.CreateAnimatedSprite(upMovingAnimation);
-            cycleLength = upMovingAnimation.CycleLength;
+            timer = 0;
+            currentDirection = Direction.Up;
+            deltaVector = new Vector2(0, -1);
         }
 
         public void FireBallAttack()
@@ -42,15 +47,21 @@ namespace Project1.Enemy
             }
         }
 
+        public void Update()
+        {
+            timer++;
+            if (timer == upMovingAnimation.CycleLength)
+            {
+                ChangeDirection();
+                timer = 0;
+            }
+            blueGel.position += deltaVector * blueGel.movingSpeed;
+            sprite.Update();
+        }
+
         public void Draw(SpriteBatch spriteBatch)
         {
             sprite.Draw(spriteBatch, blueGel.position);
-        }
-
-        public void Update()
-        {
-            blueGel.position += new Vector2(0, -1) * blueGel.movingSpeed;
-            sprite.Update();
         }
     }
 }

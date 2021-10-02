@@ -21,8 +21,8 @@ namespace Project1.Objects
 
         public WoodBoomerang(Vector2 position, Direction direction, int frames)
         {
-            this.direction = direction;
-            this.position = position;
+            this.direction = direction; 
+            this.position = position; // position here is link/enemy position + boomerang offset.
             this.initialPosition = position;
             this.moveSpeed = (maxRange * 2) / frames;
             boomerangSprite = SpriteFactory.Instance.CreateAnimatedSprite(new WoodBoomerangAnimation());
