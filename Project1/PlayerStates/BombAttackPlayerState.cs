@@ -8,16 +8,16 @@ using Project1.Objects;
 
 namespace Project1.PlayerStates
 {
-    public class BoomerangAttackPlayerState : IPlayerState
+    public class BombAttackPlayerState : IPlayerState
     {
         private Player player;
-        private int boomerangOffset = 8;
         private ISprite sprite;
-        private WoodBoomerang boomerang;
+        private Bomb bomb;
 
-        private int activeFrameCount = 50, counter = 0;
+        private int bombOffset = 16;
+        private int activeFrameCount = 40, counter = 0;
 
-        public BoomerangAttackPlayerState(Player player)
+        public BombAttackPlayerState(Player player)
         {
             this.player = player;
 
@@ -25,26 +25,26 @@ namespace Project1.PlayerStates
             {
                 case Direction.Up:
                     sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkAttackUpAnimation());
-                    this.boomerang = new WoodBoomerang(player.position + new Vector2(0, -boomerangOffset), player.facingDirection, activeFrameCount);
+                    bomb = new Bomb(player.position + new Vector2(0, -bombOffset), activeFrameCount);
                     break;
 
                 case Direction.Right:
                     sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkAttackRightAnimation());
-                    this.boomerang = new WoodBoomerang(player.position + new Vector2(boomerangOffset, 0), player.facingDirection, activeFrameCount);
+                    bomb = new Bomb(player.position + new Vector2(bombOffset, 0), activeFrameCount);
                     break;
 
                 case Direction.Down:
                     sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkAttackDownAnimation());
-                    this.boomerang = new WoodBoomerang(player.position + new Vector2(0, boomerangOffset), player.facingDirection, activeFrameCount);
+                    bomb = new Bomb(player.position + new Vector2(0, bombOffset), activeFrameCount);
                     break;
 
                 case Direction.Left:
                     sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkAttackLeftAnimation());
-                    this.boomerang = new WoodBoomerang(player.position + new Vector2(-boomerangOffset, 0), player.facingDirection, activeFrameCount);
+                    bomb = new Bomb(player.position + new Vector2(-bombOffset, 0), activeFrameCount);
                     break;
 
                 default:
-                    this.boomerang = new WoodBoomerang(player.position + new Vector2(0, boomerangOffset), player.facingDirection, activeFrameCount);
+                    bomb = new Bomb(player.position + new Vector2(0, bombOffset), activeFrameCount);
                     break;
             }
         }
@@ -56,21 +56,18 @@ namespace Project1.PlayerStates
 
         public void FaceDirection(Direction direction)
         {
-            // Do nothing
         }
 
         public void SwordAttack()
         {
-            //Do nothing
-
         }
+
         public void ShootArrow()
         {
-            //Do nothing
         }
+
         public void BoomerangAttack()
         {
-            //Do nothing
         }
 
         public void BombAttack()
@@ -79,9 +76,6 @@ namespace Project1.PlayerStates
 
         public void Update()
         {
-            // TODO: Deal damage here
-
-            // End the attack after reacing its active frame count
             if (counter++ >= activeFrameCount)
             {
                 if (player.hasAnyMoveInput())
@@ -93,14 +87,15 @@ namespace Project1.PlayerStates
                     player.state = new StillPlayerState(player);
                 }
             }
-            boomerang.Update();
+            bomb.Update();
             sprite.Update();
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw()
         {
-            boomerang.Draw(spriteBatch, player.position);
-            sprite.Draw(spriteBatch, player.position);
+            bomb.Draw(player.spriteBatch, player.position);
+            sprite.Draw(player.spriteBatch, player.position);
         }
+
     }
 }

@@ -74,6 +74,10 @@ namespace Project1.PlayerStates
             //Do nothing
         }
 
+        public void BombAttack()
+        {
+        }
+
         public void Update()
         {
             // TODO: Deal damage here

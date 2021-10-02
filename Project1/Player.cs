@@ -87,6 +87,12 @@ namespace Project1
         {
             state.BoomerangAttack();
         }
+
+        public void BombAttack()
+        {
+            state.BombAttack();
+        }
+        
         public void Update()
         {
             state.Update();
