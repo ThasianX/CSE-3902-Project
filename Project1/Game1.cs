@@ -57,12 +57,8 @@ namespace Project1
             base.Initialize();
         }
 
-        protected override void LoadContent()
+        void Setup()
         {
-            spriteBatch = new SpriteBatch(GraphicsDevice);
-            SpriteFactory.Instance.LoadAllTextures(Content);
-            SpriteFactory.Instance.LoadAllFonts(Content);
-
             link = new Player(position);
             enemyList = new List<IEnemy> { new Stalfos(enemyPosition), new RedGloriya(enemyPosition), 
                         new BlueGel(enemyPosition), new BlueBat(enemyPosition), new Aquamentus(enemyPosition),
@@ -71,6 +67,15 @@ namespace Project1
             cyclableEnemy = new CyclableEnemy(enemyList);
             cyclableBlock = new CyclableBlock();
             cyclableItem = new CyclableItem();
+        }
+
+        protected override void LoadContent()
+        {
+            spriteBatch = new SpriteBatch(GraphicsDevice);
+            SpriteFactory.Instance.LoadAllTextures(Content);
+            SpriteFactory.Instance.LoadAllFonts(Content);
+
+            Setup();
         }
 
         protected override void Update(GameTime gameTime)
@@ -108,6 +113,11 @@ namespace Project1
             spriteBatch.End();
 
             base.Draw(gameTime);
+        }
+
+        public void Reset() 
+        {
+            Setup();
         }
     }
 }
