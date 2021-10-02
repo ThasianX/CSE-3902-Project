@@ -69,6 +69,11 @@ namespace Project1.PlayerStates
             player.state = new BoomerangAttackPlayerState(player);
         }
 
+        public void BombAttack()
+        {
+            player.state = new BombAttackPlayerState(player);
+        }
+
         public void Update()
         {
             sprite.Update();

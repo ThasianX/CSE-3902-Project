@@ -11,6 +11,7 @@ namespace Project1.PlayerStates
         void SwordAttack();
         void ShootArrow();
         void BoomerangAttack();
+        void BombAttack();
        
         void Update();
         void Draw();
