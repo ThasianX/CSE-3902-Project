@@ -23,9 +23,9 @@
 * JSON File to store all the Sprite sheet data
 
 * Things need to Improve
-* IAnimation currently is too data driven.
+* IAnimation currently is too code driven.
+* File arrangement and Foler naming. More comments on code.
 * 
-*
 
 * Key mapping for Sprint2:
 * Link Facing:
