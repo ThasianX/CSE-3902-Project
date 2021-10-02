@@ -35,7 +35,7 @@ namespace Project1.Enemy
         // Change current RedGloriya state to RedGloriyaAttackState
         public void BoomerangAttack()
         {
-            redGloriya.state = new RedGloriyaAttackState(redGloriya, currentDirection);
+            redGloriya.state = new RedGloriyaBoomerangAttackState(redGloriya, currentDirection);
         }
 
         // Change current RedGloriya state to a random direction state.
