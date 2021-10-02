@@ -61,8 +61,9 @@ namespace Project1
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             SpriteFactory.Instance.LoadAllTextures(Content);
+            SpriteFactory.Instance.LoadAllFonts(Content);
 
-            link = new Player(position, spriteBatch);
+            link = new Player(position);
             enemyList = new List<IEnemy> { new Stalfos(enemyPosition), new RedGloriya(enemyPosition), 
                         new BlueGel(enemyPosition), new BlueBat(enemyPosition), new Aquamentus(enemyPosition),
                         new OldMan(enemyPosition)};
@@ -98,7 +99,7 @@ namespace Project1
 
             spriteBatch.Begin();
 
-            link.Draw();
+            link.Draw(spriteBatch);
            
             cyclableEnemy.Draw(spriteBatch);
             cyclableBlock.Draw(spriteBatch, new Vector2 (position.X - 100, position.Y));

@@ -23,7 +23,13 @@ namespace Project1
             "characters"
         };
 
+        private readonly string[] fontNames =
+        {
+            "Name",
+        };
+
         private Dictionary<string, Texture2D> loadedTextures = new Dictionary<string, Texture2D>();
+        private Dictionary<string, SpriteFont> loadedFonts = new Dictionary<string, SpriteFont>();
 
         private static SpriteFactory instance = new SpriteFactory();
 
@@ -50,6 +56,13 @@ namespace Project1
             return new TileSprite(spritesheet, tileSprite.Source);
         }
 
+        public ISprite CreateHealthSprite(IHealthState healthState, string fontName)
+        {
+            SpriteFont font = loadedFonts[fontName];
+
+            return new HealthSprite(font, healthState);
+        }
+
         public void LoadAllTextures(ContentManager content)
         {
             // Load each spritesheet and store it in a dictionary with the file name
@@ -58,7 +71,16 @@ namespace Project1
             {
                 loadedTextures.Add(fileName, content.Load<Texture2D>(fileName));
             }
+        }
 
+        public void LoadAllFonts(ContentManager content)
+        {
+            // Load each spritesheet and store it in a dictionary with the file name
+            // This allows animations to be tied to a specific spritesheet
+            foreach (string fontName in fontNames)
+            {
+                loadedFonts.Add(fontName, content.Load<SpriteFont>(fontName));
+            }
         }
     }
 }

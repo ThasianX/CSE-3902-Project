@@ -13,6 +13,7 @@ namespace Project1.PlayerStates
         private Player player;
         private int swordOffset = 8;
         private ISprite sprite;
+        private ISprite healthSprite;
         private WoodSword sword;
 
         private int activeFrameCount = 20, counter = 0;
@@ -93,11 +94,10 @@ namespace Project1.PlayerStates
             sprite.Update();
         }
 
-        public void Draw()
+        public void Draw(SpriteBatch spriteBatch)
         {
-            sword.Draw(player.spriteBatch, player.position);
-            sprite.Draw(player.spriteBatch, player.position);
+            sword.Draw(spriteBatch, player.position);
+            sprite.Draw(spriteBatch, player.position);
         }
-
     }
 }

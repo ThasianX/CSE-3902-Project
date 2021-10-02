@@ -59,6 +59,7 @@ namespace Project1
 			onReleaseMappings.Add(Keys.D, new PlayerStopMoveRightCommand(myGame));
 			onReleaseMappings.Add(Keys.S, new PlayerStopMoveDownCommand(myGame));
 			onReleaseMappings.Add(Keys.A, new PlayerStopMoveLeftCommand(myGame));
+			onReleaseMappings.Add(Keys.E, new PlayerTakeDamageCommand(myGame));
 
 			// Enemy cycling
 			onReleaseMappings.Add(Keys.O, new EnemyCycleLeftCommand(myGame));
