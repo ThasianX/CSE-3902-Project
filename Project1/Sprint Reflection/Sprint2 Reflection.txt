@@ -1,0 +1,17 @@
+Sprint2 Reflection (Hongda Lin)
+For this sprint, everyone did a great job. All features are implemented and the code does what the contract defines. 
+We sufficiently used our knowledge from Sprint 0 and Sprint 1 and we have people who is very good at version control. 
+We divide our group into three parts, each part is responsible for a different task, such as Link implementation, enemy implementation and item&block implementation. 
+This helps us have more time to focus on the game implementation detail and divide our work equally. 
+It also prevents us from stepping on other people's toes so there won't be two people implementing the same thing.
+For sprint2, the planning is simple to have all the features work as expected. And while implementing different features, we come up with more planning for future sprint. Like an GameObjectManager.
+All the features implemented in sprint2 do the exact things in the real game. Player Link could throw boomerang, arrow, and place bomb. The enemy walks randomly and can throw boomerang and do fireball attack.
+The documentation for sprint2 consists with code review and other docs.
+Code review is done by pull request. Each pull request requires approval from at least two team members who need to view the code and give comments for it.
+Other docs such as readme and sprint reflection are also sufficient. The readme contains the general description of our team work.
+The only thing needs to improve for documentation is the comments on code. The comments exist but should be more for some detailed implementation.
+So far we did one code review in class and Professor Kirby points out that we have code driven implementation for IAnimation interface, which stores all the sprite sheet data. This could be improved when we have our GameObjectManager or we could have them stored in JSON file.
+The coupling and cohesion currently are fine. But we could improve them in the later sprint.
+The design choice is simple and we use state pattern to implement each object state.
+There are still some code from Sprint 0 exist. We will remove them later but right now it's fine. And we need to work better for file arrangement in each folder but since it's sprint2 and we are more focused on the code implementation.
+Finally, I think our sprint2 is good and we will do better on sprint 3.
