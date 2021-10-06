@@ -7,7 +7,7 @@ namespace Project1.Objects
 {
     public class CyclableBlock : IBlock
     {
-        public Vector2 position { get; set; }
+        public Vector2 Position { get; set; }
 
         private int cycle;
         private int lastCycle;
@@ -17,13 +17,13 @@ namespace Project1.Objects
         public CyclableBlock(Vector2 pos)
         {
             cycle = 0;
-            this.position = pos;
+            this.Position = pos;
             this.blockSprite = SpriteFactory.Instance.CreateTileSprite(new PlainBlockSprite());
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            blockSprite.Draw(spriteBatch, this.position);
+            blockSprite.Draw(spriteBatch, this.Position);
         }
 
         public void Update()

@@ -8,11 +8,11 @@ namespace Project1.NPC
     public class OldMan : IEnemy
     {
         public IEnemyState state;
-        public Vector2 position;
+        public Vector2 Position { get; set; }
         private Vector2 startPosition;
         public OldMan(Vector2 position)
         {
-            this.position = position;
+            this.Position = position;
             startPosition = position;
             state = new OldManStaticState(this);
         }
@@ -30,7 +30,7 @@ namespace Project1.NPC
         // Only need this for Sprint 2
         public void ResetPosition()
         {
-            position = startPosition;
+            Position = startPosition;
         }
     }
 }

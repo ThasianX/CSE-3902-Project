@@ -68,13 +68,13 @@ namespace Project1.Enemy
                 }
                 timer = 0;
             }
-            redGloriya.position += deltaVector * redGloriya.movingSpeed;
+            redGloriya.Position += deltaVector * redGloriya.movingSpeed;
             sprite.Update();
         }
         public void Draw(SpriteBatch spriteBatch)
         {
             
-            sprite.Draw(spriteBatch, redGloriya.position);
+            sprite.Draw(spriteBatch, redGloriya.Position);
         }
     }
 }

@@ -65,12 +65,11 @@ namespace Project1
                         new BlueGel(enemyPosition), new BlueBat(enemyPosition), new Aquamentus(enemyPosition),
                         new OldMan(enemyPosition)};
 
-           //Testing GOM
+            gameObjectManager = new GameObjectManager(spriteBatch);
 
-            //gameObjectManager.addObject(new CyclableEnemy(enemyList));
-
-            gameObjectManager.addObject(new CyclableBlock(new Vector2(position.X - 100, position.Y)));
-            gameObjectManager.addObject(new CyclableItem(new Vector2(position.X - 200, position.Y)));
+            //Testing GOM
+            gameObjectManager.gameObjects.Add(new CyclableBlock(new Vector2(position.X - 100, position.Y)));
+            gameObjectManager.gameObjects.Add(new CyclableItem(new Vector2(position.X - 200, position.Y)));
 
             /*cyclableEnemy = new CyclableEnemy(enemyList);
             cyclableBlock = new CyclableBlock(new Vector2(position.X - 100, position.Y));

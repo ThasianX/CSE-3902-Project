@@ -60,13 +60,13 @@ namespace Project1.Enemy
                 }
                 timer = 0;
             }
-            aquamentus.position += deltaVector * aquamentus.movingSpeed;
+            aquamentus.Position += deltaVector * aquamentus.movingSpeed;
             sprite.Update();
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            sprite.Draw(spriteBatch, aquamentus.position);
+            sprite.Draw(spriteBatch, aquamentus.Position);
         }
     }
 }

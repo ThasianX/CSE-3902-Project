@@ -49,7 +49,7 @@ namespace Project1.Enemy
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            sprite.Draw(spriteBatch, stalfos.position);
+            sprite.Draw(spriteBatch, stalfos.Position);
         }
 
         public void Update()
@@ -60,7 +60,7 @@ namespace Project1.Enemy
                 ChangeDirection();
                 timer = 0;
             }
-            stalfos.position += deltaVector * stalfos.movingSpeed;
+            stalfos.Position += deltaVector * stalfos.movingSpeed;
             sprite.Update();
         }
     }

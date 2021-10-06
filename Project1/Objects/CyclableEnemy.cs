@@ -4,8 +4,9 @@ using Project1.Enemy;
 
 namespace Project1.Objects
 {
-    public class CyclableEnemy : IEnemy
+    public class CyclableEnemy
     {
+
         private List<IEnemy> enemyList;
         private IEnemy enemySprite;
         private int totalCount;
@@ -17,7 +18,6 @@ namespace Project1.Objects
             totalCount = enemyList.Count;
             currentCount = 0;
             enemySprite = enemyList[currentCount];
-
         }
 
         public void Draw(SpriteBatch spriteBatch)

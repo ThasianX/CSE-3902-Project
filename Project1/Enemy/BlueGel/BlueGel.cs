@@ -7,7 +7,7 @@ namespace Project1.Enemy
     public class BlueGel : IEnemy
     {
         public IEnemyState state;
-        public Vector2 position;
+        public Vector2 Position { get; set; }
         private Vector2 startPosition;
         public float movingSpeed;
         private int choice;
@@ -16,7 +16,7 @@ namespace Project1.Enemy
 
         public BlueGel(Vector2 position)
         {
-            this.position = position;
+            this.Position = position;
             startPosition = position;
             // When initialize, choose a random direction
             choice = rand.Next(4);
@@ -53,7 +53,7 @@ namespace Project1.Enemy
         // Only need this for Sprint 2
         public void ResetPosition()
         {
-            position = startPosition;
+            Position = startPosition;
         }
     }
 }

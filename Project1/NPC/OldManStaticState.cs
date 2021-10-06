@@ -34,7 +34,7 @@ namespace Project1.NPC
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            sprite.Draw(spriteBatch, oldMan.position);
+            sprite.Draw(spriteBatch, oldMan.Position);
         }
 
         public void Update()

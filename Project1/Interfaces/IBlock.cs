@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Project1.Interfaces
 {
-    interface IBlock : IObject
+    interface IBlock : IGameObject
     {
 
     }

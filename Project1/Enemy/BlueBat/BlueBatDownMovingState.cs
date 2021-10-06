@@ -54,13 +54,13 @@ namespace Project1.Enemy
                 ChangeDirection();
                 timer = 0;
             }
-            blueBat.position += deltaVector * blueBat.movingSpeed;
+            blueBat.Position += deltaVector * blueBat.movingSpeed;
             sprite.Update();
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            sprite.Draw(spriteBatch, blueBat.position);
+            sprite.Draw(spriteBatch, blueBat.Position);
         }
     }
 }

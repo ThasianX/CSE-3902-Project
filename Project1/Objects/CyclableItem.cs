@@ -7,7 +7,7 @@ namespace Project1.Objects
 {
     public class CyclableItem : IItem
     {
-        public Vector2 position { get; set; }
+        public Vector2 Position { get; set; }
         
         private int cycle;
         private int lastCycle;
@@ -17,13 +17,13 @@ namespace Project1.Objects
         public CyclableItem(Vector2 pos)
         {
             cycle = 0;
-            this.position = pos;
+            this.Position = pos;
             this.itemSprite = SpriteFactory.Instance.CreateTileSprite(new WoodArrowUp());
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            itemSprite.Draw(spriteBatch, this.position);
+            itemSprite.Draw(spriteBatch, this.Position);
         }
 
         public void Update()

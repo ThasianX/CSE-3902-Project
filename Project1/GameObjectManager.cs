@@ -10,18 +10,19 @@ namespace Project1
 {
     public class GameObjectManager
     {
-        public List<IObject> gameObjects;
+        //We can add more specific lists if needed e.g. Item, Block, Enemy
+        public List<IGameObject> gameObjects;
 
         private SpriteBatch spriteBatch;
-
         public GameObjectManager(SpriteBatch sb)
         {
             this.spriteBatch = sb;
+            this.gameObjects = new List<IGameObject>();
         }
-        
+
         public void DrawObjects()
         {
-            foreach (IObject obj in gameObjects)
+            foreach (IGameObject obj in gameObjects)
             {
                 obj.Draw(spriteBatch);
             }
@@ -29,19 +30,10 @@ namespace Project1
 
         public void UpdateObjects()
         {
-            foreach (IObject obj in gameObjects) {
+            foreach (IGameObject obj in gameObjects)
+            {
                 obj.Update();
             }
-        }
-
-        public void addObject(IObject gameObject)
-        {
-            gameObjects.Add(gameObject);
-        }
-
-        public void removeObject(IObject gameObject)
-        {
-            gameObjects.Remove(gameObject);
         }
     }
 }
