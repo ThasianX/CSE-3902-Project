@@ -67,13 +67,13 @@ namespace Project1
 
             gameObjectManager = new GameObjectManager(spriteBatch);
 
-            //Testing GOM
+            //Added to GOM, Break the commands for these but there shouldn't really be any objects with commands in the future.
             gameObjectManager.gameObjects.Add(new CyclableBlock(new Vector2(position.X - 100, position.Y)));
             gameObjectManager.gameObjects.Add(new CyclableItem(new Vector2(position.X - 200, position.Y)));
 
-            /*cyclableEnemy = new CyclableEnemy(enemyList);
+            cyclableEnemy = new CyclableEnemy(enemyList);
             cyclableBlock = new CyclableBlock(new Vector2(position.X - 100, position.Y));
-            cyclableItem = new CyclableItem(new Vector2(position.X - 200, position.Y));*/
+            cyclableItem = new CyclableItem(new Vector2(position.X - 200, position.Y));
         }
 
         protected override void LoadContent()
@@ -97,12 +97,11 @@ namespace Project1
 
             link.Update();
 
-            //Testing GOM
             gameObjectManager.UpdateObjects();
 
-            /*cyclableBlock.Update();
+            cyclableBlock.Update();
             cyclableItem.Update();
-            cyclableEnemy.Update();*/
+            cyclableEnemy.Update();
 
             base.Update(gameTime);
         }
@@ -115,12 +114,11 @@ namespace Project1
 
             link.Draw(spriteBatch);
 
-            //Testing GOM
             gameObjectManager.DrawObjects();
-            
-            /*cyclableEnemy.Draw(spriteBatch);
+
+            cyclableEnemy.Draw(spriteBatch);
             cyclableBlock.Draw(spriteBatch);
-            cyclableItem.Draw(spriteBatch);*/
+            cyclableItem.Draw(spriteBatch);
 
             spriteBatch.End();
 
