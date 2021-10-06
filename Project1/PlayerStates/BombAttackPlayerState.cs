@@ -93,7 +93,7 @@ namespace Project1.PlayerStates
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            bomb.Draw(spriteBatch, player.position);
+            bomb.Draw(spriteBatch);
             sprite.Draw(spriteBatch, player.position);
         }
 

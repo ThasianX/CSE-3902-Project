@@ -17,7 +17,7 @@ namespace Project1.Objects
             sprite = SpriteFactory.Instance.CreateAnimatedSprite(new BombAnimation());
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
+        public void Draw(SpriteBatch spriteBatch)
         {
             sprite.Draw(spriteBatch, position);
         }

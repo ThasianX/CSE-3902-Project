@@ -6,11 +6,8 @@ using System.Text;
 
 namespace Project1.Interfaces
 {
-    interface IBlock
+    interface IBlock : IObject
     {
-        public void Draw(SpriteBatch spriteBatch, Vector2 location) { }
-
-        public void Update() { }
 
     }
 }

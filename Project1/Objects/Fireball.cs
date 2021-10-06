@@ -33,7 +33,7 @@ namespace Project1.Objects
             fireBallSprite.Update();
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
+        public void Draw(SpriteBatch spriteBatch)
         {
             fireBallSprite.Draw(spriteBatch, position);
         }

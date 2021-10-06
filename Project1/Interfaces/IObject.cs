@@ -6,8 +6,11 @@ using System.Text;
 
 namespace Project1.Interfaces
 {
-    interface IItem : IObject
+    public interface IObject
     {
-        
+        public void Draw(SpriteBatch spriteBatch) { }
+
+        public void Update() { }
+
     }
 }

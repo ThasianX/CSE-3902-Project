@@ -99,7 +99,7 @@ namespace Project1.PlayerStates
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            boomerang.Draw(spriteBatch, player.position);
+            boomerang.Draw(spriteBatch);
             sprite.Draw(spriteBatch, player.position);
         }
     }

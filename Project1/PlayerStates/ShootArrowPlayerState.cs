@@ -103,7 +103,7 @@ namespace Project1.PlayerStates
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            arrow.Draw(spriteBatch, player.position);
+            arrow.Draw(spriteBatch);
             sprite.Draw(spriteBatch, player.position);
         }
 

@@ -68,9 +68,9 @@ namespace Project1.Enemy
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            fireballOne.Draw(spriteBatch, aquamentus.position);
-            fireballTwo.Draw(spriteBatch, aquamentus.position);
-            fireballThree.Draw(spriteBatch, aquamentus.position);
+            fireballOne.Draw(spriteBatch);
+            fireballTwo.Draw(spriteBatch);
+            fireballThree.Draw(spriteBatch);
             sprite.Draw(spriteBatch, aquamentus.position);
         }
     }
