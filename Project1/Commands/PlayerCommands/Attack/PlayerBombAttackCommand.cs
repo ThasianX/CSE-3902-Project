@@ -17,7 +17,10 @@ namespace Project1.Commands
 
         public void Execute()
         {
-            game.link.BombAttack();
+            foreach (Player player in GameObjectManager.Instance.GetObjectsOfType<Player>())
+            {
+                player.BombAttack();
+            }
         }
     }
 }

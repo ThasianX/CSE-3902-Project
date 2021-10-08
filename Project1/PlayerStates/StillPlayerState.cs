@@ -81,7 +81,7 @@ namespace Project1.PlayerStates
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            sprite.Draw(spriteBatch, player.position);
+            sprite.Draw(spriteBatch, player.Position);
         }
     }
 }

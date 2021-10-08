@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Project1.Enemy;
 
 namespace Project1.Objects
 {
-    public class CyclableEnemy
+    public class CyclableEnemy : IEnemy
     {
+        public Vector2 Position { get; set; }
 
         private List<IEnemy> enemyList;
         private IEnemy enemySprite;

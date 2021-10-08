@@ -18,9 +18,9 @@ namespace Project1
         private readonly GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
 
-        // Game Objects
-        public Player link;
         public GameObjectManager gameObjectManager;
+
+        // These objects are only for sprint 2 
         public CyclableBlock cyclableBlock;
         public CyclableItem cyclableItem;
         public CyclableEnemy cyclableEnemy;
@@ -60,20 +60,20 @@ namespace Project1
 
         void Setup()
         {
-            link = new Player(position);
+            // SPECIFIC TO SPRINT 2
+            GameObjectManager.Instance.Add(new Player(position));
+            
             enemyList = new List<IEnemy> { new Stalfos(enemyPosition), new RedGloriya(enemyPosition), 
                         new BlueGel(enemyPosition), new BlueBat(enemyPosition), new Aquamentus(enemyPosition),
                         new OldMan(enemyPosition)};
 
-            gameObjectManager = new GameObjectManager(spriteBatch);
-
-            //Added to GOM, Break the commands for these but there shouldn't really be any objects with commands in the future.
-            gameObjectManager.gameObjects.Add(new CyclableBlock(new Vector2(position.X - 100, position.Y)));
-            gameObjectManager.gameObjects.Add(new CyclableItem(new Vector2(position.X - 200, position.Y)));
-
             cyclableEnemy = new CyclableEnemy(enemyList);
             cyclableBlock = new CyclableBlock(new Vector2(position.X - 100, position.Y));
             cyclableItem = new CyclableItem(new Vector2(position.X - 200, position.Y));
+
+            GameObjectManager.Instance.Add(cyclableEnemy);
+            GameObjectManager.Instance.Add(cyclableBlock);
+            GameObjectManager.Instance.Add(cyclableItem);
         }
 
         protected override void LoadContent()
@@ -95,13 +95,7 @@ namespace Project1
                 controller.Update();
             }
 
-            link.Update();
-
-            gameObjectManager.UpdateObjects();
-
-            cyclableBlock.Update();
-            cyclableItem.Update();
-            cyclableEnemy.Update();
+            GameObjectManager.Instance.UpdateObjects();
 
             base.Update(gameTime);
         }
@@ -112,13 +106,7 @@ namespace Project1
 
             spriteBatch.Begin();
 
-            link.Draw(spriteBatch);
-
-            gameObjectManager.DrawObjects();
-
-            cyclableEnemy.Draw(spriteBatch);
-            cyclableBlock.Draw(spriteBatch);
-            cyclableItem.Draw(spriteBatch);
+            GameObjectManager.Instance.DrawObjects(spriteBatch);
 
             spriteBatch.End();
 

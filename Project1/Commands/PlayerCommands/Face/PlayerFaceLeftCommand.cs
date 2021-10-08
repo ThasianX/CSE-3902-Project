@@ -16,8 +16,10 @@ namespace Project1.Commands
 
         public void Execute()
         {
-            // COUPLING !!!!!!!!!!!!!!!!!!!!!!!!!
-            game.link.FaceDirection(Direction.Left);
+            foreach (Player player in GameObjectManager.Instance.GetObjectsOfType<Player>())
+            {
+                player.FaceDirection(Direction.Left);
+            }
         }
     }
 }

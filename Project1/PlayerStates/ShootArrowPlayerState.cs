@@ -25,26 +25,26 @@ namespace Project1.PlayerStates
             {
                 case Direction.Up:
                     sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkAttackUpAnimation());
-                    this.arrow = new WoodArrow(player.position + new Vector2(0, -arrowOffset), player.facingDirection, activeFrameCount);
+                    this.arrow = new WoodArrow(player.Position + new Vector2(0, -arrowOffset), player.facingDirection, activeFrameCount);
                     break;
 
                 case Direction.Right:
                     sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkAttackRightAnimation());
-                    this.arrow = new WoodArrow(player.position + new Vector2(arrowOffset, 0), player.facingDirection, activeFrameCount);
+                    this.arrow = new WoodArrow(player.Position + new Vector2(arrowOffset, 0), player.facingDirection, activeFrameCount);
                     break;
 
                 case Direction.Down:
                     sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkAttackDownAnimation());
-                    this.arrow = new WoodArrow(player.position + new Vector2(0, arrowOffset), player.facingDirection, activeFrameCount);
+                    this.arrow = new WoodArrow(player.Position + new Vector2(0, arrowOffset), player.facingDirection, activeFrameCount);
                     break;
 
                 case Direction.Left:
                     sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkAttackLeftAnimation());
-                    this.arrow = new WoodArrow(player.position + new Vector2(-arrowOffset, 0), player.facingDirection, activeFrameCount);
+                    this.arrow = new WoodArrow(player.Position + new Vector2(-arrowOffset, 0), player.facingDirection, activeFrameCount);
                     break;
 
                 default:
-                    this.arrow = new WoodArrow(player.position + new Vector2(0, arrowOffset), player.facingDirection, activeFrameCount);
+                    this.arrow = new WoodArrow(player.Position + new Vector2(0, arrowOffset), player.facingDirection, activeFrameCount);
                     break;
             }
         }
@@ -104,7 +104,7 @@ namespace Project1.PlayerStates
         public void Draw(SpriteBatch spriteBatch)
         {
             arrow.Draw(spriteBatch);
-            sprite.Draw(spriteBatch, player.position);
+            sprite.Draw(spriteBatch, player.Position);
         }
 
     }

@@ -26,26 +26,26 @@ namespace Project1.PlayerStates
             {
                 case Direction.Up:
                     sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkAttackUpAnimation());
-                    this.sword = new WoodSword(player.position + new Vector2(0, -swordOffset), player.facingDirection, activeFrameCount);
+                    this.sword = new WoodSword(player.Position + new Vector2(0, -swordOffset), player.facingDirection, activeFrameCount);
                     break;
 
                 case Direction.Right:
                     sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkAttackRightAnimation());
-                    this.sword = new WoodSword(player.position + new Vector2(swordOffset, 0), player.facingDirection, activeFrameCount);
+                    this.sword = new WoodSword(player.Position + new Vector2(swordOffset, 0), player.facingDirection, activeFrameCount);
                     break;
 
                 case Direction.Down:
                     sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkAttackDownAnimation());
-                    this.sword = new WoodSword(player.position + new Vector2(0, swordOffset), player.facingDirection, activeFrameCount);
+                    this.sword = new WoodSword(player.Position + new Vector2(0, swordOffset), player.facingDirection, activeFrameCount);
                     break;
 
                 case Direction.Left:
                     sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkAttackLeftAnimation());
-                    this.sword = new WoodSword(player.position + new Vector2(-swordOffset, 0), player.facingDirection, activeFrameCount);
+                    this.sword = new WoodSword(player.Position + new Vector2(-swordOffset, 0), player.facingDirection, activeFrameCount);
                     break;
 
                 default:
-                    this.sword = new WoodSword(player.position + new Vector2(0, swordOffset), player.facingDirection, activeFrameCount);
+                    this.sword = new WoodSword(player.Position + new Vector2(0, swordOffset), player.facingDirection, activeFrameCount);
                     break;
             }
         }
@@ -101,7 +101,7 @@ namespace Project1.PlayerStates
         public void Draw(SpriteBatch spriteBatch)
         {
             sword.Draw(spriteBatch);
-            sprite.Draw(spriteBatch, player.position);
+            sprite.Draw(spriteBatch, player.Position);
         }
     }
 }
