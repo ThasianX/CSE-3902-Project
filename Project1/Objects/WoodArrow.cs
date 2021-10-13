@@ -8,7 +8,7 @@ namespace Project1.Objects
     public class WoodArrow : IItem
     {
         public int moveSpeed;
-        public Vector2 position;
+        public Vector2 Position { get; set; }
 
         //Distance Arrow travels from Link
         private int maxRange = 250;
@@ -20,7 +20,7 @@ namespace Project1.Objects
         public WoodArrow(Vector2 position, Direction direction, int frames)
         {
             this.direction = direction;
-            this.position = position;
+            this.Position = position;
             this.moveSpeed = maxRange / frames;
             switch (this.direction)
             {
@@ -49,14 +49,14 @@ namespace Project1.Objects
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
+        public void Draw(SpriteBatch spriteBatch)
         {
-            arrowSprite.Draw(spriteBatch, this.position);
+            arrowSprite.Draw(spriteBatch, this.Position);
         }
 
         public void Update()
         {
-            this.position += this.deltaVector;
+            this.Position += this.deltaVector;
         }
     }
 }

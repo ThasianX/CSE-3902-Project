@@ -6,8 +6,12 @@ using System.Text;
 
 namespace Project1.Interfaces
 {
-    interface IBlock : IGameObject
+    public interface IGameObject
     {
+        public Vector2 Position { get; set; }
+        public void Draw(SpriteBatch spriteBatch) { }
+
+        public void Update() { }
 
     }
 }

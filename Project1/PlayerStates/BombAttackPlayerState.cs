@@ -25,26 +25,26 @@ namespace Project1.PlayerStates
             {
                 case Direction.Up:
                     sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkAttackUpAnimation());
-                    bomb = new Bomb(player.position + new Vector2(0, -bombOffset), activeFrameCount);
+                    bomb = new Bomb(player.Position + new Vector2(0, -bombOffset), activeFrameCount);
                     break;
 
                 case Direction.Right:
                     sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkAttackRightAnimation());
-                    bomb = new Bomb(player.position + new Vector2(bombOffset, 0), activeFrameCount);
+                    bomb = new Bomb(player.Position + new Vector2(bombOffset, 0), activeFrameCount);
                     break;
 
                 case Direction.Down:
                     sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkAttackDownAnimation());
-                    bomb = new Bomb(player.position + new Vector2(0, bombOffset), activeFrameCount);
+                    bomb = new Bomb(player.Position + new Vector2(0, bombOffset), activeFrameCount);
                     break;
 
                 case Direction.Left:
                     sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkAttackLeftAnimation());
-                    bomb = new Bomb(player.position + new Vector2(-bombOffset, 0), activeFrameCount);
+                    bomb = new Bomb(player.Position + new Vector2(-bombOffset, 0), activeFrameCount);
                     break;
 
                 default:
-                    bomb = new Bomb(player.position + new Vector2(0, bombOffset), activeFrameCount);
+                    bomb = new Bomb(player.Position + new Vector2(0, bombOffset), activeFrameCount);
                     break;
             }
         }
@@ -93,8 +93,8 @@ namespace Project1.PlayerStates
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            bomb.Draw(spriteBatch, player.position);
-            sprite.Draw(spriteBatch, player.position);
+            bomb.Draw(spriteBatch);
+            sprite.Draw(spriteBatch, player.Position);
         }
 
     }

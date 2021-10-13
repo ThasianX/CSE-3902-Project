@@ -7,19 +7,19 @@ namespace Project1.Objects
 {
     public class Bomb: IItem
     {
-        public Vector2 position;
+        public Vector2 Position { get; set; }
 
         ISprite sprite;
 
         public Bomb(Vector2 position, int frames)
         {
-            this.position = position;
+            this.Position = position;
             sprite = SpriteFactory.Instance.CreateAnimatedSprite(new BombAnimation());
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
+        public void Draw(SpriteBatch spriteBatch)
         {
-            sprite.Draw(spriteBatch, position);
+            sprite.Draw(spriteBatch, Position);
         }
 
         public void Update()

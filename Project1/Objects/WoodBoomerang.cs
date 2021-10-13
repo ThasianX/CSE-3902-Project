@@ -8,7 +8,7 @@ namespace Project1.Objects
     public class WoodBoomerang : IItem
     {
         public int moveSpeed;
-        public Vector2 position;
+        public Vector2 Position { get; set; }
 
         //Distance Boomerang travels from Link
         private int maxRange = 150;
@@ -22,7 +22,7 @@ namespace Project1.Objects
         public WoodBoomerang(Vector2 position, Direction direction, int frames)
         {
             this.direction = direction; 
-            this.position = position; // position here is link/enemy position + boomerang offset.
+            this.Position = position; // position here is link/enemy position + boomerang offset.
             this.initialPosition = position;
             this.moveSpeed = (maxRange * 2) / frames;
             boomerangSprite = SpriteFactory.Instance.CreateAnimatedSprite(new WoodBoomerangAnimation());
@@ -49,9 +49,9 @@ namespace Project1.Objects
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
+        public void Draw(SpriteBatch spriteBatch)
         {
-            boomerangSprite.Draw(spriteBatch, this.position);
+            boomerangSprite.Draw(spriteBatch, this.Position);
         }
 
         public void Update()
@@ -60,11 +60,11 @@ namespace Project1.Objects
             checkRange();
             if (this.inRange)
             {
-                this.position += this.deltaVector;
+                this.Position += this.deltaVector;
             }
             else
             {
-                this.position -= this.deltaVector;
+                this.Position -= this.deltaVector;
             }
             boomerangSprite.Update();
         }
@@ -74,25 +74,25 @@ namespace Project1.Objects
             switch (this.direction)
             {
                 case Direction.Up:
-                    if (this.position.Y <= this.initialPosition.Y - maxRange)
+                    if (this.Position.Y <= this.initialPosition.Y - maxRange)
                     {
                         this.inRange = false;
                     }
                     break;
                 case Direction.Right:
-                    if (this.position.X >= this.initialPosition.X + this.maxRange)
+                    if (this.Position.X >= this.initialPosition.X + this.maxRange)
                     {
                         this.inRange = false;
                     }
                     break;
                 case Direction.Down:
-                    if(this.position.Y >= this.initialPosition.Y + this.maxRange)
+                    if(this.Position.Y >= this.initialPosition.Y + this.maxRange)
                     {
                         this.inRange = false;
                     }
                     break;
                 case Direction.Left:
-                    if (this.position.X <= this.initialPosition.X - this.maxRange)
+                    if (this.Position.X <= this.initialPosition.X - this.maxRange)
                     {
                         this.inRange = false;
                     }

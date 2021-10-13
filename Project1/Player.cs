@@ -10,16 +10,16 @@ namespace Project1
 {
     // The movement behavor of this player is not the same as in the original Legend of Zelda.
     // It is based on the movement in Binding of Isaac: you can move any direction no matter which direction you are facing.
-    public class Player
+    public class Player : IGameObject
     {
+        public Vector2 Position { get; set; }
+
         public IPlayerState state;
         public IHealthState healthState;
 
         public SpriteBatch spriteBatch;
 
         public Direction facingDirection;
-
-        public Vector2 position;
 
         public Vector2 movement;
 
@@ -36,7 +36,7 @@ namespace Project1
 
         public Player(Vector2 position)
         {
-            this.position = position;
+            this.Position = position;
             this.movement = new Vector2(0, 0);
 
 
@@ -51,7 +51,7 @@ namespace Project1
         // Does not appear in IPlayerState (helper method)
         public void Move(Vector2 delta)
         {
-            position += delta * speed;
+            Position += delta * speed;
         }
 
         public bool hasAnyMoveInput()

@@ -30,9 +30,9 @@ namespace Project1.Enemy
             this.aquamentus = aquamentus;
             currentAnimation = new AquamentusMovingAnimation();
             sprite = SpriteFactory.Instance.CreateAnimatedSprite(currentAnimation);
-            fireballOne = new Fireball(aquamentus.position + new Vector2(fireballOffset, 0), new Vector2(0,-1), activeFrameCount);
-            fireballTwo = new Fireball(aquamentus.position + new Vector2(fireballOffset, 0), new Vector2(0,0), activeFrameCount);
-            fireballThree = new Fireball(aquamentus.position + new Vector2(fireballOffset, 0), new Vector2(0, 1), activeFrameCount);
+            fireballOne = new Fireball(aquamentus.Position + new Vector2(fireballOffset, 0), new Vector2(0,-1), activeFrameCount);
+            fireballTwo = new Fireball(aquamentus.Position + new Vector2(fireballOffset, 0), new Vector2(0,0), activeFrameCount);
+            fireballThree = new Fireball(aquamentus.Position + new Vector2(fireballOffset, 0), new Vector2(0, 1), activeFrameCount);
         }
 
         public void FireBallAttack()
@@ -68,10 +68,10 @@ namespace Project1.Enemy
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            fireballOne.Draw(spriteBatch, aquamentus.position);
-            fireballTwo.Draw(spriteBatch, aquamentus.position);
-            fireballThree.Draw(spriteBatch, aquamentus.position);
-            sprite.Draw(spriteBatch, aquamentus.position);
+            fireballOne.Draw(spriteBatch);
+            fireballTwo.Draw(spriteBatch);
+            fireballThree.Draw(spriteBatch);
+            sprite.Draw(spriteBatch, aquamentus.Position);
         }
     }
 }

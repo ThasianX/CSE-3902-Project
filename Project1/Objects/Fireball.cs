@@ -8,7 +8,7 @@ namespace Project1.Objects
     public class Fireball : IItem
     {
         public int moveSpeed;
-        public Vector2 position;
+        public Vector2 Position { get; set; }
 
         // Distance Fireball travels from Aquamentus
         private int maxRange = 250;
@@ -19,7 +19,7 @@ namespace Project1.Objects
 
         public Fireball(Vector2 position, Vector2 fireBalOffset, int frames)
         {
-            this.position = position;
+            this.Position = position;
             // The direction for Aquamentus will always be left, so the delta vector will be the same
             deltaVector = new Vector2(-1, 0);
             this.fireBalOffset = fireBalOffset;
@@ -29,13 +29,13 @@ namespace Project1.Objects
 
         public void Update()
         {
-            position += deltaVector + fireBalOffset;
+            Position += deltaVector + fireBalOffset;
             fireBallSprite.Update();
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
+        public void Draw(SpriteBatch spriteBatch)
         {
-            fireBallSprite.Draw(spriteBatch, position);
+            fireBallSprite.Draw(spriteBatch, Position);
         }
     }
 }

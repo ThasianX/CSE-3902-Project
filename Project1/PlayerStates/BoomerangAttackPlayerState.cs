@@ -25,26 +25,26 @@ namespace Project1.PlayerStates
             {
                 case Direction.Up:
                     sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkAttackUpAnimation());
-                    this.boomerang = new WoodBoomerang(player.position + new Vector2(0, -boomerangOffset), player.facingDirection, activeFrameCount);
+                    this.boomerang = new WoodBoomerang(player.Position + new Vector2(0, -boomerangOffset), player.facingDirection, activeFrameCount);
                     break;
 
                 case Direction.Right:
                     sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkAttackRightAnimation());
-                    this.boomerang = new WoodBoomerang(player.position + new Vector2(boomerangOffset, 0), player.facingDirection, activeFrameCount);
+                    this.boomerang = new WoodBoomerang(player.Position + new Vector2(boomerangOffset, 0), player.facingDirection, activeFrameCount);
                     break;
 
                 case Direction.Down:
                     sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkAttackDownAnimation());
-                    this.boomerang = new WoodBoomerang(player.position + new Vector2(0, boomerangOffset), player.facingDirection, activeFrameCount);
+                    this.boomerang = new WoodBoomerang(player.Position + new Vector2(0, boomerangOffset), player.facingDirection, activeFrameCount);
                     break;
 
                 case Direction.Left:
                     sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkAttackLeftAnimation());
-                    this.boomerang = new WoodBoomerang(player.position + new Vector2(-boomerangOffset, 0), player.facingDirection, activeFrameCount);
+                    this.boomerang = new WoodBoomerang(player.Position + new Vector2(-boomerangOffset, 0), player.facingDirection, activeFrameCount);
                     break;
 
                 default:
-                    this.boomerang = new WoodBoomerang(player.position + new Vector2(0, boomerangOffset), player.facingDirection, activeFrameCount);
+                    this.boomerang = new WoodBoomerang(player.Position + new Vector2(0, boomerangOffset), player.facingDirection, activeFrameCount);
                     break;
             }
         }
@@ -99,8 +99,8 @@ namespace Project1.PlayerStates
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            boomerang.Draw(spriteBatch, player.position);
-            sprite.Draw(spriteBatch, player.position);
+            boomerang.Draw(spriteBatch);
+            sprite.Draw(spriteBatch, player.Position);
         }
     }
 }

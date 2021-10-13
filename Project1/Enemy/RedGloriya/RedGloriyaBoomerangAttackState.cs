@@ -34,25 +34,25 @@ namespace Project1.Enemy
                 case Direction.Up:
                     currentAnimation = new RedGloriyaUpMovingAnimation();
                     sprite = SpriteFactory.Instance.CreateAnimatedSprite(currentAnimation);
-                    this.boomerang = new WoodBoomerang(redGloriya.position + new Vector2(0, -boomerangOffset), currentDirection, activeFrameCount);
+                    this.boomerang = new WoodBoomerang(redGloriya.Position + new Vector2(0, -boomerangOffset), currentDirection, activeFrameCount);
                     break;
 
                 case Direction.Right:
                     currentAnimation = new RedGloriyaRightMovingAnimation();
                     sprite = SpriteFactory.Instance.CreateAnimatedSprite(currentAnimation);
-                    this.boomerang = new WoodBoomerang(redGloriya.position + new Vector2(boomerangOffset, 0), currentDirection, activeFrameCount);
+                    this.boomerang = new WoodBoomerang(redGloriya.Position + new Vector2(boomerangOffset, 0), currentDirection, activeFrameCount);
                     break;
 
                 case Direction.Down:
                     currentAnimation = new RedGloriyaDownMovingAnimation();
                     sprite = SpriteFactory.Instance.CreateAnimatedSprite(currentAnimation);
-                    this.boomerang = new WoodBoomerang(redGloriya.position + new Vector2(0, boomerangOffset), currentDirection, activeFrameCount);
+                    this.boomerang = new WoodBoomerang(redGloriya.Position + new Vector2(0, boomerangOffset), currentDirection, activeFrameCount);
                     break;
 
                 case Direction.Left:
                     currentAnimation = new RedGloriyaLeftMovingAnimation();
                     sprite = SpriteFactory.Instance.CreateAnimatedSprite(currentAnimation);
-                    this.boomerang = new WoodBoomerang(redGloriya.position + new Vector2(-boomerangOffset, 0), currentDirection, activeFrameCount);
+                    this.boomerang = new WoodBoomerang(redGloriya.Position + new Vector2(-boomerangOffset, 0), currentDirection, activeFrameCount);
                     break;
             }
         }
@@ -90,8 +90,8 @@ namespace Project1.Enemy
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            boomerang.Draw(spriteBatch, redGloriya.position);
-            sprite.Draw(spriteBatch, redGloriya.position);
+            boomerang.Draw(spriteBatch);
+            sprite.Draw(spriteBatch, redGloriya.Position);
         }
     }
 }

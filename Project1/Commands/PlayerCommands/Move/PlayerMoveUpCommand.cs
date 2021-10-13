@@ -17,8 +17,10 @@ namespace Project1.Commands
 
         public void Execute()
         {
-            // COUPLING !!!!!!!!!!!!!!!!!!!!!!!!!
-            game.link.SetMoveInput(Direction.Up, true);
+            foreach (Player player in GameObjectManager.Instance.GetObjectsOfType<Player>())
+            {
+                player.SetMoveInput(Direction.Up, true);
+            }
         }
     }
 }
