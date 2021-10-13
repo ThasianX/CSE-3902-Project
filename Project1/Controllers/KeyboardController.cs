@@ -47,12 +47,6 @@ namespace Project1
 			onPressMappings.Add(Keys.D2, new PlayerShootArrowCommand(myGame));
 			onPressMappings.Add(Keys.D3, new PlayerBombAttackCommand(myGame));
 
-			// Block cycling
-			onPressMappings.Add(Keys.T, new BlockCycleLeftCommand(myGame));
-			onPressMappings.Add(Keys.Y, new BlockCycleRightCommand(myGame));
-			onPressMappings.Add(Keys.U, new ItemCycleLeftCommand(myGame));
-			onPressMappings.Add(Keys.I, new ItemCycleRightCommand(myGame));
-
 			// COMMANDS THAT EXECUTE ON RELEASE
 
 			// Player
@@ -60,11 +54,8 @@ namespace Project1
 			onReleaseMappings.Add(Keys.D, new PlayerStopMoveRightCommand(myGame));
 			onReleaseMappings.Add(Keys.S, new PlayerStopMoveDownCommand(myGame));
 			onReleaseMappings.Add(Keys.A, new PlayerStopMoveLeftCommand(myGame));
-			onReleaseMappings.Add(Keys.E, new PlayerTakeDamageCommand(myGame));
 
-			// Enemy cycling
-			onReleaseMappings.Add(Keys.O, new EnemyCycleLeftCommand(myGame));
-			onReleaseMappings.Add(Keys.P, new EnemyCycleRightCommand(myGame));
+			onReleaseMappings.Add(Keys.E, new PlayerTakeDamageCommand(myGame));
 
 			onReleaseMappings.Add(Keys.Q, new QuitCommand(myGame));
 			onReleaseMappings.Add(Keys.R, new ResetCommand(myGame));
