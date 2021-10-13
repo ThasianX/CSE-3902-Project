@@ -17,17 +17,8 @@ namespace Project1
     {
         private readonly GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
-
-        public GameObjectManager gameObjectManager;
-
-        // These objects are only for sprint 2 
-        public CyclableBlock cyclableBlock;
-        public CyclableItem cyclableItem;
-        public CyclableEnemy cyclableEnemy;
        
         private Vector2 position;
-        private Vector2 enemyPosition;
-        private List<IEnemy> enemyList;
 
         private ArrayList controllerList;
 
@@ -46,9 +37,8 @@ namespace Project1
 
         protected override void Initialize()
         {
-
             position = new Vector2(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
-            enemyPosition = new Vector2(SCREEN_WIDTH / 4 * 3, SCREEN_HEIGHT / 4 * 3);
+
             controllerList = new ArrayList
             {
                 new KeyboardController(this),
@@ -60,20 +50,7 @@ namespace Project1
 
         void Setup()
         {
-            // SPECIFIC TO SPRINT 2
             GameObjectManager.Instance.Add(new Player(position));
-            
-            enemyList = new List<IEnemy> { new Stalfos(enemyPosition), new RedGloriya(enemyPosition), 
-                        new BlueGel(enemyPosition), new BlueBat(enemyPosition), new Aquamentus(enemyPosition),
-                        new OldMan(enemyPosition)};
-
-            cyclableEnemy = new CyclableEnemy(enemyList);
-            cyclableBlock = new CyclableBlock(new Vector2(position.X - 100, position.Y));
-            cyclableItem = new CyclableItem(new Vector2(position.X - 200, position.Y));
-
-            GameObjectManager.Instance.Add(cyclableEnemy);
-            GameObjectManager.Instance.Add(cyclableBlock);
-            GameObjectManager.Instance.Add(cyclableItem);
         }
 
         protected override void LoadContent()
