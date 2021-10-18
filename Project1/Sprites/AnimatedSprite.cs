@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Project1.Interfaces;
@@ -15,16 +16,18 @@ namespace Project1.Sprites
 
         private bool isAnimated;
 
-        private float timePerSource, timeCounter;
+        private double timePerSource, timeCounter;
 
         private int currentSourceIndex, sourceCount;
 
         // Constructor for animated sprites (more than 1 source)
-        public AnimatedSprite(Texture2D spriteSheet, (int height, int width) dimensions, (int x, int y)[] sources, float time)
+        public AnimatedSprite(Texture2D spriteSheet, (int height, int width) dimensions, (int x, int y)[] sources, double time)
         {
             this.spriteSheet = spriteSheet;
 
             sourceCount = sources.Length;
+            this.sources = sources;
+            this.dimensions = dimensions;
 
             // the sprite is animated if it has more than one source
             isAnimated = sourceCount > 0;
@@ -59,9 +62,14 @@ namespace Project1.Sprites
                 return;
 
             if (timeCounter > timePerSource)
+            {
                 currentSourceIndex++;
+                timeCounter = 0;
+            }
 
             currentSourceIndex %= sourceCount;
+
+            timeCounter += gameTime.ElapsedGameTime.TotalSeconds;
         }
     }
 }

@@ -11,6 +11,7 @@ namespace Project1
     class SpriteFactory
     {
         XDocument spriteData;
+        XDocument spriteDictionary;
 
         private readonly string[] spritesheetFileNames =
         {
@@ -43,39 +44,41 @@ namespace Project1
             }
         }
 
-        public ISprite CreateAnimatedSprite(string xpath)
+        public ISprite CreateAnimatedSprite(string spriteName)
         {
-            // get the spritesheet associated with the animation
-            //Texture2D spritesheet = loadedTextures[animation.SpritesheetFileName];
+            string path = spriteDictionary.Root.Element(spriteName).Value;
 
+            string[] tags = path.Split('/');
+
+            XElement spriteNode = spriteData.Element("sprite_data");
+
+            foreach(string tag in tags)
+            {
+                spriteNode = spriteNode.Element(tag);
+            }
             //System.Console.WriteLine(spriteData);
-            //System.Console.WriteLine(spriteData.Element("sprite_data").Element("players"));
-
-            XElement spriteNode = spriteData.Element("sprite_data").Element("players").Element("link").Element("walking").Element("up").Element("sprite");
-
-            System.Console.WriteLine(spriteNode);
 
             string spritesheetFileName = spriteNode.Element("spritesheet").Value;
 
             Texture2D texture;
             if (!loadedTextures.TryGetValue(spritesheetFileName, out texture))
             {
-                // throw texture not loaded exception
+                System.Diagnostics.Debug.Print("Tried create sprite " + spriteName + " but the spritesheet "
+                    + spritesheetFileName + " is not loaded.");
             }
 
             (int height, int width) dimensions;
             // get the height of the sprite
-            dimensions.height = int.Parse(spriteNode.Element("height").Value);
 
-            // get the width of the sprite
-            dimensions.width = int.Parse(spriteNode.Element("width").Value);
+            dimensions.height = int.Parse(spriteNode.Element("dimensions").Element("height").Value);
+            dimensions.width = int.Parse(spriteNode.Element("dimensions").Element("width").Value);
 
             // get the length of the animation in seconds
-            float time = float.Parse(spriteNode.Element("time").Value);
+            double time = double.Parse(spriteNode.Element("time").Value);
 
             // list of (int x, int y) tuples that specify the source location
             List<(int x, int y)> sources = new List<(int x, int y)>();
-            foreach (XElement source in spriteNode.Elements("source"))
+            foreach (XElement source in spriteNode.Element("source_list").Elements("source"))
             {
                 // get x
                 int x = int.Parse(source.Element("x").Value);
@@ -111,7 +114,11 @@ namespace Project1
         public void LoadSpriteData(string path)
         {
             spriteData = XDocument.Load(path);
+        }
 
+        public void loadSpriteDictionary(string path)
+        {
+            spriteDictionary = XDocument.Load(path);
         }
 
         public void LoadAllTextures(ContentManager content)

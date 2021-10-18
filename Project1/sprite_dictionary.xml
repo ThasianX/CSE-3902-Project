@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sprite_dictionary>
+  <player_walking_up>players/link/walking/up/sprite</player_walking_up>
+  <player_walking_right>players/link/walking/right/sprite</player_walking_right>
+  <player_walking_down>players/link/walking/down/sprite</player_walking_down>
+  <player_walking_left>players/link/walking/left/sprite</player_walking_left>
+  <player_idle_up>players/link/idle/up/sprite</player_idle_up>
+  <player_idle_right>players/link/idle/right/sprite</player_idle_right>
+  <player_idle_down>players/link/idle/down/sprite</player_idle_down>
+  <player_idle_left>players/link/idle/left/sprite</player_idle_left>
+</sprite_dictionary>

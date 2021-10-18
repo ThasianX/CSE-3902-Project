@@ -59,6 +59,7 @@ namespace Project1
             SpriteFactory.Instance.LoadAllTextures(Content);
             SpriteFactory.Instance.LoadAllFonts(Content);
             SpriteFactory.Instance.LoadSpriteData("sprite_data.xml");
+            SpriteFactory.Instance.loadSpriteDictionary("sprite_dictionary.xml");
 
             Setup();
         }
