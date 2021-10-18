@@ -53,17 +53,17 @@ namespace Project1.Enemy
             }
         }
 
-        public void Update()
+        public void Update(GameTime gameTime)
         {
             // When finish BoomerangAttack, change a random direction
             if (timer++ == activeFrameCount)
             {
                 ChangeDirection();
             }
-            fireballOne.Update();
-            fireballTwo.Update();
-            fireballThree.Update();
-            sprite.Update();
+            fireballOne.Update(gameTime);
+            fireballTwo.Update(gameTime);
+            fireballThree.Update(gameTime);
+            sprite.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)

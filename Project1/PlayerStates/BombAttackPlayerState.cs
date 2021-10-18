@@ -74,7 +74,7 @@ namespace Project1.PlayerStates
         {
         }
 
-        public void Update()
+        public void Update(GameTime gameTime)
         {
             if (counter++ >= activeFrameCount)
             {
@@ -87,8 +87,8 @@ namespace Project1.PlayerStates
                     player.state = new StillPlayerState(player);
                 }
             }
-            bomb.Update();
-            sprite.Update();
+            bomb.Update(gameTime);
+            sprite.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)

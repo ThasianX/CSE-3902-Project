@@ -70,7 +70,7 @@ namespace Project1.PlayerStates
             player.state = new BombAttackPlayerState(player);
         }
 
-        public void Update()
+        public void Update(GameTime gameTime)
         {
             // Calculate the direction of the movement vector
             Vector2 movement = new Vector2(0, 0);
@@ -99,7 +99,7 @@ namespace Project1.PlayerStates
 
             player.Move(movement);
 
-            sprite.Update();
+            sprite.Update(gameTime);
 
             // Switch to still state if there is no movement input
             if (player.hasAnyMoveInput())

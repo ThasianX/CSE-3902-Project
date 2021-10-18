@@ -27,9 +27,9 @@ namespace Project1.Objects
             enemySprite.Draw(spriteBatch);
         }
 
-        public void Update()
+        public void Update(GameTime gameTime)
         {
-            enemySprite.Update();
+            enemySprite.Update(gameTime);
         }
 
         public void CycleLeft()

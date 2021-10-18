@@ -17,7 +17,7 @@ namespace Project1.NPC
             state = new OldManStaticState(this);
         }
 
-        public void Update()
+        public void Update(GameTime gameTime)
         {
            // The old man do not update
         }

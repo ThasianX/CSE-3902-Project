@@ -8,7 +8,7 @@ namespace Project1.Interfaces
         public int health { get; set; }
 
         void Draw(SpriteBatch spriteBatch);
-        void Update();
+        void Update(GameTime gameTime);
         void TakeDamage(int damage);
     }
 }

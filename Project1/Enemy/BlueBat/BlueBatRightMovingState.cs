@@ -54,7 +54,7 @@ namespace Project1.Enemy
                     break;
             }
         }
-        public void Update()
+        public void Update(GameTime gameTime)
         {
             timer++;
             if (timer == rightMovingAnimation.CycleLength)
@@ -64,7 +64,7 @@ namespace Project1.Enemy
             }
 
             blueBat.Position += deltaVector * blueBat.movingSpeed;
-            sprite.Update();
+            sprite.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)

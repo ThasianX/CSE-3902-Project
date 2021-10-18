@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Project1.PlayerStates
@@ -14,7 +15,7 @@ namespace Project1.PlayerStates
         void BoomerangAttack();
         void BombAttack();
        
-        void Update();
+        void Update(GameTime gameTime);
         void Draw(SpriteBatch spriteBatch);
     }
 }

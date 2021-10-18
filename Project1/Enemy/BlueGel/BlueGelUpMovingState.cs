@@ -47,7 +47,7 @@ namespace Project1.Enemy
             }
         }
 
-        public void Update()
+        public void Update(GameTime gameTime)
         {
             timer++;
             if (timer == upMovingAnimation.CycleLength)
@@ -56,7 +56,7 @@ namespace Project1.Enemy
                 timer = 0;
             }
             blueGel.Position += deltaVector * blueGel.movingSpeed;
-            sprite.Update();
+            sprite.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)

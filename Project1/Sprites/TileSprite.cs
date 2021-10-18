@@ -22,6 +22,6 @@ namespace Project1.Sprites
         }
 
         // Nothing in here since this is a static sprite
-        public void Update() { }
+        public void Update(GameTime gameTime) { }
     }
 }

@@ -24,7 +24,7 @@ namespace Project1.Sprites
             spriteBatch.DrawString(font, "Health: " + health, location, Color.Black);
         }
 
-        public void Update()
+        public void Update(GameTime gameTime)
         {
             health = healthState.health;
         }

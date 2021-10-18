@@ -54,7 +54,7 @@ namespace Project1.Objects
             swordSprite.Draw(spriteBatch, this.Position);
         }
 
-        public void Update()
+        public void Update(GameTime gameTime)
         {
             this.Position += this.deltaVector;
         }

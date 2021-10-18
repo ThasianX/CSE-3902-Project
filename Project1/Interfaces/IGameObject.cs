@@ -11,7 +11,7 @@ namespace Project1.Interfaces
         public Vector2 Position { get; set; }
         public void Draw(SpriteBatch spriteBatch) { }
 
-        public void Update() { }
+        public void Update(GameTime gameTime) { }
 
     }
 }

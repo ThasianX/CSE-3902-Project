@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sprite_data>
+  <players>
+    <link>
+      <walking>
+        <up>
+          <sprite name="link_walking_up">
+            <spritesheet>link_spritesheet</spritesheet>
+            <dimensions>
+              <height>16</height>
+              <width>16</width>
+            </dimensions>
+            <time>1</time>
+            <source_list>
+              <source>
+                <x>1</x>
+                <y>1</y>
+              </source>
+              <source>
+                <x>20</x>
+                <y>1</y>
+              </source>
+          </source_list>
+          </sprite>
+        </up>
+      </walking>
+      <idle>
+      <up>
+        <sprite name="link_idle_up">
+          <spritesheet>link_spritesheet</spritesheet>
+          <dimensions>
+            <height>16</height>
+            <width>16</width>
+          </dimensions>
+          <time>1</time>
+          <source_list>
+            <source>
+              <x>69</x>
+              <y>11</y>
+            </source>
+          </source_list>
+        </sprite>
+      </up>
+      <right>
+        <sprite name="link_idle_right">
+          <spritesheet>link_spritesheet</spritesheet>
+          <dimensions>
+            <height>16</height>
+            <width>16</width>
+          </dimensions>
+          <time>1</time>
+          <source_list>
+            <source>
+              <x>35</x>
+              <y>11</y>
+            </source>
+          </source_list>
+        </sprite>
+      </right>
+      <down>
+        <sprite name="link_idle_down">
+          <spritesheet>link_spritesheet</spritesheet>
+          <dimensions>
+            <height>16</height>
+            <width>16</width>
+          </dimensions>
+          <time>1</time>
+          <source_list>
+            <source>
+              <x>1</x>
+              <y>11</y>
+            </source>
+          </source_list>
+        </sprite>
+      </down>
+      <left>
+        <sprite name="link_idle_up">
+          <spritesheet>link_spritesheet</spritesheet>
+          <dimensions>
+            <height>16</height>
+            <width>16</width>
+          </dimensions>
+          <time>1</time>
+          <source_list>
+            <source>
+              <x>103</x>
+              <y>11</y>
+            </source>
+          </source_list>
+        </sprite>
+      </left>
+    </idle>
+      <attacking>
+      <up></up>
+      <right></right>
+      <down></down>
+      <left></left>
+    </attacking>
+    </link>
+  </players>
+  <enemies>
+    
+  </enemies>
+  <items>
+    
+  </items>
+  <tiles>
+    
+  </tiles>
+</sprite_data>

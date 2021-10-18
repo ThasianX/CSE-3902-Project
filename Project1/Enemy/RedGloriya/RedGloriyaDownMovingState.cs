@@ -50,7 +50,7 @@ namespace Project1.Enemy
             }
         }
 
-        public void Update()
+        public void Update(GameTime gameTime)
         {
             // When complete an animation cycle length, make a choice
             if (timer++ == downMovingAnimation.CycleLength)
@@ -69,7 +69,7 @@ namespace Project1.Enemy
                 timer = 0;
             }
             redGloriya.Position += deltaVector * redGloriya.movingSpeed;
-            sprite.Update();
+            sprite.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)

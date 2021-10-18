@@ -36,11 +36,11 @@ namespace Project1
             }
         }
 
-        public void UpdateObjects()
+        public void UpdateObjects(GameTime gameTime)
         {
             foreach (IGameObject obj in gameObjects)
             {
-                obj.Update();
+                obj.Update(gameTime);
             }
         }
 

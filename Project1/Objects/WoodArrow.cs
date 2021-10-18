@@ -54,7 +54,7 @@ namespace Project1.Objects
             arrowSprite.Draw(spriteBatch, this.Position);
         }
 
-        public void Update()
+        public void Update(GameTime gameTime)
         {
             this.Position += this.deltaVector;
         }

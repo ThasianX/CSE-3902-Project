@@ -54,7 +54,7 @@ namespace Project1.Objects
             boomerangSprite.Draw(spriteBatch, this.Position);
         }
 
-        public void Update()
+        public void Update(GameTime gameTime)
         {
             //Checks if sprite has achieved max distance before returning to link
             checkRange();
@@ -66,7 +66,7 @@ namespace Project1.Objects
             {
                 this.Position -= this.deltaVector;
             }
-            boomerangSprite.Update();
+            boomerangSprite.Update(gameTime);
         }
 
         public void checkRange()

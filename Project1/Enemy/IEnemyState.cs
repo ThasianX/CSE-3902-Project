@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Project1.Enemy
 {
@@ -10,7 +11,7 @@ namespace Project1.Enemy
         void BoomerangAttack();
         // Base on current direction, randomly change to a different direction
         void ChangeDirection();
-        void Update();
+        void Update(GameTime gameTime);
         void Draw(SpriteBatch spriteBatch);
     }
 }

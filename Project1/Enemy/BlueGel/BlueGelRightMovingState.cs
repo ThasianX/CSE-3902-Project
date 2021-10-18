@@ -46,7 +46,7 @@ namespace Project1.Enemy
                 case 3: blueGel.state = new BlueGelLeftMovingState(blueGel); break;
             }
         }
-        public void Update()
+        public void Update(GameTime gameTime)
         {
             timer++;
             if (timer == rightMovingAnimation.CycleLength)
@@ -55,7 +55,7 @@ namespace Project1.Enemy
                 timer = 0;
             }
             blueGel.Position += deltaVector * blueGel.movingSpeed;
-            sprite.Update();
+            sprite.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)

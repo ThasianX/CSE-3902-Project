@@ -34,9 +34,9 @@ namespace Project1.PlayerStates
             sprite = SpriteFactory.Instance.CreateHealthSprite(this, "Name");
         }
 
-        public void Update()
+        public void Update(GameTime gameTime)
         {
-            sprite.Update();
+            sprite.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)

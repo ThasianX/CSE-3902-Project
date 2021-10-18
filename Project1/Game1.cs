@@ -58,6 +58,7 @@ namespace Project1
             spriteBatch = new SpriteBatch(GraphicsDevice);
             SpriteFactory.Instance.LoadAllTextures(Content);
             SpriteFactory.Instance.LoadAllFonts(Content);
+            SpriteFactory.Instance.LoadSpriteData("sprite_data.xml");
 
             Setup();
         }
@@ -72,7 +73,7 @@ namespace Project1
                 controller.Update();
             }
 
-            GameObjectManager.Instance.UpdateObjects();
+            GameObjectManager.Instance.UpdateObjects(gameTime);
 
             base.Update(gameTime);
         }

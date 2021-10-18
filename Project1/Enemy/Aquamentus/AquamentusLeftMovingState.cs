@@ -42,7 +42,7 @@ namespace Project1.Enemy
         {
             aquamentus.state = new AquamentusRightMovingState(aquamentus);
         }
-        public void Update()
+        public void Update(GameTime gameTime)
         {
             timer++;
             if (timer == leftMovingAnimation.CycleLength)
@@ -61,7 +61,7 @@ namespace Project1.Enemy
                 timer = 0;
             }
             aquamentus.Position += deltaVector * aquamentus.movingSpeed;
-            sprite.Update();
+            sprite.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)

@@ -52,7 +52,7 @@ namespace Project1.Enemy
             sprite.Draw(spriteBatch, stalfos.Position);
         }
 
-        public void Update()
+        public void Update(GameTime gameTime)
         {
             timer++;
             if (timer == leftMovingAnimation.CycleLength)
@@ -61,7 +61,7 @@ namespace Project1.Enemy
                 timer = 0;
             }
             stalfos.Position += deltaVector * stalfos.movingSpeed;
-            sprite.Update();
+            sprite.Update(gameTime);
         }
     }
 }

@@ -93,10 +93,10 @@ namespace Project1
             state.BombAttack();
         }
         
-        public void Update()
+        public void Update(GameTime gameTime)
         {
-            state.Update();
-            healthState.Update();
+            state.Update(gameTime);
+            healthState.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)
