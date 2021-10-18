@@ -20,19 +20,19 @@ namespace Project1.PlayerStates
             switch (player.facingDirection)
             {
                 case Direction.Up:
-                    sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkIdleUpAnimation());
+                    sprite = SpriteFactory.Instance.CreateSprite("player_idle_up");
                     break;
 
                 case Direction.Right:
-                    sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkIdleRightAnimation());
+                    sprite = SpriteFactory.Instance.CreateSprite("player_idle_right");
                     break;
 
                 case Direction.Down:
-                    sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkIdleDownAnimation());
+                    sprite = SpriteFactory.Instance.CreateSprite("player_idle_down");
                     break;
 
                 case Direction.Left:
-                    sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkIdleLeftAnimation());
+                    sprite = SpriteFactory.Instance.CreateSprite("player_idle_left");
                     break;
 
                 default:
@@ -74,9 +74,9 @@ namespace Project1.PlayerStates
             player.state = new BombAttackPlayerState(player);
         }
 
-        public void Update()
+        public void Update(GameTime gameTime)
         {
-            sprite.Update();
+            sprite.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)

@@ -48,7 +48,7 @@ namespace Project1.Enemy
             sprite.Draw(spriteBatch, aquamentus.Position);
         }
 
-        public void Update()
+        public void Update(GameTime gameTime)
         {
             timer++;
             if (timer == rightMovingAnimation.CycleLength)
@@ -67,7 +67,7 @@ namespace Project1.Enemy
                 timer = 0;
             }
             aquamentus.Position += deltaVector * aquamentus.movingSpeed;
-            sprite.Update();
+            sprite.Update(gameTime);
         }
     }
 }

@@ -19,6 +19,7 @@ namespace Project1.Commands
         {
             foreach (Player player in GameObjectManager.Instance.GetObjectsOfType<Player>())
             {
+                // Set the players down input as pressed
                 player.SetMoveInput(Direction.Down, true);
             }
         }

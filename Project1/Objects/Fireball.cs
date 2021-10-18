@@ -27,10 +27,10 @@ namespace Project1.Objects
             fireBallSprite = SpriteFactory.Instance.CreateAnimatedSprite(new FireballAnimation());
         }
 
-        public void Update()
+        public void Update(GameTime gameTime)
         {
             Position += deltaVector + fireBalOffset;
-            fireBallSprite.Update();
+            fireBallSprite.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)

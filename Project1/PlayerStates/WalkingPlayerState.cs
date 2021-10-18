@@ -20,19 +20,19 @@ namespace Project1.PlayerStates
             switch (player.facingDirection)
             {
                 case Direction.Up:
-                    sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkWalkingUpAnimation());
+                    sprite = SpriteFactory.Instance.CreateSprite("player_walking_up");
                     break;
 
                 case Direction.Right:
-                    sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkWalkingRightAnimation());
+                    sprite = SpriteFactory.Instance.CreateSprite("player_walking_right");
                     break;
 
                 case Direction.Down:
-                    sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkWalkingDownAnimation());
+                    sprite = SpriteFactory.Instance.CreateSprite("player_walking_down");
                     break;
 
                 case Direction.Left:
-                    sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkWalkingLeftAnimation());
+                    sprite = SpriteFactory.Instance.CreateSprite("player_walking_left");
                     break;
 
                 default:
@@ -70,7 +70,7 @@ namespace Project1.PlayerStates
             player.state = new BombAttackPlayerState(player);
         }
 
-        public void Update()
+        public void Update(GameTime gameTime)
         {
             // Calculate the direction of the movement vector
             Vector2 movement = new Vector2(0, 0);
@@ -99,7 +99,7 @@ namespace Project1.PlayerStates
 
             player.Move(movement);
 
-            sprite.Update();
+            sprite.Update(gameTime);
 
             // Switch to still state if there is no movement input
             if (player.hasAnyMoveInput())

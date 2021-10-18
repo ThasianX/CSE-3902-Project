@@ -33,11 +33,11 @@ namespace Project1.Enemy
             movingSpeed = 1f;
         }
 
-        public void Update()
+        public void Update(GameTime gameTime)
         {
             // Update the current state
             // Possible state: direction, fireball attack
-            state.Update();
+            state.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)

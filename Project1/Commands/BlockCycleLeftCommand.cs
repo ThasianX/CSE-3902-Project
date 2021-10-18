@@ -16,7 +16,8 @@ namespace Project1.Commands
 
         public void Execute()
         {
-            myGame.cyclableBlock.CycleLeft();
+            // tight coupling, reference is now missing
+            //myGame.cyclableBlock.CycleLeft();
         }
     }
 }

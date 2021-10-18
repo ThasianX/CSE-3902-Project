@@ -22,9 +22,9 @@ namespace Project1.Objects
             sprite.Draw(spriteBatch, Position);
         }
 
-        public void Update()
+        public void Update(GameTime gameTime)
         {
-            sprite.Update();
+            sprite.Update(gameTime);
         }
     }
 }

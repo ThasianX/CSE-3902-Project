@@ -46,7 +46,7 @@ namespace Project1.Enemy
                 case 3: blueBat.state = new BlueBatRightMovingState(blueBat); break;
             }
         }
-        public void Update()
+        public void Update(GameTime gameTime)
         {
             timer++;
             if (timer == leftMovingAnimation.CycleLength)
@@ -56,7 +56,7 @@ namespace Project1.Enemy
             }
 
             blueBat.Position += deltaVector * blueBat.movingSpeed;
-            sprite.Update();
+            sprite.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)

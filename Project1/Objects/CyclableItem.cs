@@ -26,7 +26,7 @@ namespace Project1.Objects
             itemSprite.Draw(spriteBatch, this.Position);
         }
 
-        public void Update()
+        public void Update(GameTime gameTime)
         {
             if (cycle != lastCycle)
             {
@@ -58,7 +58,7 @@ namespace Project1.Objects
                         break;
                 }
             }
-            itemSprite.Update();
+            itemSprite.Update(gameTime);
             lastCycle = cycle;
         }
 

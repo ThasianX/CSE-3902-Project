@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Xml;
+using System.Xml.Linq;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Project1.Interfaces;
@@ -8,6 +10,9 @@ namespace Project1
 {
     class SpriteFactory
     {
+        XDocument spriteData;
+        XDocument spriteDictionary;
+
         private readonly string[] spritesheetFileNames =
         {
             // put the file names of spritesheets to load here
@@ -39,16 +44,73 @@ namespace Project1
             }
         }
 
+        public ISprite CreateSprite(string spriteName)
+        {
+            // get the path corresponding to the spriteName
+            string path = spriteDictionary.Root.Element(spriteName).Value;
+
+            // split the path into tags
+            string[] tags = path.Split('/');
+
+            // start at the root of sprite_data
+            XElement spriteNode = spriteData.Root;
+
+            // traverse the path
+            foreach(string tag in tags)
+            {
+                spriteNode = spriteNode.Element(tag);
+            }
+
+            // collect values ===============================================================================
+
+            // get the spritesheet file name
+            string spritesheetFileName = spriteNode.Element("spritesheet").Value;
+
+            // find get the loaded texture of the spritesheet
+            Texture2D texture;
+            if (!loadedTextures.TryGetValue(spritesheetFileName, out texture))
+            {
+                System.Diagnostics.Debug.Print("Tried create sprite " + spriteName + " but the spritesheet "
+                    + spritesheetFileName + " is not loaded.");
+            }
+
+            // get sprite dimensions
+            (int height, int width) dimensions;
+            dimensions.height = int.Parse(spriteNode.Element("dimensions").Element("height").Value);
+            dimensions.width = int.Parse(spriteNode.Element("dimensions").Element("width").Value);
+
+            // get the length of the animation in seconds
+            double time = double.Parse(spriteNode.Element("time").Value);
+
+            // list of (int x, int y) tuples that specify the source location
+            List<(int x, int y)> sources = new List<(int x, int y)>();
+            foreach (XElement source in spriteNode.Element("source_list").Elements("source"))
+            {
+                // get x
+                int x = int.Parse(source.Element("x").Value);
+
+                //get y
+                int y = int.Parse(source.Element("y").Value);
+
+                sources.Add((x, y));
+            }
+
+            // done collecting values =======================================================================
+
+            // create the sprite
+            return new AnimatedSprite(texture, dimensions, sources.ToArray(), time);
+        }
+
         public ISprite CreateAnimatedSprite(IAnimation animation)
         {
-            // get the spritesheet associated with the animation
-            Texture2D spritesheet = loadedTextures[animation.SpritesheetFileName];
-
-            return new AnimatedSprite(spritesheet, animation);
+            // NEEDS REMOVED AFTER ALL SPRITEDATA IS TRANSFERED TO XML
+            return null;
         }
 
         public ISprite CreateTileSprite(ITileData tileSprite)
         {
+            // NEEDS REMOVED... ALL OBJECTS USE THE SAME SPRITE CLASS NOW 
+
             Texture2D spritesheet = loadedTextures[tileSprite.SpritesheetFileName];
 
             return new TileSprite(spritesheet, tileSprite.Source);
@@ -59,6 +121,16 @@ namespace Project1
             SpriteFont font = loadedFonts[fontName];
 
             return new HealthSprite(font, healthState);
+        }
+
+        public void LoadSpriteData(string path)
+        {
+            spriteData = XDocument.Load(path);
+        }
+
+        public void loadSpriteDictionary(string path)
+        {
+            spriteDictionary = XDocument.Load(path);
         }
 
         public void LoadAllTextures(ContentManager content)

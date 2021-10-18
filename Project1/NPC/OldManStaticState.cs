@@ -37,7 +37,7 @@ namespace Project1.NPC
             sprite.Draw(spriteBatch, oldMan.Position);
         }
 
-        public void Update()
+        public void Update(GameTime gameTime)
         {
         }
     }

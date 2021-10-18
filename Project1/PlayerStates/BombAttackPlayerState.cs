@@ -24,22 +24,22 @@ namespace Project1.PlayerStates
             switch (player.facingDirection)
             {
                 case Direction.Up:
-                    sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkAttackUpAnimation());
+                    sprite = SpriteFactory.Instance.CreateSprite("player_attack_up");
                     bomb = new Bomb(player.Position + new Vector2(0, -bombOffset), activeFrameCount);
                     break;
 
                 case Direction.Right:
-                    sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkAttackRightAnimation());
+                    sprite = SpriteFactory.Instance.CreateSprite("player_attack_right");
                     bomb = new Bomb(player.Position + new Vector2(bombOffset, 0), activeFrameCount);
                     break;
 
                 case Direction.Down:
-                    sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkAttackDownAnimation());
+                    sprite = SpriteFactory.Instance.CreateSprite("player_attack_down");
                     bomb = new Bomb(player.Position + new Vector2(0, bombOffset), activeFrameCount);
                     break;
 
                 case Direction.Left:
-                    sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkAttackLeftAnimation());
+                    sprite = SpriteFactory.Instance.CreateSprite("player_attack_left");
                     bomb = new Bomb(player.Position + new Vector2(-bombOffset, 0), activeFrameCount);
                     break;
 
@@ -74,7 +74,7 @@ namespace Project1.PlayerStates
         {
         }
 
-        public void Update()
+        public void Update(GameTime gameTime)
         {
             if (counter++ >= activeFrameCount)
             {
@@ -87,8 +87,8 @@ namespace Project1.PlayerStates
                     player.state = new StillPlayerState(player);
                 }
             }
-            bomb.Update();
-            sprite.Update();
+            bomb.Update(gameTime);
+            sprite.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)

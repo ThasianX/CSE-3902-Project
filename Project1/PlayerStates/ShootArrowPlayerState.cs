@@ -81,7 +81,7 @@ namespace Project1.PlayerStates
         {
         }
 
-        public void Update()
+        public void Update(GameTime gameTime)
         {
             // TODO: Deal damage here
 
@@ -97,8 +97,8 @@ namespace Project1.PlayerStates
                     player.state = new StillPlayerState(player);
                 }
             }
-            arrow.Update();
-            sprite.Update();
+            arrow.Update(gameTime);
+            sprite.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)
