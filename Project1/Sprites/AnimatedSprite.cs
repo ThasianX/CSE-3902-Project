@@ -69,6 +69,7 @@ namespace Project1.Sprites
 
             currentSourceIndex %= sourceCount;
 
+            // increment the timer by the realtime since last frame
             timeCounter += gameTime.ElapsedGameTime.TotalSeconds;
         }
     }

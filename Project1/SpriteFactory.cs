@@ -46,20 +46,27 @@ namespace Project1
 
         public ISprite CreateAnimatedSprite(string spriteName)
         {
+            // get the path corresponding to the spriteName
             string path = spriteDictionary.Root.Element(spriteName).Value;
 
+            // split the path into tags
             string[] tags = path.Split('/');
 
-            XElement spriteNode = spriteData.Element("sprite_data");
+            // start at the root of sprite_data
+            XElement spriteNode = spriteData.Root;
 
+            // traverse the path
             foreach(string tag in tags)
             {
                 spriteNode = spriteNode.Element(tag);
             }
-            //System.Console.WriteLine(spriteData);
 
+            // collect values ===============================================================================
+
+            // get the spritesheet file name
             string spritesheetFileName = spriteNode.Element("spritesheet").Value;
 
+            // find get the loaded texture of the spritesheet
             Texture2D texture;
             if (!loadedTextures.TryGetValue(spritesheetFileName, out texture))
             {
@@ -67,9 +74,8 @@ namespace Project1
                     + spritesheetFileName + " is not loaded.");
             }
 
+            // get sprite dimensions
             (int height, int width) dimensions;
-            // get the height of the sprite
-
             dimensions.height = int.Parse(spriteNode.Element("dimensions").Element("height").Value);
             dimensions.width = int.Parse(spriteNode.Element("dimensions").Element("width").Value);
 
@@ -89,6 +95,9 @@ namespace Project1
                 sources.Add((x, y));
             }
 
+            // done collecting values =======================================================================
+
+            // create the sprite
             return new AnimatedSprite(texture, dimensions, sources.ToArray(), time);
         }
 

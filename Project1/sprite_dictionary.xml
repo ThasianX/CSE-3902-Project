@@ -8,4 +8,8 @@
   <player_idle_right>players/link/idle/right/sprite</player_idle_right>
   <player_idle_down>players/link/idle/down/sprite</player_idle_down>
   <player_idle_left>players/link/idle/left/sprite</player_idle_left>
+  <player_attack_up>players/link/attacking/up/sprite</player_attack_up>
+  <player_attack_right>players/link/attacking/right/sprite</player_attack_right>
+  <player_attack_down>players/link/attacking/down/sprite</player_attack_down>
+  <player_attack_left>players/link/attacking/left/sprite</player_attack_left>
 </sprite_dictionary>

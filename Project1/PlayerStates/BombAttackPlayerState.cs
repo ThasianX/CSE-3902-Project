@@ -24,22 +24,22 @@ namespace Project1.PlayerStates
             switch (player.facingDirection)
             {
                 case Direction.Up:
-                    sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkAttackUpAnimation());
+                    sprite = SpriteFactory.Instance.CreateAnimatedSprite("player_attack_up");
                     bomb = new Bomb(player.Position + new Vector2(0, -bombOffset), activeFrameCount);
                     break;
 
                 case Direction.Right:
-                    sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkAttackRightAnimation());
+                    sprite = SpriteFactory.Instance.CreateAnimatedSprite("player_attack_right");
                     bomb = new Bomb(player.Position + new Vector2(bombOffset, 0), activeFrameCount);
                     break;
 
                 case Direction.Down:
-                    sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkAttackDownAnimation());
+                    sprite = SpriteFactory.Instance.CreateAnimatedSprite("player_attack_down");
                     bomb = new Bomb(player.Position + new Vector2(0, bombOffset), activeFrameCount);
                     break;
 
                 case Direction.Left:
-                    sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkAttackLeftAnimation());
+                    sprite = SpriteFactory.Instance.CreateAnimatedSprite("player_attack_left");
                     bomb = new Bomb(player.Position + new Vector2(-bombOffset, 0), activeFrameCount);
                     break;
 
