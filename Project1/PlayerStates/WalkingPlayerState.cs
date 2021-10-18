@@ -20,19 +20,19 @@ namespace Project1.PlayerStates
             switch (player.facingDirection)
             {
                 case Direction.Up:
-                    sprite = SpriteFactory.Instance.CreateAnimatedSprite("player_walking_up");
+                    sprite = SpriteFactory.Instance.CreateSprite("player_walking_up");
                     break;
 
                 case Direction.Right:
-                    sprite = SpriteFactory.Instance.CreateAnimatedSprite("player_walking_right");
+                    sprite = SpriteFactory.Instance.CreateSprite("player_walking_right");
                     break;
 
                 case Direction.Down:
-                    sprite = SpriteFactory.Instance.CreateAnimatedSprite("player_walking_down");
+                    sprite = SpriteFactory.Instance.CreateSprite("player_walking_down");
                     break;
 
                 case Direction.Left:
-                    sprite = SpriteFactory.Instance.CreateAnimatedSprite("player_walking_left");
+                    sprite = SpriteFactory.Instance.CreateSprite("player_walking_left");
                     break;
 
                 default:

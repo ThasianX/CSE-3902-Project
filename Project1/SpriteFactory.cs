@@ -44,7 +44,7 @@ namespace Project1
             }
         }
 
-        public ISprite CreateAnimatedSprite(string spriteName)
+        public ISprite CreateSprite(string spriteName)
         {
             // get the path corresponding to the spriteName
             string path = spriteDictionary.Root.Element(spriteName).Value;
@@ -103,11 +103,14 @@ namespace Project1
 
         public ISprite CreateAnimatedSprite(IAnimation animation)
         {
+            // NEEDS REMOVED AFTER ALL SPRITEDATA IS TRANSFERED TO XML
             return null;
         }
 
         public ISprite CreateTileSprite(ITileData tileSprite)
         {
+            // NEEDS REMOVED... ALL OBJECTS USE THE SAME SPRITE CLASS NOW 
+
             Texture2D spritesheet = loadedTextures[tileSprite.SpritesheetFileName];
 
             return new TileSprite(spritesheet, tileSprite.Source);
