@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Content>
+	<Room1>
+		<Object>
+			<Type>Player</Type>
+			<Name>Link</Name>
+			<Position>120 325</Position>
+		</Object>
+		<Object>
+			<Type>Tile</Type>
+			<Name>104</Name>
+			<Position>324 26</Position>
+		</Object>
+		<Object>
+			<Type>Weapon</Type>
+			<Name>Sword</Name>
+			<Position>103 743</Position>
+		</Object>
+	</Room1>
+	<Room2>
+		<Object>
+			<Type>Player</Type>
+			<Name>Link</Name>
+			<Position>120 325</Position>
+		</Object>
+		<Object>
+			<Type>Tile</Type>
+			<Name>104</Name>
+			<Position>324 26</Position>
+		</Object>
+		<Object>
+			<Type>Weapon</Type>
+			<Name>Sword</Name>
+			<Position>103 743</Position>
+		</Object>
+	</Room2>
+</Content>
