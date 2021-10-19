@@ -25,7 +25,7 @@ namespace Project1.Objects
             this.Position = position; // position here is link/enemy position + boomerang offset.
             this.initialPosition = position;
             this.moveSpeed = (maxRange * 2) / frames;
-            boomerangSprite = SpriteFactory.Instance.CreateSprite("WoodBoomerang_attacking");
+            
             switch (this.direction)
             {
                 case Direction.Up:
