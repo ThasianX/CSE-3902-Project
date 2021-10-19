@@ -8,11 +8,11 @@ namespace Project1.Commands
 {
     class PlayerStopMoveRightCommand : ICommand
     {
-        Game1 game;
+        Player player;
 
-        public PlayerStopMoveRightCommand(Game1 game)
+        public PlayerStopMoveRightCommand(Player player)
         {
-            this.game = game;
+            this.player = player;
         }
 
         public void Execute()

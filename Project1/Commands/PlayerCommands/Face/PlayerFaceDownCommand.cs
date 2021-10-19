@@ -7,11 +7,11 @@ namespace Project1.Commands
 {
     class PlayerFaceDownCommand : ICommand
     {
-        Game1 game;
+        Player player;
 
-        public PlayerFaceDownCommand(Game1 game)
+        public PlayerFaceDownCommand(Player player)
         {
-            this.game = game;
+            this.player = player;
         }
 
         public void Execute()
