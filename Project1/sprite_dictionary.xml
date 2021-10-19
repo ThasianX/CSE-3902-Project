@@ -25,6 +25,5 @@
 
 	<OldMan_standing>NPC/OldMan/standing/sprite</OldMan_standing>
 
-	<WoodBoomerang_attacking>items/WoodBoomerang/attacking/sprite</WoodBoomerang_attacking>
-	<FireBall_attacking>items/FireBall/attacking/sprite</FireBall_attacking>
+	
 </sprite_dictionary>
