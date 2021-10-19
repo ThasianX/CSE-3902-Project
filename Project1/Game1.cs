@@ -41,7 +41,7 @@ namespace Project1
         {
             position = new Vector2(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
             enemyPosition = new Vector2(SCREEN_WIDTH / 4 * 3, SCREEN_HEIGHT / 4 * 3);
-            blockPosition = new Vector2(SCREEN_WIDTH / 4 , SCREEN_HEIGHT / 4 );
+            blockPosition = new Vector2(SCREEN_WIDTH / 4 , SCREEN_HEIGHT / 4);
 
             controllerList = new ArrayList
             {
