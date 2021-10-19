@@ -22,7 +22,7 @@ namespace Project1.Enemy
         {
             this.blueBat = blueBat;
             leftMovingAnimation = new BlueBatMovingAnimation();
-            sprite = SpriteFactory.Instance.CreateAnimatedSprite(leftMovingAnimation);
+            sprite = SpriteFactory.Instance.CreateSprite("BlueBat_woving");
             timer = 0;
             currentDirection = Direction.Left;
             deltaVector = new Vector2(-1, 0);

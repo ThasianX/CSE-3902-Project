@@ -24,7 +24,7 @@ namespace Project1.Enemy
         {
             this.blueBat = blueBat;
             rightMovingAnimation = new BlueBatMovingAnimation();
-            sprite = SpriteFactory.Instance.CreateAnimatedSprite(rightMovingAnimation);
+            sprite = SpriteFactory.Instance.CreateSprite("BlueBat_woving");
             timer = 0;
             currentDirection = Direction.Right;
             deltaVector = new Vector2(1, 0);

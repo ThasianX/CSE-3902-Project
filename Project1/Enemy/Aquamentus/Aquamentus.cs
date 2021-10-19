@@ -8,7 +8,6 @@ namespace Project1.Enemy
     {
         public IEnemyState state;
         public Vector2 Position { get; set; }
-        private Vector2 startPosition;
         public float movingSpeed;
         private int choice;
         private Random rand = new Random();
@@ -17,7 +16,6 @@ namespace Project1.Enemy
         public Aquamentus(Vector2 position)
         {
             this.Position = position;
-            startPosition = position;
             // When initialize, choose a random direction
             choice = rand.Next(2);
             switch (choice)
@@ -33,6 +31,20 @@ namespace Project1.Enemy
             movingSpeed = 1f;
         }
 
+        public void FireBallAttack()
+        {
+            state.FireBallAttack();
+        }
+
+        public void BoomerangAttack()
+        {
+        }
+
+        public void ChangeDirection()
+        {
+            state.ChangeDirection();
+        }
+
         public void Update(GameTime gameTime)
         {
             // Update the current state
@@ -45,10 +57,5 @@ namespace Project1.Enemy
             state.Draw(spriteBatch);
         }
 
-        // Only need this for Sprint 2
-        public void ResetPosition()
-        {
-            Position = startPosition;
-        }
     }
 }

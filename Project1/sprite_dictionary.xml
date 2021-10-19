@@ -1,38 +1,52 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <sprite_dictionary>
-  <player_walking_up>players/link/walking/up/sprite</player_walking_up>
-  <player_walking_right>players/link/walking/right/sprite</player_walking_right>
-  <player_walking_down>players/link/walking/down/sprite</player_walking_down>
-  <player_walking_left>players/link/walking/left/sprite</player_walking_left>
-  <player_idle_up>players/link/idle/up/sprite</player_idle_up>
-  <player_idle_right>players/link/idle/right/sprite</player_idle_right>
-  <player_idle_down>players/link/idle/down/sprite</player_idle_down>
-  <player_idle_left>players/link/idle/left/sprite</player_idle_left>
-  <player_attack_up>players/link/attacking/up/sprite</player_attack_up>
-  <player_attack_right>players/link/attacking/right/sprite</player_attack_right>
-  <player_attack_down>players/link/attacking/down/sprite</player_attack_down>
-  <player_attack_left>players/link/attacking/left/sprite</player_attack_left>
-  <bomb>items/bomb/sprite</bomb>
-  <fireball>items/fireball/sprite</fireball>
-  <flashingRuby>items/flashingRuby/sprite</flashingRuby>
-  <heart>items/heart/sprite</heart>
-  <triforce>items/triforce/sprite</triforce>
-  <woodBoomerang>items/woodBoomerang/sprite</woodBoomerang>
-  <blueRuby>items/blueRuby/sprite</blueRuby>
-  <yellowRuby>items/yellowRuby/sprite</yellowRuby>
-  <key>items/key/sprite</key>
-  <woodArrow_up>items/weapon/woodArrow/up/sprite</woodArrow_up>
-  <woodArrow_left>items/weapon/woodArrow/left/sprite</woodArrow_left>
-  <woodArrow_right>items/weapon/woodArrow/right/sprite</woodArrow_right>
-  <woodArrow_down>items/weapon/woodArrow/down/sprite</woodArrow_down>
-  <woodSword_up>items/weapon/woodSword/up/sprite</woodSword_up>
-  <woodSword_left>items/weapon/woodSword/left/sprite</woodSword_left>
-  <woodSword_right>items/weapon/woodSword/right/sprite</woodSword_right>
-  <woodSword_down>items/weapon/woodSword/down/sprite</woodSword_down>
-  <pyramid_block>tiles/pyramid/block/sprite</pyramid_block>
-  <black_block>tiles/black/block/sprite</black_block>
-  <plain_block>tiles/plain/block/sprite</plain_block>
-  <ladder_block>tiles/ladder/block/sprite</ladder_block>
-  <stair_block>tiles/stair/block/sprite</stair_block>
-  <stone_block>tiles/stone/block/sprite</stone_block>
+	<player_walking_up>players/link/walking/up/sprite</player_walking_up>
+	<player_walking_right>players/link/walking/right/sprite</player_walking_right>
+	<player_walking_down>players/link/walking/down/sprite</player_walking_down>
+	<player_walking_left>players/link/walking/left/sprite</player_walking_left>
+	<player_idle_up>players/link/idle/up/sprite</player_idle_up>
+	<player_idle_right>players/link/idle/right/sprite</player_idle_right>
+	<player_idle_down>players/link/idle/down/sprite</player_idle_down>
+	<player_idle_left>players/link/idle/left/sprite</player_idle_left>
+	<player_attack_up>players/link/attacking/up/sprite</player_attack_up>
+	<player_attack_right>players/link/attacking/right/sprite</player_attack_right>
+	<player_attack_down>players/link/attacking/down/sprite</player_attack_down>
+	<player_attack_left>players/link/attacking/left/sprite</player_attack_left>
+	
+	<bomb>items/bomb/sprite</bomb>
+	<fireball>items/fireball/sprite</fireball>
+	<flashingRuby>items/flashingRuby/sprite</flashingRuby>
+	<heart>items/heart/sprite</heart>
+	<triforce>items/triforce/sprite</triforce>
+	<woodBoomerang>items/woodBoomerang/sprite</woodBoomerang>
+	<blueRuby>items/blueRuby/sprite</blueRuby>
+	<yellowRuby>items/yellowRuby/sprite</yellowRuby>
+	<key>items/key/sprite</key>
+	
+	<woodArrow_up>items/weapon/woodArrow/up/sprite</woodArrow_up>
+	<woodArrow_left>items/weapon/woodArrow/left/sprite</woodArrow_left>
+	<woodArrow_right>items/weapon/woodArrow/right/sprite</woodArrow_right>
+	<woodArrow_down>items/weapon/woodArrow/down/sprite</woodArrow_down>
+	<woodSword_up>items/weapon/woodSword/up/sprite</woodSword_up>
+	<woodSword_left>items/weapon/woodSword/left/sprite</woodSword_left>
+	<woodSword_right>items/weapon/woodSword/right/sprite</woodSword_right>
+	<woodSword_down>items/weapon/woodSword/down/sprite</woodSword_down>
+	
+	<pyramid_block>tiles/pyramid/block/sprite</pyramid_block>
+	<black_block>tiles/black/block/sprite</black_block>
+	<plain_block>tiles/plain/block/sprite</plain_block>
+	<ladder_block>tiles/ladder/block/sprite</ladder_block>
+	<stair_block>tiles/stair/block/sprite</stair_block>
+	<stone_block>tiles/stone/block/sprite</stone_block>
+	
+	<stalfos_walking>enemies/stalfos/walking/sprite</stalfos_walking>
+	<RedGloriya_walking_up>enemies/RedGloriya/walking/up/sprite</RedGloriya_walking_up>
+	<RedGloriya_walking_right>enemies/RedGloriya/walking/right/sprite</RedGloriya_walking_right>
+	<RedGloriya_walking_down>enemies/RedGloriya/walking/down/sprite</RedGloriya_walking_down>
+	<RedGloriya_walking_left>enemies/RedGloriya/walking/left/sprite</RedGloriya_walking_left>
+	<aquamentus_walking>enemies/aquamentus/walking/sprite</aquamentus_walking>
+	<BlueGel_walking>enemies/BlueGel/walking/sprite</BlueGel_walking>
+	<BlueBat_woving>enemies/BlueBat/woving/sprite</BlueBat_woving>
+
+	<OldMan_standing>NPC/OldMan/standing/sprite</OldMan_standing>
 </sprite_dictionary>

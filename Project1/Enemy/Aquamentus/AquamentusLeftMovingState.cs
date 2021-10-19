@@ -22,7 +22,7 @@ namespace Project1.Enemy
         {
             this.aquamentus = aquamentus;
             leftMovingAnimation = new AquamentusMovingAnimation();
-            sprite = SpriteFactory.Instance.CreateAnimatedSprite(leftMovingAnimation);
+            sprite = SpriteFactory.Instance.CreateSprite("aquamentus_walking");
             timer = 0;
             // All direction for Aquamentus is facing left
             currentDirection = Direction.Left;

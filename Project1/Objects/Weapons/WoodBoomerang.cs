@@ -26,6 +26,7 @@ namespace Project1.Objects
             this.initialPosition = position;
             this.moveSpeed = (maxRange * 2) / frames;
             boomerangSprite = SpriteFactory.Instance.CreateSprite("woodBoomerang");
+
             switch (this.direction)
             {
                 case Direction.Up:

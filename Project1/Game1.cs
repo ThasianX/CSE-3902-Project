@@ -17,8 +17,12 @@ namespace Project1
     {
         private readonly GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
-       
+        public CyclableEnemy cyclableEnemy;
+
+
         private Vector2 position;
+
+        
 
         private ArrayList controllerList;
 
@@ -38,6 +42,7 @@ namespace Project1
         protected override void Initialize()
         {
             position = new Vector2(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
+            enemyPosition = new Vector2(SCREEN_WIDTH / 4 * 3, SCREEN_HEIGHT / 4 * 3);
 
             controllerList = new ArrayList
             {
@@ -50,7 +55,11 @@ namespace Project1
 
         void Setup()
         {
+
+            
+
             GameObjectManager.Instance.Add(new Player(position));
+           
         }
 
         protected override void LoadContent()
