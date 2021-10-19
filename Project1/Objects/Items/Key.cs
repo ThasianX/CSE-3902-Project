@@ -3,18 +3,18 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Project1.Interfaces;
 
-namespace Project1.Objects
+namespace Project1.Objects.Items
 {
-    public class Bomb: IItem
+    public class Key : IGameObject, IItem
     {
         public Vector2 Position { get; set; }
 
         ISprite sprite;
 
-        public Bomb(Vector2 position, int frames)
+        public Key(Vector2 position)
         {
             this.Position = position;
-            sprite = SpriteFactory.Instance.CreateAnimatedSprite(new BombAnimation());
+            sprite = SpriteFactory.Instance.CreateSprite("key");
         }
 
         public void Draw(SpriteBatch spriteBatch)

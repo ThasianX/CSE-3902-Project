@@ -3,9 +3,9 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Project1.Interfaces;
 
-namespace Project1.Objects
+namespace Project1.Objects.Weapons
 {
-    public class WoodArrow : IItem
+    public class WoodArrow : IGameObject, IItem
     {
         public int moveSpeed;
         public Vector2 Position { get; set; }
@@ -25,22 +25,22 @@ namespace Project1.Objects
             switch (this.direction)
             {
                 case Direction.Up:
-                    arrowSprite = SpriteFactory.Instance.CreateTileSprite(new WoodArrowUp());
+                    arrowSprite = SpriteFactory.Instance.CreateSprite("woodArrow_up");
                     this.deltaVector = new Vector2(0, -moveSpeed);
                     break;
 
                 case Direction.Right:
-                    arrowSprite = SpriteFactory.Instance.CreateTileSprite(new WoodArrowRight());
+                    arrowSprite = SpriteFactory.Instance.CreateSprite("woodArrow_right");
                     this.deltaVector = new Vector2(moveSpeed, 0);
                     break;
 
                 case Direction.Down:
-                    arrowSprite = SpriteFactory.Instance.CreateTileSprite(new WoodArrowDown());
+                    arrowSprite = SpriteFactory.Instance.CreateSprite("woodArrow_down");
                     this.deltaVector = new Vector2(0, moveSpeed);
                     break;
 
                 case Direction.Left:
-                    arrowSprite = SpriteFactory.Instance.CreateTileSprite(new WoodArrowLeft());
+                    arrowSprite = SpriteFactory.Instance.CreateSprite("woodArrow_left");
                     this.deltaVector = new Vector2(-moveSpeed, 0);
                     break;
 

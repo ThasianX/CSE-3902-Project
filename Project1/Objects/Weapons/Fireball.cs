@@ -3,9 +3,9 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Project1.Interfaces;
 
-namespace Project1.Objects
+namespace Project1.Objects.Weapons
 {
-    public class Fireball : IItem
+    public class Fireball : IGameObject, IItem
     {
         public int moveSpeed;
         public Vector2 Position { get; set; }
@@ -24,7 +24,7 @@ namespace Project1.Objects
             deltaVector = new Vector2(-1, 0);
             this.fireBalOffset = fireBalOffset;
             moveSpeed = (maxRange * 2) / frames;
-            fireBallSprite = SpriteFactory.Instance.CreateAnimatedSprite(new FireballAnimation());
+            fireBallSprite = SpriteFactory.Instance.CreateSprite("fireball");
         }
 
         public void Update(GameTime gameTime)
