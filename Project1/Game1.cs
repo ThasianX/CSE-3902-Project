@@ -17,12 +17,8 @@ namespace Project1
     {
         private readonly GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
-        public CyclableEnemy cyclableEnemy;
-
 
         private Vector2 position;
-
-        
 
         private ArrayList controllerList;
 
@@ -55,9 +51,6 @@ namespace Project1
 
         void Setup()
         {
-
-            
-
             GameObjectManager.Instance.Add(new Player(position));
            
         }

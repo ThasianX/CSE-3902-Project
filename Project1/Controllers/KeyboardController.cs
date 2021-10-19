@@ -59,8 +59,6 @@ namespace Project1
 
 			onReleaseMappings.Add(Keys.Q, new QuitCommand(myGame));
 			onReleaseMappings.Add(Keys.R, new ResetCommand(myGame));
-
-			
 		}
 
 		public void Update()

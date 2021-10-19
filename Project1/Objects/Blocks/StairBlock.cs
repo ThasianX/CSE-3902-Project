@@ -5,16 +5,16 @@ using Project1.Interfaces;
 
 namespace Project1.Objects
 {
-    public class Bomb: IItem
+    public class StairBlock : IGameObject, IBlock
     {
         public Vector2 Position { get; set; }
 
         ISprite sprite;
 
-        public Bomb(Vector2 position, int frames)
+        public StairBlock(Vector2 position)
         {
             this.Position = position;
-            sprite = SpriteFactory.Instance.CreateAnimatedSprite(new BombAnimation());
+            sprite = SpriteFactory.Instance.CreateSprite("stair_block");
         }
 
         public void Draw(SpriteBatch spriteBatch)

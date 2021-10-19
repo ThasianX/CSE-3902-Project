@@ -5,7 +5,7 @@ using Project1.Interfaces;
 
 namespace Project1.Objects
 {
-    public class WoodBoomerang : IItem
+    public class WoodBoomerang : IGameObject, IItem
     {
         public int moveSpeed;
         public Vector2 Position { get; set; }
@@ -25,7 +25,8 @@ namespace Project1.Objects
             this.Position = position; // position here is link/enemy position + boomerang offset.
             this.initialPosition = position;
             this.moveSpeed = (maxRange * 2) / frames;
-            
+            boomerangSprite = SpriteFactory.Instance.CreateSprite("woodBoomerang");
+
             switch (this.direction)
             {
                 case Direction.Up:

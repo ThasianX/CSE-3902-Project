@@ -5,7 +5,7 @@ using Project1.Interfaces;
 
 namespace Project1.Objects
 {
-    public class WoodSword : IItem
+    public class WoodSword : IGameObject, IItem
     {
         public int moveSpeed;
         public Vector2 Position { get; set; }
@@ -25,22 +25,22 @@ namespace Project1.Objects
             switch (this.direction)
             {
                 case Direction.Up:
-                    swordSprite = SpriteFactory.Instance.CreateTileSprite(new WoodSwordUp());
+                    swordSprite = SpriteFactory.Instance.CreateSprite("woodSword_up");
                     this.deltaVector = new Vector2(0, -moveSpeed);
                     break;
 
                 case Direction.Right:
-                    swordSprite = SpriteFactory.Instance.CreateTileSprite(new WoodSwordRight());
+                    swordSprite = SpriteFactory.Instance.CreateSprite("woodSword_right");
                     this.deltaVector = new Vector2(moveSpeed, 0);
                     break;
 
                 case Direction.Down:
-                    swordSprite = SpriteFactory.Instance.CreateTileSprite(new WoodSwordDown());
+                    swordSprite = SpriteFactory.Instance.CreateSprite("woodSword_down");
                     this.deltaVector = new Vector2(0, moveSpeed);
                     break;
 
                 case Direction.Left:
-                    swordSprite = SpriteFactory.Instance.CreateTileSprite(new WoodSwordLeft());
+                    swordSprite = SpriteFactory.Instance.CreateSprite("woodSword_left");
                     this.deltaVector = new Vector2(-moveSpeed, 0);
                     break;
 
