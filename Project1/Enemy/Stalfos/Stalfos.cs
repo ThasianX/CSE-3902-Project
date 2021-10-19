@@ -12,6 +12,7 @@ namespace Project1.Enemy
         public float movingSpeed;
         private int choice;
         private Random rand = new Random();
+        public IHealthState stalfosHealthState;
         //private bool isLinkNearby;
 
         public Stalfos(Vector2 position)
@@ -27,6 +28,7 @@ namespace Project1.Enemy
                 case 3: state = new StalfosLeftMovingState(this); break;
             }
             movingSpeed = 1f;
+            stalfosHealthState = new StalfosHealthState(this, 100);
         }
 
         public void FireBallAttack()
@@ -47,11 +49,18 @@ namespace Project1.Enemy
             // Update the current state
             // Possible state: direction
             state.Update(gameTime);
+            stalfosHealthState.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             state.Draw(spriteBatch);
+            stalfosHealthState.Draw(spriteBatch);
+        }
+
+        public void TakeDamage(int damage)
+        {
+            stalfosHealthState.TakeDamage(damage);
         }
     }
 }

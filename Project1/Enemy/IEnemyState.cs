@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Project1
+namespace Project1.Enemy
 {
     public interface IEnemyState
     {
@@ -11,6 +11,9 @@ namespace Project1
         void BoomerangAttack();
         // Base on current direction, randomly change to a different direction
         void ChangeDirection();
+        // Base on the demage the enemy received, reduce the enemy health.
+        void TakeDamage();
+
         void Update(GameTime gameTime);
         void Draw(SpriteBatch spriteBatch);
     }

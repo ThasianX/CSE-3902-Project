@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Project1.Interfaces;
 
 namespace Project1.Enemy
 {
@@ -11,6 +12,7 @@ namespace Project1.Enemy
         public float movingSpeed;
         private int choice;
         private Random rand = new Random();
+        public IHealthState aquamentusHealthState;
         //private bool isLinkNearby;
 
         public Aquamentus(Vector2 position)
@@ -29,6 +31,8 @@ namespace Project1.Enemy
             }
 
             movingSpeed = 1f;
+
+            aquamentusHealthState = new AquamentusHealthState(this, 300);
         }
 
         public void FireBallAttack()
@@ -50,11 +54,18 @@ namespace Project1.Enemy
             // Update the current state
             // Possible state: direction, fireball attack
             state.Update(gameTime);
+            aquamentusHealthState.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             state.Draw(spriteBatch);
+            aquamentusHealthState.Draw(spriteBatch);
+        }
+
+        public void TakeDamage(int damage)
+        {
+            aquamentusHealthState.TakeDamage(damage);
         }
 
     }
