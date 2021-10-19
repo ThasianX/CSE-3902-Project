@@ -1,16 +1,18 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Project1.Interfaces;
 
 namespace Project1.Enemy
 {
-    public class RedGloriya : IEnemy
+    public class RedGloriya : IEnemy, ICollidable
     {
         public IEnemyState state;
         public Vector2 Position { get; set; }
         public float movingSpeed;
         private int choice;
         private Random rand = new Random();
+        public bool isMover => true;
         //private bool isLinkNearby;
 
         public RedGloriya(Vector2 position)
@@ -64,5 +66,9 @@ namespace Project1.Enemy
             state.Draw(spriteBatch);
         }
 
+        public Rectangle GetRectangle()
+        {
+            return new Rectangle((int)Position.X, (int)Position.Y, 14, 16);
+        }
     }
 }

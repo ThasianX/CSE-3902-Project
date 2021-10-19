@@ -1,19 +1,18 @@
-﻿using System;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Project1.Enemy;
+using Project1.Interfaces;
 
 namespace Project1.NPC
 {
-    public class OldMan : IEnemy
+    public class OldMan : IEnemy, ICollidable
     {
         public IEnemyState state;
         public Vector2 Position { get; set; }
-        private Vector2 startPosition;
+        public bool isMover => false;
         public OldMan(Vector2 position)
         {
             this.Position = position;
-            startPosition = position;
             state = new OldManStaticState(this);
         }
 
@@ -40,10 +39,9 @@ namespace Project1.NPC
             state.Draw(spriteBatch);
         }
 
-        // Only need this for Sprint 2
-        public void ResetPosition()
+        public Rectangle GetRectangle()
         {
-            Position = startPosition;
+            return new Rectangle((int)Position.X, (int)Position.Y, 16, 16);
         }
     }
 }

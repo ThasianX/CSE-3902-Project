@@ -1,5 +1,4 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using Project1.Interfaces;
+﻿using Project1.Interfaces;
 
 namespace Project1.Enemy
 {

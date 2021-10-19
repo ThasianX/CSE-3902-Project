@@ -1,16 +1,18 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Project1.Interfaces;
 
 namespace Project1.Enemy
 {
-    public class BlueBat : IEnemy
+    public class BlueBat : IEnemy, ICollidable
     {
         public IEnemyState state;
         public Vector2 Position { get; set; }
         public float movingSpeed;
         private int choice;
         private Random rand = new Random();
+        public bool isMover => true;
         //private bool isLinkNearby;
 
         public BlueBat(Vector2 position)
@@ -61,6 +63,11 @@ namespace Project1.Enemy
         public void Draw(SpriteBatch spriteBatch)
         {
             state.Draw(spriteBatch);
+        }
+
+        public Rectangle GetRectangle()
+        {
+            return new Rectangle((int)Position.X, (int)Position.Y, 12, 10);
         }
     }
 }

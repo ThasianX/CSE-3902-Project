@@ -5,10 +5,12 @@ using Project1.Interfaces;
 
 namespace Project1.Enemy
 {
-    public class Stalfos : IEnemy
+    public class Stalfos : IEnemy, ICollidable
     {
         public IEnemyState state;
         public Vector2 Position { get; set; }
+        public bool isMover => true;
+
         public float movingSpeed;
         private int choice;
         private Random rand = new Random();
@@ -52,6 +54,19 @@ namespace Project1.Enemy
         public void Draw(SpriteBatch spriteBatch)
         {
             state.Draw(spriteBatch);
+
+            // Visualize rectangle for testing
+            Rectangle rectangle = GetRectangle();
+            int lineWidth = 1;
+            spriteBatch.Draw(Game1.whiteRectangle, new Rectangle(rectangle.X, rectangle.Y, lineWidth, rectangle.Height + lineWidth), Color.Red);
+            spriteBatch.Draw(Game1.whiteRectangle, new Rectangle(rectangle.X, rectangle.Y, rectangle.Width + lineWidth, lineWidth), Color.Red);
+            spriteBatch.Draw(Game1.whiteRectangle, new Rectangle(rectangle.X + rectangle.Width, rectangle.Y, lineWidth, rectangle.Height + lineWidth), Color.Red);
+            spriteBatch.Draw(Game1.whiteRectangle, new Rectangle(rectangle.X, rectangle.Y + rectangle.Height, rectangle.Width + lineWidth, lineWidth), Color.Red);
+        }
+
+        public Rectangle GetRectangle()
+        {
+            return new Rectangle((int)Position.X, (int)Position.Y, 15, 16);
         }
     }
 }

@@ -5,10 +5,12 @@ using Project1.Interfaces;
 
 namespace Project1.Objects
 {
-    public class WoodBoomerang : IGameObject, IItem
+    public class WoodBoomerang : IItem, ICollidable
     {
         public int moveSpeed;
         public Vector2 Position { get; set; }
+        public bool isMover => true;
+
 
         //Distance Boomerang travels from Link
         private int maxRange = 150;
@@ -102,6 +104,11 @@ namespace Project1.Objects
                 default:
                     break;
             }
+        }
+
+        public Rectangle GetRectangle()
+        {
+            return new Rectangle((int)Position.X, (int)Position.Y, 16, 16);
         }
     }
 }
