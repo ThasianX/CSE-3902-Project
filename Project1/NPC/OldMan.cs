@@ -17,6 +17,19 @@ namespace Project1.NPC
             state = new OldManStaticState(this);
         }
 
+        public void FireBallAttack()
+        {
+        }
+
+        public void BoomerangAttack()
+        {
+        }
+
+        public void ChangeDirection()
+        {
+        }
+
+
         public void Update(GameTime gameTime)
         {
            // The old man do not update
