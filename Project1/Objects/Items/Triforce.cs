@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Project1.Interfaces;
 
-namespace Project1.Objects.Items
+namespace Project1.Objects
 {
     public class Triforce : IGameObject, IItem
     {

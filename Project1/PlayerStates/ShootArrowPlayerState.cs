@@ -24,22 +24,22 @@ namespace Project1.PlayerStates
             switch (player.facingDirection)
             {
                 case Direction.Up:
-                    sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkAttackUpAnimation());
+                    sprite = SpriteFactory.Instance.CreateSprite("player_attack_up");
                     this.arrow = new WoodArrow(player.Position + new Vector2(0, -arrowOffset), player.facingDirection, activeFrameCount);
                     break;
 
                 case Direction.Right:
-                    sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkAttackRightAnimation());
+                    sprite = SpriteFactory.Instance.CreateSprite("player_attack_right");
                     this.arrow = new WoodArrow(player.Position + new Vector2(arrowOffset, 0), player.facingDirection, activeFrameCount);
                     break;
 
                 case Direction.Down:
-                    sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkAttackDownAnimation());
+                    sprite = SpriteFactory.Instance.CreateSprite("player_attack_down"); ;
                     this.arrow = new WoodArrow(player.Position + new Vector2(0, arrowOffset), player.facingDirection, activeFrameCount);
                     break;
 
                 case Direction.Left:
-                    sprite = SpriteFactory.Instance.CreateAnimatedSprite(new LinkAttackLeftAnimation());
+                    sprite = SpriteFactory.Instance.CreateSprite("player_attack_left");
                     this.arrow = new WoodArrow(player.Position + new Vector2(-arrowOffset, 0), player.facingDirection, activeFrameCount);
                     break;
 
