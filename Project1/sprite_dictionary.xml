@@ -64,7 +64,4 @@
 	<wall_right>room/wall/dungeon/slot/wall/right/sprite</wall_right>
 	<wall_down>room/wall/dungeon/slot/wall/down/sprite</wall_down>
 	<plain_floor>floor/dungeon/plain/sprite</plain_floor>
-	<singleBlock_floor>floor/dungeon/singleBlock/sprite</singleBlock_floor>
-	<centralWall_floor>floor/dungeon/centralWall/sprite</centralWall_floor>
-	<fiveRow_floor>floor/dungeon/fiveRow/sprite</fiveRow_floor>
 </sprite_dictionary>
