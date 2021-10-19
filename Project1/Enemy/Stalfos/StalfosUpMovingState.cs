@@ -22,7 +22,7 @@ namespace Project1.Enemy
         {
             this.stalfos = stalfos;
             upMovingAnimation = new StalfosMovingAnimation();
-            sprite = SpriteFactory.Instance.CreateAnimatedSprite(upMovingAnimation);
+            sprite = SpriteFactory.Instance.CreateSprite("stalfos_walking");
             timer = 0;
             currentDirection = Direction.Up;
             deltaVector = new Vector2(0, -1);

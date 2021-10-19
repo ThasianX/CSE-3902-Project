@@ -59,6 +59,11 @@ namespace Project1
 
 			onReleaseMappings.Add(Keys.Q, new QuitCommand(myGame));
 			onReleaseMappings.Add(Keys.R, new ResetCommand(myGame));
+
+			//FIX THIS only for testing!!!
+			onReleaseMappings.Add(Keys.O, new EnemyCycleLeftCommand(myGame));
+			onReleaseMappings.Add(Keys.P, new EnemyCycleRightCommand(myGame));
+			/////////////////////////////////////
 		}
 
 		public void Update()

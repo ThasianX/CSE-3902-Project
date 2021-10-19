@@ -15,8 +15,8 @@ namespace Project1.Commands
         public void Execute()
         {
             // tight coupling, reference is now missing
-            //myGame.cyclableEnemy.ResetPosition();
-            //myGame.cyclableEnemy.CycleRight();
+            myGame.cyclableEnemy.ResetPosition();
+            myGame.cyclableEnemy.CycleRight();
         }
 
     }

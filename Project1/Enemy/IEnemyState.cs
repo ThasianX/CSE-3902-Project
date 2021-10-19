@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Project1.Enemy
+namespace Project1
 {
     public interface IEnemyState
     {

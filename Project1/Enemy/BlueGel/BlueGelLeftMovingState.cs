@@ -22,7 +22,7 @@ namespace Project1.Enemy
         {
             this.blueGel = blueGel;
             leftMovingAnimation = new BlueGelMovingAnimation();
-            sprite = SpriteFactory.Instance.CreateAnimatedSprite(leftMovingAnimation);
+            sprite = SpriteFactory.Instance.CreateSprite("BlueGel_walking");
             timer = 0;
             currentDirection = Direction.Left;
             deltaVector = new Vector2(-1, 0);
