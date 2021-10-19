@@ -22,10 +22,7 @@ namespace Project1
 
         private Vector2 position;
 
-        // FIX THIS!! ONLY for TESTING
-        private Vector2 enemyPosition;
-        private List<IEnemy> enemyList;
-        ///////////////////////////////////
+        
 
         private ArrayList controllerList;
 
@@ -59,13 +56,7 @@ namespace Project1
         void Setup()
         {
 
-            //FIX THIS ONLY FOR TESTING!!!
-            enemyList = new List<IEnemy> { new Stalfos(enemyPosition), new RedGloriya(enemyPosition),
-                        new BlueGel(enemyPosition), new BlueBat(enemyPosition), new Aquamentus(enemyPosition),
-                        new OldMan(enemyPosition)};
-            cyclableEnemy = new CyclableEnemy(enemyList);
-            GameObjectManager.Instance.Add(cyclableEnemy);
-            ////////////////////////////////////////////////
+            
 
             GameObjectManager.Instance.Add(new Player(position));
            
