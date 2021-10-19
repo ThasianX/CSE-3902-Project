@@ -38,7 +38,7 @@ namespace Project1
         protected override void Initialize()
         {
             position = new Vector2(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
-            enemyPosition = new Vector2(SCREEN_WIDTH / 4 * 3, SCREEN_HEIGHT / 4 * 3);
+            
 
             controllerList = new ArrayList
             {

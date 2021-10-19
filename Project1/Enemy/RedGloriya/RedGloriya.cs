@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Project1.Interfaces;
 
 namespace Project1.Enemy
 {
@@ -11,6 +12,7 @@ namespace Project1.Enemy
         public float movingSpeed;
         private int choice;
         private Random rand = new Random();
+        public IHealthState redGloriyaHealthState;
         //private bool isLinkNearby;
 
         public RedGloriya(Vector2 position)
@@ -35,6 +37,7 @@ namespace Project1.Enemy
             }
 
             movingSpeed = 1f;
+            redGloriyaHealthState = new RedGloriyaHealthState(this, 100);
         }
 
         public void FireBallAttack()
@@ -57,11 +60,18 @@ namespace Project1.Enemy
             // Update the current state
             // Possible state: direction, attack
             state.Update(gameTime);
+            redGloriyaHealthState.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             state.Draw(spriteBatch);
+            redGloriyaHealthState.Draw(spriteBatch);
+        }
+
+        public void TakeDamage(int damage)
+        {
+            redGloriyaHealthState.TakeDamage(damage);
         }
 
     }
