@@ -49,4 +49,22 @@
 	<BlueBat_woving>enemies/BlueBat/woving/sprite</BlueBat_woving>
 
 	<OldMan_standing>NPC/OldMan/standing/sprite</OldMan_standing>
+	
+	<dungeonWall>room/wall/dungeon/base/sprite</dungeonWall>
+	<openDoor_up>room/wall/dungeon/slot/openDoor/up/sprite</openDoor_up>
+	<openDoor_left>room/wall/dungeon/slot/openDoor/left/sprite</openDoor_left>
+	<openDoor_right>room/wall/dungeon/slot/openDoor/right/sprite</openDoor_right>
+	<openDoor_down>room/wall/dungeon/slot/openDoor/down/sprite</openDoor_down>
+	<lockedDoor_up>room/wall/dungeon/slot/lockedDoor/up/sprite</lockedDoor_up>
+	<lockedDoor_left>room/wall/dungeon/slot/lockedDoor/left/sprite</lockedDoor_left>
+	<lockedDoor_right>room/wall/dungeon/slot/lockedDoor/right/sprite</lockedDoor_right>
+	<lockedDoor_down>room/wall/dungeon/slot/lockedDoor/down/sprite</lockedDoor_down>
+	<wall_up>room/wall/dungeon/slot/wall/up/sprite</wall_up>
+	<wall_left>room/wall/dungeon/slot/wall/left/sprite</wall_left>
+	<wall_right>room/wall/dungeon/slot/wall/right/sprite</wall_right>
+	<wall_down>room/wall/dungeon/slot/wall/down/sprite</wall_down>
+	<plain_floor>floor/dungeon/plain/sprite</plain_floor>
+	<singleBlock_floor>floor/dungeon/singleBlock/sprite</singleBlock_floor>
+	<centralWall_floor>floor/dungeon/centralWall/sprite</centralWall_floor>
+	<fiveRow_floor>floor/dungeon/fiveRow/sprite</fiveRow_floor>
 </sprite_dictionary>
