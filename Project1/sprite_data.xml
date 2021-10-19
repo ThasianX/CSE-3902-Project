@@ -423,78 +423,7 @@
   </NPC>
 
   <items>
-	  <WoodBoomerang>
-		  <attacking>
-			  <sprite>
-				  <spritesheet>link_spritesheet</spritesheet>
-				  <dimensions>
-					  <height>16</height>
-					  <width>16</width>
-				  </dimensions>
-				  <time>0.5</time>
-				  <source_list>
-					  <source>
-						  <x>69</x>
-						  <y>285</y>
-					  </source>
-					  <source>
-						  <x>86</x>
-						  <y>285</y>
-					  </source>
-					  <source>
-						  <x>103</x>
-						  <y>285</y>
-					  </source>
-					  <source>
-						  <x>120</x>
-						  <y>285</y>
-					  </source>
-					  <source>
-						  <x>137</x>
-						  <y>285</y>
-					  </source>
-					  <source>
-						  <x>154</x>
-						  <y>285</y>
-					  </source>
-					  <source>
-						  <x>171</x>
-						  <y>285</y>
-					  </source>
-					  <source>
-						  <x>188</x>
-						  <y>285</y>
-					  </source>
-				  </source_list>
-			  </sprite>
-		  </attacking>
-	  </WoodBoomerang>
-	  <FireBall>
-		  <attacking>
-			  <sprite>
-				  <spritesheet>Enemy and Projectile</spritesheet>
-				  <dimensions>
-					  <height>8</height>
-					  <width>10</width>
-				  </dimensions>
-				  <time>0.5</time>
-				  <source_list>
-					  <source>
-						  <x>249</x>
-						  <y>62</y>
-					  </source>
-					  <source>
-						  <x>231</x>
-						  <y>62</y>
-					  </source>
-					  <source>
-						  <x>240</x>
-						  <y>62</y>
-					  </source>
-				  </source_list>
-			  </sprite>
-		  </attacking>
-	  </FireBall>
+	 
   </items>
 	
   <tiles>
