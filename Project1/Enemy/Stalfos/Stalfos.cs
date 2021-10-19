@@ -13,9 +13,6 @@ namespace Project1.Enemy
         public float movingSpeed;
         private int choice;
         private Random rand = new Random();
-        public SpriteBatch spriteBatch;
-        public Direction facingDirection;
-        public Vector2 movement;
         //private bool isLinkNearby;
 
         public Stalfos(Vector2 position)
