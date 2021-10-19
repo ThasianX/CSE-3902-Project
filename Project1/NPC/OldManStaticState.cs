@@ -17,7 +17,7 @@ namespace Project1.NPC
         {
             this.oldMan = oldMan;
             oldManStillAnimation = new OldManStillAnimation();
-            sprite = SpriteFactory.Instance.CreateAnimatedSprite(oldManStillAnimation);
+            sprite = SpriteFactory.Instance.CreateSprite("OldMan_standing");
         }
 
         public void FireBallAttack()

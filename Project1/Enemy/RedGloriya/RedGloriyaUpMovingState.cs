@@ -23,7 +23,7 @@ namespace Project1.Enemy
         {
             this.redGloriya = redGloriya;
             upMovingAnimation = new RedGloriyaUpMovingAnimation();
-            sprite = SpriteFactory.Instance.CreateAnimatedSprite(upMovingAnimation);
+            sprite = SpriteFactory.Instance.CreateSprite("RedGloriya_walking_up");
             currentDirection = Direction.Up;
             deltaVector = new Vector2(0, -1);
         }

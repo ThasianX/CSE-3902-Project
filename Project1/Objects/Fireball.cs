@@ -24,7 +24,7 @@ namespace Project1.Objects
             deltaVector = new Vector2(-1, 0);
             this.fireBalOffset = fireBalOffset;
             moveSpeed = (maxRange * 2) / frames;
-            fireBallSprite = SpriteFactory.Instance.CreateAnimatedSprite(new FireballAnimation());
+            fireBallSprite = SpriteFactory.Instance.CreateSprite("FireBall_attacking");
         }
 
         public void Update(GameTime gameTime)
