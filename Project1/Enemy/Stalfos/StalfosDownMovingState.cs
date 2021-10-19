@@ -9,7 +9,6 @@ namespace Project1.Enemy
     public class StalfosDownMovingState : IEnemyState
     {
         private Stalfos stalfos;
-        private IAnimation downMovingAnimation;
         private ISprite sprite;
         private int choice;
         private Random rand = new Random();
@@ -17,15 +16,16 @@ namespace Project1.Enemy
         // Could later used to assemble all the direction moving state
         private Direction currentDirection;
         private Vector2 deltaVector;
+        private int counter;
 
         public StalfosDownMovingState(Stalfos stalfos)
         {
             this.stalfos = stalfos;
-            downMovingAnimation = new StalfosMovingAnimation();
             sprite = SpriteFactory.Instance.CreateSprite("stalfos_walking");
             timer = 0;
             currentDirection = Direction.Down;
             deltaVector = new Vector2(0, 1);
+            counter = 30;
         }
 
         public void FireBallAttack()
@@ -55,7 +55,7 @@ namespace Project1.Enemy
         public void Update(GameTime gameTime)
         {
             timer++;
-            if (timer == downMovingAnimation.CycleLength)
+            if (timer == counter)
             {
                 ChangeDirection();
                 timer = 0;

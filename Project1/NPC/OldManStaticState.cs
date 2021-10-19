@@ -10,13 +10,11 @@ namespace Project1.NPC
     class OldManStaticState : IEnemyState
     {
         private OldMan oldMan;
-        private IAnimation oldManStillAnimation;
         private ISprite sprite;
 
         public OldManStaticState(OldMan oldMan)
         {
             this.oldMan = oldMan;
-            oldManStillAnimation = new OldManStillAnimation();
             sprite = SpriteFactory.Instance.CreateSprite("OldMan_standing");
         }
 

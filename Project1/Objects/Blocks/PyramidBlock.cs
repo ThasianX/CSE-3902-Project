@@ -5,11 +5,12 @@ using Project1.Interfaces;
 
 namespace Project1.Objects
 {
-    public class PyramidBlock : IGameObject, IBlock
+    public class PyramidBlock : IBlock, ICollidable
     {
         public Vector2 Position { get; set; }
 
         ISprite sprite;
+        public bool isMover => false;
 
         public PyramidBlock(Vector2 position)
         {
@@ -25,6 +26,11 @@ namespace Project1.Objects
         public void Update(GameTime gameTime)
         {
             sprite.Update(gameTime);
+        }
+
+        public Rectangle GetRectangle()
+        {
+            return new Rectangle((int)Position.X, (int)Position.Y, 16, 16);
         }
     }
 }

@@ -9,7 +9,6 @@ namespace Project1.Enemy
     public class BlueBatDownMovingState : IEnemyState
     {
         private BlueBat blueBat;
-        private IAnimation downMovingAnimation;
         private ISprite sprite;
         private int choice;
         private Random rand = new Random();
@@ -17,15 +16,16 @@ namespace Project1.Enemy
         // Could later used to assemble all the direction moving state
         private Direction currentDirection;
         private Vector2 deltaVector;
+        private int counter;
 
         public BlueBatDownMovingState(BlueBat blueBat)
         {
             this.blueBat = blueBat;
-            downMovingAnimation = new BlueBatMovingAnimation();
             sprite = SpriteFactory.Instance.CreateSprite("BlueBat_woving");
             timer = 0;
             currentDirection = Direction.Down;
             deltaVector = new Vector2(0, 1);
+            counter = 30;
         }
 
         public void FireBallAttack()
@@ -49,7 +49,7 @@ namespace Project1.Enemy
         public void Update(GameTime gameTime)
         {
             timer++;
-            if (timer == downMovingAnimation.CycleLength)
+            if (timer == counter)
             {
                 ChangeDirection();
                 timer = 0;

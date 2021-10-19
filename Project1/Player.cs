@@ -1,6 +1,5 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
-using System.Text;
 using Project1.Interfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -10,7 +9,7 @@ namespace Project1
 {
     // The movement behavor of this player is not the same as in the original Legend of Zelda.
     // It is based on the movement in Binding of Isaac: you can move any direction no matter which direction you are facing.
-    public class Player : IGameObject
+    public class Player : IGameObject, ICollidable
     {
         public Vector2 Position { get; set; }
 
@@ -22,6 +21,7 @@ namespace Project1
         public Direction facingDirection;
 
         public Vector2 movement;
+        public bool isMover => true;
 
         // Keeps track of which directional movement inputs are pressed
         public Dictionary<Direction, bool> activeMoveInputs = new Dictionary<Direction, bool>()
@@ -103,11 +103,23 @@ namespace Project1
         {
             state.Draw(spriteBatch);
             healthState.Draw(spriteBatch);
+            // Visualize rectangle for testing
+            Rectangle rectangle = GetRectangle();
+            int lineWidth = 1;
+            spriteBatch.Draw(Game1.whiteRectangle, new Rectangle(rectangle.X, rectangle.Y, lineWidth, rectangle.Height + lineWidth), Color.White);
+            spriteBatch.Draw(Game1.whiteRectangle, new Rectangle(rectangle.X, rectangle.Y, rectangle.Width + lineWidth, lineWidth), Color.White);
+            spriteBatch.Draw(Game1.whiteRectangle, new Rectangle(rectangle.X + rectangle.Width, rectangle.Y, lineWidth, rectangle.Height + lineWidth), Color.White);
+            spriteBatch.Draw(Game1.whiteRectangle, new Rectangle(rectangle.X, rectangle.Y + rectangle.Height, rectangle.Width + lineWidth, lineWidth), Color.White);
         }
 
         public void TakeDamage(int damage)
         {
             healthState.TakeDamage(damage);
+        }
+
+        public Rectangle GetRectangle()
+        {
+            return new Rectangle((int)Position.X, (int)Position.Y, 16, 16);
         }
     }
 }

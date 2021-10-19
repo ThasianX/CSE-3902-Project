@@ -10,8 +10,6 @@ namespace Project1.Enemy
     public class RedGloriyaBoomerangAttackState : IEnemyState
     {
         private RedGloriya redGloriya;
-        // RedGloriya current animation data will be determined by the direction passed in
-        private IAnimation currentAnimation;
         private ISprite sprite;
         // The direction passed in
         private Direction direction;
@@ -32,25 +30,21 @@ namespace Project1.Enemy
             switch (direction)
             {
                 case Direction.Up:
-                    currentAnimation = new RedGloriyaUpMovingAnimation();
                     sprite = SpriteFactory.Instance.CreateSprite("RedGloriya_walking_up");
                     this.boomerang = new WoodBoomerang(redGloriya.Position + new Vector2(0, -boomerangOffset), currentDirection, activeFrameCount);
                     break;
 
                 case Direction.Right:
-                    currentAnimation = new RedGloriyaRightMovingAnimation();
                     sprite = SpriteFactory.Instance.CreateSprite("RedGloriya_walking_right");
                     this.boomerang = new WoodBoomerang(redGloriya.Position + new Vector2(boomerangOffset, 0), currentDirection, activeFrameCount);
                     break;
 
                 case Direction.Down:
-                    currentAnimation = new RedGloriyaDownMovingAnimation();
                     sprite = SpriteFactory.Instance.CreateSprite("RedGloriya_walking_down");
                     this.boomerang = new WoodBoomerang(redGloriya.Position + new Vector2(0, boomerangOffset), currentDirection, activeFrameCount);
                     break;
 
                 case Direction.Left:
-                    currentAnimation = new RedGloriyaLeftMovingAnimation();
                     sprite = SpriteFactory.Instance.CreateSprite("RedGloriya_walking_left");
                     this.boomerang = new WoodBoomerang(redGloriya.Position + new Vector2(-boomerangOffset, 0), currentDirection, activeFrameCount);
                     break;

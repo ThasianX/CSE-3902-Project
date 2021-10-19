@@ -1,5 +1,4 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using Project1.Interfaces;
+﻿using Project1.Interfaces;
 
 namespace Project1.Enemy
 {
@@ -8,5 +7,6 @@ namespace Project1.Enemy
         public void FireBallAttack();
         public void BoomerangAttack();
         public void ChangeDirection();
+        public void TakeDamage(int damage);
     }
 }
