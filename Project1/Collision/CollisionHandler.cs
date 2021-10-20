@@ -19,6 +19,11 @@ namespace Project1.Collision
 
         public void CollisionDebug(ICollidable target, ICollidable source, Direction targetCollisionSide)
         {
+            if (target is IPlayer)
+            {
+                IPlayer player = target as IPlayer;
+                player.TakeDamage(5);
+            }
             // Might be helpful for handler to determine the Collider type
             CheckTargetType(target);
             CheckSourceType(source);

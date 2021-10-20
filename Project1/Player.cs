@@ -22,6 +22,8 @@ namespace Project1
 
         public Vector2 movement;
         public bool isMover => true;
+        private int immuneTime = 30;
+        private int immnueTimeCounter;
 
         // Keeps track of which directional movement inputs are pressed
         public Dictionary<Direction, bool> activeMoveInputs = new Dictionary<Direction, bool>()
@@ -96,13 +98,23 @@ namespace Project1
         public void Update(GameTime gameTime)
         {
             state.Update(gameTime);
-            healthState.Update(gameTime);
+            // Update immnueTimeCounter
+            if (Immune())
+            {
+                immnueTimeCounter--;
+            }
+            else
+            {
+                healthState.Update(gameTime);
+            }
+           
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             state.Draw(spriteBatch);
             healthState.Draw(spriteBatch);
+
             // Visualize rectangle for testing
             Rectangle rectangle = GetRectangle();
             int lineWidth = 1;
@@ -112,9 +124,21 @@ namespace Project1
             spriteBatch.Draw(Game1.whiteRectangle, new Rectangle(rectangle.X, rectangle.Y + rectangle.Height, rectangle.Width + lineWidth, lineWidth), Color.White);
         }
 
+        // determine if player can take damage
+        public bool Immune()
+        {
+            return immnueTimeCounter > 0;
+        }
+
         public void TakeDamage(int damage)
         {
-            healthState.TakeDamage(damage);
+            // player can take damage only not immune
+            if (!Immune())
+            {
+                immnueTimeCounter = immuneTime;
+                healthState.TakeDamage(damage);
+            }
+            
         }
 
         public Rectangle GetRectangle()
