@@ -9,7 +9,6 @@ namespace Project1.Enemy
     public class AquamentusLeftMovingState : IEnemyState
     {
         private Aquamentus aquamentus;
-        private IAnimation leftMovingAnimation;
         private ISprite sprite;
         private int timer;
         // Could later used to assemble all the direction moving state
@@ -17,16 +16,17 @@ namespace Project1.Enemy
         private Vector2 deltaVector;
         private Random rand = new Random();
         private int choice;
+        private int counter;
 
         public AquamentusLeftMovingState(Aquamentus aquamentus)
         {
             this.aquamentus = aquamentus;
-            leftMovingAnimation = new AquamentusMovingAnimation();
             sprite = SpriteFactory.Instance.CreateSprite("aquamentus_walking");
             timer = 0;
             // All direction for Aquamentus is facing left
             currentDirection = Direction.Left;
             deltaVector = new Vector2(-1, 0);
+            counter = 30;
         }
 
         public void FireBallAttack()
@@ -45,7 +45,7 @@ namespace Project1.Enemy
         public void Update(GameTime gameTime)
         {
             timer++;
-            if (timer == leftMovingAnimation.CycleLength)
+            if (timer == counter)
             {
                 // 1/3 chance to do a FireBallAttack
                 choice = rand.Next(4);

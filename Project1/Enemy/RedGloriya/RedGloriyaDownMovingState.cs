@@ -9,8 +9,6 @@ namespace Project1.Enemy
     public class RedGloriyaDownMovingState : IEnemyState
     {
         private RedGloriya redGloriya;
-        // RedGloriya Down Moving animation data
-        private IAnimation downMovingAnimation;
         private ISprite sprite;
         // Down moving state, so Direction.Down
         private Direction currentDirection;
@@ -18,14 +16,15 @@ namespace Project1.Enemy
         private Random rand = new Random();
         private int choice;
         private int timer;
+        private int counter;
 
         public RedGloriyaDownMovingState(RedGloriya redGloriya)
         {
             this.redGloriya = redGloriya;
-            downMovingAnimation = new RedGloriyaDownMovingAnimation();
             sprite = SpriteFactory.Instance.CreateSprite("RedGloriya_walking_down");
             currentDirection = Direction.Down;
             deltaVector = new Vector2(0, 1);
+            counter = 30;
         }
 
         public void FireBallAttack()
@@ -53,7 +52,7 @@ namespace Project1.Enemy
         public void Update(GameTime gameTime)
         {
             // When complete an animation cycle length, make a choice
-            if (timer++ == downMovingAnimation.CycleLength)
+            if (timer++ == counter)
             {
                 // 1/4 chance to do a BoomerangAttack
                 choice = rand.Next(4);

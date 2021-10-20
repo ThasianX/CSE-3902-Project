@@ -5,10 +5,12 @@ using Project1.Interfaces;
 
 namespace Project1.Objects
 {
-    public class WoodArrow : IGameObject, IItem
+    public class WoodArrow : IItem, ICollidable
     {
         public int moveSpeed;
         public Vector2 Position { get; set; }
+        public bool isMover => true;
+
 
         //Distance Arrow travels from Link
         private int maxRange = 250;
@@ -57,6 +59,11 @@ namespace Project1.Objects
         public void Update(GameTime gameTime)
         {
             this.Position += this.deltaVector;
+        }
+
+        public Rectangle GetRectangle()
+        {
+            return new Rectangle((int)Position.X, (int)Position.Y, 16, 16);
         }
     }
 }

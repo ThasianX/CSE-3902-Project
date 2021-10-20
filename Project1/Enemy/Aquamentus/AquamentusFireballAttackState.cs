@@ -10,8 +10,6 @@ namespace Project1.Enemy
     public class AquamentusFireballAttackState : IEnemyState
     {
         private Aquamentus aquamentus;
-        // Aquamentus current animation data will be determined by the direction passed in
-        private IAnimation currentAnimation;
         private ISprite sprite;
         // The Fireball instance used for Update and Draw
         private Fireball fireballOne;
@@ -28,7 +26,6 @@ namespace Project1.Enemy
         public AquamentusFireballAttackState(Aquamentus aquamentus)
         {
             this.aquamentus = aquamentus;
-            currentAnimation = new AquamentusMovingAnimation();
             sprite = SpriteFactory.Instance.CreateSprite("aquamentus_walking");
             fireballOne = new Fireball(aquamentus.Position + new Vector2(fireballOffset, 0), new Vector2(0,-1), activeFrameCount);
             fireballTwo = new Fireball(aquamentus.Position + new Vector2(fireballOffset, 0), new Vector2(0,0), activeFrameCount);

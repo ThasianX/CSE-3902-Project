@@ -5,10 +5,11 @@ using Project1.Interfaces;
 
 namespace Project1.Objects
 {
-    public class Fireball : IGameObject, IItem
+    public class Fireball : IItem, ICollidable
     {
         public int moveSpeed;
         public Vector2 Position { get; set; }
+        public bool isMover => true;
 
         // Distance Fireball travels from Aquamentus
         private int maxRange = 250;
@@ -36,6 +37,11 @@ namespace Project1.Objects
         public void Draw(SpriteBatch spriteBatch)
         {
             fireBallSprite.Draw(spriteBatch, Position);
+        }
+
+        public Rectangle GetRectangle()
+        {
+            return new Rectangle((int)Position.X, (int)Position.Y, 8, 10);
         }
     }
 }

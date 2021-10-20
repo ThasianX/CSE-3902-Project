@@ -5,13 +5,14 @@ using Project1.Interfaces;
 
 namespace Project1.Enemy
 {
-    public class Aquamentus : IEnemy
+    public class Aquamentus : IEnemy, ICollidable
     {
         public IEnemyState state;
         public Vector2 Position { get; set; }
         public float movingSpeed;
         private int choice;
         private Random rand = new Random();
+        public bool isMover => true;
         public IHealthState aquamentusHealthState;
         //private bool isLinkNearby;
 
@@ -66,6 +67,11 @@ namespace Project1.Enemy
         public void TakeDamage(int damage)
         {
             aquamentusHealthState.TakeDamage(damage);
+        }
+
+        public Rectangle GetRectangle()
+        {
+            return new Rectangle((int)Position.X, (int)Position.Y, 24, 32);
         }
 
     }

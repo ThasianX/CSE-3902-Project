@@ -5,13 +5,14 @@ using Project1.Interfaces;
 
 namespace Project1.Enemy
 {
-    public class BlueGel : IEnemy
+    public class BlueGel : IEnemy, ICollidable
     {
         public IEnemyState state;
         public Vector2 Position { get; set; }
         public float movingSpeed;
         private int choice;
         private Random rand = new Random();
+        public bool isMover => true;
         public IHealthState blueGelHealthState;
         //private bool isLinkNearby;
 
@@ -71,6 +72,11 @@ namespace Project1.Enemy
         public void TakeDamage(int damage)
         {
             blueGelHealthState.TakeDamage(damage);
+        }
+
+        public Rectangle GetRectangle()
+        {
+            return new Rectangle((int)Position.X, (int)Position.Y, 9, 9);
         }
     }
 }

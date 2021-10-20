@@ -11,8 +11,6 @@ namespace Project1.Enemy
         void BoomerangAttack();
         // Base on current direction, randomly change to a different direction
         void ChangeDirection();
-        // Base on the demage the enemy received, reduce the enemy health.
-        void TakeDamage();
 
         void Update(GameTime gameTime);
         void Draw(SpriteBatch spriteBatch);

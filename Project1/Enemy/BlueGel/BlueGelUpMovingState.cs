@@ -9,7 +9,6 @@ namespace Project1.Enemy
     public class BlueGelUpMovingState : IEnemyState
     {
         private BlueGel blueGel;
-        private IAnimation upMovingAnimation;
         private ISprite sprite;
         private int choice;
         private Random rand = new Random();
@@ -17,15 +16,16 @@ namespace Project1.Enemy
         // Could later used to assemble all the direction moving state
         private Direction currentDirection;
         private Vector2 deltaVector;
+        private int counter;
 
         public BlueGelUpMovingState(BlueGel blueGel)
         {
             this.blueGel = blueGel;
-            upMovingAnimation = new BlueGelMovingAnimation();
             sprite = SpriteFactory.Instance.CreateSprite("BlueGel_walking");
             timer = 0;
             currentDirection = Direction.Up;
             deltaVector = new Vector2(0, -1);
+            counter = 30;
         }
 
         public void FireBallAttack()
@@ -50,7 +50,7 @@ namespace Project1.Enemy
         public void Update(GameTime gameTime)
         {
             timer++;
-            if (timer == upMovingAnimation.CycleLength)
+            if (timer == counter)
             {
                 ChangeDirection();
                 timer = 0;
