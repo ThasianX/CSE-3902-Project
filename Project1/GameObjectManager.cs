@@ -69,5 +69,35 @@ namespace Project1
 
             return list;
         }
+
+        // return a list of ICollidable that is also a mover
+        public List<ICollidable> GetMoverList()
+        {
+            List<ICollidable> movers = new List<ICollidable>();
+            foreach (ICollidable obj in gameObjects)
+            {
+                if (obj.isMover)
+                {
+                    movers.Add(obj);
+                }
+            }
+
+            return movers;
+        }
+
+        // return a list of ICollidable that is not a mover
+        public List<ICollidable> GetStaticList()
+        {
+            List<ICollidable> statics = new List<ICollidable>();
+            foreach (ICollidable obj in gameObjects)
+            {
+                if (!obj.isMover)
+                {
+                    statics.Add(obj);
+                }
+            }
+
+            return statics;
+        }
     }
 }
