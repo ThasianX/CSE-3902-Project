@@ -8,11 +8,11 @@ namespace Project1.Commands
 {
     class PlayerBombAttackCommand : ICommand
     {
-        Game1 game;
+        Player player;
 
-        public PlayerBombAttackCommand(Game1 game)
+        public PlayerBombAttackCommand(Player player)
         {
-            this.game = game;
+            this.player = player;
         }
 
         public void Execute()
