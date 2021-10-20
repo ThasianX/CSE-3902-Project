@@ -22,7 +22,7 @@ namespace Project1
 
         public Vector2 movement;
         public bool isMover => true;
-        private int immuneTime = 30;
+        private int immuneTime = 60;
         private int immnueTimeCounter;
 
         // Keeps track of which directional movement inputs are pressed
@@ -40,11 +40,7 @@ namespace Project1
         {
             this.Position = position;
             this.movement = new Vector2(0, 0);
-
-
             facingDirection = Direction.Down;
-
-
             // Set entry state
             state = new StillPlayerState(this);
             healthState = new HealthState(this, 100);
@@ -98,16 +94,16 @@ namespace Project1
         public void Update(GameTime gameTime)
         {
             state.Update(gameTime);
-            // Update immnueTimeCounter
-            if (Immune())
-            {
-                immnueTimeCounter--;
-            }
-            else
+            // When takeDamage is called, update once and wait for Immune to be false
+            if (Immune() && immnueTimeCounter == immuneTime)
             {
                 healthState.Update(gameTime);
+                immnueTimeCounter--;
             }
-           
+            else if(Immune())
+            {
+                immnueTimeCounter --;
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -138,7 +134,6 @@ namespace Project1
                 immnueTimeCounter = immuneTime;
                 healthState.TakeDamage(damage);
             }
-            
         }
 
         public Rectangle GetRectangle()
