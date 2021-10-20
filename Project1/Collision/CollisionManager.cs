@@ -73,18 +73,7 @@ namespace Project1.Collision
                 handler.HandleCollision(target, source, targetCollisionSide);
             }
         }
-
-        //public ICollidable Add()
-        //{
-
-        //}
-
-        //public ICollidable Delete()
-        //{
-
-        //}
-
-
+        
         public void Update()
         {
             GeneralCollisionDetection();

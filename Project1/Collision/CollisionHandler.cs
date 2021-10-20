@@ -14,10 +14,10 @@ namespace Project1.Collision
 
         public void HandleCollision(ICollidable target, ICollidable source, Direction CollisionSide)
         {
-            ICheckCollision(target, source, CollisionSide); // display debug message to check collision
+            CollisionDebug(target, source, CollisionSide); // display debug message to check collision
         }
 
-        public void ICheckCollision(ICollidable target, ICollidable source, Direction targetCollisionSide)
+        public void CollisionDebug(ICollidable target, ICollidable source, Direction targetCollisionSide)
         {
             // Might be helpful for handler to determine the Collider type
             CheckTargetType(target);
