@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
+using Project1.Enemy;
 using Project1.Interfaces;
+using Project1.PlayerStates;
 
 namespace Project1.Collision
 {
@@ -79,6 +81,9 @@ namespace Project1.Collision
 
         public void CheckCollision(ICollidable mover, ICollidable collider, Direction moverCollisionSide)
         {
+            // Might be helpful for handler to determine the Collider type
+            CheckMoverType(mover);
+            CheckColliderType(collider);
             if (collider.isMover)
             {
                 Console.WriteLine($"Collision happened between mover and mover, mover get collision from {moverCollisionSide}");
@@ -88,6 +93,55 @@ namespace Project1.Collision
                 Console.WriteLine($"Collision happened between mover and non-mover, mover get collision from {moverCollisionSide}");
             }
         }
+
+        private void CheckColliderType(ICollidable obj)
+        {
+            IEnemy enemy = obj as IEnemy;
+            IBlock block = obj as IBlock;
+            IPlayer link = obj as IPlayer;
+            IItem item = obj as IItem;
+            if (enemy != null)
+            {
+                Console.WriteLine("Collider is enemy");
+            }
+
+            if (link != null)
+            {
+                Console.WriteLine("Collider is link");
+            }
+
+            if (block != null)
+            {
+                Console.WriteLine("Collider is block");
+            }
+
+            if (item != null)
+            {
+                Console.WriteLine("Collider is item");
+            }
+        }
+
+        private void CheckMoverType(ICollidable obj)
+        {
+            IEnemy enemy = obj as IEnemy;
+            IPlayer link = obj as IPlayer;
+            IItem weapon = obj as IItem;
+            if (enemy != null)
+            {
+                Console.WriteLine("Mover is enemy");
+            }
+
+            if (link != null)
+            {
+                Console.WriteLine("Mover is link");
+            }
+
+            if (weapon != null)
+            {
+                Console.WriteLine("Mover is weapon or projectile");
+            }
+        }
+
 
         public void HandleCollision(ICollidable mover, ICollidable collider, Direction moverCollisionSide)
         {

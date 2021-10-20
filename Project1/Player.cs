@@ -9,7 +9,7 @@ namespace Project1
 {
     // The movement behavor of this player is not the same as in the original Legend of Zelda.
     // It is based on the movement in Binding of Isaac: you can move any direction no matter which direction you are facing.
-    public class Player : IGameObject, ICollidable
+    public class Player : IPlayer, ICollidable
     {
         public Vector2 Position { get; set; }
 
