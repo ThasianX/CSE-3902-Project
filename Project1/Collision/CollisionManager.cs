@@ -1,38 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
-using Project1.Enemy;
 using Project1.Interfaces;
-using Project1.PlayerStates;
 
 namespace Project1.Collision
 {
     public class CollisionManager
     {
-        private List<ICollidable> movers;
-        private List<ICollidable> colliders;
         private GameObjectManager manager;
+        private CollisionHandler handler;
 
         public CollisionManager(GameObjectManager manager)
         {
             this.manager = manager;
-            colliders = manager.GetObjectsOfType<ICollidable>();
-            movers = GetMovers(colliders);
-        }
-
-        // return the ICollidable that is also a mover
-        public List<ICollidable> GetMovers(List<ICollidable> colliders)
-        {
-            List<ICollidable> movers = new List<ICollidable>();
-            foreach (var collider in colliders)
-            {
-                if (collider.isMover)
-                {
-                    movers.Add(collider);
-                }
-            }
-
-            return movers;
+            handler = new CollisionHandler();
         }
 
         public Direction GetMoverCollisionSide(Rectangle target, Rectangle source)
@@ -58,99 +38,56 @@ namespace Project1.Collision
         //}
         
 
-        public void CollisionDetection()
+        public void GeneralCollisionDetection()
         {
-            foreach (ICollidable mover in movers)
+            // update movers and statics each update
+
+            // movers is a list that only contains movers 
+            List<ICollidable> movers = manager.GetMoverList();
+            // statics is a different list that only contains non-movers
+            List<ICollidable> statics = manager.GetStaticList();
+
+            for (int i = 0; i < movers.Count; i++)
             {
-                foreach (ICollidable collider in colliders)
+                // In this way, when A collide with B, we don't need to check B collide with A
+                for (int j = i + 1; j < movers.Count; j++)
                 {
-                    if (!mover.Equals(collider))
-                    {
-                        Rectangle target = mover.GetRectangle();
-                        Rectangle source = collider.GetRectangle();
-                        if (target.Intersects(source))
-                        {
-                            Direction moverCollisionSide = GetMoverCollisionSide(target, source);
-                            CheckCollision(mover, collider, moverCollisionSide); // display debug message to check collision
-                            HandleCollision(mover, collider, moverCollisionSide);
-                        }
-                    }
+                    CheckCollision(movers[i], movers[j]);
+                }
+                // Check mover, non-mover collision separately
+                for (int k = 0; k < statics.Count; k++)
+                {
+                    CheckCollision(movers[i], statics[k]);
                 }
             }
         }
 
-        public void CheckCollision(ICollidable mover, ICollidable collider, Direction moverCollisionSide)
+        public void CheckCollision(ICollidable target, ICollidable source)
         {
-            // Might be helpful for handler to determine the Collider type
-            CheckMoverType(mover);
-            CheckColliderType(collider);
-            if (collider.isMover)
+            Rectangle targetRec = target.GetRectangle();
+            Rectangle sourceRec = source.GetRectangle();
+            if (targetRec.Intersects(sourceRec))
             {
-                Console.WriteLine($"Collision happened between mover and mover, mover get collision from {moverCollisionSide}");
-            }
-            else
-            {
-                Console.WriteLine($"Collision happened between mover and non-mover, mover get collision from {moverCollisionSide}");
+                Direction targetCollisionSide = GetMoverCollisionSide(targetRec, sourceRec);
+                // CollisionHandler will handle collision resolution
+                handler.HandleCollision(target, source, targetCollisionSide);
             }
         }
 
-        private void CheckColliderType(ICollidable obj)
-        {
-            IEnemy enemy = obj as IEnemy;
-            IBlock block = obj as IBlock;
-            IPlayer link = obj as IPlayer;
-            IItem item = obj as IItem;
-            if (enemy != null)
-            {
-                Console.WriteLine("Collider is enemy");
-            }
+        //public ICollidable Add()
+        //{
 
-            if (link != null)
-            {
-                Console.WriteLine("Collider is link");
-            }
+        //}
 
-            if (block != null)
-            {
-                Console.WriteLine("Collider is block");
-            }
+        //public ICollidable Delete()
+        //{
 
-            if (item != null)
-            {
-                Console.WriteLine("Collider is item");
-            }
-        }
+        //}
 
-        private void CheckMoverType(ICollidable obj)
-        {
-            IEnemy enemy = obj as IEnemy;
-            IPlayer link = obj as IPlayer;
-            IItem weapon = obj as IItem;
-            if (enemy != null)
-            {
-                Console.WriteLine("Mover is enemy");
-            }
-
-            if (link != null)
-            {
-                Console.WriteLine("Mover is link");
-            }
-
-            if (weapon != null)
-            {
-                Console.WriteLine("Mover is weapon or projectile");
-            }
-        }
-
-
-        public void HandleCollision(ICollidable mover, ICollidable collider, Direction moverCollisionSide)
-        {
-
-        }
 
         public void Update()
         {
-            CollisionDetection();
+            GeneralCollisionDetection();
         }
     }
 }
