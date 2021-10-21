@@ -14,6 +14,8 @@ namespace Project1.Enemy
         private Random rand = new Random();
         public bool isMover => true;
         public IHealthState aquamentusHealthState;
+        private int immuneTime = 60;
+        private int immnueTimeCounter;
         //private bool isLinkNearby;
 
         public Aquamentus(Vector2 position)
@@ -55,7 +57,22 @@ namespace Project1.Enemy
             // Update the current state
             // Possible state: direction, fireball attack
             state.Update(gameTime);
-            aquamentusHealthState.Update(gameTime);
+            // When damage taked, update only after the immune time is passed
+            if (Immune() && immnueTimeCounter == immuneTime)
+            {
+                aquamentusHealthState.Update(gameTime);
+                immnueTimeCounter--;
+            }
+            else if (Immune())
+            {
+                immnueTimeCounter--;
+            }
+        }
+
+        // determine if enemy can take damage
+        public bool Immune()
+        {
+            return immnueTimeCounter > 0;
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -66,7 +83,11 @@ namespace Project1.Enemy
 
         public void TakeDamage(int damage)
         {
-            aquamentusHealthState.TakeDamage(damage);
+            if (!Immune())
+            {
+                immnueTimeCounter = immuneTime;
+                aquamentusHealthState.TakeDamage(damage);
+            }
         }
 
         public Rectangle GetRectangle()
