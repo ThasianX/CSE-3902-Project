@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework;
 using Project1.Interfaces;
 
-namespace Project1.Collision
+namespace Project1
 {
     public class CollisionManager
     {
@@ -13,14 +13,15 @@ namespace Project1.Collision
             this.manager = manager;
         }
 
-        public Direction GetMoverCollisionSide(Rectangle target, Rectangle source)
+        public Direction GetIntersectionSide(Rectangle target, Rectangle source)
         {
             float dx = target.Center.X - source.Center.X;
             float dy = target.Center.Y - source.Center.Y;
             Direction xSide = dx > 0 ? Direction.Left : Direction.Right; // if dx < 0, which means source is on target's right side, then target must get collision from right side.
             Direction ySide = dy > 0 ? Direction.Up : Direction.Down; // if dy < 0, which means source is on target's down(button) side, then target must get collision from down side.
             Rectangle intersection = Rectangle.Intersect(target, source);
-            return intersection.Height > intersection.Width ? xSide : ySide; 
+
+            return intersection.Height > intersection.Width ? xSide : ySide;
         }
 
         //private Direction GetOppositeDirection(Direction direction)
@@ -66,9 +67,17 @@ namespace Project1.Collision
             Rectangle sourceRec = source.GetRectangle();
             if (targetRec.Intersects(sourceRec))
             {
-                Direction targetCollisionSide = GetMoverCollisionSide(targetRec, sourceRec);
+                Collision col = new Collision();
+
+                col.target = target;
+                col.source = source;
+
+                col.side = GetIntersectionSide(targetRec, sourceRec);
+
+                col.intersection = Rectangle.Intersect(targetRec, sourceRec);
+
                 // CollisionHandler will handle collision resolution
-                CollisionHandler.Instance.HandleCollision(target, source, targetCollisionSide);
+                CollisionHandler.Instance.HandleCollision(col);
             }
         }
         

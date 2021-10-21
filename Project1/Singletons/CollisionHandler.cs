@@ -6,7 +6,7 @@ using Project1.PlayerStates;
 using System.Reflection;
 using System.Collections.Generic;
 
-namespace Project1.Collision
+namespace Project1
 {
     public class CollisionHandler
     {
@@ -26,25 +26,24 @@ namespace Project1.Collision
 
         }
 
-        public void HandleCollision(ICollidable target, ICollidable source, Direction collisionSide)
+        public void HandleCollision(Collision col)
         {
-            CollisionDebug(target, source, collisionSide); // display debug message to check collision
+            CollisionDebug(col.target, col.source, col.side); // display debug message to check collision
 
             Console.WriteLine(Type.GetType("Project1.Player"));
             // retrieve the response corresponding to the two colliding objects
-            XElement response = responseData.Element(source.CollisionType).Element(target.CollisionType);
+            XElement response = responseData.Element(col.target.CollisionType).Element(col.source.CollisionType);
 
             foreach (XElement command in response.Elements("command"))
             {
                 // Get the type of the command object
                 Type commandType = Type.GetType(command.Attribute("type").Value);
 
-
                 List<object> args = new List<object>();
 
                 foreach (XElement arg in command.Elements("arg"))
                 {
-                    args.Add(parseArg(arg, target, source, collisionSide));
+                    args.Add(parseArg(arg, col));
                 }
 
                 ConstructorInfo constructor = commandType.GetConstructor(getTypes(args.ToArray()));
@@ -56,7 +55,7 @@ namespace Project1.Collision
 
         }
 
-        private object parseArg(XElement arg, ICollidable target, ICollidable source, Direction collisionSide)
+        private object parseArg(XElement arg, Collision col)
         {
             object obj = new object();
 
@@ -88,13 +87,19 @@ namespace Project1.Collision
                 switch (argValue)
                 {
                     case "SOURCE":
-                        obj = source;
+                        obj = col.source;
                         break;
                     case "TARGET":
-                        obj = target;
+                        obj = col.target;
                         break;
                     case "DIRECTION":
-                        obj = collisionSide;
+                        obj = col.side;
+                        break;
+                    case "INTERSECTION":
+                        obj = col.intersection;
+                        break;
+                    case "COLLISION":
+                        obj = col;
                         break;
                     default:
                         obj = null;

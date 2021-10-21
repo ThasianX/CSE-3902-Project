@@ -2,7 +2,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Project1.Collision;
 using Project1.Controllers;
 using Project1.Enemy;
 using Project1.Interfaces;
@@ -57,6 +56,7 @@ namespace Project1
             GameObjectManager.Instance.Add(new Player(position));
             GameObjectManager.Instance.Add(new Stalfos(enemyPosition));
             GameObjectManager.Instance.Add(new LadderBlock(blockPosition));
+
         }
 
         protected override void LoadContent()

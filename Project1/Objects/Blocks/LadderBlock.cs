@@ -11,7 +11,7 @@ namespace Project1.Objects
 
         ISprite sprite;
         public bool IsMover => false;
-        public string CollisionType => "Ladder";
+        public string CollisionType => "Block";
 
         public LadderBlock(Vector2 position)
         {
