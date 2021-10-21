@@ -6,11 +6,19 @@ namespace Project1
 {
     public class CollisionManager
     {
-        private GameObjectManager manager;
+        private static CollisionManager instance = new CollisionManager();
 
-        public CollisionManager(GameObjectManager manager)
+        public static CollisionManager Instance
         {
-            this.manager = manager;
+            get
+            {
+                return instance;
+            }
+        }
+
+        public CollisionManager()
+        {
+
         }
 
         public Direction GetIntersectionSide(Rectangle target, Rectangle source)
@@ -42,9 +50,9 @@ namespace Project1
             // update movers and statics each update
 
             // movers is a list that only contains movers 
-            List<ICollidable> movers = manager.GetMoverList();
+            List<ICollidable> movers = GameObjectManager.Instance.GetMoverList();
             // statics is a different list that only contains non-movers
-            List<ICollidable> statics = manager.GetStaticList();
+            List<ICollidable> statics = GameObjectManager.Instance.GetStaticList();
 
             for (int i = 0; i < movers.Count; i++)
             {

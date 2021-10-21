@@ -71,7 +71,6 @@ namespace Project1
             CollisionHandler.Instance.LoadResponseData("Data/collision_response.xml");
 
             Setup();
-            collisionManager = new CollisionManager(GameObjectManager.Instance);
             // Visualize rectangle for testing
             whiteRectangle = new Texture2D(GraphicsDevice, 1, 1);
             whiteRectangle.SetData(new[] { Color.White });
@@ -88,7 +87,7 @@ namespace Project1
             }
 
             GameObjectManager.Instance.UpdateObjects(gameTime);
-            collisionManager.Update();
+            CollisionManager.Instance.Update();
             base.Update(gameTime);
         }
 
