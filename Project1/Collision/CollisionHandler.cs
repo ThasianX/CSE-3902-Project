@@ -69,13 +69,13 @@ namespace Project1.Collision
                 
                 switch (argTypeName)
                 {
-                    case "int":
+                    case "System.Int32":
                         obj = int.Parse(argValue);
                         break;
-                    case "float":
+                    case "System.Single":
                         obj = float.Parse(argValue);
                         break;
-                    case "bool":
+                    case "System.Boolean":
                         obj = bool.Parse(argValue);
                         break;
                     default:

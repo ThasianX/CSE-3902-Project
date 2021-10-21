@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <!--use "SOURCE", "TARGET", and "DIRECTION" as arguments for command constructors -->
+<!-- type names must including the namespace! (note: primitive type names are not the same as their keywords.) -->
 <collision_response>
   <Player>
     <Player>
@@ -10,6 +11,7 @@
     <Enemy>
       <command type="Project1.Commands.PlayerTakeDamageCommand">
         <arg type="Project1.Player">SOURCE</arg>
+        <arg type="System.Int32">5</arg>
       </command>
     </Enemy>
     <Block>
@@ -22,6 +24,7 @@
     <Player>
       <command type="Project1.Commands.PlayerTakeDamageCommand">
         <arg type="Project1.Player">TARGET</arg>
+        <arg type="System.Int32">5</arg>
       </command>
     </Player>
   </Enemy>
