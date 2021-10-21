@@ -14,6 +14,8 @@ namespace Project1.Enemy
         private Random rand = new Random();
         public bool isMover => true;
         public IHealthState redGloriyaHealthState;
+        private int immuneTime = 60;
+        private int immnueTimeCounter;
         //private bool isLinkNearby;
 
         public RedGloriya(Vector2 position)
@@ -61,7 +63,21 @@ namespace Project1.Enemy
             // Update the current state
             // Possible state: direction, attack
             state.Update(gameTime);
-            redGloriyaHealthState.Update(gameTime);
+            // Enemy health state only update when its immune time is over. 
+            if (Immune() && immnueTimeCounter == immuneTime)
+            {
+                redGloriyaHealthState.Update(gameTime);
+                immnueTimeCounter--;
+            }
+            else if (Immune())
+            {
+                immnueTimeCounter--;
+            }
+        }
+
+        public bool Immune()
+        {
+            return immnueTimeCounter > 0;
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -72,7 +88,11 @@ namespace Project1.Enemy
 
         public void TakeDamage(int damage)
         {
-            redGloriyaHealthState.TakeDamage(damage);
+            if (!Immune())
+            {
+                immnueTimeCounter = immuneTime;
+                redGloriyaHealthState.TakeDamage(damage);
+            }
         }
 
         public Rectangle GetRectangle()
