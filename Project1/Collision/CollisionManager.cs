@@ -7,12 +7,10 @@ namespace Project1.Collision
     public class CollisionManager
     {
         private GameObjectManager manager;
-        private CollisionHandler handler;
 
         public CollisionManager(GameObjectManager manager)
         {
             this.manager = manager;
-            handler = new CollisionHandler();
         }
 
         public Direction GetMoverCollisionSide(Rectangle target, Rectangle source)
@@ -70,7 +68,7 @@ namespace Project1.Collision
             {
                 Direction targetCollisionSide = GetMoverCollisionSide(targetRec, sourceRec);
                 // CollisionHandler will handle collision resolution
-                handler.HandleCollision(target, source, targetCollisionSide);
+                CollisionHandler.Instance.HandleCollision(target, source, targetCollisionSide);
             }
         }
         

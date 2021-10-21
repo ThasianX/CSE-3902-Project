@@ -62,10 +62,13 @@ namespace Project1
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
+
             SpriteFactory.Instance.LoadAllTextures(Content);
             SpriteFactory.Instance.LoadAllFonts(Content);
-            SpriteFactory.Instance.LoadSpriteData("sprite_data.xml");
-            SpriteFactory.Instance.loadSpriteDictionary("sprite_dictionary.xml");
+            SpriteFactory.Instance.LoadSpriteData("Data/sprite_data.xml");
+            SpriteFactory.Instance.loadSpriteDictionary("Data/sprite_dictionary.xml");
+
+            CollisionHandler.Instance.LoadResponseData("Data/collision_response.xml");
 
             Setup();
             collisionManager = new CollisionManager(GameObjectManager.Instance);

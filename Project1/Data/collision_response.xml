@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--use "SOURCE", "TARGET", and "DIRECTION" as arguments for command constructors -->
+<collision_response>
+  <Player>
+    <Player>
+      <response>
+        
+      </response>
+    </Player>
+    <Enemy>
+      <command type="Project1.Commands.PlayerTakeDamageCommand">
+        <arg type="Project1.Player">SOURCE</arg>
+      </command>
+    </Enemy>
+    <Block>
+      <response>
+        
+      </response>
+    </Block>
+  </Player>
+  <Enemy>
+    <Player>
+      <command type="Project1.Commands.PlayerTakeDamageCommand">
+        <arg type="Project1.Player">TARGET</arg>
+      </command>
+    </Player>
+  </Enemy>
+  <IItem>
+    
+  </IItem>
+</collision_response>

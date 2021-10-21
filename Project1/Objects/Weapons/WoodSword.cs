@@ -9,8 +9,8 @@ namespace Project1.Objects
     {
         public int moveSpeed;
         public Vector2 Position { get; set; }
-        public bool isMover => true;
-
+        public bool IsMover => true;
+        public string CollisionType => "Weapon";
 
         //Distance Sword travels from Link
         private int maxRange = 12;

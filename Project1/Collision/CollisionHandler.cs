@@ -1,20 +1,125 @@
 ﻿using System;
+using System.Xml.Linq;
 using Project1.Enemy;
 using Project1.Interfaces;
 using Project1.PlayerStates;
+using System.Reflection;
+using System.Collections.Generic;
 
 namespace Project1.Collision
 {
     public class CollisionHandler
     {
+        XElement responseData;
+
+        private static CollisionHandler instance = new CollisionHandler();
+
+        public static CollisionHandler Instance
+        {
+            get
+            {
+                return instance;
+            }
+        }
         public CollisionHandler()
         {
 
         }
 
-        public void HandleCollision(ICollidable target, ICollidable source, Direction CollisionSide)
+        public void HandleCollision(ICollidable target, ICollidable source, Direction collisionSide)
         {
-            CollisionDebug(target, source, CollisionSide); // display debug message to check collision
+            CollisionDebug(target, source, collisionSide); // display debug message to check collision
+
+            Console.WriteLine(Type.GetType("Project1.Player"));
+            // retrieve the response corresponding to the two colliding objects
+            XElement response = responseData.Element(source.CollisionType).Element(target.CollisionType);
+
+            foreach (XElement command in response.Elements("command"))
+            {
+                // Get the type of the command object
+                Type commandType = Type.GetType(command.Attribute("type").Value);
+
+
+                List<object> args = new List<object>();
+
+                foreach (XElement arg in command.Elements("arg"))
+                {
+                    args.Add(parseArg(arg, target, source, collisionSide));
+                }
+
+                ConstructorInfo constructor = commandType.GetConstructor(getTypes(args.ToArray()));
+
+                var commandInstance = (ICommand) constructor.Invoke(args.ToArray());
+
+                commandInstance.Execute();
+            }
+
+        }
+
+        private object parseArg(XElement arg, ICollidable target, ICollidable source, Direction collisionSide)
+        {
+            object obj = new object();
+
+            string argTypeName = arg.Attribute("type").Value;
+            Type argType = Type.GetType(argTypeName);
+            string argValue = arg.Value;
+
+            if (argType.IsPrimitive)
+            {
+                
+                switch (argTypeName)
+                {
+                    case "int":
+                        obj = int.Parse(argValue);
+                        break;
+                    case "float":
+                        obj = float.Parse(argValue);
+                        break;
+                    case "bool":
+                        obj = bool.Parse(argValue);
+                        break;
+                    default:
+                        obj = argValue;
+                        break;
+                }
+            }
+            else
+            {
+                switch (argValue)
+                {
+                    case "SOURCE":
+                        obj = source;
+                        break;
+                    case "TARGET":
+                        obj = target;
+                        break;
+                    case "DIRECTION":
+                        obj = collisionSide;
+                        break;
+                    default:
+                        obj = null;
+                        Console.WriteLine("unable to parse argument");
+                        break;
+                }
+            }
+            return obj;
+        }
+
+        Type[] getTypes(object[] objects)
+        {
+            Type[] types = new Type[objects.Length];
+            for(int i = 0; i < types.Length; i++)
+            {
+                types[i] = objects[i].GetType();
+            }
+            return types;
+        }
+
+
+        public void LoadResponseData(string path)
+        {
+            XDocument doc = XDocument.Load(path);
+            responseData = doc.Root;
         }
 
         public void CollisionDebug(ICollidable target, ICollidable source, Direction targetCollisionSide)
@@ -23,7 +128,7 @@ namespace Project1.Collision
             CheckTargetType(target);
             CheckSourceType(source);
             // target will always be a mover
-            if (source.isMover)
+            if (source.IsMover)
             {
                 Console.WriteLine($"Collision happened between mover and mover, mover get collision from {targetCollisionSide}");
             }

@@ -21,7 +21,8 @@ namespace Project1
         public Direction facingDirection;
 
         public Vector2 movement;
-        public bool isMover => true;
+        public bool IsMover => true;
+        public string CollisionType => "Player";
 
         // Keeps track of which directional movement inputs are pressed
         public Dictionary<Direction, bool> activeMoveInputs = new Dictionary<Direction, bool>()
