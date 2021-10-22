@@ -2,12 +2,13 @@
 
 * The Game we are making: The Legend of Zelda
 * Team members: Hongda Lin (lin.3235), Kevin Li (li.10093), Keenan Anderson (anderson.2209), Jake Suraba (suraba.2), Zheyuan Gao (gao.1600), Devin Turvey (turvey.6)
-* Current Sprint: Sprint2
+* Current Sprint: Sprint 3
 
 * Group member assignment：
-* Link(Player): Jake Suraba and Kevin Li
-* Enemy: Hongda Lin and Zheyuan Gao
-* Item and Block: Keenan Anderson and Devin Turvey
+* Transformation to Data-driven Design: Jake Suraba, Keenan Anderson, and Zheyuan Gao
+* GameObjectManager and Level Loading: Jake Suraba and Kevin Li
+* Collision Detetion and Collision Resolution: Hongda Lin, Jake Suraba, and Zheyuan Gao
+* Modify Command and Gamepad Support: Keenan Anderson and Devin Turvey
 
 * In Game Resources
 * Player: Link
@@ -16,18 +17,14 @@
 
 * Code Review
 * Peer Code Review are done in each PULL REQUEST. Each PULL REQUEST needs at least two group memeber to approve and code review is done in this process.
-* Code Review in class: October 1 for Sprint2
-
-* Planning
-* GameObjectManager: It would have a list of all game objects and methods for creating and destroying them when link enter each room
-* JSON File to store all the Sprite sheet data
+* Each member of the team have at least one code review on readability and one on quality.
 
 * Things need to Improve
-* IAnimation currently is too code driven.
-* File arrangement and Foler naming. More comments on code.
+* More comments on code.
 * 
 
-* Key mapping for Sprint2:
+* Keyboard mapping for Sprint3:
+* 
 * Link Facing:
 * Keys.Up: Link Facing Up
 * Keys.Right: Link Facing Right
@@ -46,18 +43,15 @@
 * Keys.D2: Link Shoot Arrow
 * Keys.D3: Link Place Bomb
 
-* Block Cycling
-* Keys.T: Block Cycle Left
-* Keys.Y: Block Cycle Right
-
-* Item Cycling
-* Keys.U: Item Cycle Left
-* Keys.I: Item Cycle Right
-
-* Enemy Cycling
-* Keys.O: Enemy Cycle Left
-* Keys.P: Enemy Cycle Right
+* Gamepad mapping for Sprint3:
+* 
+* Left thumstick: Link movement
+* D-pad Up: Link Facing Up
+* D-pad Down: Link Facing Down
+* D-pad Right: Link Facing Right
+* D-pad Left: Link Facing Left
 
 * User Command
 * Keys.Q: Quit Game
 * Keys.R: Reset Game
+* Keys.E: Link takes damage 
