@@ -15,6 +15,8 @@ namespace Project1.Enemy
         public bool IsMover => true;
         public string CollisionType => "Enemy";
         public IHealthState blueGelHealthState;
+        private int immuneTime = 60;
+        private int immnueTimeCounter;
         //private bool isLinkNearby;
 
         public BlueGel(Vector2 position)
@@ -61,7 +63,22 @@ namespace Project1.Enemy
             // Update the current state
             // Possible state: direction
             state.Update(gameTime);
-            blueGelHealthState.Update(gameTime);
+            // Enemy will not take damage every frame, only take damage when immune time is over.
+            if (Immune() && immnueTimeCounter == immuneTime)
+            {
+                blueGelHealthState.Update(gameTime);
+                immnueTimeCounter--;
+            }
+            else if (Immune())
+            {
+                immnueTimeCounter--;
+            }
+        }
+
+        // determine if player can take damage
+        public bool Immune()
+        {
+            return immnueTimeCounter > 0;
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -72,7 +89,11 @@ namespace Project1.Enemy
 
         public void TakeDamage(int damage)
         {
-            blueGelHealthState.TakeDamage(damage);
+            if (!Immune())
+            {
+                immnueTimeCounter = immuneTime;
+                blueGelHealthState.TakeDamage(damage);
+            }
         }
 
         public Rectangle GetRectangle()

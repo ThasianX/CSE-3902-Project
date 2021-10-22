@@ -15,5 +15,7 @@ namespace Project1.PlayerStates
         void BoomerangAttack();
         void BombAttack();
 
+        public void TakeDamage(int damage);
+
     }
 }

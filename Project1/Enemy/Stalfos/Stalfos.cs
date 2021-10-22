@@ -15,6 +15,8 @@ namespace Project1.Enemy
         private int choice;
         private Random rand = new Random();
         public IHealthState stalfosHealthState;
+        private int immuneTime = 60;
+        private int immnueTimeCounter;
         //private bool isLinkNearby;
 
         public Stalfos(Vector2 position)
@@ -51,7 +53,21 @@ namespace Project1.Enemy
             // Update the current state
             // Possible state: direction
             state.Update(gameTime);
-            stalfosHealthState.Update(gameTime);
+            // If the enemy is in immune state, its health state do not need to update.
+            if (Immune() && immnueTimeCounter == immuneTime)
+            {
+                stalfosHealthState.Update(gameTime);
+                immnueTimeCounter--;
+            }
+            else if (Immune())
+            {
+                immnueTimeCounter--;
+            }
+        }
+
+        public bool Immune()
+        {
+            return immnueTimeCounter > 0;
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -70,7 +86,11 @@ namespace Project1.Enemy
 
         public void TakeDamage(int damage)
         {
-            stalfosHealthState.TakeDamage(damage);
+            if (!Immune())
+            {
+                immnueTimeCounter = immuneTime;
+                stalfosHealthState.TakeDamage(damage);
+            }
         }
 
         public Rectangle GetRectangle()

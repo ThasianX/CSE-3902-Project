@@ -44,6 +44,12 @@ namespace Project1.NPC
             state.Draw(spriteBatch);
         }
 
+        public bool Immune()
+        {
+            return true;
+            // NPC do not take damage
+        }
+
         public Rectangle GetRectangle()
         {
             return new Rectangle((int)Position.X, (int)Position.Y, 16, 16);

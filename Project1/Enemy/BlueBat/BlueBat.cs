@@ -15,6 +15,8 @@ namespace Project1.Enemy
         public bool IsMover => true;
         public string CollisionType => "Enemy";
         public IHealthState blueBatHealthState;
+        private int immuneTime = 60;
+        private int immnueTimeCounter;
         //private bool isLinkNearby;
 
         public BlueBat(Vector2 position)
@@ -61,7 +63,21 @@ namespace Project1.Enemy
             // Update the current state
             // Possible state: direction, fireball attack
             state.Update(gameTime);
-            blueBatHealthState.Update(gameTime);
+            if (Immune() && immnueTimeCounter == immuneTime)
+            {
+                blueBatHealthState.Update(gameTime);
+                immnueTimeCounter--;
+            }
+            else if (Immune())
+            {
+                immnueTimeCounter--;
+            }
+        }
+
+        // determine if enemy can take damage
+        public bool Immune()
+        {
+            return immnueTimeCounter > 0;
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -72,7 +88,11 @@ namespace Project1.Enemy
 
         public void TakeDamage(int damage)
         {
-            blueBatHealthState.TakeDamage(damage);
+            if (!Immune())
+            {
+                immnueTimeCounter = immuneTime;
+                blueBatHealthState.TakeDamage(damage);
+            }
         }
 
         public Rectangle GetRectangle()
