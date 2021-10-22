@@ -21,7 +21,9 @@ namespace Project1
         public Direction facingDirection;
 
         public Vector2 movement;
-        public bool isMover => true;
+        public bool IsMover => true;
+        public string CollisionType => "Player";
+
         private int immuneTime = 60;
         private int immnueTimeCounter;
 
