@@ -12,7 +12,8 @@ namespace Project1.Enemy
         public float movingSpeed;
         private int choice;
         private Random rand = new Random();
-        public bool isMover => true;
+        public bool IsMover => true;
+        public string CollisionType => "Enemy";
         public IHealthState redGloriyaHealthState;
         //private bool isLinkNearby;
 

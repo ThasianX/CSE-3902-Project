@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <PublishReadyToRun>false</PublishReadyToRun>
     <TieredCompilation>false</TieredCompilation>
@@ -16,6 +16,7 @@
     <None Remove="CodeRevies\**" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="Data\collision_response.xml" />
     <None Remove="Icon.ico" />
     <None Remove="Icon.bmp" />
     <None Remove="CodeRevies\" />
@@ -23,12 +24,15 @@
     <None Remove="sprite_dictionary.xml" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Data\collision_response.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Icon.ico" />
     <EmbeddedResource Include="Icon.bmp" />
-    <EmbeddedResource Include="sprite_data.xml">
+    <EmbeddedResource Include="Data\sprite_data.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="sprite_dictionary.xml">
+    <EmbeddedResource Include="Data\sprite_dictionary.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>

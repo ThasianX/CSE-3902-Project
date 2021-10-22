@@ -10,7 +10,8 @@ namespace Project1.Objects
         public Vector2 Position { get; set; }
 
         ISprite sprite;
-        public bool isMover => false;
+        public bool IsMover => false;
+        public string CollisionType => "Block";
 
         public StairBlock(Vector2 position)
         {

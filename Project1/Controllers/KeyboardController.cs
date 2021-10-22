@@ -56,7 +56,7 @@ namespace Project1
 			onReleaseMappings.Add(Keys.S, new PlayerStopMoveDownCommand(myPlayer));
 			onReleaseMappings.Add(Keys.A, new PlayerStopMoveLeftCommand(myPlayer));
 
-			onReleaseMappings.Add(Keys.E, new PlayerTakeDamageCommand(myPlayer));
+			onReleaseMappings.Add(Keys.E, new PlayerTakeDamageCommand(myPlayer,5));
 
 			onReleaseMappings.Add(Keys.Q, new QuitCommand(myGame));
 			onReleaseMappings.Add(Keys.R, new ResetCommand(myGame));

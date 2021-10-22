@@ -9,8 +9,8 @@ namespace Project1.Enemy
     {
         public IEnemyState state;
         public Vector2 Position { get; set; }
-        public bool isMover => true;
-
+        public bool IsMover => true;
+        public string CollisionType => "Enemy";
         public float movingSpeed;
         private int choice;
         private Random rand = new Random();

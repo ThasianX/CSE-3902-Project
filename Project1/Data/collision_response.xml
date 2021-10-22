@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--use TARGET, SOURCE, and DIRECTION or primative types as arguments for command constructors -->
+
+<!-- TARGET is the object curretly being checked for collisions (first layer). SOURCE is the object it detects (second layer)-->
+
+<!-- Type names must be fully qualified! (including the namespace!) (note: primitive type names are not the same as their keywords.) -->
+
+<!-- Mover-Mover collisions must have symetric responses (see: Player->Enemy and Enemy->Player) -->
+
+<collision_response>
+  <Player>
+    <Enemy>
+      <command type="Project1.Commands.PlayerTakeDamageCommand">
+        <arg type="Project1.Player">TARGET</arg>
+        <arg type="System.Int32">5</arg>
+      </command>
+    </Enemy>
+    <Block>
+      <command type="Project1.Commands.MoveInBoundsCommand">
+        <arg type="Project1.Collision">COLLISION</arg>
+      </command>
+    </Block>
+  </Player>
+  <Enemy>
+    <Player>
+      <command type="Project1.Commands.PlayerTakeDamageCommand">
+        <arg type="Project1.Player">SOURCE</arg>
+        <arg type="System.Int32">5</arg>
+      </command>
+    </Player>
+    <Weapon>
+      <command type="Project1.Commands.EnemyTakeDamageCommand">
+        <arg type="Project1.IEnemy">TARGET</arg>
+      </command>
+    </Weapon>
+  </Enemy>
+  <Weapon>
+    <Enemy>
+      <command type="Project1.Commands.EnemyTakeDamageCommand">
+        <arg type="Project1.IEnemy">SOURCE</arg>
+      </command>
+    </Enemy>
+  </Weapon>
+</collision_response>

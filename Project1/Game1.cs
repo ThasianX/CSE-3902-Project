@@ -2,7 +2,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Project1.Collision;
 using Project1.Controllers;
 using Project1.Enemy;
 using Project1.Interfaces;
@@ -57,18 +56,21 @@ namespace Project1
             GameObjectManager.Instance.Add(new Player(position));
             GameObjectManager.Instance.Add(new Stalfos(enemyPosition));
             GameObjectManager.Instance.Add(new LadderBlock(blockPosition));
+
         }
 
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
+
             SpriteFactory.Instance.LoadAllTextures(Content);
             SpriteFactory.Instance.LoadAllFonts(Content);
-            SpriteFactory.Instance.LoadSpriteData("sprite_data.xml");
-            SpriteFactory.Instance.loadSpriteDictionary("sprite_dictionary.xml");
+            SpriteFactory.Instance.LoadSpriteData("Data/sprite_data.xml");
+            SpriteFactory.Instance.loadSpriteDictionary("Data/sprite_dictionary.xml");
+
+            CollisionHandler.Instance.LoadResponseData("Data/collision_response.xml");
 
             Setup();
-            collisionManager = new CollisionManager(GameObjectManager.Instance);
             // Visualize rectangle for testing
             whiteRectangle = new Texture2D(GraphicsDevice, 1, 1);
             whiteRectangle.SetData(new[] { Color.White });
@@ -85,7 +87,7 @@ namespace Project1
             }
 
             GameObjectManager.Instance.UpdateObjects(gameTime);
-            collisionManager.Update();
+            CollisionManager.Instance.Update();
             base.Update(gameTime);
         }
 

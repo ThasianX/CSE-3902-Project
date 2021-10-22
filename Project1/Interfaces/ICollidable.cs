@@ -5,6 +5,7 @@ namespace Project1.Interfaces
     public interface ICollidable
     {
         Rectangle GetRectangle();
-        bool isMover { get; }
+        bool IsMover { get; }
+        string CollisionType { get; }
     }
 }

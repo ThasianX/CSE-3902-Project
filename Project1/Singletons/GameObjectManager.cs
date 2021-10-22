@@ -76,7 +76,7 @@ namespace Project1
             List<ICollidable> movers = new List<ICollidable>();
             foreach (ICollidable obj in gameObjects)
             {
-                if (obj.isMover)
+                if (obj.IsMover)
                 {
                     movers.Add(obj);
                 }
@@ -91,7 +91,7 @@ namespace Project1
             List<ICollidable> statics = new List<ICollidable>();
             foreach (ICollidable obj in gameObjects)
             {
-                if (!obj.isMover)
+                if (!obj.IsMover)
                 {
                     statics.Add(obj);
                 }

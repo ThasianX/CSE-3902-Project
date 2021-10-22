@@ -9,7 +9,8 @@ namespace Project1.Objects
     {
         public int moveSpeed;
         public Vector2 Position { get; set; }
-        public bool isMover => true;
+        public bool IsMover => true;
+        public string CollisionType => "Weapon";
 
         // Distance Fireball travels from Aquamentus
         private int maxRange = 250;

@@ -10,8 +10,8 @@ namespace Project1.Objects
         public Vector2 Position { get; set; }
 
         ISprite sprite;
-        public bool isMover => false;
-
+        public bool IsMover => false;
+        public string CollisionType => "Item";
         public Heart(Vector2 position)
         {
             this.Position = position;

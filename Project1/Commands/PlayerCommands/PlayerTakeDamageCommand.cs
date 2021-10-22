@@ -9,6 +9,13 @@ namespace Project1.Commands
     class PlayerTakeDamageCommand : ICommand
     {
         Player player;
+        int amount = 2; // default amount
+
+        public PlayerTakeDamageCommand(Player player, int amount)
+        {
+            this.player = player;
+            this.amount = amount;
+        }
 
         public PlayerTakeDamageCommand(Player player)
         {
@@ -17,10 +24,7 @@ namespace Project1.Commands
 
         public void Execute()
         {
-            foreach (Player player in GameObjectManager.Instance.GetObjectsOfType<Player>())
-            {
-                player.TakeDamage(2);
-            }
+            player.TakeDamage(amount);
         }
     }
 }
