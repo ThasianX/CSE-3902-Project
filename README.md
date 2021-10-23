@@ -9,18 +9,11 @@
 [  *Projects][projects-url]
 [  *Insights][insights-url]
 
-
-<!-- PROJECT LOGO -->
 <br />
-
-<p align="center">
-  <a href="https://github.com/ThasianX/CSE-3902-Project/tree/feature/SprintReflectionAndREADME/Project1/">
-    <img src="TeamLogo/AVA.png" alt="Logo" width="80" height="80">
-  </a>
 
   <h3 align="center">TEAM JellyLake</h3>
   <p align="center">
-    “Who says jellyfish can only go with the flow, why can't jellyfish have their own dreams?” -- AvA
+    *“Who says jellyfish can only go with the flow, why can't jellyfish have their own dreams?”* -- AvA
     <br />
     <a href="https://github.com/ThasianX/CSE-3902-Project/tree/main/Project1"><strong>Start to explore the project »</strong></a>
     <br />
