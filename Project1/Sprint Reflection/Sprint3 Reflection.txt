@@ -1,0 +1,25 @@
+﻿Sprint 3 Reflection(Team JellyLake/Blue 3)
+
+All aspects of sprint3 were improved over sprint2. During the class discussion on the first day of sprint distribution, 
+we basically completed the modularization and distribution of the work. We realized that the sprint consisted of three 
+important pieces of work: game object management, collision management, and level management. We used the same division 
+of labor as in sprint2, with two people working in a team on each piece of work.
+
+Jake started with the data problem of Link sprite in sprint2, changing all of Link's animations to a data-driven model in 
+XML format. The animation data of enemies, items, and blocks are also converted to XML format by Zheyuan and Keenan respectively. 
+Now the game is data-driven instead of hard-coded into the code. This is good code practice and increases the readability and 
+maintainability of the code, solving the tecnical debt problem left over from sprint2.
+
+Our plan is to finish the game object manager first, then start processing collision, and finally finish the level loader and 
+artificial level. Overall, the process of this sprint generally followed our planned time and schedule. The team members actively 
+helped each other and completed the tasks they were assigned through cooperation. Communication between the teams was still mainly 
+through discord, and basically we discussed the work progress on discord every day, and also had meetings on the voice channel.
+
+The project demo now basically meets the requirements of sprint3. In the last sprint, we needed to improve on the task scheduling and 
+code review. In this sprint, we used a more detailed burndown chart to improve our planning. code review still used a pull request, 
+but this time every member of the team did at least one readability and one maintainability. In general, we have improved the 
+implementation of the sprint requirements.
+
+For the next sprint, we plan to increase the frequency of communication between team members. And the start date of the work will be 
+moved up more, so that the team will have more time to finish the different work. But in general, our team performed well in sprint 3.
+
