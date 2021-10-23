@@ -29,7 +29,8 @@
 
 </p>
 
-
+<div id="top"></div>
+ 
  
 ## Catalog
 
@@ -80,6 +81,8 @@ Jake Suraba (suraba.2)
 Zheyuan Gao (gao.1600)
 Devin Turvey (turvey.6)
 
+<p align="right">(<a href="#top">back to top</a>)</p>
+
 
 ## Team Member Assignment
 
@@ -95,6 +98,8 @@ Hongda Lin, Jake Suraba, Zheyuan Gao
 ### Modify Command and Gamepad Support
 Keenan Anderson and Devin Turvey
 
+<p align="right">(<a href="#top">back to top</a>)</p>
+
 
 ## In Game Resources 
 
@@ -106,6 +111,8 @@ Stalfos, RedGloriya, BlueBat, BlueGel, Aquamentus
 
 ### Item Type
 WoodArrow, Key, YellowRuby, BlueRuby, FlashingRuby, Heart, Triforce
+
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 
 ## Keyboard Control
@@ -134,6 +141,8 @@ WoodArrow, Key, YellowRuby, BlueRuby, FlashingRuby, Heart, Triforce
 * Keys.R: Reset Game
 * Keys.E: Link takes damage 
 
+<p align="right">(<a href="#top">back to top</a>)</p>
+
 
 ## Gamepad Control
 * Left thumstick: Link movement
@@ -142,21 +151,29 @@ WoodArrow, Key, YellowRuby, BlueRuby, FlashingRuby, Heart, Triforce
 * D-pad Right: Link Facing Right
 * D-pad Left: Link Facing Left
 
+<p align="right">(<a href="#top">back to top</a>)</p>
+
 
 ## Code Review
 
 * Peer Code Review are done in each PULL REQUEST. Each PULL REQUEST needs at least two group memeber to approve and code review is done in this process.
 * Each member of the team have at least one code review on readability and one on quality in PULL REQUEST of other team members. 
 
+<p align="right">(<a href="#top">back to top</a>)</p>
+
 
 ## Things Needs Improve
+
 * More comments on code.
 
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 
 ## Version Control
 
 The project uses Git for version control. You can see the current available versions in the repository.
+
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 
 ## Author of README
@@ -167,12 +184,14 @@ gao.1600@osu.edu
 
  *You can also see all the developers involved in the project in the list of team members.*
 
+<p align="right">(<a href="#top">back to top</a>)</p>
+
 
 ## Special Thanks
 
-
 - [Best_README_template](https://github.com/shaojintian/Best_README_template)
 
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- links -->
 [your-project-path]:ThasianX/CSE-3902-Project
@@ -180,6 +199,8 @@ gao.1600@osu.edu
 [commits-url]: https://github.com/ThasianX/CSE-3902-Project/commits
 [projects-url]: https://github.com/ThasianX/CSE-3902-Project/projects
 [insights-url]: https://github.com/ThasianX/CSE-3902-Project/pulse
+
+
 
 
 
