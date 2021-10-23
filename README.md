@@ -74,7 +74,7 @@ Jake Suraba (suraba.2)
 Zheyuan Gao (gao.1600)
 Devin Turvey (turvey.6)
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+
 
 
 ## Team Member Assignment
@@ -91,7 +91,7 @@ Hongda Lin, Jake Suraba, Zheyuan Gao
 ### Modify Command and Gamepad Support
 Keenan Anderson and Devin Turvey
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+
 
 
 ## In Game Resources 
@@ -134,7 +134,7 @@ WoodArrow, Key, YellowRuby, BlueRuby, FlashingRuby, Heart, Triforce
 * Keys.R: Reset Game
 * Keys.E: Link takes damage 
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+
 
 
 ## Gamepad Control
@@ -152,21 +152,21 @@ WoodArrow, Key, YellowRuby, BlueRuby, FlashingRuby, Heart, Triforce
 * Peer Code Review are done in each PULL REQUEST. Each PULL REQUEST needs at least two group memeber to approve and code review is done in this process.
 * Each member of the team have at least one code review on readability and one on quality in PULL REQUEST of other team members. 
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+
 
 
 ## Things Needs Improve
 
 * More comments on code.
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+
 
 
 ## Version Control
 
 The project uses Git for version control. You can see the current available versions in the repository.
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+
 
 
 ## Author of README
@@ -177,7 +177,7 @@ gao.1600@osu.edu
 
  *You can also see all the developers involved in the project in the list of team members.*
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+
 
 
 ## Special Thanks
