@@ -6,8 +6,7 @@ using System.Text;
 namespace Project1.Interfaces
 {
 
-    // This works but there has to be a better way to store animation data.
-    // instancing the same data multiple times is wasteful
+    // ===================================== DEPRECATED! ==================================================
     interface IAnimation
     {
         public string SpritesheetFileName { get; } // The file name of the sprite sheet thes animation uses

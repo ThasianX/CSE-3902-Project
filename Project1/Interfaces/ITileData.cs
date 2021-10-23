@@ -5,6 +5,7 @@ using System.Text;
 
 namespace Project1.Interfaces
 {
+    // ==================================== DEPRECATED! ===================================================
     interface ITileData
     {
         public string SpritesheetFileName { get; } // The file name of the sprite sheet thes animation uses
