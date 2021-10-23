@@ -13,7 +13,7 @@
 
   <h3 align="center">TEAM JellyLake</h3>
   <p align="center">
-    *“Who says jellyfish can only go with the flow, why can't jellyfish have their own dreams?”* -- AvA
+    “Who says jellyfish can only go with the flow, why can't jellyfish have their own dreams?” -- AvA
     <br />
     <a href="https://github.com/ThasianX/CSE-3902-Project/tree/main/Project1"><strong>Start to explore the project »</strong></a>
     <br />
