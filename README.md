@@ -14,7 +14,7 @@
 <br />
 
 <p align="center">
-  <a href="https://github.com/ThasianX/CSE-3902-Project/Project1/TeamLogo">
+  <a href="https://github.com/ThasianX/CSE-3902-Project/tree/feature/SprintReflectionAndREADME/Project1/TeamLogo">
     <img src="Ava Dark.png" alt="Logo" width="80" height="80">
   </a>
 
