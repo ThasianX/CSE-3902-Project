@@ -4,10 +4,10 @@
 * Current Sprint: Sprint 3
 <!-- PROJECT SHIELDS -->
 
-[![Contributors][contributors-url]
-[![Commits][commits-url]
-[![Projects][projects-url]
-[![Insights][insights-url]
+[Contributors][contributors-url]
+[Commits][commits-url]
+[Projects][projects-url]
+[Insights][insights-url]
 
 
 <!-- PROJECT LOGO -->
@@ -33,7 +33,7 @@
  
 ## Catalog
 
-- [Team](#Team Members)
+- [Team Members](#TeamMembers)
 - [Work_Assignment](#Team Member Assignment)
   - [Transformation_to_data-driven_design](#Transformation to Data-driven Design)
   - [GameObjectManager_and_level_loading](#GameObjectManager and Level Loading)
@@ -54,7 +54,7 @@
 - [Special_thanks](#Special Thanks)
 
 
-### Team Members
+### TeamMembers
 
 Hongda Lin (lin.3235)
 Kevin Li (li.10093)
