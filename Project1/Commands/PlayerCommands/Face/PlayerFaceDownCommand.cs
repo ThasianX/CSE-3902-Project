@@ -1,25 +1,20 @@
 ﻿using Project1.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Project1.PlayerStates;
 
 namespace Project1.Commands
 {
     class PlayerFaceDownCommand : ICommand
     {
-        Player player;
+        IPlayer player;
 
-        public PlayerFaceDownCommand(Player player)
+        public PlayerFaceDownCommand(IPlayer player)
         {
             this.player = player;
         }
 
         public void Execute()
         {
-            foreach (Player player in GameObjectManager.Instance.GetObjectsOfType<Player>())
-            {
-                player.FaceDirection(Direction.Down);
-            }
+            player.FaceDirection(Direction.Down);
         }
     }
 }

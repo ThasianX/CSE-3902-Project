@@ -14,6 +14,7 @@
     <Compile Remove="CodeRevies\**" />
     <EmbeddedResource Remove="CodeRevies\**" />
     <None Remove="CodeRevies\**" />
+    <None Remove="Levels\LevelData\Level1.xml" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Data\collision_response.xml" />
@@ -35,6 +36,9 @@
     <EmbeddedResource Include="Data\sprite_dictionary.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Levels\LevelData\Level1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
@@ -45,5 +49,20 @@
   <ItemGroup>
     <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.0.1641" />
     <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.0.1641" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Sprint Reflection\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Level1.xml">
+      <IncludeInPackage>true</IncludeInPackage>
+    </None>
+    <None Update="Level1.xml">
+      <IncludeInPackage>false</IncludeInPackage>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Levels\LevelData\Level1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>

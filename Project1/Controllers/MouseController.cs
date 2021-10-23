@@ -7,56 +7,31 @@ namespace Project1.Controllers
 {
     class MouseController: IController
 	{
-		private readonly Dictionary<int, ICommand> controllerMappings;
 		private readonly Game1 myGame;
+		private MouseState previousState;
 
 		public MouseController(Game1 game)
 		{
 			myGame = game;
-			controllerMappings = new Dictionary<int, ICommand>();
-			RegisterCommands();
-		}
-
-		private void RegisterCommands()
-		{
-			controllerMappings.Add(0, new QuitCommand(myGame));
 		}
 
 		public void Update()
 		{
 			MouseState mouseState = Mouse.GetState();
-
-			int actionId = -1;
-
-			if (mouseState.RightButton == ButtonState.Pressed)
-            {
-				actionId = 0;
-            } else if (mouseState.LeftButton == ButtonState.Pressed)
-			{
-				int centerX = myGame.SCREEN_WIDTH / 2;
-				int centerY = myGame.SCREEN_HEIGHT / 2;
-
-				if (mouseState.X < centerX && mouseState.Y < centerY)
-				{
-					actionId = 1;
-				}
-				else if (mouseState.X > centerX && mouseState.Y < centerY)
-				{
-					actionId = 2;
-				}
-				else if (mouseState.X < centerX && mouseState.Y > centerY)
-				{
-					actionId = 3;
-				} else
-				{
-					actionId = 4;
-				}
+			if(previousState == null) {
+				previousState = mouseState;
 			}
 
-			if(controllerMappings.ContainsKey(actionId))
+			if (mouseState.RightButton == ButtonState.Released && previousState.RightButton == ButtonState.Pressed)
 			{
-				controllerMappings[actionId].Execute();
+				myGame.levelManager.IncrementRoom();
+				myGame.SetupControllers();
+			} else if (mouseState.LeftButton == ButtonState.Released && previousState.LeftButton == ButtonState.Pressed)
+			{
+				myGame.levelManager.DecrementRoom();
+				myGame.SetupControllers();
 			}
+			previousState = mouseState;
 		}
 	}
 }
