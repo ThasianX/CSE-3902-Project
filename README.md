@@ -36,12 +36,7 @@
 <details>
   <summary>Catalog</summary>
   <ol>
-    <li>
-      <a href="#Team-Members">Team Members</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
+    <li><a href="#Team-Members">Team Members</a></li>
     <li>
       <a href="#Team-Member-Assignment">Team Member Assignment</a>
       <ul>
