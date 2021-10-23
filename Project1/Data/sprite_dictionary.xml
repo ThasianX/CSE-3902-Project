@@ -32,6 +32,7 @@
 	<woodSword_right>items/weapon/woodSword/right/sprite</woodSword_right>
 	<woodSword_down>items/weapon/woodSword/down/sprite</woodSword_down>
 	
+	<diamond_block>tiles/diamond/block/sprite</diamond_block>
 	<pyramid_block>tiles/pyramid/block/sprite</pyramid_block>
 	<black_block>tiles/black/block/sprite</black_block>
 	<plain_block>tiles/plain/block/sprite</plain_block>
@@ -50,7 +51,10 @@
 
 	<OldMan_standing>NPC/OldMan/standing/sprite</OldMan_standing>
 	
-	<dungeonWall>room/wall/dungeon/base/sprite</dungeonWall>
+	<top_wall>room/wall/dungeon/top/sprite</top_wall>
+	<left_wall>room/wall/dungeon/left/sprite</left_wall>
+	<right_wall>room/wall/dungeon/right/sprite</right_wall>
+	<bottom_wall>room/wall/dungeon/bottom/sprite</bottom_wall>
 	<openDoor_up>room/wall/dungeon/slot/openDoor/up/sprite</openDoor_up>
 	<openDoor_left>room/wall/dungeon/slot/openDoor/left/sprite</openDoor_left>
 	<openDoor_right>room/wall/dungeon/slot/openDoor/right/sprite</openDoor_right>
@@ -63,5 +67,7 @@
 	<wall_left>room/wall/dungeon/slot/wall/left/sprite</wall_left>
 	<wall_right>room/wall/dungeon/slot/wall/right/sprite</wall_right>
 	<wall_down>room/wall/dungeon/slot/wall/down/sprite</wall_down>
-	<plain_floor>floor/dungeon/plain/sprite</plain_floor>
+	<floor1>room/floor/dungeon/plain/sprite</floor1>
+	<floor2>room/floor/dungeon/blocks/sprite</floor2>
+	<floor3>room/floor/dungeon/blocks2/sprite</floor3>
 </sprite_dictionary>

@@ -1,22 +1,21 @@
-﻿using System.Collections;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Project1.Interfaces;
 
 namespace Project1.Objects
 {
-    public class Bomb : IItem, ICollidable
+    public class Floor: IGameObject, ICollidable
     {
         public Vector2 Position { get; set; }
 
         ISprite sprite;
         public bool IsMover => false;
-        public string CollisionType => "Item";
-        
-        public Bomb(Vector2 position)
+        public string CollisionType => "Block";
+
+        public Floor(Vector2 position, int variation)
         {
             this.Position = position;
-            sprite = SpriteFactory.Instance.CreateSprite("bomb");
+            sprite = SpriteFactory.Instance.CreateSprite("floor" + variation);
         }
 
         public void Draw(SpriteBatch spriteBatch)

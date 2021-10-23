@@ -1,25 +1,17 @@
-using Microsoft.Xna.Framework;
 using Project1.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Project1.PlayerStates;
 
 namespace Project1.Commands
 {
     class PlayerTakeDamageCommand : ICommand
     {
-        Player player;
+        IPlayer player;
         int amount = 2; // default amount
 
-        public PlayerTakeDamageCommand(Player player, int amount)
+        public PlayerTakeDamageCommand(IPlayer player, int amount)
         {
             this.player = player;
             this.amount = amount;
-        }
-
-        public PlayerTakeDamageCommand(Player player)
-        {
-            this.player = player;
         }
 
         public void Execute()

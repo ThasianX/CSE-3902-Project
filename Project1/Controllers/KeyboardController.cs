@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
 using Project1.Commands;
+using Project1.PlayerStates;
 using Project1.Interfaces;
 
 namespace Project1
@@ -10,7 +11,6 @@ namespace Project1
 		private readonly Dictionary<Keys, ICommand> onPressMappings;
 		private readonly Dictionary<Keys, ICommand> onReleaseMappings;
 		private readonly Game1 myGame;
-		private readonly Player myPlayer;
 		private KeyboardState currentState;
 		private KeyboardState oldState;
 
@@ -28,36 +28,37 @@ namespace Project1
 
 		private void RegisterCommands()
 		{
+			IPlayer player = myGame.levelManager.GetCurrentRoom().GetPlayer();
 			// COMMANDS THAT EXECUTE ON PRESS =============================================
-			onPressMappings.Add(Keys.D0, new QuitCommand(myGame));
 
 			// Player 
-			onPressMappings.Add(Keys.Up, new PlayerFaceUpCommand(myPlayer));
-			onPressMappings.Add(Keys.Right, new PlayerFaceRightCommand(myPlayer));
-			onPressMappings.Add(Keys.Down, new PlayerFaceDownCommand(myPlayer));
-			onPressMappings.Add(Keys.Left, new PlayerFaceLeftCommand(myPlayer));
+			onPressMappings.Add(Keys.Up, new PlayerFaceUpCommand(player));
+			onPressMappings.Add(Keys.Right, new PlayerFaceRightCommand(player));
+			onPressMappings.Add(Keys.Down, new PlayerFaceDownCommand(player));
+			onPressMappings.Add(Keys.Left, new PlayerFaceLeftCommand(player));
 
-			onPressMappings.Add(Keys.W, new PlayerMoveUpCommand(myPlayer));
-			onPressMappings.Add(Keys.D, new PlayerMoveRightCommand(myPlayer));
-			onPressMappings.Add(Keys.S, new PlayerMoveDownCommand(myPlayer));
-			onPressMappings.Add(Keys.A, new PlayerMoveLeftCommand(myPlayer));
+			onPressMappings.Add(Keys.W, new PlayerMoveUpCommand(player));
+			onPressMappings.Add(Keys.D, new PlayerMoveRightCommand(player));
+			onPressMappings.Add(Keys.S, new PlayerMoveDownCommand(player));
+			onPressMappings.Add(Keys.A, new PlayerMoveLeftCommand(player));
 
-			onPressMappings.Add(Keys.Z, new PlayerSwordAttackCommand(myPlayer));
-			onPressMappings.Add(Keys.N, new PlayerSwordAttackCommand(myPlayer));
-			onPressMappings.Add(Keys.D1, new PlayerBoomerangAttackCommand(myPlayer));
-			onPressMappings.Add(Keys.D2, new PlayerShootArrowCommand(myPlayer));
-			onPressMappings.Add(Keys.D3, new PlayerBombAttackCommand(myPlayer));
+			onPressMappings.Add(Keys.Z, new PlayerSwordAttackCommand(player));
+			onPressMappings.Add(Keys.N, new PlayerSwordAttackCommand(player));
+			onPressMappings.Add(Keys.D1, new PlayerBoomerangAttackCommand(player));
+			onPressMappings.Add(Keys.D2, new PlayerShootArrowCommand(player));
+			onPressMappings.Add(Keys.D3, new PlayerBombAttackCommand(player));
 
 			// COMMANDS THAT EXECUTE ON RELEASE
 
 			// Player
-			onReleaseMappings.Add(Keys.W, new PlayerStopMoveUpCommand(myPlayer));
-			onReleaseMappings.Add(Keys.D, new PlayerStopMoveRightCommand(myPlayer));
-			onReleaseMappings.Add(Keys.S, new PlayerStopMoveDownCommand(myPlayer));
-			onReleaseMappings.Add(Keys.A, new PlayerStopMoveLeftCommand(myPlayer));
+			onReleaseMappings.Add(Keys.W, new PlayerStopMoveUpCommand(player));
+			onReleaseMappings.Add(Keys.D, new PlayerStopMoveRightCommand(player));
+			onReleaseMappings.Add(Keys.S, new PlayerStopMoveDownCommand(player));
+			onReleaseMappings.Add(Keys.A, new PlayerStopMoveLeftCommand(player));
 
-			onReleaseMappings.Add(Keys.E, new PlayerTakeDamageCommand(myPlayer,5));
+			onReleaseMappings.Add(Keys.E, new PlayerTakeDamageCommand(player, 5));
 
+			onPressMappings.Add(Keys.D0, new QuitCommand(myGame));
 			onReleaseMappings.Add(Keys.Q, new QuitCommand(myGame));
 			onReleaseMappings.Add(Keys.R, new ResetCommand(myGame));
 		}

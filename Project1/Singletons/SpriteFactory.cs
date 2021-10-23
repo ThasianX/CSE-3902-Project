@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Xml;
 using System.Xml.Linq;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -75,7 +74,7 @@ namespace Project1
             }
 
             // get sprite dimensions
-            (int height, int width) dimensions;
+            Dimensions dimensions;
             dimensions.height = int.Parse(spriteNode.Element("dimensions").Element("height").Value);
             dimensions.width = int.Parse(spriteNode.Element("dimensions").Element("width").Value);
 
@@ -95,25 +94,20 @@ namespace Project1
                 sources.Add((x, y));
             }
 
+            // get sprite draw dimensions
+            Dimensions draw_dimensions;
+            if(spriteNode.Element("draw_dimensions_ratio") != null) {
+                draw_dimensions.height = (int) (float.Parse(spriteNode.Element("draw_dimensions_ratio").Element("height").Value) * Game1.SCREEN_HEIGHT);
+                draw_dimensions.width = (int) (float.Parse(spriteNode.Element("draw_dimensions_ratio").Element("width").Value) * Game1.SCREEN_WIDTH);
+            } else {
+                draw_dimensions.height = dimensions.height;
+                draw_dimensions.width = dimensions.width;
+            }
+
             // done collecting values =======================================================================
 
             // create the sprite
-            return new AnimatedSprite(texture, dimensions, sources.ToArray(), time);
-        }
-
-        public ISprite CreateAnimatedSprite(IAnimation animation)
-        {
-            // NEEDS REMOVED AFTER ALL SPRITEDATA IS TRANSFERED TO XML
-            return null;
-        }
-
-        public ISprite CreateTileSprite(ITileData tileSprite)
-        {
-            // NEEDS REMOVED... ALL OBJECTS USE THE SAME SPRITE CLASS NOW 
-
-            Texture2D spritesheet = loadedTextures[tileSprite.SpritesheetFileName];
-
-            return new TileSprite(spritesheet, tileSprite.Source);
+            return new AnimatedSprite(texture, dimensions, draw_dimensions, sources.ToArray(), time);
         }
 
         public ISprite CreateHealthSprite(IHealthState healthState, string fontName)

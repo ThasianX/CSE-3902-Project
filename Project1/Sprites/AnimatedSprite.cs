@@ -6,7 +6,8 @@ namespace Project1.Sprites
 {
     class AnimatedSprite: ISprite
     {
-        readonly (int height, int width) dimensions;
+        readonly Dimensions dimensions;
+        readonly Dimensions draw_dimensions;
 
         private readonly (int x, int y)[] sources;
 
@@ -19,13 +20,19 @@ namespace Project1.Sprites
         private int currentSourceIndex, sourceCount;
 
         // Constructor for animated sprites (more than 1 source)
-        public AnimatedSprite(Texture2D spriteSheet, (int height, int width) dimensions, (int x, int y)[] sources, double time)
+        public AnimatedSprite(
+            Texture2D spriteSheet, 
+            Dimensions dimensions,
+            Dimensions draw_dimensions,
+            (int x, int y)[] sources, 
+            double time)
         {
             this.spriteSheet = spriteSheet;
 
             sourceCount = sources.Length;
             this.sources = sources;
             this.dimensions = dimensions;
+            this.draw_dimensions = draw_dimensions;
 
             // the sprite is animated if it has more than one source
             isAnimated = sourceCount > 0;
@@ -36,7 +43,6 @@ namespace Project1.Sprites
             currentSourceIndex = 0;
 
             timeCounter = 0f;
-
         }
 
         // Old constructor (needed to compile)
@@ -44,7 +50,7 @@ namespace Project1.Sprites
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
             // define the rectangle on the screen to draw the sprite
-            Rectangle destination = new Rectangle((int)location.X, (int)location.Y, dimensions.width, dimensions.height);
+            Rectangle destination = new Rectangle((int)location.X, (int)location.Y, draw_dimensions.width, draw_dimensions.height);
 
             // define the rectangle on the texture to get the sprite
             Rectangle source = new Rectangle(sources[currentSourceIndex].x, sources[currentSourceIndex].y, dimensions.width, dimensions.height);
@@ -69,6 +75,10 @@ namespace Project1.Sprites
 
             // increment the timer by the realtime since last frame
             timeCounter += gameTime.ElapsedGameTime.TotalSeconds;
+        }
+
+        public Dimensions GetDimensions() {
+            return draw_dimensions;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Project1.Interfaces;
+using Project1.PlayerStates;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,19 +8,16 @@ namespace Project1.Commands
 {
     class PlayerFaceUpCommand : ICommand
     {
-        Player player;
+        IPlayer player;
 
-        public PlayerFaceUpCommand(Player player)
+        public PlayerFaceUpCommand(IPlayer player)
         {
             this.player = player;
         }
 
         public void Execute()
         {
-            foreach (Player player in GameObjectManager.Instance.GetObjectsOfType<Player>())
-            {
-                player.FaceDirection(Direction.Up);
-            }
+            player.FaceDirection(Direction.Up);
         }
     }
 }

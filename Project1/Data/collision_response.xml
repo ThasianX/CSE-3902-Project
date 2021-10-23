@@ -34,6 +34,11 @@
         <arg type="Project1.IEnemy">TARGET</arg>
       </command>
     </Weapon>
+    <Block>
+      <command type="Project1.Commands.MoveInBoundsCommand">
+        <arg type="Project1.Collision">COLLISION</arg>
+      </command>
+    </Block>
   </Enemy>
   <Weapon>
     <Enemy>

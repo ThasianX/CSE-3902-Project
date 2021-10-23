@@ -11,19 +11,11 @@ namespace Project1
     public class CollisionHandler
     {
         XElement responseData;
-
-        private static CollisionHandler instance = new CollisionHandler();
-
-        public static CollisionHandler Instance
+        
+        public CollisionHandler(string path)
         {
-            get
-            {
-                return instance;
-            }
-        }
-        public CollisionHandler()
-        {
-
+            XDocument doc = XDocument.Load(path);
+            responseData = doc.Root;
         }
 
         public void HandleCollision(Collision col)
@@ -118,13 +110,6 @@ namespace Project1
                 types[i] = objects[i].GetType();
             }
             return types;
-        }
-
-
-        public void LoadResponseData(string path)
-        {
-            XDocument doc = XDocument.Load(path);
-            responseData = doc.Root;
         }
 
         public void CollisionDebug(ICollidable target, ICollidable source, Direction targetCollisionSide)

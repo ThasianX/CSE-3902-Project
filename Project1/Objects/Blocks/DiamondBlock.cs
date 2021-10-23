@@ -1,22 +1,21 @@
-﻿using System.Collections;
+using System.Collections;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Project1.Interfaces;
 
 namespace Project1.Objects
 {
-    public class Bomb : IItem, ICollidable
+    public class DiamondBlock : IBlock, ICollidable
     {
         public Vector2 Position { get; set; }
 
         ISprite sprite;
         public bool IsMover => false;
-        public string CollisionType => "Item";
-        
-        public Bomb(Vector2 position)
+        public string CollisionType => "Block";
+        public DiamondBlock(Vector2 position)
         {
             this.Position = position;
-            sprite = SpriteFactory.Instance.CreateSprite("bomb");
+            sprite = SpriteFactory.Instance.CreateSprite("diamond_block");
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -31,7 +30,8 @@ namespace Project1.Objects
 
         public Rectangle GetRectangle()
         {
-            return new Rectangle((int)Position.X, (int)Position.Y, 16, 16);
+            Dimensions dimensions = sprite.GetDimensions();
+            return new Rectangle((int)Position.X, (int)Position.Y, dimensions.width, dimensions.height);
         }
     }
 }

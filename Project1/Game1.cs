@@ -3,29 +3,28 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Project1.Controllers;
-using Project1.Enemy;
 using Project1.Interfaces;
-using Project1.Objects;
+using Project1.Levels;
 
 namespace Project1
 {
     public class Game1 : Game
     {
-        private readonly GraphicsDeviceManager graphics;
+        private static GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
 
-        private Vector2 position;
-        private Vector2 enemyPosition;
-        private Vector2 blockPosition;
+        private LevelManager _levelManager;
+        public LevelManager levelManager 
+        {
+            get { return _levelManager; }
+        }
 
         private ArrayList controllerList;
         private CollisionManager collisionManager;
 
-        private Viewport ViewPort => graphics.GraphicsDevice.Viewport;
-        public int SCREEN_WIDTH => ViewPort.Width;
-        public int SCREEN_HEIGHT => ViewPort.Height;
-
-        public Texture2D spriteSheet;
+        private static Viewport ViewPort => graphics.GraphicsDevice.Viewport;
+        public static int SCREEN_WIDTH => ViewPort.Width;
+        public static int SCREEN_HEIGHT => ViewPort.Height;
 
         // Visualize rectangle for testing
         public static Texture2D whiteRectangle;
@@ -34,29 +33,21 @@ namespace Project1
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
+            _levelManager = new LevelManager(1);
         }
 
-        protected override void Initialize()
+        void Setup()
         {
-            position = new Vector2(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
-            enemyPosition = new Vector2(SCREEN_WIDTH / 4 * 3, SCREEN_HEIGHT / 4 * 3);
-            blockPosition = new Vector2(SCREEN_WIDTH / 4 , SCREEN_HEIGHT / 4);
+            _levelManager.LoadLevel();
+            SetupControllers();
+        }
 
+        public void SetupControllers() {
             controllerList = new ArrayList
             {
                 new KeyboardController(this),
                 new MouseController(this)
             };
-
-            base.Initialize();
-        }
-
-        void Setup()
-        {
-            GameObjectManager.Instance.Add(new Player(position));
-            GameObjectManager.Instance.Add(new Stalfos(enemyPosition));
-            GameObjectManager.Instance.Add(new LadderBlock(blockPosition));
-
         }
 
         protected override void LoadContent()
@@ -68,9 +59,9 @@ namespace Project1
             SpriteFactory.Instance.LoadSpriteData("Data/sprite_data.xml");
             SpriteFactory.Instance.loadSpriteDictionary("Data/sprite_dictionary.xml");
 
-            CollisionHandler.Instance.LoadResponseData("Data/collision_response.xml");
-
             Setup();
+            collisionManager = new CollisionManager(levelManager, new CollisionHandler("Data/collision_response.xml"));
+            
             // Visualize rectangle for testing
             whiteRectangle = new Texture2D(GraphicsDevice, 1, 1);
             whiteRectangle.SetData(new[] { Color.White });
@@ -86,8 +77,9 @@ namespace Project1
                 controller.Update();
             }
 
-            GameObjectManager.Instance.UpdateObjects(gameTime);
-            CollisionManager.Instance.Update();
+            _levelManager.GetCurrentRoom().Update(gameTime);
+
+            collisionManager.Update();
             base.Update(gameTime);
         }
 
@@ -97,7 +89,7 @@ namespace Project1
 
             spriteBatch.Begin();
 
-            GameObjectManager.Instance.DrawObjects(spriteBatch);
+            _levelManager.GetCurrentRoom().Draw(spriteBatch);
 
             spriteBatch.End();
 

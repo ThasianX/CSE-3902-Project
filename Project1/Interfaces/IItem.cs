@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Project1.Interfaces
 {
-    interface IItem : IGameObject
+    public interface IItem : IGameObject
     {
         
     }

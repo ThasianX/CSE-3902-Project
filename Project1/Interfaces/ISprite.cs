@@ -7,5 +7,6 @@ namespace Project1.Interfaces
     {
         void Draw(SpriteBatch spriteBatch, Vector2 location);
         void Update(GameTime gameTime);
+        Dimensions GetDimensions();
     }
 }

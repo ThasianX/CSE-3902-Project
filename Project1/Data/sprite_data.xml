@@ -761,6 +761,28 @@
 		</weapon>
 	</items>
   <tiles>
+	  <diamond>
+		  <block>
+			  <sprite>
+				  <spritesheet>dungeon_sheet</spritesheet>
+				  <dimensions>
+					  <height>16</height>
+					  <width>16</width>
+				  </dimensions>
+					<draw_dimensions_ratio>
+						<height>0.09</height>
+						<width>0.0625</width>
+					</draw_dimensions_ratio>
+				  <time>1</time>
+				  <source_list>
+					  <source>
+						  <x>618</x>
+						  <y>633</y>
+					  </source>
+				  </source_list>
+			  </sprite>
+		  </block>
+	  </diamond>
 	  <pyramid>
 		  <block>
 			  <sprite>
@@ -873,13 +895,17 @@
 	<room>
 		<wall>
 			<dungeon>
-				<base>
+				<top>
 					<sprite>
 						<spritesheet>dungeon_sheet</spritesheet>
 						<dimensions>
-							<height>176</height>
+							<height>32</height>
 							<width>256</width>
 						</dimensions>
+						<draw_dimensions_ratio>
+							<height>0.18</height>
+							<width>1</width>
+						</draw_dimensions_ratio>
 						<time>1</time>
 						<source_list>
 							<source>
@@ -888,7 +914,67 @@
 							</source>
 						</source_list>
 					</sprite>
-				</base>
+				</top>
+				<bottom>
+					<sprite>
+						<spritesheet>dungeon_sheet</spritesheet>
+						<dimensions>
+							<height>32</height>
+							<width>256</width>
+						</dimensions>
+						<draw_dimensions_ratio>
+							<height>0.18</height>
+							<width>1</width>
+						</draw_dimensions_ratio>
+						<time>1</time>
+						<source_list>
+							<source>
+								<x>521</x>
+								<y>155</y>
+							</source>
+						</source_list>
+					</sprite>
+				</bottom>
+				<left>
+					<sprite>
+						<spritesheet>dungeon_sheet</spritesheet>
+						<dimensions>
+							<height>112</height>
+							<width>32</width>
+						</dimensions>
+						<draw_dimensions_ratio>
+							<height>0.64</height>
+							<width>0.125</width>
+						</draw_dimensions_ratio>
+						<time>1</time>
+						<source_list>
+							<source>
+								<x>521</x>
+								<y>44</y>
+							</source>
+						</source_list>
+					</sprite>
+				</left>
+				<right>
+					<sprite>
+						<spritesheet>dungeon_sheet</spritesheet>
+						<dimensions>
+							<height>112</height>
+							<width>32</width>
+						</dimensions>
+						<draw_dimensions_ratio>
+							<height>0.64</height>
+							<width>0.125</width>
+						</draw_dimensions_ratio>
+						<time>1</time>
+						<source_list>
+							<source>
+								<x>745</x>
+								<y>44</y>
+							</source>
+						</source_list>
+					</sprite>
+				</right>
 				<slot>
 					<openDoor>
 						<up>
@@ -898,6 +984,10 @@
 									<height>32</height>
 									<width>32</width>
 								</dimensions>
+								<draw_dimensions_ratio>
+									<height>0.1825</height>
+									<width>0.13</width>
+								</draw_dimensions_ratio>
 								<time>1</time>
 								<source_list>
 									<source>
@@ -914,6 +1004,10 @@
 									<height>32</height>
 									<width>32</width>
 								</dimensions>
+								<draw_dimensions_ratio>
+									<height>0.19</height>
+									<width>0.125</width>
+								</draw_dimensions_ratio>
 								<time>1</time>
 								<source_list>
 									<source>
@@ -930,6 +1024,10 @@
 									<height>32</height>
 									<width>32</width>
 								</dimensions>
+								<draw_dimensions_ratio>
+									<height>0.19</height>
+									<width>0.125</width>
+								</draw_dimensions_ratio>
 								<time>1</time>
 								<source_list>
 									<source>
@@ -946,6 +1044,10 @@
 									<height>32</height>
 									<width>32</width>
 								</dimensions>
+								<draw_dimensions_ratio>
+									<height>0.1825</height>
+									<width>0.13</width>
+								</draw_dimensions_ratio>
 								<time>1</time>
 								<source_list>
 									<source>
@@ -1100,6 +1202,10 @@
 							<height>112</height>
 							<width>192</width>
 						</dimensions>
+						<draw_dimensions_ratio>
+							<height>0.64</height>
+							<width>0.75</width>
+						</draw_dimensions_ratio>
 						<time>1</time>
 						<source_list>
 							<source>
@@ -1109,6 +1215,46 @@
 						</source_list>
 					</sprite>
 				</plain>
+				<blocks>
+					<sprite>
+						<spritesheet>dungeon_sheet</spritesheet>
+						<dimensions>
+							<height>112</height>
+							<width>192</width>
+						</dimensions>
+						<draw_dimensions_ratio>
+							<height>0.64</height>
+							<width>0.75</width>
+						</draw_dimensions_ratio>
+						<time>1</time>
+						<source_list>
+							<source>
+								<x>196</x>
+								<y>307</y>
+							</source>
+						</source_list>
+					</sprite>
+				</blocks>
+				<blocks2>
+					<sprite>
+						<spritesheet>dungeon_sheet</spritesheet>
+						<dimensions>
+							<height>112</height>
+							<width>192</width>
+						</dimensions>
+						<draw_dimensions_ratio>
+							<height>0.64</height>
+							<width>0.75</width>
+						</draw_dimensions_ratio>
+						<time>1</time>
+						<source_list>
+							<source>
+								<x>586</x>
+								<y>652</y>
+							</source>
+						</source_list>
+					</sprite>
+				</blocks2>
 			</dungeon>
 		</floor>
 	</room>

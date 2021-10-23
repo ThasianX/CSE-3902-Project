@@ -28,5 +28,9 @@ namespace Project1.Sprites
         {
             health = healthState.health;
         }
+
+        public Dimensions GetDimensions() {
+            return new Dimensions();
+        }
     }
 }

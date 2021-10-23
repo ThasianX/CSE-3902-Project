@@ -1,8 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Project1.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Project1
 {
@@ -17,6 +14,13 @@ namespace Project1
         public Direction side;
         public Rectangle intersection;
     }
+
+    public struct Dimensions
+    {
+        public int width;
+        public int height;
+    }
+
     public class Constants
     {
         public static int SPRITE_WIDTH => 8;
