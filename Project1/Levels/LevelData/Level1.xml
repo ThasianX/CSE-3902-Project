@@ -153,6 +153,38 @@
 				<y>0.82</y>
 			</position_ratio>
 		</object>
+		<object>
+			<type>Item</type>
+			<name>Heart</name>
+			<position_ratio>
+				<x>0.25</x>
+				<y>0.22</y>
+			</position_ratio>
+		</object>
+		<object>
+			<type>Item</type>
+			<name>FlashingRuby</name>
+			<position_ratio>
+				<x>0.35</x>
+				<y>0.22</y>
+			</position_ratio>
+		</object>
+		<object>
+			<type>Item</type>
+			<name>Key</name>
+			<position_ratio>
+				<x>0.45</x>
+				<y>0.22</y>
+			</position_ratio>
+		</object>
+		<object>
+			<type>Item</type>
+			<name>BlueRuby</name>
+			<position_ratio>
+				<x>0.55</x>
+				<y>0.22</y>
+			</position_ratio>
+		</object>
 	</room>
 	<room id="2">
 		<object>

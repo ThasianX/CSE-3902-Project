@@ -21,6 +21,11 @@
         <arg type="Project1.Collision">COLLISION</arg>
       </command>
     </Block>
+    <Item>
+      <command type="Project1.Commands.MoveInBoundsCommand">
+        <arg type="Project1.Collision">COLLISION</arg>
+      </command>
+    </Item>
   </Player>
   <Enemy>
     <Player>
@@ -39,6 +44,11 @@
         <arg type="Project1.Collision">COLLISION</arg>
       </command>
     </Block>
+    <Item>
+      <command type="Project1.Commands.MoveInBoundsCommand">
+        <arg type="Project1.Collision">COLLISION</arg>
+      </command>
+    </Item>
   </Enemy>
   <Weapon>
     <Enemy>
