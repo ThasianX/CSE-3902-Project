@@ -33,7 +33,49 @@
  
 ## Catalog
 
-- [Team Members](#TeamMembers)
+<details>
+  <summary>Catalog</summary>
+  <ol>
+    <li>
+      <a href="#Team-Members">Team Members</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#Team-Member-Assignment">Team Member Assignment</a>
+      <ul>
+        <li><a href="#Transformation-to-Data-driven-Design">Transformation to Data-driven Design</a></li>
+        <li><a href="#GameObjectManager-and-Level-Loading">GameObjectManager and Level Loading</a></li>
+        <li><a href="#Collision-Detetion-and-Collision-Resolution">Collision Detetion and Collision Resolution</a></li>
+        <li><a href="#Modify-Command-and-Gamepad-Support">Modify Command and Gamepad Support</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#In-Game-Resources">In Game Resources</a>
+      <ul>
+        <li><a href="#Player">Player</a></li>
+        <li><a href="#Enemy-Type">Enemy Type</a></li>
+        <li><a href="#Item-Type">Item Type</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#Keyboard-Control">Keyboard Control</a>
+      <ul>
+        <li><a href="#Link-Control">Link Control</a></li>
+        <li><a href="#Game-Control">Game Control</a></li>
+      </ul>
+    </li>
+    <li><a href="#Gamepad-Control">Gamepad Control</a></li>
+    <li><a href="#Code-Review">Code Review</a></li>
+    <li><a href="#Things-Needs-Improve">Things Needs Improve</a></li>
+    <li><a href="#Version-Control">Version Control</a></li>
+    <li><a href="#Author-of-README">Author of README</a></li>
+    <li><a href="#Special-Thanks">Special Thanks</a></li>
+  </ol>
+  
+  
+- [Team Members](#Team_Members)
 - [Work_Assignment](#Team Member Assignment)
   - [Transformation_to_data-driven_design](#Transformation to Data-driven Design)
   - [GameObjectManager_and_level_loading](#GameObjectManager and Level Loading)
@@ -54,7 +96,7 @@
 - [Special_thanks](#Special Thanks)
 
 
-### TeamMembers
+### Team Members
 
 Hongda Lin (lin.3235)
 Kevin Li (li.10093)
@@ -87,7 +129,7 @@ Link
 #### Enemy Type
 Stalfos, RedGloriya, BlueBat, BlueGel, Aquamentus
 
-#### Item type
+#### Item Type
 WoodArrow, Key, YellowRuby, BlueRuby, FlashingRuby, Heart, Triforce
 
 
@@ -132,7 +174,7 @@ WoodArrow, Key, YellowRuby, BlueRuby, FlashingRuby, Heart, Triforce
 * Each member of the team have at least one code review on readability and one on quality in PULL REQUEST of other team members. 
 
 
-### Things needs Improve
+### Things Needs Improve
 * More comments on code.
 
 
