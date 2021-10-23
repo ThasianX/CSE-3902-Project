@@ -1,7 +1,6 @@
 ﻿using System;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
-using Project1.Animations;
 using Project1.Interfaces;
 
 namespace Project1.Enemy
