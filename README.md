@@ -5,16 +5,16 @@
 <!-- PROJECT SHIELDS -->
 
 [*Contributors][contributors-url]
-[*Commits][commits-url]
-[*Projects][projects-url]
-[*Insights][insights-url]
+[  *Commits][commits-url]
+[  *Projects][projects-url]
+[  *Insights][insights-url]
 
 
 <!-- PROJECT LOGO -->
 <br />
 
 <p align="center">
-  <a href="https://github.com/ThasianX/CSE-3902-Project/tree/main/Project1/TeamImage">
+  <a href="https://github.com/ThasianX/CSE-3902-Project/Project1/TeamImage">
     <img src="Ava Dark.png" alt="Logo" width="80" height="80">
   </a>
 
