@@ -4,11 +4,10 @@
 * Current Sprint: Sprint 3
 <!-- PROJECT SHIELDS -->
 
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Commits][commits-shield]][commits-url]
-[![Projects][projects-shield]][projects-url]
-[![Insights][insights-shield]][insights-url]
+[![Contributors][contributors-url]
+[![Commits][commits-url]
+[![Projects][projects-url]
+[![Insights][insights-url]
 
 
 <!-- PROJECT LOGO -->
@@ -34,25 +33,25 @@
  
 ## Catalog
 
-- [Team Members](#Team members)
-- [Team Member Assignment](#Team Member Assignment)
-  - [Transformation to Data-driven Design](#Transformation to Data-driven Design)
-  - [GameObjectManager and Level Loading](#GameObjectManager and Level Loading)
-  - [Collision Detetion and Collision Resolution](#Collision Detetion and Collision Resolution)
-  - [Modify Command and Gamepad Support](#Modify Command and Gamepad Support)
-- [In Game Resources](#In Game Resources)
+- [Team members](#Team Members)
+- [Team member assignment](#Team Member Assignment)
+  - [Transformation to data-driven design](#Transformation to Data-driven Design)
+  - [GameObjectManager and level loading](#GameObjectManager and Level Loading)
+  - [Collision detetion and collision resolution](#Collision Detetion and Collision Resolution)
+  - [Modify command and gamepad support](#Modify Command and Gamepad Support)
+- [In game resources](#In Game Resources)
   - [player](#Player)
-  - [Enemy Type](#Enemy Type)
-  - [Item Type](#Item Type)
-- [Keyboard Control](#Keyboard Control)
-  - [Link Control](#Link Control)
-  - [Game Control](#Game Control)
-- [Gamepad Control](#Gamepad Control)
-- [Code Review](#Code Review)
-- [Things needs Improve](#Things needs Improve)
-- [Version Control](#Version Control)
-- [Author of README](#Author of README)
-- [Special Thanks](#Special Thanks)
+  - [enemy type](#Enemy Type)
+  - [item type](#Item Type)
+- [Keyboard control](#Keyboard Control)
+  - [Link control](#Link Control)
+  - [Game control](#Game Control)
+- [Gamepad control](#Gamepad Control)
+- [Code review](#Code Review)
+- [Things needs improve](#Things needs Improve)
+- [Version control](#Version Control)
+- [Author](#Author of README)
+- [Special thanks](#Special Thanks)
 
 
 ### Team Members
@@ -160,15 +159,9 @@ gao.1600@osu.edu
 
 <!-- links -->
 [your-project-path]:ThasianX/CSE-3902-Project
-[contributors-shield]: https://img.shields.io/github/contributors/ThasianX/CSE-3902-Project.svg?style=flat-square
 [contributors-url]: https://github.com/ThasianX/CSE-3902-Project/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/ThasianX/CSE-3902-Project.svg?style=flat-square
-[forks-url]: https://github.com/ThasianX/CSE-3902-Project/network/members
-[commits-shield]: https://img.shields.io/github/commits/ThasianX/CSE-3902-Project.svg?style=flat-square
 [commits-url]: https://github.com/ThasianX/CSE-3902-Project/commits
-[projects-shield]: https://img.shields.io/github/projects/ThasianX/CSE-3902-Project.svg?style=flat-square
 [projects-url]: https://github.com/ThasianX/CSE-3902-Project/projects
-[insights-shield]: https://img.shields.io/github/pulse/ThasianX/CSE-3902-Project.svg?style=flat-square
 [insights-url]: https://github.com/ThasianX/CSE-3902-Project/pulse
 
 
