@@ -26,6 +26,9 @@
         <arg type="Project1.Collision">COLLISION</arg>
       </command>
     </Item>
+    <Weapon>
+      
+    </Weapon>
   </Player>
   <Enemy>
     <Player>
@@ -36,7 +39,7 @@
     </Player>
     <Weapon>
       <command type="Project1.Commands.EnemyTakeDamageCommand">
-        <arg type="Project1.IEnemy">TARGET</arg>
+        <arg type="Project1.Enemy.IGameObject">TARGET</arg>
       </command>
     </Weapon>
     <Block>
@@ -49,6 +52,14 @@
         <arg type="Project1.Collision">COLLISION</arg>
       </command>
     </Item>
+    <Projectile>
+      <command type="Project1.Commands.EnemyTakeDamageCommand">
+        <arg type="Project1.Enemy.IEnemy">TARGET</arg>
+      </command>
+      <command type="Project1.Commands.DeleteGameObjectCommand">
+        <arg type="Project1.Interfaces.IGameObject">SOURCE</arg>
+      </command>
+    </Projectile>
   </Enemy>
   <Weapon>
     <Enemy>
@@ -56,5 +67,28 @@
         <arg type="Project1.IEnemy">SOURCE</arg>
       </command>
     </Enemy>
+    <Player>
+    </Player>
+    <Block>
+      
+    </Block>
   </Weapon>
+  <Projectile>
+    <Enemy>
+      <command type="Project1.Commands.EnemyTakeDamageCommand">
+        <arg type="Project1.Enemy.IEnemy">SOURCE</arg>
+      </command>
+      <command type="Project1.Commands.DeleteGameObjectCommand">
+        <arg type="Project1.Interfaces.IGameObject">TARGET</arg>
+      </command>
+    </Enemy>
+    <Block>
+      <command type="Project1.Commands.DeleteGameObjectCommand">
+        <arg type="Project1.Interfaces.IGameObject">TARGET</arg>
+      </command>
+    </Block>
+    <Item>
+      
+    </Item>
+  </Projectile>
 </collision_response>

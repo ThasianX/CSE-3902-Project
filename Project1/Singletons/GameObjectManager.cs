@@ -20,7 +20,8 @@ namespace Project1
 
         //We can add more specific lists if needed e.g. Item, Block, Enemy
         public Collection<IGameObject> gameObjects;
-        private Collection<IGameObject> removeList = new Collection<IGameObject>();
+        private Collection<IGameObject> removeBuffer = new Collection<IGameObject>();
+        private Collection<IGameObject> addBuffer = new Collection<IGameObject>();
 
         public GameObjectManager()
         {
@@ -45,37 +46,47 @@ namespace Project1
 
         public void UpdateObjects(GameTime gameTime)
         {
-            DeleteQueuedObjects();
+            RemoveObjectsInBuffer();
+            AddObjectsInBuffer();
             foreach (IGameObject obj in gameObjects)
             {
                 obj.Update(gameTime);
             }
         }
 
-        private void DeleteQueuedObjects()
+        private void AddObjectsInBuffer()
         {
-           foreach(IGameObject gameObject in removeList)
+            foreach (IGameObject gameObject in addBuffer)
+            {
+                gameObjects.Add(gameObject);
+            }
+            addBuffer.Clear();
+        }
+
+        private void RemoveObjectsInBuffer()
+        {
+           foreach(IGameObject gameObject in removeBuffer)
            {
                gameObjects.Remove(gameObject);
            }
-            removeList.Clear();
+            removeBuffer.Clear();
         }
 
-        public void Add(IGameObject obj)
+        public void AddOnNextFrame(IGameObject obj)
         {
             gameObjects.Add(obj);
         }
 
-        public void Destroy(IGameObject obj)
+        public void RemoveOnNextFrame(IGameObject obj)
         {
-            // The garbage collector disposes the object once the reference is lost
-            gameObjects.Remove(obj);
+            // add the object to the list of objects to be removed on the next frame
+            removeBuffer.Add(obj);
         }
 
-        public void DestroyAll()
+        public void RomoveAll()
         {
             foreach(IGameObject gameObject in gameObjects) {
-                removeList.Add(gameObject);
+                removeBuffer.Add(gameObject);
             }
         }
 

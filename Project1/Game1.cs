@@ -20,7 +20,6 @@ namespace Project1
         }
 
         private ArrayList controllerList;
-        private CollisionManager collisionManager;
 
         private static Viewport ViewPort => graphics.GraphicsDevice.Viewport;
         public static int SCREEN_WIDTH => ViewPort.Width;
@@ -62,7 +61,7 @@ namespace Project1
             SpriteFactory.Instance.loadSpriteDictionary("Data/sprite_dictionary.xml");
 
             Setup();
-            collisionManager = new CollisionManager(new CollisionHandler("Data/collision_response.xml"));
+            CollisionHandler.Instance.LoadResponses("Data/collision_response.xml");
             
             // Visualize rectangle for testing
             whiteRectangle = new Texture2D(GraphicsDevice, 1, 1);
@@ -81,7 +80,7 @@ namespace Project1
 
             GameObjectManager.Instance.UpdateObjects(gameTime);
 
-            collisionManager.Update();
+            CollisionManager.Instance.Update();
             base.Update(gameTime);
         }
 

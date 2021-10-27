@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework;
 using Project1.Enemy;
 using Project1.Objects;
 using System.Collections.ObjectModel;
+using System.Collections.Generic;
 
 namespace Project1.Levels
 {
@@ -29,17 +30,43 @@ namespace Project1.Levels
 
         public void IncrementRoom()
         {
+            
+
             GetCurrentRoom().Deactivate();
+
+            // BAD SOLUTION! DO NOT LEAVE IN FOR SPRINT 4! =============================================
+            IPlayer player = GameObjectManager.Instance.GetObjectsOfType<IPlayer>()[0];
+            GetCurrentRoom().RemoveObject(player);
+            // =========================================================================================
+
             currentRoomIndex = (currentRoomIndex + 1) % totalRooms;
+
+            // =========================================================================================
+            GetCurrentRoom().AddObject(player);
+            // =========================================================================================
+
             GetCurrentRoom().Activate();
         }
 
         public void DecrementRoom()
         {
             GetCurrentRoom().Deactivate();
+
+            // BAD SOLUTION! DO NOT LEAVE IN FOR SPRINT 4! =============================================
+            IPlayer player = GameObjectManager.Instance.GetObjectsOfType<IPlayer>()[0];
+            GetCurrentRoom().RemoveObject(player);
+            // =========================================================================================
+
             currentRoomIndex = (currentRoomIndex - 1 < 0 ? totalRooms - 1 : currentRoomIndex - 1) % totalRooms;
+
+            // =========================================================================================
+            GetCurrentRoom().AddObject(player);
+            // =========================================================================================
+
             GetCurrentRoom().Activate();
         }
+
+
 
         public void LoadLevel() {
             foreach(XElement element in spriteData.Root.Elements()) {

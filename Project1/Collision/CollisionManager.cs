@@ -6,11 +6,14 @@ namespace Project1
 {
     public class CollisionManager
     {
-        private CollisionHandler handler;
-
-        public CollisionManager(CollisionHandler handler)
+        // Singleton instance
+        private static CollisionManager instance = new CollisionManager();
+        public static CollisionManager Instance
         {
-            this.handler = handler;
+            get
+            {
+                return instance;
+            }
         }
 
         public Direction GetIntersectionSide(Rectangle target, Rectangle source)
@@ -77,7 +80,7 @@ namespace Project1
                 col.intersection = Rectangle.Intersect(targetRec, sourceRec);
 
                 // CollisionHandler will handle collision resolution
-                handler.HandleCollision(col);
+                CollisionHandler.Instance.HandleCollision(col);
             }
         }
         

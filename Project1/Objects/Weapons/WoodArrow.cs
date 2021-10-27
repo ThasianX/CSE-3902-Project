@@ -7,23 +7,26 @@ namespace Project1.Objects
 {
     public class WoodArrow : IItem, ICollidable
     {
-        public int moveSpeed;
+        public int moveSpeed = 10;
         public Vector2 Position { get; set; }
         public bool IsMover => true;
-        public string CollisionType => "Weapon";
+        public string CollisionType => "Projectile";
 
         //Distance Arrow travels from Link
         private int maxRange = 250;
+
+        // time before the arrow deletes itself (seconds)
+        private float activeTime = 5, counter = 0;
         private Direction direction;
         private Vector2 deltaVector;
 
         ISprite arrowSprite;
 
-        public WoodArrow(Vector2 position, Direction direction, int frames)
+        public WoodArrow(Vector2 position, Direction direction)
         {
             this.direction = direction;
             this.Position = position;
-            this.moveSpeed = maxRange / frames;
+            //this.moveSpeed = maxRange / frames;
             switch (this.direction)
             {
                 case Direction.Up:
@@ -66,7 +69,14 @@ namespace Project1.Objects
 
         public void Update(GameTime gameTime)
         {
+            
             this.Position += this.deltaVector;
+
+            if (counter >= activeTime)
+            {
+                GameObjectManager.Instance.RemoveOnNextFrame(this);
+            }
+            counter += (float) gameTime.ElapsedGameTime.TotalSeconds;
         }
 
         public Rectangle GetRectangle()

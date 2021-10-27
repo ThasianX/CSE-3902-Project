@@ -20,12 +20,16 @@ namespace Project1.Levels
 
         public void Activate() {
             foreach(IGameObject gameObject in gameObjects) {
-                GameObjectManager.Instance.Add(gameObject);
+                GameObjectManager.Instance.AddOnNextFrame(gameObject);
             }
         }
 
         public void Deactivate() {
-            GameObjectManager.Instance.DestroyAll();
+            foreach(IGameObject obj in gameObjects)
+            {
+                GameObjectManager.Instance.RemoveOnNextFrame(obj);
+            }
+            
         }
     }
 }

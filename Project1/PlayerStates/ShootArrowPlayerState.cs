@@ -15,38 +15,41 @@ namespace Project1.PlayerStates
         private ISprite sprite;
         private WoodArrow arrow;
 
-        private int activeFrameCount = 50, counter = 0;
+        private float activeTime = 0.1f, counter = 0f;
 
         public ShootArrowPlayerState(Player player)
         {
             this.player = player;
+            WoodArrow arrow;
 
             switch (player.facingDirection)
             {
                 case Direction.Up:
                     sprite = SpriteFactory.Instance.CreateSprite("player_attack_up");
-                    this.arrow = new WoodArrow(player.Position + new Vector2(0, -arrowOffset), player.facingDirection, activeFrameCount);
+                    arrow = new WoodArrow(player.Position + new Vector2(0, -arrowOffset), player.facingDirection);
                     break;
 
                 case Direction.Right:
                     sprite = SpriteFactory.Instance.CreateSprite("player_attack_right");
-                    this.arrow = new WoodArrow(player.Position + new Vector2(arrowOffset, 0), player.facingDirection, activeFrameCount);
+                    arrow = new WoodArrow(player.Position + new Vector2(arrowOffset, 0), player.facingDirection);
                     break;
 
                 case Direction.Down:
                     sprite = SpriteFactory.Instance.CreateSprite("player_attack_down"); ;
-                    this.arrow = new WoodArrow(player.Position + new Vector2(0, arrowOffset), player.facingDirection, activeFrameCount);
+                    arrow = new WoodArrow(player.Position + new Vector2(0, arrowOffset), player.facingDirection);
                     break;
 
                 case Direction.Left:
                     sprite = SpriteFactory.Instance.CreateSprite("player_attack_left");
-                    this.arrow = new WoodArrow(player.Position + new Vector2(-arrowOffset, 0), player.facingDirection, activeFrameCount);
+                    arrow = new WoodArrow(player.Position + new Vector2(-arrowOffset, 0), player.facingDirection);
                     break;
 
                 default:
-                    this.arrow = new WoodArrow(player.Position + new Vector2(0, arrowOffset), player.facingDirection, activeFrameCount);
+                    arrow = new WoodArrow(player.Position + new Vector2(0, arrowOffset), player.facingDirection);
                     break;
             }
+
+            GameObjectManager.Instance.AddOnNextFrame(arrow);
         }
 
         public void SetMoveInput(Direction direction, bool isPressed)
@@ -86,7 +89,7 @@ namespace Project1.PlayerStates
             // TODO: Deal damage here
 
             // End the attack after reacing its active frame count
-            if (counter++ >= activeFrameCount)
+            if (counter >= activeTime)
             {
                 if (player.hasAnyMoveInput())
                 {
@@ -97,13 +100,12 @@ namespace Project1.PlayerStates
                     player.state = new StillPlayerState(player);
                 }
             }
-            arrow.Update(gameTime);
             sprite.Update(gameTime);
+            counter += (float) gameTime.ElapsedGameTime.TotalSeconds;
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            arrow.Draw(spriteBatch);
             sprite.Draw(spriteBatch, player.Position);
         }
 
