@@ -30,9 +30,10 @@ namespace Project1
 
         public void HandleCollision(Collision col)
         {
-            CollisionDebug(col.target, col.source, col.side); // display debug message to check collision
+            // display debug message to check collision
+            //CollisionDebug(col.target, col.source, col.side); 
+            //Console.WriteLine(Type.GetType("Project1.Player"));
 
-            Console.WriteLine(Type.GetType("Project1.Player"));
             // retrieve the response corresponding to the two colliding objects
             XElement response = responseData.Element(col.target.CollisionType).Element(col.source.CollisionType);
 

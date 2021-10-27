@@ -14,8 +14,9 @@ namespace Project1
         void ShootArrow();
         void BoomerangAttack();
         void BombAttack();
-
         public void TakeDamage(int damage);
+        public void CollectItem(IGameObject collectible);
+        public void ShowCollection();
 
     }
 }

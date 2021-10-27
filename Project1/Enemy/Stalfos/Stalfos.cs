@@ -75,6 +75,11 @@ namespace Project1.Enemy
             state.Draw(spriteBatch);
             stalfosHealthState.Draw(spriteBatch);
 
+            //DrawRectangle(spriteBatch)
+        }
+
+        private void DrawRectangle(SpriteBatch spriteBatch)
+        {
             // Visualize rectangle for testing
             Rectangle rectangle = GetRectangle();
             int lineWidth = 1;
