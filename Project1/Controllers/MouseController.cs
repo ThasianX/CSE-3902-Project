@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Input;
 using Project1.Commands;
 using Project1.Interfaces;
+using Project1.PlayerStates;
 
 namespace Project1.Controllers
 {
@@ -15,6 +16,14 @@ namespace Project1.Controllers
 			myGame = game;
 		}
 
+		public void RegisterCommands() 
+		{
+		}
+
+		public void RegisterPlayer(IPlayer player) 
+		{
+		}
+
 		public void Update()
 		{
 			MouseState mouseState = Mouse.GetState();
@@ -25,11 +34,9 @@ namespace Project1.Controllers
 			if (mouseState.RightButton == ButtonState.Released && previousState.RightButton == ButtonState.Pressed)
 			{
 				myGame.levelManager.IncrementRoom();
-				myGame.SetupControllers();
 			} else if (mouseState.LeftButton == ButtonState.Released && previousState.LeftButton == ButtonState.Pressed)
 			{
 				myGame.levelManager.DecrementRoom();
-				myGame.SetupControllers();
 			}
 			previousState = mouseState;
 		}

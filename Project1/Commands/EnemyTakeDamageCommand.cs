@@ -1,11 +1,12 @@
 ﻿using Project1.Enemy;
+using Project1.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Project1.Commands
 {
-    class EnemyTakeDamageCommand
+    class EnemyTakeDamageCommand : ICommand
     {
         IEnemy enemy;
         int amount = 2; // default amount

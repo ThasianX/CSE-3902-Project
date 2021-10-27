@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework;
 using Project1.Enemy;
 using Project1.Objects;
 using System.Collections.ObjectModel;
+using System.Collections.Generic;
 
 namespace Project1.Levels
 {
@@ -29,19 +30,50 @@ namespace Project1.Levels
 
         public void IncrementRoom()
         {
+            
+
+            GetCurrentRoom().Deactivate();
+
+            // BAD SOLUTION! DO NOT LEAVE IN FOR SPRINT 4! =============================================
+            IPlayer player = GameObjectManager.Instance.GetObjectsOfType<IPlayer>()[0];
+            GetCurrentRoom().RemoveObject(player);
+            // =========================================================================================
+
             currentRoomIndex = (currentRoomIndex + 1) % totalRooms;
+
+            // =========================================================================================
+            GetCurrentRoom().AddObject(player);
+            // =========================================================================================
+
+            GetCurrentRoom().Activate();
         }
 
         public void DecrementRoom()
         {
+            GetCurrentRoom().Deactivate();
+
+            // BAD SOLUTION! DO NOT LEAVE IN FOR SPRINT 4! =============================================
+            IPlayer player = GameObjectManager.Instance.GetObjectsOfType<IPlayer>()[0];
+            GetCurrentRoom().RemoveObject(player);
+            // =========================================================================================
+
             currentRoomIndex = (currentRoomIndex - 1 < 0 ? totalRooms - 1 : currentRoomIndex - 1) % totalRooms;
+
+            // =========================================================================================
+            GetCurrentRoom().AddObject(player);
+            // =========================================================================================
+
+            GetCurrentRoom().Activate();
         }
+
+
 
         public void LoadLevel() {
             foreach(XElement element in spriteData.Root.Elements()) {
                 totalRooms++;
                 LoadRoom(element);
             }
+            GetCurrentRoom().Activate();
         }
 
         private void LoadRoom(XElement root) {
@@ -60,17 +92,16 @@ namespace Project1.Levels
         private void LoadObject(Room room, string type, string name, Vector2 position) {
             switch(type) {
                 case "Wall":
-                    room.AddWall(new Wall(position, (Direction) Enum.Parse(typeof(Direction), name)));
+                    room.AddObject(new Wall(position, (Direction) Enum.Parse(typeof(Direction), name)));
                     break;
                 case "Floor":
-                    room.SetFloor(new Floor(position, int.Parse(name)));
+                    room.AddObject(new Floor(position, int.Parse(name)));
                     break;
                 case "Door":
-                    Direction direction = (Direction) Enum.Parse(typeof(Direction), name);
-                    room.AddDoor(new Door(position, direction));
+                    room.AddObject(new Door(position, (Direction) Enum.Parse(typeof(Direction), name)));
                     break;
                 case "Player":
-                    room.SetPlayer(new Player(position));
+                    room.AddObject(new Player(position));
                     break;
                 case "Enemy":
                     MakeEnemy(room, name, position);
@@ -89,19 +120,19 @@ namespace Project1.Levels
         private void MakeEnemy(Room room, string name, Vector2 position) {
             switch(name) {
                 case "Aquamentus":
-                    room.AddEnemy(new Aquamentus(position));
+                    room.AddObject(new Aquamentus(position));
                     break;
                 case "BlueBat":
-                    room.AddEnemy(new BlueBat(position));
+                    room.AddObject(new BlueBat(position));
                     break;
                 case "BlueGel":
-                    room.AddEnemy(new BlueGel(position));
+                    room.AddObject(new BlueGel(position));
                     break;
                 case "RedGloriya":
-                    room.AddEnemy(new RedGloriya(position));
+                    room.AddObject(new RedGloriya(position));
                     break;
                 case "Stalfos":
-                    room.AddEnemy(new Stalfos(position));
+                    room.AddObject(new Stalfos(position));
                     break;
             }
         }
@@ -109,50 +140,50 @@ namespace Project1.Levels
         private void MakeBlock(Room room, string name, Vector2 position) {
             switch(name) {
                 case "Diamond":
-                    room.AddBlock(new DiamondBlock(position));
+                    room.AddObject(new DiamondBlock(position));
                     break;
                 case "Black":
-                    room.AddBlock(new BlackBlock(position));
+                    room.AddObject(new BlackBlock(position));
                     break;
                 case "Ladder":
-                    room.AddBlock(new LadderBlock(position));
+                    room.AddObject(new LadderBlock(position));
                     break;
                 case "Plain":
-                    room.AddBlock(new PlainBlock(position));
+                    room.AddObject(new PlainBlock(position));
                     break;
                 case "Pyramid":
-                    room.AddBlock(new PyramidBlock(position));
+                    room.AddObject(new PyramidBlock(position));
                     break;
                 case "Stair":
-                    room.AddBlock(new StairBlock(position));
+                    room.AddObject(new StairBlock(position));
                     break;
                 case "Stone":
-                    room.AddBlock(new StoneBlock(position));
+                    room.AddObject(new StoneBlock(position));
                     break;
             }
         }
         private void MakeItem(Room room, string name, Vector2 position) {
             switch(name) {
                 case "BlueRuby":
-                    room.AddItem(new BlueRuby(position));
+                    room.AddObject(new BlueRuby(position));
                     break;
                 case "Bomb":
-                    room.AddItem(new Bomb(position));
+                    room.AddObject(new Bomb(position));
                     break;
                 case "FlashingRuby":
-                    room.AddItem(new FlashingRuby(position));
+                    room.AddObject(new FlashingRuby(position));
                     break;
                 case "Heart":
-                    room.AddItem(new Heart(position));
+                    room.AddObject(new Heart(position));
                     break;
                 case "Key":
-                    room.AddItem(new Key(position));
+                    room.AddObject(new Key(position));
                     break;
                 case "Triforce":
-                    room.AddItem(new Triforce(position));
+                    room.AddObject(new Triforce(position));
                     break;
                 case "YellowRuby":
-                    room.AddItem(new YellowRuby(position));
+                    room.AddObject(new YellowRuby(position));
                     break;
             }
         }

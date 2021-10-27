@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using Microsoft.Xna.Framework.Input;
+﻿using Microsoft.Xna.Framework.Input;
 using Project1.Commands;
 using Project1.Interfaces;
+using Project1.PlayerStates;
 
 namespace Project1
 {
@@ -14,6 +14,14 @@ namespace Project1
 		{
 			myGame = game;
 			myPlayer = player;
+		}
+
+		public void RegisterPlayer(IPlayer player) 
+		{
+		}
+
+		public void RegisterCommands() 
+		{
 		}
 
 		public void Update()

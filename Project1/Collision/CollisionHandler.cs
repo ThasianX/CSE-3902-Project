@@ -11,8 +11,18 @@ namespace Project1
     public class CollisionHandler
     {
         XElement responseData;
-        
-        public CollisionHandler(string path)
+
+        // Singleton instance
+        private static CollisionHandler instance = new CollisionHandler();
+        public static CollisionHandler Instance
+        {
+            get
+            {
+                return instance;
+            }
+        }
+
+        public void LoadResponses(string path)
         {
             XDocument doc = XDocument.Load(path);
             responseData = doc.Root;

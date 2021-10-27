@@ -20,7 +20,6 @@ namespace Project1
         }
 
         private ArrayList controllerList;
-        private CollisionManager collisionManager;
 
         private static Viewport ViewPort => graphics.GraphicsDevice.Viewport;
         public static int SCREEN_WIDTH => ViewPort.Width;
@@ -34,20 +33,22 @@ namespace Project1
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
             _levelManager = new LevelManager(1);
-        }
 
-        void Setup()
-        {
-            _levelManager.LoadLevel();
-            SetupControllers();
-        }
-
-        public void SetupControllers() {
             controllerList = new ArrayList
             {
                 new KeyboardController(this),
                 new MouseController(this)
             };
+        }
+
+        void Setup()
+        {
+            _levelManager.LoadLevel();
+            
+            foreach(IController controller in controllerList) {
+                controller.RegisterPlayer(GameObjectManager.Instance.GetPlayer());
+                controller.RegisterCommands();
+            }
         }
 
         protected override void LoadContent()
@@ -60,7 +61,7 @@ namespace Project1
             SpriteFactory.Instance.loadSpriteDictionary("Data/sprite_dictionary.xml");
 
             Setup();
-            collisionManager = new CollisionManager(levelManager, new CollisionHandler("Data/collision_response.xml"));
+            CollisionHandler.Instance.LoadResponses("Data/collision_response.xml");
             
             // Visualize rectangle for testing
             whiteRectangle = new Texture2D(GraphicsDevice, 1, 1);
@@ -77,9 +78,9 @@ namespace Project1
                 controller.Update();
             }
 
-            _levelManager.GetCurrentRoom().Update(gameTime);
+            GameObjectManager.Instance.UpdateObjects(gameTime);
 
-            collisionManager.Update();
+            CollisionManager.Instance.Update();
             base.Update(gameTime);
         }
 
@@ -89,7 +90,7 @@ namespace Project1
 
             spriteBatch.Begin();
 
-            _levelManager.GetCurrentRoom().Draw(spriteBatch);
+            GameObjectManager.Instance.DrawObjects(spriteBatch);
 
             spriteBatch.End();
 
