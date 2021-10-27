@@ -1,18 +1,15 @@
 ﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Project1.Interfaces;
-using Project1.Levels;
 
 namespace Project1
 {
     public class CollisionManager
     {
-        private LevelManager manager;
         private CollisionHandler handler;
 
-        public CollisionManager(LevelManager manager, CollisionHandler handler)
+        public CollisionManager(CollisionHandler handler)
         {
-            this.manager = manager;
             this.handler = handler;
         }
 
@@ -45,10 +42,9 @@ namespace Project1
             // update movers and statics each update
 
             // movers is a list that only contains movers
-            Room room = manager.GetCurrentRoom();
-            List<ICollidable> movers = room.GetMoverList();
+            List<ICollidable> movers = GameObjectManager.Instance.GetMoverList();
             // statics is a different list that only contains non-movers
-            List<ICollidable> statics = room.GetStaticList();
+            List<ICollidable> statics = GameObjectManager.Instance.GetStaticList();
 
             for (int i = 0; i < movers.Count; i++)
             {

@@ -14,6 +14,8 @@ namespace Project1
 		private KeyboardState currentState;
 		private KeyboardState oldState;
 
+		private IPlayer player;
+
 		public KeyboardController(Game1 game)
 		{
 			myGame = game;
@@ -21,14 +23,16 @@ namespace Project1
 			onPressMappings = new Dictionary<Keys, ICommand>();
 			onReleaseMappings = new Dictionary<Keys, ICommand>();
 
-			RegisterCommands();
-
 			oldState = Keyboard.GetState();
 		}
 
-		private void RegisterCommands()
+		public void RegisterPlayer(IPlayer player) 
 		{
-			IPlayer player = myGame.levelManager.GetCurrentRoom().GetPlayer();
+			this.player = player;
+		}
+
+		public void RegisterCommands()
+		{
 			// COMMANDS THAT EXECUTE ON PRESS =============================================
 
 			// Player 
