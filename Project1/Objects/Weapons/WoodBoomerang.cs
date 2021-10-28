@@ -110,8 +110,6 @@ namespace Project1.Objects
                         GameObjectManager.Instance.RemoveOnNextFrame(this);
                     }
                     break;
-
-
                 default: break;
             }
         }
@@ -144,7 +142,6 @@ namespace Project1.Objects
                         this.inRange = false;
                     }
                     break;
-
                 default:
                     break;
             }

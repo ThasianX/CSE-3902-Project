@@ -154,13 +154,13 @@ namespace Project1
         public void CollectItem(IGameObject collectible)
         {
             var collectionName = collectible.GetType().Name;
-            if (!collectionList.ContainsKey(collectionName))
+            if (collectionList.ContainsKey(collectionName))
             {
-                collectionList.Add(collectionName, 1);
+                collectionList[collectionName]++;
             }
             else
             {
-                collectionList[collectionName]++;
+                collectionList.Add(collectionName, 1);
             }
             GameObjectManager.Instance.RemoveOnNextFrame(collectible);
         }
