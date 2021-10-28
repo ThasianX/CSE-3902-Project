@@ -48,6 +48,7 @@ namespace Project1.Enemy
                     this.boomerang = new WoodBoomerang(redGloriya.Position + new Vector2(-boomerangOffset, 0), currentDirection, activeFrameCount);
                     break;
             }
+            GameObjectManager.Instance.AddOnNextFrame(boomerang);
         }
 
         public void FireBallAttack()
@@ -77,13 +78,11 @@ namespace Project1.Enemy
             {
                 ChangeDirection();
             }
-            boomerang.Update(gameTime);
             sprite.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            boomerang.Draw(spriteBatch);
             sprite.Draw(spriteBatch, redGloriya.Position);
         }
     }

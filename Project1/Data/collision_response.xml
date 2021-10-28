@@ -22,7 +22,7 @@
       </command>
     </Block>
     <Item>
-      <command type="Project1.Commands.MoveInBoundsCommand">
+      <command type="Project1.Commands.PlayerCollectItemCommand">
         <arg type="Project1.Collision">COLLISION</arg>
       </command>
     </Item>

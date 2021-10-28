@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Project1.Interfaces;
@@ -69,6 +70,7 @@ namespace Project1.Objects
         {
             //Checks if sprite has achieved max distance before returning to link
             checkRange();
+            CheckPosition();
             if (this.inRange)
             {
                 this.Position += this.deltaVector;
@@ -78,6 +80,38 @@ namespace Project1.Objects
                 this.Position -= this.deltaVector;
             }
             boomerangSprite.Update(gameTime);
+        }
+        // Check Boomerang position, if it surpass player position + boomerang offset (initialPosition), delete it.
+        public void CheckPosition()
+        {
+            switch (this.direction)
+            {
+                case Direction.Up:
+                    if (this.Position.Y > initialPosition.Y)
+                    {
+                        GameObjectManager.Instance.RemoveOnNextFrame(this);
+                    } 
+                    break;
+                case Direction.Down:
+                    if (this.Position.Y < initialPosition.Y)
+                    {
+                        GameObjectManager.Instance.RemoveOnNextFrame(this);
+                    }
+                    break;
+                case Direction.Left:
+                    if (this.Position.X > initialPosition.X)
+                    {
+                        GameObjectManager.Instance.RemoveOnNextFrame(this);
+                    }
+                    break;
+                case Direction.Right:
+                    if (this.Position.X < initialPosition.X)
+                    {
+                        GameObjectManager.Instance.RemoveOnNextFrame(this);
+                    }
+                    break;
+                default: break;
+            }
         }
 
         public void checkRange()
@@ -108,7 +142,6 @@ namespace Project1.Objects
                         this.inRange = false;
                     }
                     break;
-
                 default:
                     break;
             }

@@ -1,4 +1,4 @@
-﻿
+﻿using System;
 using System.Collections.Generic;
 using Project1.Interfaces;
 using Microsoft.Xna.Framework;
@@ -26,6 +26,8 @@ namespace Project1
 
         private int immuneTime = 60;
         private int immnueTimeCounter;
+        // Temporary collection list for player
+        public Dictionary<string, int> collectionList;
 
         // Keeps track of which directional movement inputs are pressed
         public Dictionary<Direction, bool> activeMoveInputs = new Dictionary<Direction, bool>()
@@ -46,6 +48,7 @@ namespace Project1
             // Set entry state
             state = new StillPlayerState(this);
             healthState = new HealthState(this, 100);
+            collectionList = new Dictionary<string, int>();
         }
 
         // Does not appear in IPlayerState (helper method)
@@ -112,7 +115,12 @@ namespace Project1
         {
             state.Draw(spriteBatch);
             healthState.Draw(spriteBatch);
+            //DrawRectangle(spriteBatch);
 
+        }
+
+        private void DrawRectangle(SpriteBatch spriteBatch)
+        {
             // Visualize rectangle for testing
             Rectangle rectangle = GetRectangle();
             int lineWidth = 1;
@@ -141,6 +149,36 @@ namespace Project1
         public Rectangle GetRectangle()
         {
             return new Rectangle((int)Position.X, (int)Position.Y, 16, 16);
+        }
+
+        public void CollectItem(IGameObject collectible)
+        {
+            var collectionName = collectible.GetType().Name;
+            if (collectionList.ContainsKey(collectionName))
+            {
+                collectionList[collectionName]++;
+            }
+            else
+            {
+                collectionList.Add(collectionName, 1);
+            }
+            GameObjectManager.Instance.RemoveOnNextFrame(collectible);
+        }
+
+        public void ShowCollection()
+        {
+            // Debug for collection command
+            if (collectionList.Count == 0)
+            {
+                Console.WriteLine("Link don't have any collection currently");
+            }
+            else
+            {
+                foreach (var collection in collectionList)
+                {
+                    Console.WriteLine($"{collection.Key}: {collection.Value}");
+                }
+            }
         }
     }
 }

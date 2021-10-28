@@ -11,6 +11,7 @@ namespace Project1.Controllers
 		private readonly Game1 myGame;
 		private MouseState previousState;
 
+
 		public MouseController(Game1 game)
 		{
 			myGame = game;

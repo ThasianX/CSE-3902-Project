@@ -1,8 +1,5 @@
 ﻿using Project1.Enemy;
 using Project1.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Project1.Commands
 {
@@ -25,6 +22,8 @@ namespace Project1.Commands
         public void Execute()
         {
             enemy.TakeDamage(amount);
+            // because enemy change direction base on current direction state, so it won't change to the same direction it's moving
+            enemy.ChangeDirection();
         }
     }
 }

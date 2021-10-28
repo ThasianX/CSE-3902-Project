@@ -10,7 +10,7 @@ namespace Project1.NPC
         public IEnemyState state;
         public Vector2 Position { get; set; }
         public bool IsMover => false;
-        public string CollisionType => "Weapon";
+        public string CollisionType => "Block";
         public OldMan(Vector2 position)
         {
             this.Position = position;

@@ -32,20 +32,26 @@ namespace Project1
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
-            _levelManager = new LevelManager(1);
+        }
 
+        // We could use initialize to Reset our game
+        protected override void Initialize()
+        {
+            _levelManager = new LevelManager(1);
+           
             controllerList = new ArrayList
             {
                 new KeyboardController(this),
                 new MouseController(this)
             };
+
+            base.Initialize();
         }
 
         void Setup()
         {
             _levelManager.LoadLevel();
-            
-            foreach(IController controller in controllerList) {
+            foreach (IController controller in controllerList) {
                 controller.RegisterPlayer(GameObjectManager.Instance.GetPlayer());
                 controller.RegisterCommands();
             }
@@ -99,6 +105,7 @@ namespace Project1
 
         public void Reset() 
         {
+            // TODO: This have problem when press R because KeyBoardController already initialized
             Setup();
         }
     }

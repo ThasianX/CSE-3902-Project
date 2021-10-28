@@ -16,7 +16,7 @@ namespace Project1
 			myPlayer = player;
 		}
 
-		public void RegisterPlayer(IPlayer player) 
+        public void RegisterPlayer(IPlayer player) 
 		{
 		}
 

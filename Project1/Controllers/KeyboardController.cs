@@ -13,23 +13,20 @@ namespace Project1
 		private readonly Game1 myGame;
 		private KeyboardState currentState;
 		private KeyboardState oldState;
-
-		private IPlayer player;
+        private IPlayer player;
 
 		public KeyboardController(Game1 game)
 		{
 			myGame = game;
-
-			onPressMappings = new Dictionary<Keys, ICommand>();
+            onPressMappings = new Dictionary<Keys, ICommand>();
 			onReleaseMappings = new Dictionary<Keys, ICommand>();
-
-			oldState = Keyboard.GetState();
+            oldState = Keyboard.GetState();
 		}
 
-		public void RegisterPlayer(IPlayer player) 
+        public void RegisterPlayer(IPlayer player) 
 		{
 			this.player = player;
-		}
+        }
 
 		public void RegisterCommands()
 		{
@@ -52,6 +49,8 @@ namespace Project1
 			onPressMappings.Add(Keys.D2, new PlayerShootArrowCommand(player));
 			onPressMappings.Add(Keys.D3, new PlayerBombAttackCommand(player));
 
+            onPressMappings.Add(Keys.I, new PlayerShowCollectionCommand(player));
+
 			// COMMANDS THAT EXECUTE ON RELEASE
 
 			// Player
@@ -65,7 +64,7 @@ namespace Project1
 			onPressMappings.Add(Keys.D0, new QuitCommand(myGame));
 			onReleaseMappings.Add(Keys.Q, new QuitCommand(myGame));
 			onReleaseMappings.Add(Keys.R, new ResetCommand(myGame));
-		}
+        }
 
 		public void Update()
 		{

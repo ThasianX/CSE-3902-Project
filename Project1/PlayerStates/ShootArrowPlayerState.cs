@@ -20,7 +20,6 @@ namespace Project1.PlayerStates
         public ShootArrowPlayerState(Player player)
         {
             this.player = player;
-            WoodArrow arrow;
 
             switch (player.facingDirection)
             {
