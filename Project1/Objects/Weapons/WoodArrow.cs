@@ -12,9 +12,6 @@ namespace Project1.Objects
         public bool IsMover => true;
         public string CollisionType => "Projectile";
 
-        //Distance Arrow travels from Link
-        private int maxRange = 250;
-
         // time before the arrow deletes itself (seconds)
         private float activeTime = 5, counter = 0;
         private Direction direction;

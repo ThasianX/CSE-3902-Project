@@ -1,9 +1,7 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using System;
+using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Project1.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Project1.Objects;
 
 namespace Project1.PlayerStates
@@ -11,7 +9,7 @@ namespace Project1.PlayerStates
     public class BoomerangAttackPlayerState : IPlayerState
     {
         private Player player;
-        private int boomerangOffset = 8;
+        private int boomerangOffset = 20;
         private ISprite sprite;
         private WoodBoomerang boomerang;
 
@@ -47,6 +45,7 @@ namespace Project1.PlayerStates
                     this.boomerang = new WoodBoomerang(player.Position + new Vector2(0, boomerangOffset), player.facingDirection, activeFrameCount);
                     break;
             }
+            GameObjectManager.Instance.AddOnNextFrame(boomerang);
         }
 
         public void SetMoveInput(Direction direction, bool isPressed)
@@ -93,13 +92,11 @@ namespace Project1.PlayerStates
                     player.state = new StillPlayerState(player);
                 }
             }
-            boomerang.Update(gameTime);
             sprite.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            boomerang.Draw(spriteBatch);
             sprite.Draw(spriteBatch, player.Position);
         }
     }

@@ -13,17 +13,14 @@ namespace Project1
 		private readonly Game1 myGame;
 		private KeyboardState currentState;
 		private KeyboardState oldState;
-
         private IPlayer player;
 
 		public KeyboardController(Game1 game)
 		{
 			myGame = game;
-
-			onPressMappings = new Dictionary<Keys, ICommand>();
+            onPressMappings = new Dictionary<Keys, ICommand>();
 			onReleaseMappings = new Dictionary<Keys, ICommand>();
-
-			oldState = Keyboard.GetState();
+            oldState = Keyboard.GetState();
 		}
 
         public void RegisterPlayer(IPlayer player) 
