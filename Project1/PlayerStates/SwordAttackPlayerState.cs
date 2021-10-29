@@ -1,58 +1,53 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Project1.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Project1.Objects;
 
 namespace Project1.PlayerStates
 {
     public class SwordAttackPlayerState : IPlayerState
     {
-        private Player player;
+        private IPlayer player;
         private int swordOffset = 8;
-        private ISprite sprite;
-        private ISprite healthSprite;
-        private WoodSword sword;
+        private IItem sword;
 
         private int activeFrameCount = 20, counter = 0;
 
-        public SwordAttackPlayerState(Player player)
+        public SwordAttackPlayerState(IPlayer player)
         {
             this.player = player;
 
-            switch (player.facingDirection)
+            switch (player.FacingDirection)
             {
                 case Direction.Up:
-                    sprite = SpriteFactory.Instance.CreateSprite("player_attack_up");
-                    this.sword = new WoodSword(player.Position + new Vector2(0, -swordOffset), player.facingDirection, activeFrameCount);
+                    player.Sprite = SpriteFactory.Instance.CreateSprite("player_attack_up");
+                    this.sword = new WoodSword(player.Position + new Vector2(0, -swordOffset), player.FacingDirection, activeFrameCount);
                     break;
 
                 case Direction.Right:
-                    sprite = SpriteFactory.Instance.CreateSprite("player_attack_right");
-                    this.sword = new WoodSword(player.Position + new Vector2(swordOffset, 0), player.facingDirection, activeFrameCount);
+                    player.Sprite = SpriteFactory.Instance.CreateSprite("player_attack_right");
+                    this.sword = new WoodSword(player.Position + new Vector2(swordOffset, 0), player.FacingDirection, activeFrameCount);
                     break;
 
                 case Direction.Down:
-                    sprite = SpriteFactory.Instance.CreateSprite("player_attack_down");
-                    this.sword = new WoodSword(player.Position + new Vector2(0, swordOffset), player.facingDirection, activeFrameCount);
+                    player.Sprite = SpriteFactory.Instance.CreateSprite("player_attack_down");
+                    this.sword = new WoodSword(player.Position + new Vector2(0, swordOffset), player.FacingDirection, activeFrameCount);
                     break;
 
                 case Direction.Left:
-                    sprite = SpriteFactory.Instance.CreateSprite("player_attack_left");
-                    this.sword = new WoodSword(player.Position + new Vector2(-swordOffset, 0), player.facingDirection, activeFrameCount);
+                    player.Sprite = SpriteFactory.Instance.CreateSprite("player_attack_left");
+                    this.sword = new WoodSword(player.Position + new Vector2(-swordOffset, 0), player.FacingDirection, activeFrameCount);
                     break;
 
                 default:
-                    this.sword = new WoodSword(player.Position + new Vector2(0, swordOffset), player.facingDirection, activeFrameCount);
+                    this.sword = new WoodSword(player.Position + new Vector2(0, swordOffset), player.FacingDirection, activeFrameCount);
                     break;
             }
         }
 
         public void SetMoveInput(Direction direction, bool isPressed)
         {
-            player.activeMoveInputs[direction] = isPressed;
+            player.ActiveMoveInputs[direction] = isPressed;
         }
 
         public void FaceDirection(Direction direction)
@@ -87,21 +82,20 @@ namespace Project1.PlayerStates
             {
                 if (player.hasAnyMoveInput())
                 {
-                    player.state = new WalkingPlayerState(player);
+                    player.State = new WalkingPlayerState(player);
                 }
                 else
                 {
-                    player.state = new StillPlayerState(player);
+                    player.State = new StillPlayerState(player);
                 }
             }
             sword.Update(gameTime);
-            sprite.Update(gameTime);
         }
 
+        // TODO: Add sword to GameObjectManager
         public void Draw(SpriteBatch spriteBatch)
         {
             sword.Draw(spriteBatch);
-            sprite.Draw(spriteBatch, player.Position);
         }
     }
 }

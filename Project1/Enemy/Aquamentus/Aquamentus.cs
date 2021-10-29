@@ -7,9 +7,10 @@ namespace Project1.Enemy
 {
     public class Aquamentus : IEnemy, ICollidable
     {
-        public IEnemyState state;
+        public IEnemyState State { get; set; }
+        public ISprite Sprite { get; set; }
         public Vector2 Position { get; set; }
-        public float movingSpeed;
+        public float MovingSpeed { get; set; }
         private int choice;
         private Random rand = new Random();
         public bool IsMover => true;
@@ -27,21 +28,21 @@ namespace Project1.Enemy
             switch (choice)
             {
                 case 0:
-                    state = new AquamentusRightMovingState(this);
+                    State = new AquamentusRightMovingState(this);
                     break;
                 case 1:
-                    state = new AquamentusLeftMovingState(this);
+                    State = new AquamentusLeftMovingState(this);
                     break;
             }
 
-            movingSpeed = 1f;
+            MovingSpeed = 1f;
 
             aquamentusHealthState = new AquamentusHealthState(this, 300);
         }
 
         public void FireBallAttack()
         {
-            state.FireBallAttack();
+            State.FireBallAttack();
         }
 
         public void BoomerangAttack()
@@ -50,14 +51,15 @@ namespace Project1.Enemy
 
         public void ChangeDirection()
         {
-            state.ChangeDirection();
+            State.ChangeDirection();
         }
 
         public void Update(GameTime gameTime)
         {
             // Update the current state
             // Possible state: direction, fireball attack
-            state.Update(gameTime);
+            State.Update(gameTime);
+            Sprite.Update(gameTime);
             // When damage taked, update only after the immune time is passed
             if (Immune() && immnueTimeCounter == immuneTime)
             {
@@ -78,7 +80,7 @@ namespace Project1.Enemy
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            state.Draw(spriteBatch);
+            Sprite.Draw(spriteBatch, Position);
             aquamentusHealthState.Draw(spriteBatch);
         }
 

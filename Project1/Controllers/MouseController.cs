@@ -1,8 +1,5 @@
-﻿using System.Collections.Generic;
-using Microsoft.Xna.Framework.Input;
-using Project1.Commands;
+﻿using Microsoft.Xna.Framework.Input;
 using Project1.Interfaces;
-using Project1.PlayerStates;
 
 namespace Project1.Controllers
 {
@@ -10,7 +7,6 @@ namespace Project1.Controllers
 	{
 		private readonly Game1 myGame;
 		private MouseState previousState;
-
 
 		public MouseController(Game1 game)
 		{

@@ -1,15 +1,11 @@
 ﻿using System;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
-
-using Project1.Interfaces;
 
 namespace Project1.Enemy
 {
     public class StalfosLeftMovingState : IEnemyState
     {
-        private Stalfos stalfos;
-        private ISprite sprite;
+        private IEnemy stalfos;
         private int choice;
         private Random rand = new Random();
         private int timer;
@@ -18,10 +14,10 @@ namespace Project1.Enemy
         private Vector2 deltaVector;
         private int counter;
 
-        public StalfosLeftMovingState(Stalfos stalfos)
+        public StalfosLeftMovingState(IEnemy stalfos)
         {
             this.stalfos = stalfos;
-            sprite = SpriteFactory.Instance.CreateSprite("stalfos_walking");
+            stalfos.Sprite = SpriteFactory.Instance.CreateSprite("stalfos_walking");
             timer = 0;
             currentDirection = Direction.Left;
             deltaVector = new Vector2(-1, 0);
@@ -41,15 +37,10 @@ namespace Project1.Enemy
             choice = rand.Next(1, 4);
             switch (choice)
             {
-                case 1: stalfos.state = new StalfosUpMovingState(stalfos); break;
-                case 2: stalfos.state = new StalfosDownMovingState(stalfos); break;
-                case 3: stalfos.state = new StalfosRightMovingState(stalfos); break;
+                case 1: stalfos.State = new StalfosUpMovingState(stalfos); break;
+                case 2: stalfos.State = new StalfosDownMovingState(stalfos); break;
+                case 3: stalfos.State = new StalfosRightMovingState(stalfos); break;
             }
-        }
-
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            sprite.Draw(spriteBatch, stalfos.Position);
         }
 
         public void Update(GameTime gameTime)
@@ -60,8 +51,7 @@ namespace Project1.Enemy
                 ChangeDirection();
                 timer = 0;
             }
-            stalfos.Position += deltaVector * stalfos.movingSpeed;
-            sprite.Update(gameTime);
+            stalfos.Position += deltaVector * stalfos.MovingSpeed;
         }
     }
 }

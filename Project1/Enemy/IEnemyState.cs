@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace Project1.Enemy
 {
@@ -13,6 +12,5 @@ namespace Project1.Enemy
         void ChangeDirection();
 
         void Update(GameTime gameTime);
-        void Draw(SpriteBatch spriteBatch);
     }
 }

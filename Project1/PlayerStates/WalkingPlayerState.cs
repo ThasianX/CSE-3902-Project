@@ -1,38 +1,31 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
-using Project1.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Microsoft.Xna.Framework;
 
 namespace Project1.PlayerStates
 {
     public class WalkingPlayerState : IPlayerState
     {
-        private Player player;
+        private IPlayer player;
 
-        private ISprite sprite;
-
-        public WalkingPlayerState(Player player)
+        public WalkingPlayerState(IPlayer player)
         {
             this.player = player;
 
-            switch (player.facingDirection)
+            switch (player.FacingDirection)
             {
                 case Direction.Up:
-                    sprite = SpriteFactory.Instance.CreateSprite("player_walking_up");
+                    player.Sprite = SpriteFactory.Instance.CreateSprite("player_walking_up");
                     break;
 
                 case Direction.Right:
-                    sprite = SpriteFactory.Instance.CreateSprite("player_walking_right");
+                    player.Sprite = SpriteFactory.Instance.CreateSprite("player_walking_right");
                     break;
 
                 case Direction.Down:
-                    sprite = SpriteFactory.Instance.CreateSprite("player_walking_down");
+                    player.Sprite = SpriteFactory.Instance.CreateSprite("player_walking_down");
                     break;
 
                 case Direction.Left:
-                    sprite = SpriteFactory.Instance.CreateSprite("player_walking_left");
+                    player.Sprite = SpriteFactory.Instance.CreateSprite("player_walking_left");
                     break;
 
                 default:
@@ -42,32 +35,32 @@ namespace Project1.PlayerStates
 
         public void  SetMoveInput(Direction direction, bool isPressed)
         {
-            player.activeMoveInputs[direction] = isPressed;
+            player.ActiveMoveInputs[direction] = isPressed;
         }
 
         public void FaceDirection(Direction direction)
         {
-            player.facingDirection = direction;
-            player.state = new WalkingPlayerState(player);
+            player.FacingDirection = direction;
+            player.State = new WalkingPlayerState(player);
         }
 
         public void SwordAttack()
         {
-            player.state = new SwordAttackPlayerState(player);
+            player.State = new SwordAttackPlayerState(player);
         }
         public void ShootArrow()
         {
-            player.state = new ShootArrowPlayerState(player);
+            player.State = new ShootArrowPlayerState(player);
         }
 
         public void BoomerangAttack()
         {
-            player.state = new BoomerangAttackPlayerState(player);
+            player.State = new BoomerangAttackPlayerState(player);
         }
 
         public void BombAttack()
         {
-            player.state = new BombAttackPlayerState(player);
+            player.State = new BombAttackPlayerState(player);
         }
 
         public void Update(GameTime gameTime)
@@ -75,16 +68,16 @@ namespace Project1.PlayerStates
             // Calculate the direction of the movement vector
             Vector2 movement = new Vector2(0, 0);
 
-            if (player.activeMoveInputs[Direction.Up])
+            if (player.ActiveMoveInputs[Direction.Up])
                 movement += new Vector2(0, -1);
 
-            if (player.activeMoveInputs[Direction.Right])
+            if (player.ActiveMoveInputs[Direction.Right])
                 movement += new Vector2(1, 0);
 
-            if (player.activeMoveInputs[Direction.Down])
+            if (player.ActiveMoveInputs[Direction.Down])
                 movement += new Vector2(0, 1);
 
-            if (player.activeMoveInputs[Direction.Left])
+            if (player.ActiveMoveInputs[Direction.Left])
                 movement += new Vector2(-1, 0);
 
             // Normalize the vector to prevent moving faster on diagnals
@@ -92,23 +85,16 @@ namespace Project1.PlayerStates
             // ^^^ This causes the game to crash. Needs looked into...
 
             // Apply speed
-            movement *= player.speed;
+            movement *= player.Speed;
 
             // Round to int (pixel space)
             movement = Vector2.Round(movement);
 
             player.Move(movement);
 
-            sprite.Update(gameTime);
-
             // Switch to still state if there is no movement input
             if (player.hasAnyMoveInput())
-                player.state = new StillPlayerState(player);
-        }
-
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            sprite.Draw(spriteBatch, player.Position);
+                player.State = new StillPlayerState(player);
         }
     }
 }

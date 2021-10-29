@@ -7,9 +7,10 @@ namespace Project1.Enemy
 {
     public class RedGloriya : IEnemy, ICollidable
     {
-        public IEnemyState state;
+        public IEnemyState State { get; set; }
+        public ISprite Sprite { get; set; }
         public Vector2 Position { get; set; }
-        public float movingSpeed;
+        public float MovingSpeed { get; set; }
         private int choice;
         private Random rand = new Random();
         public bool IsMover => true;
@@ -27,20 +28,20 @@ namespace Project1.Enemy
             switch (choice)
             {
                 case 0:
-                    state = new RedGloriyaUpMovingState(this);
+                    State = new RedGloriyaUpMovingState(this);
                     break;
                 case 1:
-                    state = new RedGloriyaDownMovingState(this);
+                    State = new RedGloriyaDownMovingState(this);
                     break;
                 case 2:
-                    state = new RedGloriyaRightMovingState(this);
+                    State = new RedGloriyaRightMovingState(this);
                     break;
                 case 3:
-                    state = new RedGloriyaLeftMovingState(this);
+                    State = new RedGloriyaLeftMovingState(this);
                     break;
             }
 
-            movingSpeed = 1f;
+            MovingSpeed = 1f;
             redGloriyaHealthState = new RedGloriyaHealthState(this, 100);
         }
 
@@ -50,12 +51,12 @@ namespace Project1.Enemy
 
         public void BoomerangAttack()
         {
-            state.BoomerangAttack();
+            State.BoomerangAttack();
         }
 
         public void ChangeDirection()
         {
-            state.ChangeDirection();
+            State.ChangeDirection();
         }
 
 
@@ -63,7 +64,8 @@ namespace Project1.Enemy
         {
             // Update the current state
             // Possible state: direction, attack
-            state.Update(gameTime);
+            State.Update(gameTime);
+            Sprite.Update(gameTime);
             // Enemy health state only update when its immune time is over. 
             if (Immune() && immnueTimeCounter == immuneTime)
             {
@@ -83,7 +85,7 @@ namespace Project1.Enemy
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            state.Draw(spriteBatch);
+            Sprite.Draw(spriteBatch, Position);
             redGloriyaHealthState.Draw(spriteBatch);
         }
 

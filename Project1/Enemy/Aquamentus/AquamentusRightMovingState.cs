@@ -1,15 +1,11 @@
 ﻿using System;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
-
-using Project1.Interfaces;
 
 namespace Project1.Enemy
 {
     public class AquamentusRightMovingState : IEnemyState
     {
-        private Aquamentus aquamentus;
-        private ISprite sprite;
+        private IEnemy aquamentus;
         private int timer;
         // Could later used to assemble all the direction moving state
         private Direction currentDirection;
@@ -18,10 +14,10 @@ namespace Project1.Enemy
         private int choice;
         private int counter;
 
-        public AquamentusRightMovingState(Aquamentus aquamentus)
+        public AquamentusRightMovingState(IEnemy aquamentus)
         {
             this.aquamentus = aquamentus;
-            sprite = SpriteFactory.Instance.CreateSprite("aquamentus_walking");
+            aquamentus.Sprite = SpriteFactory.Instance.CreateSprite("aquamentus_walking");
             // All direction for Aquamentus is facing left
             currentDirection = Direction.Left;
             deltaVector = new Vector2(1, 0);
@@ -30,7 +26,7 @@ namespace Project1.Enemy
 
         public void FireBallAttack()
         {
-            aquamentus.state = new AquamentusFireballAttackState(aquamentus);
+            aquamentus.State = new AquamentusFireballAttackState(aquamentus);
         }
 
         public void BoomerangAttack()
@@ -39,12 +35,7 @@ namespace Project1.Enemy
 
         public void ChangeDirection()
         {
-            aquamentus.state = new AquamentusLeftMovingState(aquamentus);
-        }
-
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            sprite.Draw(spriteBatch, aquamentus.Position);
+            aquamentus.State = new AquamentusLeftMovingState(aquamentus);
         }
 
         public void Update(GameTime gameTime)
@@ -65,8 +56,7 @@ namespace Project1.Enemy
                 }
                 timer = 0;
             }
-            aquamentus.Position += deltaVector * aquamentus.movingSpeed;
-            sprite.Update(gameTime);
+            aquamentus.Position += deltaVector * aquamentus.MovingSpeed;
         }
     }
 }

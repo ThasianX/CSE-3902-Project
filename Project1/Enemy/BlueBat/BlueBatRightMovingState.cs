@@ -1,14 +1,11 @@
 ﻿using System;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
-using Project1.Interfaces;
 
 namespace Project1.Enemy
 {
     public class BlueBatRightMovingState : IEnemyState
     {
-        private BlueBat blueBat;
-        private ISprite sprite;
+        private IEnemy blueBat;
         private int choice;
         private Random rand = new Random();
 
@@ -19,10 +16,10 @@ namespace Project1.Enemy
         private Vector2 deltaVector;
         private int counter;
 
-        public BlueBatRightMovingState(BlueBat blueBat)
+        public BlueBatRightMovingState(IEnemy blueBat)
         {
             this.blueBat = blueBat;
-            sprite = SpriteFactory.Instance.CreateSprite("BlueBat_woving");
+            blueBat.Sprite = SpriteFactory.Instance.CreateSprite("BlueBat_woving");
             timer = 0;
             currentDirection = Direction.Right;
             deltaVector = new Vector2(1, 0);
@@ -43,13 +40,13 @@ namespace Project1.Enemy
             switch (choice)
             {
                 case 1:
-                    blueBat.state = new BlueBatUpMovingState(blueBat);
+                    blueBat.State = new BlueBatUpMovingState(blueBat);
                     break;
                 case 2:
-                    blueBat.state = new BlueBatDownMovingState(blueBat);
+                    blueBat.State = new BlueBatDownMovingState(blueBat);
                     break;
                 case 3:
-                    blueBat.state = new BlueBatLeftMovingState(blueBat);
+                    blueBat.State = new BlueBatLeftMovingState(blueBat);
                     break;
             }
         }
@@ -62,13 +59,7 @@ namespace Project1.Enemy
                 timer = 0;
             }
 
-            blueBat.Position += deltaVector * blueBat.movingSpeed;
-            sprite.Update(gameTime);
-        }
-
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            sprite.Draw(spriteBatch, blueBat.Position);
+            blueBat.Position += deltaVector * blueBat.MovingSpeed;
         }
     }
 }

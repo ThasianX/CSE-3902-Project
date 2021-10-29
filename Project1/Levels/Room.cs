@@ -29,7 +29,6 @@ namespace Project1.Levels
             {
                 GameObjectManager.Instance.RemoveOnNextFrame(obj);
             }
-            
         }
     }
 }

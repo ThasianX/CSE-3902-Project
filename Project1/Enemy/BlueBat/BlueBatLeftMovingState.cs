@@ -1,14 +1,11 @@
 ﻿using System;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
-using Project1.Interfaces;
 
 namespace Project1.Enemy
 {
     public class BlueBatLeftMovingState : IEnemyState
     {
-        private BlueBat blueBat;
-        private ISprite sprite;
+        private IEnemy blueBat;
         private int choice;
         private Random rand = new Random();
         private int timer;
@@ -17,10 +14,10 @@ namespace Project1.Enemy
         private Vector2 deltaVector;
         private int counter;
 
-        public BlueBatLeftMovingState(BlueBat blueBat)
+        public BlueBatLeftMovingState(IEnemy blueBat)
         {
             this.blueBat = blueBat;
-            sprite = SpriteFactory.Instance.CreateSprite("BlueBat_woving");
+            blueBat.Sprite = SpriteFactory.Instance.CreateSprite("BlueBat_woving");
             timer = 0;
             currentDirection = Direction.Left;
             deltaVector = new Vector2(-1, 0);
@@ -40,9 +37,9 @@ namespace Project1.Enemy
             choice = rand.Next(1, 4);
             switch (choice)
             {
-                case 1: blueBat.state = new BlueBatUpMovingState(blueBat); break;
-                case 2: blueBat.state = new BlueBatDownMovingState(blueBat); break;
-                case 3: blueBat.state = new BlueBatRightMovingState(blueBat); break;
+                case 1: blueBat.State = new BlueBatUpMovingState(blueBat); break;
+                case 2: blueBat.State = new BlueBatDownMovingState(blueBat); break;
+                case 3: blueBat.State = new BlueBatRightMovingState(blueBat); break;
             }
         }
         public void Update(GameTime gameTime)
@@ -54,13 +51,7 @@ namespace Project1.Enemy
                 timer = 0;
             }
 
-            blueBat.Position += deltaVector * blueBat.movingSpeed;
-            sprite.Update(gameTime);
-        }
-
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            sprite.Draw(spriteBatch, blueBat.Position);
+            blueBat.Position += deltaVector * blueBat.MovingSpeed;
         }
     }
 }

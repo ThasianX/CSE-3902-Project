@@ -8,12 +8,11 @@ namespace Project1.Enemy
 {
     public class AquamentusFireballAttackState : IEnemyState
     {
-        private Aquamentus aquamentus;
-        private ISprite sprite;
+        private IEnemy aquamentus;
         // The Fireball instance used for Update and Draw
-        private Fireball fireballOne;
-        private Fireball fireballTwo;
-        private Fireball fireballThree;
+        private IItem fireballOne;
+        private IItem fireballTwo;
+        private IItem fireballThree;
         // Not sure, need to ask Keenan !!
         private int fireballOffset = 8;
         // The length of animation frame boomerang will Update, also Not sure, need to ask Keenan !!
@@ -22,10 +21,10 @@ namespace Project1.Enemy
         private int timer;
         private Random rand = new Random();
 
-        public AquamentusFireballAttackState(Aquamentus aquamentus)
+        public AquamentusFireballAttackState(IEnemy aquamentus)
         {
             this.aquamentus = aquamentus;
-            sprite = SpriteFactory.Instance.CreateSprite("aquamentus_walking");
+            aquamentus.Sprite = SpriteFactory.Instance.CreateSprite("aquamentus_walking");
             fireballOne = new Fireball(aquamentus.Position + new Vector2(fireballOffset, 0), new Vector2(0,-1), activeFrameCount);
             fireballTwo = new Fireball(aquamentus.Position + new Vector2(fireballOffset, 0), new Vector2(0,0), activeFrameCount);
             fireballThree = new Fireball(aquamentus.Position + new Vector2(fireballOffset, 0), new Vector2(0, 1), activeFrameCount);
@@ -44,8 +43,8 @@ namespace Project1.Enemy
             choice = rand.Next(2);
             switch (choice)
             {
-                case 0: aquamentus.state = new AquamentusLeftMovingState(aquamentus); break;
-                case 1: aquamentus.state = new AquamentusRightMovingState(aquamentus); break;
+                case 0: aquamentus.State = new AquamentusLeftMovingState(aquamentus); break;
+                case 1: aquamentus.State = new AquamentusRightMovingState(aquamentus); break;
             }
         }
 
@@ -59,15 +58,14 @@ namespace Project1.Enemy
             fireballOne.Update(gameTime);
             fireballTwo.Update(gameTime);
             fireballThree.Update(gameTime);
-            sprite.Update(gameTime);
         }
 
+        // TODO: add fireball to GameObjectManager
         public void Draw(SpriteBatch spriteBatch)
         {
             fireballOne.Draw(spriteBatch);
             fireballTwo.Draw(spriteBatch);
             fireballThree.Draw(spriteBatch);
-            sprite.Draw(spriteBatch, aquamentus.Position);
         }
     }
 }

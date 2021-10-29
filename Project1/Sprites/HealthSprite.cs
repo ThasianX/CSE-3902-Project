@@ -1,7 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Project1.Interfaces;
-using Project1.PlayerStates;
 
 namespace Project1.Sprites
 {

@@ -14,16 +14,9 @@ namespace Project1.Commands
             this.amount = amount;
         }
 
-        public EnemyTakeDamageCommand(IEnemy enemy)
-        {
-            this.enemy = enemy;
-        }
-
         public void Execute()
         {
             enemy.TakeDamage(amount);
-            // because enemy change direction base on current direction state, so it won't change to the same direction it's moving
-            enemy.ChangeDirection();
         }
     }
 }

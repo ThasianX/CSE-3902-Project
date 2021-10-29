@@ -1,15 +1,12 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Project1.Interfaces;
 using Project1.Objects;
 
 namespace Project1.Enemy
 {
     public class RedGloriyaBoomerangAttackState : IEnemyState
     {
-        private RedGloriya redGloriya;
-        private ISprite sprite;
+        private IEnemy redGloriya;
         // The direction passed in
         private Direction direction;
         // The WoodBoomerang instance used for Update and Draw
@@ -22,29 +19,29 @@ namespace Project1.Enemy
         private int timer;
         private Random rand = new Random();
 
-        public RedGloriyaBoomerangAttackState(RedGloriya redGloriya, Direction currentDirection)
+        public RedGloriyaBoomerangAttackState(IEnemy redGloriya, Direction currentDirection)
         {
             this.redGloriya = redGloriya;
             this.direction = currentDirection;
             switch (direction)
             {
                 case Direction.Up:
-                    sprite = SpriteFactory.Instance.CreateSprite("RedGloriya_walking_up");
+                    redGloriya.Sprite = SpriteFactory.Instance.CreateSprite("RedGloriya_walking_up");
                     this.boomerang = new WoodBoomerang(redGloriya.Position + new Vector2(0, -boomerangOffset), currentDirection, activeFrameCount);
                     break;
 
                 case Direction.Right:
-                    sprite = SpriteFactory.Instance.CreateSprite("RedGloriya_walking_right");
+                    redGloriya.Sprite = SpriteFactory.Instance.CreateSprite("RedGloriya_walking_right");
                     this.boomerang = new WoodBoomerang(redGloriya.Position + new Vector2(boomerangOffset, 0), currentDirection, activeFrameCount);
                     break;
 
                 case Direction.Down:
-                    sprite = SpriteFactory.Instance.CreateSprite("RedGloriya_walking_down");
+                    redGloriya.Sprite = SpriteFactory.Instance.CreateSprite("RedGloriya_walking_down");
                     this.boomerang = new WoodBoomerang(redGloriya.Position + new Vector2(0, boomerangOffset), currentDirection, activeFrameCount);
                     break;
 
                 case Direction.Left:
-                    sprite = SpriteFactory.Instance.CreateSprite("RedGloriya_walking_left");
+                    redGloriya.Sprite = SpriteFactory.Instance.CreateSprite("RedGloriya_walking_left");
                     this.boomerang = new WoodBoomerang(redGloriya.Position + new Vector2(-boomerangOffset, 0), currentDirection, activeFrameCount);
                     break;
             }
@@ -64,10 +61,10 @@ namespace Project1.Enemy
             choice = rand.Next(4);
             switch (choice)
             {
-                case 0: redGloriya.state = new RedGloriyaDownMovingState(redGloriya); break;
-                case 1: redGloriya.state = new RedGloriyaUpMovingState(redGloriya); break;
-                case 2: redGloriya.state = new RedGloriyaRightMovingState(redGloriya); break;
-                case 3: redGloriya.state = new RedGloriyaLeftMovingState(redGloriya); break;
+                case 0: redGloriya.State = new RedGloriyaDownMovingState(redGloriya); break;
+                case 1: redGloriya.State = new RedGloriyaUpMovingState(redGloriya); break;
+                case 2: redGloriya.State = new RedGloriyaRightMovingState(redGloriya); break;
+                case 3: redGloriya.State = new RedGloriyaLeftMovingState(redGloriya); break;
             }
         }
 
@@ -78,12 +75,6 @@ namespace Project1.Enemy
             {
                 ChangeDirection();
             }
-            sprite.Update(gameTime);
-        }
-
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            sprite.Draw(spriteBatch, redGloriya.Position);
         }
     }
 }

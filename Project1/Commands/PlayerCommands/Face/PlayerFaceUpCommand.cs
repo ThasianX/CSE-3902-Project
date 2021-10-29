@@ -1,8 +1,4 @@
 ﻿using Project1.Interfaces;
-using Project1.PlayerStates;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Project1.Commands
 {

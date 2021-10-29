@@ -1,14 +1,11 @@
 ﻿using System;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
-using Project1.Interfaces;
 
 namespace Project1.Enemy
 {
     public class BlueGelUpMovingState : IEnemyState
     {
-        private BlueGel blueGel;
-        private ISprite sprite;
+        private IEnemy blueGel;
         private int choice;
         private Random rand = new Random();
         private int timer;
@@ -17,10 +14,10 @@ namespace Project1.Enemy
         private Vector2 deltaVector;
         private int counter;
 
-        public BlueGelUpMovingState(BlueGel blueGel)
+        public BlueGelUpMovingState(IEnemy blueGel)
         {
             this.blueGel = blueGel;
-            sprite = SpriteFactory.Instance.CreateSprite("BlueGel_walking");
+            blueGel.Sprite = SpriteFactory.Instance.CreateSprite("BlueGel_walking");
             timer = 0;
             currentDirection = Direction.Up;
             deltaVector = new Vector2(0, -1);
@@ -40,9 +37,9 @@ namespace Project1.Enemy
             choice = rand.Next(1, 4);
             switch (choice)
             {
-                case 1: blueGel.state = new BlueGelDownMovingState(blueGel); break;
-                case 2: blueGel.state = new BlueGelLeftMovingState(blueGel); break;
-                case 3: blueGel.state = new BlueGelRightMovingState(blueGel); break;
+                case 1: blueGel.State = new BlueGelDownMovingState(blueGel); break;
+                case 2: blueGel.State = new BlueGelLeftMovingState(blueGel); break;
+                case 3: blueGel.State = new BlueGelRightMovingState(blueGel); break;
             }
         }
 
@@ -54,13 +51,7 @@ namespace Project1.Enemy
                 ChangeDirection();
                 timer = 0;
             }
-            blueGel.Position += deltaVector * blueGel.movingSpeed;
-            sprite.Update(gameTime);
-        }
-
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            sprite.Draw(spriteBatch, blueGel.Position);
+            blueGel.Position += deltaVector * blueGel.MovingSpeed;
         }
     }
 }

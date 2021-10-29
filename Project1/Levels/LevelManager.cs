@@ -4,7 +4,6 @@ using Microsoft.Xna.Framework;
 using Project1.Enemy;
 using Project1.Objects;
 using System.Collections.ObjectModel;
-using System.Collections.Generic;
 
 namespace Project1.Levels
 {
