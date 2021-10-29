@@ -9,7 +9,6 @@ namespace Project1.Enemy
     public class StalfosRightMovingState : IEnemyState
     {
         private Stalfos stalfos;
-        private ISprite sprite;
         private int choice;
         private Random rand = new Random();
         private int timer;
@@ -21,7 +20,7 @@ namespace Project1.Enemy
         public StalfosRightMovingState(Stalfos stalfos)
         {
             this.stalfos = stalfos;
-            sprite = SpriteFactory.Instance.CreateSprite("stalfos_walking");
+            stalfos.sprite = SpriteFactory.Instance.CreateSprite("stalfos_walking");
             timer = 0;
             currentDirection = Direction.Right;
             deltaVector = new Vector2(1, 0);
@@ -47,11 +46,6 @@ namespace Project1.Enemy
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            sprite.Draw(spriteBatch, stalfos.Position);
-        }
-
         public void Update(GameTime gameTime)
         {
             timer++;
@@ -61,7 +55,6 @@ namespace Project1.Enemy
                 timer = 0;
             }
             stalfos.Position += deltaVector * stalfos.movingSpeed;
-            sprite.Update(gameTime);
         }
     }
 }

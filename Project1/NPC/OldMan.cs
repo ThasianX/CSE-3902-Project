@@ -8,6 +8,7 @@ namespace Project1.NPC
     public class OldMan : IEnemy, ICollidable
     {
         public IEnemyState state;
+        public ISprite sprite { get; set; }
         public Vector2 Position { get; set; }
         public bool IsMover => false;
         public string CollisionType => "Block";
@@ -33,21 +34,14 @@ namespace Project1.NPC
         {
         }
 
-
         public void Update(GameTime gameTime)
         {
-           // The old man do not update
+           sprite.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            state.Draw(spriteBatch);
-        }
-
-        public bool Immune()
-        {
-            return true;
-            // NPC do not take damage
+            sprite.Draw(spriteBatch, Position);
         }
 
         public Rectangle GetRectangle()

@@ -8,7 +8,6 @@ namespace Project1.Enemy
     public class BlueBatUpMovingState : IEnemyState
     {
         private BlueBat blueBat;
-        private ISprite sprite;
         private int choice;
         private Random rand = new Random();
         private int timer;
@@ -20,7 +19,7 @@ namespace Project1.Enemy
         public BlueBatUpMovingState(BlueBat blueBat)
         {
             this.blueBat = blueBat;
-            sprite = SpriteFactory.Instance.CreateSprite("BlueBat_woving");
+            blueBat.sprite = SpriteFactory.Instance.CreateSprite("BlueBat_woving");
             timer = 0;
             currentDirection = Direction.Up;
             deltaVector = new Vector2(0, -1);
@@ -54,11 +53,6 @@ namespace Project1.Enemy
                 timer = 0;
             }
             blueBat.Position += deltaVector * blueBat.movingSpeed;
-            sprite.Update(gameTime);
-        }
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            sprite.Draw(spriteBatch, blueBat.Position);
         }
     }
 }

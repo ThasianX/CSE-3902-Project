@@ -8,6 +8,7 @@ namespace Project1.Enemy
     public class BlueBat : IEnemy, ICollidable
     {
         public IEnemyState state;
+        public ISprite sprite { get; set; }
         public Vector2 Position { get; set; }
         public float movingSpeed;
         private int choice;
@@ -63,6 +64,7 @@ namespace Project1.Enemy
             // Update the current state
             // Possible state: direction, fireball attack
             state.Update(gameTime);
+            sprite.Update(gameTime);
             if (Immune() && immnueTimeCounter == immuneTime)
             {
                 blueBatHealthState.Update(gameTime);
@@ -82,7 +84,7 @@ namespace Project1.Enemy
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            state.Draw(spriteBatch);
+            sprite.Draw(spriteBatch, Position);
             blueBatHealthState.Draw(spriteBatch);
         }
 

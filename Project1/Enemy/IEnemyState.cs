@@ -13,6 +13,5 @@ namespace Project1.Enemy
         void ChangeDirection();
 
         void Update(GameTime gameTime);
-        void Draw(SpriteBatch spriteBatch);
     }
 }

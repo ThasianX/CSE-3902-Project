@@ -9,7 +9,6 @@ namespace Project1.Enemy
     public class AquamentusFireballAttackState : IEnemyState
     {
         private Aquamentus aquamentus;
-        private ISprite sprite;
         // The Fireball instance used for Update and Draw
         private Fireball fireballOne;
         private Fireball fireballTwo;
@@ -25,7 +24,7 @@ namespace Project1.Enemy
         public AquamentusFireballAttackState(Aquamentus aquamentus)
         {
             this.aquamentus = aquamentus;
-            sprite = SpriteFactory.Instance.CreateSprite("aquamentus_walking");
+            aquamentus.sprite = SpriteFactory.Instance.CreateSprite("aquamentus_walking");
             fireballOne = new Fireball(aquamentus.Position + new Vector2(fireballOffset, 0), new Vector2(0,-1), activeFrameCount);
             fireballTwo = new Fireball(aquamentus.Position + new Vector2(fireballOffset, 0), new Vector2(0,0), activeFrameCount);
             fireballThree = new Fireball(aquamentus.Position + new Vector2(fireballOffset, 0), new Vector2(0, 1), activeFrameCount);
@@ -59,15 +58,14 @@ namespace Project1.Enemy
             fireballOne.Update(gameTime);
             fireballTwo.Update(gameTime);
             fireballThree.Update(gameTime);
-            sprite.Update(gameTime);
         }
 
+        // TODO: add fireball to GameObjectManager
         public void Draw(SpriteBatch spriteBatch)
         {
             fireballOne.Draw(spriteBatch);
             fireballTwo.Draw(spriteBatch);
             fireballThree.Draw(spriteBatch);
-            sprite.Draw(spriteBatch, aquamentus.Position);
         }
     }
 }

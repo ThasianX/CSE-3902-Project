@@ -8,6 +8,7 @@ namespace Project1.Enemy
     public class Stalfos : IEnemy, ICollidable
     {
         public IEnemyState state;
+        public ISprite sprite { get; set; }
         public Vector2 Position { get; set; }
         public bool IsMover => true;
         public string CollisionType => "Enemy";
@@ -53,6 +54,7 @@ namespace Project1.Enemy
             // Update the current state
             // Possible state: direction
             state.Update(gameTime);
+            sprite.Update(gameTime);
             // If the enemy is in immune state, its health state do not need to update.
             if (Immune() && immnueTimeCounter == immuneTime)
             {
@@ -72,7 +74,7 @@ namespace Project1.Enemy
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            state.Draw(spriteBatch);
+            sprite.Draw(spriteBatch, Position);
             stalfosHealthState.Draw(spriteBatch);
 
             //DrawRectangle(spriteBatch)

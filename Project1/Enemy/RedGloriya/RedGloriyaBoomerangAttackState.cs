@@ -9,7 +9,6 @@ namespace Project1.Enemy
     public class RedGloriyaBoomerangAttackState : IEnemyState
     {
         private RedGloriya redGloriya;
-        private ISprite sprite;
         // The direction passed in
         private Direction direction;
         // The WoodBoomerang instance used for Update and Draw
@@ -29,22 +28,22 @@ namespace Project1.Enemy
             switch (direction)
             {
                 case Direction.Up:
-                    sprite = SpriteFactory.Instance.CreateSprite("RedGloriya_walking_up");
+                    redGloriya.sprite = SpriteFactory.Instance.CreateSprite("RedGloriya_walking_up");
                     this.boomerang = new WoodBoomerang(redGloriya.Position + new Vector2(0, -boomerangOffset), currentDirection, activeFrameCount);
                     break;
 
                 case Direction.Right:
-                    sprite = SpriteFactory.Instance.CreateSprite("RedGloriya_walking_right");
+                    redGloriya.sprite = SpriteFactory.Instance.CreateSprite("RedGloriya_walking_right");
                     this.boomerang = new WoodBoomerang(redGloriya.Position + new Vector2(boomerangOffset, 0), currentDirection, activeFrameCount);
                     break;
 
                 case Direction.Down:
-                    sprite = SpriteFactory.Instance.CreateSprite("RedGloriya_walking_down");
+                    redGloriya.sprite = SpriteFactory.Instance.CreateSprite("RedGloriya_walking_down");
                     this.boomerang = new WoodBoomerang(redGloriya.Position + new Vector2(0, boomerangOffset), currentDirection, activeFrameCount);
                     break;
 
                 case Direction.Left:
-                    sprite = SpriteFactory.Instance.CreateSprite("RedGloriya_walking_left");
+                    redGloriya.sprite = SpriteFactory.Instance.CreateSprite("RedGloriya_walking_left");
                     this.boomerang = new WoodBoomerang(redGloriya.Position + new Vector2(-boomerangOffset, 0), currentDirection, activeFrameCount);
                     break;
             }
@@ -78,12 +77,6 @@ namespace Project1.Enemy
             {
                 ChangeDirection();
             }
-            sprite.Update(gameTime);
-        }
-
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            sprite.Draw(spriteBatch, redGloriya.Position);
         }
     }
 }

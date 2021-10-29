@@ -9,7 +9,6 @@ namespace Project1.Enemy
     public class RedGloriyaUpMovingState : IEnemyState
     {
         private RedGloriya redGloriya;
-        private ISprite sprite;
         // Up moving state, so Direction.Up
         private Direction currentDirection;
         private Vector2 deltaVector;
@@ -21,7 +20,7 @@ namespace Project1.Enemy
         public RedGloriyaUpMovingState(RedGloriya redGloriya)
         {
             this.redGloriya = redGloriya;
-            sprite = SpriteFactory.Instance.CreateSprite("RedGloriya_walking_up");
+            redGloriya.sprite = SpriteFactory.Instance.CreateSprite("RedGloriya_walking_up");
             currentDirection = Direction.Up;
             deltaVector = new Vector2(0, -1);
             counter = 30;
@@ -68,12 +67,6 @@ namespace Project1.Enemy
                 timer = 0;
             }
             redGloriya.Position += deltaVector * redGloriya.movingSpeed;
-            sprite.Update(gameTime);
-        }
-
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            sprite.Draw(spriteBatch, redGloriya.Position);
         }
     }
 }

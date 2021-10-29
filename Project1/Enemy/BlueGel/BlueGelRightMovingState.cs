@@ -8,7 +8,6 @@ namespace Project1.Enemy
     public class BlueGelRightMovingState : IEnemyState
     {
         private BlueGel blueGel;
-        private ISprite sprite;
         private int choice;
         private Random rand = new Random();
         private int timer;
@@ -20,7 +19,7 @@ namespace Project1.Enemy
         public BlueGelRightMovingState(BlueGel blueGel)
         {
             this.blueGel = blueGel;
-            sprite = SpriteFactory.Instance.CreateSprite("BlueGel_walking");
+            blueGel.sprite = SpriteFactory.Instance.CreateSprite("BlueGel_walking");
             timer = 0;
             currentDirection = Direction.Right;
             deltaVector = new Vector2(1, 0);
@@ -54,12 +53,6 @@ namespace Project1.Enemy
                 timer = 0;
             }
             blueGel.Position += deltaVector * blueGel.movingSpeed;
-            sprite.Update(gameTime);
-        }
-
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            sprite.Draw(spriteBatch, blueGel.Position);
         }
     }
 }

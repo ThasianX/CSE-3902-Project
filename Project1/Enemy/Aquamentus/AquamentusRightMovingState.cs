@@ -9,7 +9,6 @@ namespace Project1.Enemy
     public class AquamentusRightMovingState : IEnemyState
     {
         private Aquamentus aquamentus;
-        private ISprite sprite;
         private int timer;
         // Could later used to assemble all the direction moving state
         private Direction currentDirection;
@@ -21,7 +20,7 @@ namespace Project1.Enemy
         public AquamentusRightMovingState(Aquamentus aquamentus)
         {
             this.aquamentus = aquamentus;
-            sprite = SpriteFactory.Instance.CreateSprite("aquamentus_walking");
+            aquamentus.sprite = SpriteFactory.Instance.CreateSprite("aquamentus_walking");
             // All direction for Aquamentus is facing left
             currentDirection = Direction.Left;
             deltaVector = new Vector2(1, 0);
@@ -40,11 +39,6 @@ namespace Project1.Enemy
         public void ChangeDirection()
         {
             aquamentus.state = new AquamentusLeftMovingState(aquamentus);
-        }
-
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            sprite.Draw(spriteBatch, aquamentus.Position);
         }
 
         public void Update(GameTime gameTime)
@@ -66,7 +60,6 @@ namespace Project1.Enemy
                 timer = 0;
             }
             aquamentus.Position += deltaVector * aquamentus.movingSpeed;
-            sprite.Update(gameTime);
         }
     }
 }

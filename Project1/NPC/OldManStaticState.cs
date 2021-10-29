@@ -9,12 +9,11 @@ namespace Project1.NPC
     class OldManStaticState : IEnemyState
     {
         private OldMan oldMan;
-        private ISprite sprite;
 
         public OldManStaticState(OldMan oldMan)
         {
             this.oldMan = oldMan;
-            sprite = SpriteFactory.Instance.CreateSprite("OldMan_standing");
+            oldMan.sprite = SpriteFactory.Instance.CreateSprite("OldMan_standing");
         }
 
         public void FireBallAttack()
@@ -27,11 +26,6 @@ namespace Project1.NPC
 
         public void ChangeDirection()
         {
-        }
-
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            sprite.Draw(spriteBatch, oldMan.Position);
         }
 
         public void Update(GameTime gameTime)
