@@ -4,6 +4,7 @@ using Project1.Interfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Project1.PlayerStates;
+using Project1.Levels;
 
 namespace Project1
 {
@@ -157,6 +158,7 @@ namespace Project1
             {
                 collectionList.Add(collectionName, 1);
             }
+            LevelManager.Instance.GetCurrentRoom().RemoveObject(collectible);
             GameObjectManager.Instance.RemoveOnNextFrame(collectible);
         }
 

@@ -13,6 +13,16 @@ namespace Project1.Levels
         private int currentRoomIndex;
         private Collection<Room> rooms;
         private XDocument spriteData;
+
+        private static LevelManager instance = new LevelManager(1);
+
+        public static LevelManager Instance
+        {
+            get
+            {
+                return instance;
+            }
+        }
         
         public LevelManager(int level)
         {
@@ -29,10 +39,7 @@ namespace Project1.Levels
 
         public void IncrementRoom()
         {
-            
-
             GetCurrentRoom().Deactivate();
-
             // BAD SOLUTION! DO NOT LEAVE IN FOR SPRINT 4! =============================================
             IPlayer player = GameObjectManager.Instance.GetObjectsOfType<IPlayer>()[0];
             GetCurrentRoom().RemoveObject(player);
@@ -43,7 +50,6 @@ namespace Project1.Levels
             // =========================================================================================
             GetCurrentRoom().AddObject(player);
             // =========================================================================================
-
             GetCurrentRoom().Activate();
         }
 
@@ -61,11 +67,8 @@ namespace Project1.Levels
             // =========================================================================================
             GetCurrentRoom().AddObject(player);
             // =========================================================================================
-
             GetCurrentRoom().Activate();
         }
-
-
 
         public void LoadLevel() {
             foreach(XElement element in spriteData.Root.Elements()) {

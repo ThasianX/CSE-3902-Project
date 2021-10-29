@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Input;
 using Project1.Interfaces;
+using Project1.Levels;
 
 namespace Project1.Controllers
 {
@@ -30,10 +31,10 @@ namespace Project1.Controllers
 
 			if (mouseState.RightButton == ButtonState.Released && previousState.RightButton == ButtonState.Pressed)
 			{
-				myGame.levelManager.IncrementRoom();
+				LevelManager.Instance.IncrementRoom();
 			} else if (mouseState.LeftButton == ButtonState.Released && previousState.LeftButton == ButtonState.Pressed)
 			{
-				myGame.levelManager.DecrementRoom();
+				LevelManager.Instance.DecrementRoom();
 			}
 			previousState = mouseState;
 		}

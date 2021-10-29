@@ -13,12 +13,6 @@ namespace Project1
         private static GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
 
-        private LevelManager _levelManager;
-        public LevelManager levelManager 
-        {
-            get { return _levelManager; }
-        }
-
         private ArrayList controllerList;
 
         private static Viewport ViewPort => graphics.GraphicsDevice.Viewport;
@@ -37,8 +31,6 @@ namespace Project1
         // We could use initialize to Reset our game
         protected override void Initialize()
         {
-            _levelManager = new LevelManager(1);
-           
             controllerList = new ArrayList
             {
                 new KeyboardController(this),
@@ -50,7 +42,7 @@ namespace Project1
 
         void Setup()
         {
-            _levelManager.LoadLevel();
+            LevelManager.Instance.LoadLevel();
             foreach (IController controller in controllerList) {
                 controller.RegisterPlayer(GameObjectManager.Instance.GetPlayer());
                 controller.RegisterCommands();
