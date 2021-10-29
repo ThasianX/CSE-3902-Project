@@ -17,7 +17,7 @@ namespace Project1.Enemy
         public StalfosRightMovingState(IEnemy stalfos)
         {
             this.stalfos = stalfos;
-            stalfos.sprite = SpriteFactory.Instance.CreateSprite("stalfos_walking");
+            stalfos.Sprite = SpriteFactory.Instance.CreateSprite("stalfos_walking");
             timer = 0;
             currentDirection = Direction.Right;
             deltaVector = new Vector2(1, 0);
@@ -37,9 +37,9 @@ namespace Project1.Enemy
             choice = rand.Next(1, 4);
             switch (choice)
             {
-                case 1: stalfos.state = new StalfosUpMovingState(stalfos); break;
-                case 2: stalfos.state = new StalfosDownMovingState(stalfos); break;
-                case 3: stalfos.state = new StalfosLeftMovingState(stalfos); break;
+                case 1: stalfos.State = new StalfosUpMovingState(stalfos); break;
+                case 2: stalfos.State = new StalfosDownMovingState(stalfos); break;
+                case 3: stalfos.State = new StalfosLeftMovingState(stalfos); break;
             }
         }
 
@@ -51,7 +51,7 @@ namespace Project1.Enemy
                 ChangeDirection();
                 timer = 0;
             }
-            stalfos.Position += deltaVector * stalfos.movingSpeed;
+            stalfos.Position += deltaVector * stalfos.MovingSpeed;
         }
     }
 }

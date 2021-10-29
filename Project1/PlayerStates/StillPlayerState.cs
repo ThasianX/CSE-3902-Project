@@ -10,22 +10,22 @@ namespace Project1.PlayerStates
         {
             this.player = player;
 
-            switch (player.facingDirection)
+            switch (player.FacingDirection)
             {
                 case Direction.Up:
-                    player.sprite = SpriteFactory.Instance.CreateSprite("player_idle_up");
+                    player.Sprite = SpriteFactory.Instance.CreateSprite("player_idle_up");
                     break;
 
                 case Direction.Right:
-                    player.sprite = SpriteFactory.Instance.CreateSprite("player_idle_right");
+                    player.Sprite = SpriteFactory.Instance.CreateSprite("player_idle_right");
                     break;
 
                 case Direction.Down:
-                    player.sprite = SpriteFactory.Instance.CreateSprite("player_idle_down");
+                    player.Sprite = SpriteFactory.Instance.CreateSprite("player_idle_down");
                     break;
 
                 case Direction.Left:
-                    player.sprite = SpriteFactory.Instance.CreateSprite("player_idle_left");
+                    player.Sprite = SpriteFactory.Instance.CreateSprite("player_idle_left");
                     break;
 
                 default:
@@ -35,36 +35,36 @@ namespace Project1.PlayerStates
 
         public void FaceDirection(Direction direction)
         {
-            player.facingDirection = direction;
-            player.state = new StillPlayerState(player);
+            player.FacingDirection = direction;
+            player.State = new StillPlayerState(player);
         }
 
         public void SetMoveInput(Direction direction, bool isPressed)
         {
-            player.activeMoveInputs[direction] = isPressed;
+            player.ActiveMoveInputs[direction] = isPressed;
 
             // switch to walking state if a movement key is pressed
             if (isPressed)
-                player.state = new WalkingPlayerState(player);
+                player.State = new WalkingPlayerState(player);
         }
 
         public void SwordAttack()
         {
-            player.state = new SwordAttackPlayerState(player);
+            player.State = new SwordAttackPlayerState(player);
         }
         public void ShootArrow()
         {
-            player.state = new ShootArrowPlayerState(player);
+            player.State = new ShootArrowPlayerState(player);
         }
 
         public void BoomerangAttack()
         {
-            player.state = new BoomerangAttackPlayerState(player);
+            player.State = new BoomerangAttackPlayerState(player);
         }
 
         public void BombAttack()
         {
-            player.state = new BombAttackPlayerState(player);
+            player.State = new BombAttackPlayerState(player);
         }
 
         public void Update(GameTime gameTime)

@@ -7,10 +7,10 @@ namespace Project1.Enemy
 {
     public class Stalfos : IEnemy, ICollidable
     {
-        public IEnemyState state { get; set; }
-        public ISprite sprite { get; set; }
+        public IEnemyState State { get; set; }
+        public ISprite Sprite { get; set; }
         public Vector2 Position { get; set; }
-        public float movingSpeed { get; set; }
+        public float MovingSpeed { get; set; }
         public bool IsMover => true;
         public string CollisionType => "Enemy";
         private int choice;
@@ -27,12 +27,12 @@ namespace Project1.Enemy
             // When initialize, choose a random direction
             switch (choice)
             {
-                case 0: state = new StalfosUpMovingState(this); break;
-                case 1: state = new StalfosDownMovingState(this); break;
-                case 2: state = new StalfosRightMovingState(this); break;
-                case 3: state = new StalfosLeftMovingState(this); break;
+                case 0: State = new StalfosUpMovingState(this); break;
+                case 1: State = new StalfosDownMovingState(this); break;
+                case 2: State = new StalfosRightMovingState(this); break;
+                case 3: State = new StalfosLeftMovingState(this); break;
             }
-            movingSpeed = 1f;
+            MovingSpeed = 1f;
             stalfosHealthState = new StalfosHealthState(this, 100);
         }
 
@@ -46,15 +46,15 @@ namespace Project1.Enemy
 
         public void ChangeDirection()
         {
-            state.ChangeDirection();
+            State.ChangeDirection();
         }
 
         public void Update(GameTime gameTime)
         {
             // Update the current state
             // Possible state: direction
-            state.Update(gameTime);
-            sprite.Update(gameTime);
+            State.Update(gameTime);
+            Sprite.Update(gameTime);
             // If the enemy is in immune state, its health state do not need to update.
             if (Immune() && immnueTimeCounter == immuneTime)
             {
@@ -74,7 +74,7 @@ namespace Project1.Enemy
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            sprite.Draw(spriteBatch, Position);
+            Sprite.Draw(spriteBatch, Position);
             stalfosHealthState.Draw(spriteBatch);
 
             //DrawRectangle(spriteBatch)

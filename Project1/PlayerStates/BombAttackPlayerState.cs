@@ -17,25 +17,25 @@ namespace Project1.PlayerStates
         {
             this.player = player;
 
-            switch (player.facingDirection)
+            switch (player.FacingDirection)
             {
                 case Direction.Up:
-                    player.sprite = SpriteFactory.Instance.CreateSprite("player_attack_up");
+                    player.Sprite = SpriteFactory.Instance.CreateSprite("player_attack_up");
                     bomb = new Bomb(player.Position + new Vector2(0, -bombOffset));
                     break;
 
                 case Direction.Right:
-                    player.sprite = SpriteFactory.Instance.CreateSprite("player_attack_right");
+                    player.Sprite = SpriteFactory.Instance.CreateSprite("player_attack_right");
                     bomb = new Bomb(player.Position + new Vector2(bombOffset, 0));
                     break;
 
                 case Direction.Down:
-                    player.sprite = SpriteFactory.Instance.CreateSprite("player_attack_down");
+                    player.Sprite = SpriteFactory.Instance.CreateSprite("player_attack_down");
                     bomb = new Bomb(player.Position + new Vector2(0, bombOffset));
                     break;
 
                 case Direction.Left:
-                    player.sprite = SpriteFactory.Instance.CreateSprite("player_attack_left");
+                    player.Sprite = SpriteFactory.Instance.CreateSprite("player_attack_left");
                     bomb = new Bomb(player.Position + new Vector2(-bombOffset, 0));
                     break;
 
@@ -47,7 +47,7 @@ namespace Project1.PlayerStates
 
         public void SetMoveInput(Direction direction, bool isPressed)
         {
-            player.activeMoveInputs[direction] = isPressed;
+            player.ActiveMoveInputs[direction] = isPressed;
         }
 
         public void FaceDirection(Direction direction)
@@ -76,11 +76,11 @@ namespace Project1.PlayerStates
             {
                 if (player.hasAnyMoveInput())
                 {
-                    player.state = new WalkingPlayerState(player);
+                    player.State = new WalkingPlayerState(player);
                 }
                 else
                 {
-                    player.state = new StillPlayerState(player);
+                    player.State = new StillPlayerState(player);
                 }
             }
             bomb.Update(gameTime);

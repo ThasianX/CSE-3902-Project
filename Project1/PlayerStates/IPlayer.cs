@@ -7,11 +7,11 @@ namespace Project1
 {
     public interface IPlayer : IGameObject
     {
-        public ISprite sprite { get; set; }
-        public IPlayerState state { get; set; }
-        public Direction facingDirection { get; set; }
-        public float speed { get; set; }
-        public Dictionary<Direction, bool> activeMoveInputs { get; set; }
+        public ISprite Sprite { get; set; }
+        public IPlayerState State { get; set; }
+        public Direction FacingDirection { get; set; }
+        public float Speed { get; set; }
+        public Dictionary<Direction, bool> ActiveMoveInputs { get; set; }
         public bool hasAnyMoveInput();
         public void Move(Vector2 delta);
         void FaceDirection(Direction direction);

@@ -26,22 +26,22 @@ namespace Project1.Enemy
             switch (direction)
             {
                 case Direction.Up:
-                    redGloriya.sprite = SpriteFactory.Instance.CreateSprite("RedGloriya_walking_up");
+                    redGloriya.Sprite = SpriteFactory.Instance.CreateSprite("RedGloriya_walking_up");
                     this.boomerang = new WoodBoomerang(redGloriya.Position + new Vector2(0, -boomerangOffset), currentDirection, activeFrameCount);
                     break;
 
                 case Direction.Right:
-                    redGloriya.sprite = SpriteFactory.Instance.CreateSprite("RedGloriya_walking_right");
+                    redGloriya.Sprite = SpriteFactory.Instance.CreateSprite("RedGloriya_walking_right");
                     this.boomerang = new WoodBoomerang(redGloriya.Position + new Vector2(boomerangOffset, 0), currentDirection, activeFrameCount);
                     break;
 
                 case Direction.Down:
-                    redGloriya.sprite = SpriteFactory.Instance.CreateSprite("RedGloriya_walking_down");
+                    redGloriya.Sprite = SpriteFactory.Instance.CreateSprite("RedGloriya_walking_down");
                     this.boomerang = new WoodBoomerang(redGloriya.Position + new Vector2(0, boomerangOffset), currentDirection, activeFrameCount);
                     break;
 
                 case Direction.Left:
-                    redGloriya.sprite = SpriteFactory.Instance.CreateSprite("RedGloriya_walking_left");
+                    redGloriya.Sprite = SpriteFactory.Instance.CreateSprite("RedGloriya_walking_left");
                     this.boomerang = new WoodBoomerang(redGloriya.Position + new Vector2(-boomerangOffset, 0), currentDirection, activeFrameCount);
                     break;
             }
@@ -61,10 +61,10 @@ namespace Project1.Enemy
             choice = rand.Next(4);
             switch (choice)
             {
-                case 0: redGloriya.state = new RedGloriyaDownMovingState(redGloriya); break;
-                case 1: redGloriya.state = new RedGloriyaUpMovingState(redGloriya); break;
-                case 2: redGloriya.state = new RedGloriyaRightMovingState(redGloriya); break;
-                case 3: redGloriya.state = new RedGloriyaLeftMovingState(redGloriya); break;
+                case 0: redGloriya.State = new RedGloriyaDownMovingState(redGloriya); break;
+                case 1: redGloriya.State = new RedGloriyaUpMovingState(redGloriya); break;
+                case 2: redGloriya.State = new RedGloriyaRightMovingState(redGloriya); break;
+                case 3: redGloriya.State = new RedGloriyaLeftMovingState(redGloriya); break;
             }
         }
 

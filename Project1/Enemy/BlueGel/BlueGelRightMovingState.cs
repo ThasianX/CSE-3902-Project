@@ -17,7 +17,7 @@ namespace Project1.Enemy
         public BlueGelRightMovingState(IEnemy blueGel)
         {
             this.blueGel = blueGel;
-            blueGel.sprite = SpriteFactory.Instance.CreateSprite("BlueGel_walking");
+            blueGel.Sprite = SpriteFactory.Instance.CreateSprite("BlueGel_walking");
             timer = 0;
             currentDirection = Direction.Right;
             deltaVector = new Vector2(1, 0);
@@ -37,9 +37,9 @@ namespace Project1.Enemy
             choice = rand.Next(1, 4);
             switch (choice)
             {
-                case 1: blueGel.state = new BlueGelUpMovingState(blueGel); break;
-                case 2: blueGel.state = new BlueGelDownMovingState(blueGel); break;
-                case 3: blueGel.state = new BlueGelLeftMovingState(blueGel); break;
+                case 1: blueGel.State = new BlueGelUpMovingState(blueGel); break;
+                case 2: blueGel.State = new BlueGelDownMovingState(blueGel); break;
+                case 3: blueGel.State = new BlueGelLeftMovingState(blueGel); break;
             }
         }
         public void Update(GameTime gameTime)
@@ -50,7 +50,7 @@ namespace Project1.Enemy
                 ChangeDirection();
                 timer = 0;
             }
-            blueGel.Position += deltaVector * blueGel.movingSpeed;
+            blueGel.Position += deltaVector * blueGel.MovingSpeed;
         }
     }
 }

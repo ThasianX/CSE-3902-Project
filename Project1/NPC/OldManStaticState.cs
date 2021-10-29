@@ -10,7 +10,7 @@ namespace Project1.NPC
         public OldManStaticState(IEnemy oldMan)
         {
             this.oldMan = oldMan;
-            oldMan.sprite = SpriteFactory.Instance.CreateSprite("OldMan_standing");
+            oldMan.Sprite = SpriteFactory.Instance.CreateSprite("OldMan_standing");
         }
 
         public void FireBallAttack()

@@ -7,10 +7,10 @@ namespace Project1.Enemy
 {
     public class BlueBat : IEnemy, ICollidable
     {
-        public IEnemyState state { get; set; }
-        public ISprite sprite { get; set; }
+        public IEnemyState State { get; set; }
+        public ISprite Sprite { get; set; }
         public Vector2 Position { get; set; }
-        public float movingSpeed { get; set; }
+        public float MovingSpeed { get; set; }
         private int choice;
         private Random rand = new Random();
         public bool IsMover => true;
@@ -28,20 +28,20 @@ namespace Project1.Enemy
             switch (choice)
             {
                 case 0:
-                    state = new BlueBatUpMovingState(this);
+                    State = new BlueBatUpMovingState(this);
                     break;
                 case 1:
-                    state = new BlueBatDownMovingState(this);
+                    State = new BlueBatDownMovingState(this);
                     break;
                 case 2:
-                    state = new BlueBatRightMovingState(this);
+                    State = new BlueBatRightMovingState(this);
                     break;
                 case 3:
-                    state = new BlueBatLeftMovingState(this);
+                    State = new BlueBatLeftMovingState(this);
                     break;
             }
 
-            movingSpeed = 1f;
+            MovingSpeed = 1f;
             blueBatHealthState = new BlueBatHealthState(this, 50);
         }
 
@@ -55,7 +55,7 @@ namespace Project1.Enemy
 
         public void ChangeDirection()
         {
-            state.ChangeDirection();
+            State.ChangeDirection();
         }
 
 
@@ -63,8 +63,8 @@ namespace Project1.Enemy
         {
             // Update the current state
             // Possible state: direction, fireball attack
-            state.Update(gameTime);
-            sprite.Update(gameTime);
+            State.Update(gameTime);
+            Sprite.Update(gameTime);
             if (Immune() && immnueTimeCounter == immuneTime)
             {
                 blueBatHealthState.Update(gameTime);
@@ -84,7 +84,7 @@ namespace Project1.Enemy
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            sprite.Draw(spriteBatch, Position);
+            Sprite.Draw(spriteBatch, Position);
             blueBatHealthState.Draw(spriteBatch);
         }
 

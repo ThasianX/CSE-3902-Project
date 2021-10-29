@@ -11,13 +11,13 @@ namespace Project1
     // It is based on the movement in Binding of Isaac: you can move any direction no matter which direction you are facing.
     public class Player : IPlayer, ICollidable
     {
-        public ISprite sprite{ get; set; }
+        public ISprite Sprite{ get; set; }
         public Vector2 Position { get; set; }
-        public IPlayerState state { get; set; }
-        public Direction facingDirection { get; set; }
-        public float speed { get; set; }
+        public IPlayerState State { get; set; }
+        public Direction FacingDirection { get; set; }
+        public float Speed { get; set; }
         // Keeps track of which directional movement inputs are pressed
-        public Dictionary<Direction, bool> activeMoveInputs { get; set; }
+        public Dictionary<Direction, bool> ActiveMoveInputs { get; set; }
         public IHealthState healthState;
         public Vector2 movement;
         public bool IsMover => true;
@@ -31,69 +31,69 @@ namespace Project1
         {
             this.Position = position;
             this.movement = new Vector2(0, 0);
-            facingDirection = Direction.Down;
+            FacingDirection = Direction.Down;
             // Set entry state
-            state = new StillPlayerState(this);
+            State = new StillPlayerState(this);
             healthState = new HealthState(this, 100);
             collectionList = new Dictionary<string, int>();
-            activeMoveInputs = new Dictionary<Direction, bool>()
+            ActiveMoveInputs = new Dictionary<Direction, bool>()
             {
                 { Direction.Up, false },
                 { Direction.Right, false },
                 { Direction.Down, false },
                 { Direction.Left, false }
             };
-            speed = 1f;
+            Speed = 1f;
         }
 
         // Does not appear in IPlayerState (helper method)
         public void Move(Vector2 delta)
         {
-            Position += delta * speed;
+            Position += delta * Speed;
         }
 
         public bool hasAnyMoveInput()
         {
-            return (!activeMoveInputs[Direction.Up]
-                && !activeMoveInputs[Direction.Right]
-                && !activeMoveInputs[Direction.Down]
-                && !activeMoveInputs[Direction.Left]);
+            return (!ActiveMoveInputs[Direction.Up]
+                && !ActiveMoveInputs[Direction.Right]
+                && !ActiveMoveInputs[Direction.Down]
+                && !ActiveMoveInputs[Direction.Left]);
         }
 
         // Redirect to state behaviors
         public void FaceDirection(Direction direction)
         {
-            state.FaceDirection(direction);
+            State.FaceDirection(direction);
         }
 
         public void SetMoveInput(Direction direction, bool isPressed)
         {
-            state.SetMoveInput(direction, isPressed);
+            State.SetMoveInput(direction, isPressed);
         }
 
         public void SwordAttack()
         {
-            state.SwordAttack();
+            State.SwordAttack();
         }
         public void ShootArrow()
         {
-            state.ShootArrow();
+            State.ShootArrow();
         }
 
         public void BoomerangAttack()
         {
-            state.BoomerangAttack();
+            State.BoomerangAttack();
         }
 
         public void BombAttack()
         {
-            state.BombAttack();
+            State.BombAttack();
         }
         
         public void Update(GameTime gameTime)
         {
-            state.Update(gameTime);
-            sprite.Update(gameTime);
+            State.Update(gameTime);
+            Sprite.Update(gameTime);
             // When takeDamage is called, update once and wait for Immune to be false
             if (Immune() && immnueTimeCounter == immuneTime)
             {
@@ -108,7 +108,7 @@ namespace Project1
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            sprite.Draw(spriteBatch, Position);
+            Sprite.Draw(spriteBatch, Position);
             healthState.Draw(spriteBatch);
             //DrawRectangle(spriteBatch);
 

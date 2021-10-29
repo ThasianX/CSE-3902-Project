@@ -7,10 +7,10 @@ namespace Project1.Enemy
 {
     public class BlueGel : IEnemy, ICollidable
     {
-        public IEnemyState state { get; set; }
-        public ISprite sprite { get; set; }
+        public IEnemyState State { get; set; }
+        public ISprite Sprite { get; set; }
         public Vector2 Position { get; set; }
-        public float movingSpeed { get; set; }
+        public float MovingSpeed { get; set; }
         private int choice;
         private Random rand = new Random();
         public bool IsMover => true;
@@ -28,19 +28,19 @@ namespace Project1.Enemy
             switch (choice)
             {
                 case 0:
-                    state = new BlueGelUpMovingState(this);
+                    State = new BlueGelUpMovingState(this);
                     break;
                 case 1:
-                    state = new BlueGelDownMovingState(this);
+                    State = new BlueGelDownMovingState(this);
                     break;
                 case 2:
-                    state = new BlueGelRightMovingState(this);
+                    State = new BlueGelRightMovingState(this);
                     break;
                 case 3:
-                    state = new BlueGelLeftMovingState(this);
+                    State = new BlueGelLeftMovingState(this);
                     break;
             }
-            movingSpeed = 1f;
+            MovingSpeed = 1f;
 
             blueGelHealthState = new BlueGelHealthState(this, 50);
         }
@@ -55,7 +55,7 @@ namespace Project1.Enemy
 
         public void ChangeDirection()
         {
-            state.ChangeDirection();
+            State.ChangeDirection();
         }
 
 
@@ -63,8 +63,8 @@ namespace Project1.Enemy
         {
             // Update the current state
             // Possible state: direction
-            state.Update(gameTime);
-            sprite.Update(gameTime);
+            State.Update(gameTime);
+            Sprite.Update(gameTime);
             // Enemy will not take damage every frame, only take damage when immune time is over.
             if (Immune() && immnueTimeCounter == immuneTime)
             {
@@ -85,7 +85,7 @@ namespace Project1.Enemy
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            sprite.Draw(spriteBatch, Position);
+            Sprite.Draw(spriteBatch, Position);
             blueGelHealthState.Draw(spriteBatch);
         }
 

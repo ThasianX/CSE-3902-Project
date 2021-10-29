@@ -7,17 +7,17 @@ namespace Project1.NPC
 {
     public class OldMan : IEnemy, ICollidable
     {
-        public IEnemyState state { get; set; }
-        public ISprite sprite { get; set; }
+        public IEnemyState State { get; set; }
+        public ISprite Sprite { get; set; }
         public Vector2 Position { get; set; }
-        public float movingSpeed { get; set; }
+        public float MovingSpeed { get; set; }
         public bool IsMover => false;
         public string CollisionType => "Block";
         public OldMan(Vector2 position)
         {
             this.Position = position;
-            state = new OldManStaticState(this);
-            movingSpeed = 0f;
+            State = new OldManStaticState(this);
+            MovingSpeed = 0f;
         }
 
         public void FireBallAttack()
@@ -38,12 +38,12 @@ namespace Project1.NPC
 
         public void Update(GameTime gameTime)
         {
-            sprite.Update(gameTime);
+            Sprite.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            sprite.Draw(spriteBatch, Position);
+            Sprite.Draw(spriteBatch, Position);
         }
 
         public Rectangle GetRectangle()

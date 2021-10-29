@@ -24,7 +24,7 @@ namespace Project1.Enemy
         public AquamentusFireballAttackState(IEnemy aquamentus)
         {
             this.aquamentus = aquamentus;
-            aquamentus.sprite = SpriteFactory.Instance.CreateSprite("aquamentus_walking");
+            aquamentus.Sprite = SpriteFactory.Instance.CreateSprite("aquamentus_walking");
             fireballOne = new Fireball(aquamentus.Position + new Vector2(fireballOffset, 0), new Vector2(0,-1), activeFrameCount);
             fireballTwo = new Fireball(aquamentus.Position + new Vector2(fireballOffset, 0), new Vector2(0,0), activeFrameCount);
             fireballThree = new Fireball(aquamentus.Position + new Vector2(fireballOffset, 0), new Vector2(0, 1), activeFrameCount);
@@ -43,8 +43,8 @@ namespace Project1.Enemy
             choice = rand.Next(2);
             switch (choice)
             {
-                case 0: aquamentus.state = new AquamentusLeftMovingState(aquamentus); break;
-                case 1: aquamentus.state = new AquamentusRightMovingState(aquamentus); break;
+                case 0: aquamentus.State = new AquamentusLeftMovingState(aquamentus); break;
+                case 1: aquamentus.State = new AquamentusRightMovingState(aquamentus); break;
             }
         }
 

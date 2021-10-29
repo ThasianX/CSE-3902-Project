@@ -17,7 +17,7 @@ namespace Project1.Enemy
         public AquamentusRightMovingState(IEnemy aquamentus)
         {
             this.aquamentus = aquamentus;
-            aquamentus.sprite = SpriteFactory.Instance.CreateSprite("aquamentus_walking");
+            aquamentus.Sprite = SpriteFactory.Instance.CreateSprite("aquamentus_walking");
             // All direction for Aquamentus is facing left
             currentDirection = Direction.Left;
             deltaVector = new Vector2(1, 0);
@@ -26,7 +26,7 @@ namespace Project1.Enemy
 
         public void FireBallAttack()
         {
-            aquamentus.state = new AquamentusFireballAttackState(aquamentus);
+            aquamentus.State = new AquamentusFireballAttackState(aquamentus);
         }
 
         public void BoomerangAttack()
@@ -35,7 +35,7 @@ namespace Project1.Enemy
 
         public void ChangeDirection()
         {
-            aquamentus.state = new AquamentusLeftMovingState(aquamentus);
+            aquamentus.State = new AquamentusLeftMovingState(aquamentus);
         }
 
         public void Update(GameTime gameTime)
@@ -56,7 +56,7 @@ namespace Project1.Enemy
                 }
                 timer = 0;
             }
-            aquamentus.Position += deltaVector * aquamentus.movingSpeed;
+            aquamentus.Position += deltaVector * aquamentus.MovingSpeed;
         }
     }
 }

@@ -17,7 +17,7 @@ namespace Project1.Enemy
         public RedGloriyaUpMovingState(IEnemy redGloriya)
         {
             this.redGloriya = redGloriya;
-            redGloriya.sprite = SpriteFactory.Instance.CreateSprite("RedGloriya_walking_up");
+            redGloriya.Sprite = SpriteFactory.Instance.CreateSprite("RedGloriya_walking_up");
             currentDirection = Direction.Up;
             deltaVector = new Vector2(0, -1);
             counter = 30;
@@ -30,7 +30,7 @@ namespace Project1.Enemy
         // Change current RedGloriya state to RedGloriyaAttackState
         public void BoomerangAttack()
         {
-            redGloriya.state = new RedGloriyaBoomerangAttackState(redGloriya, currentDirection);
+            redGloriya.State = new RedGloriyaBoomerangAttackState(redGloriya, currentDirection);
         }
 
         // Change current RedGloriya state to a random direction state.
@@ -39,9 +39,9 @@ namespace Project1.Enemy
             choice = rand.Next(1, 4);
             switch (choice)
             {
-                case 1: redGloriya.state = new RedGloriyaDownMovingState(redGloriya); break;
-                case 2: redGloriya.state = new RedGloriyaLeftMovingState(redGloriya); break;
-                case 3: redGloriya.state = new RedGloriyaRightMovingState(redGloriya); break;
+                case 1: redGloriya.State = new RedGloriyaDownMovingState(redGloriya); break;
+                case 2: redGloriya.State = new RedGloriyaLeftMovingState(redGloriya); break;
+                case 3: redGloriya.State = new RedGloriyaRightMovingState(redGloriya); break;
             }
         }
 
@@ -63,7 +63,7 @@ namespace Project1.Enemy
                 }
                 timer = 0;
             }
-            redGloriya.Position += deltaVector * redGloriya.movingSpeed;
+            redGloriya.Position += deltaVector * redGloriya.MovingSpeed;
         }
     }
 }
