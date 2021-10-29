@@ -1,14 +1,12 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Project1.Interfaces;
 using Project1.Objects;
 
 namespace Project1.Enemy
 {
     public class RedGloriyaBoomerangAttackState : IEnemyState
     {
-        private RedGloriya redGloriya;
+        private IEnemy redGloriya;
         // The direction passed in
         private Direction direction;
         // The WoodBoomerang instance used for Update and Draw
@@ -21,7 +19,7 @@ namespace Project1.Enemy
         private int timer;
         private Random rand = new Random();
 
-        public RedGloriyaBoomerangAttackState(RedGloriya redGloriya, Direction currentDirection)
+        public RedGloriyaBoomerangAttackState(IEnemy redGloriya, Direction currentDirection)
         {
             this.redGloriya = redGloriya;
             this.direction = currentDirection;

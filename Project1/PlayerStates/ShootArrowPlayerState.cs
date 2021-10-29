@@ -1,45 +1,40 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Project1.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Project1.Objects;
 
 namespace Project1.PlayerStates
 {
     public class ShootArrowPlayerState : IPlayerState
     {
-        private Player player;
-        private int arrowOffset = 8;
-        private ISprite sprite;
-        private WoodArrow arrow;
+        private IPlayer player;
+        private IItem arrow;
 
+        private int arrowOffset = 8;
         private float activeTime = 0.1f, counter = 0f;
 
-        public ShootArrowPlayerState(Player player)
+        public ShootArrowPlayerState(IPlayer player)
         {
             this.player = player;
 
             switch (player.facingDirection)
             {
                 case Direction.Up:
-                    sprite = SpriteFactory.Instance.CreateSprite("player_attack_up");
+                    player.sprite = SpriteFactory.Instance.CreateSprite("player_attack_up");
                     arrow = new WoodArrow(player.Position + new Vector2(0, -arrowOffset), player.facingDirection);
                     break;
 
                 case Direction.Right:
-                    sprite = SpriteFactory.Instance.CreateSprite("player_attack_right");
+                    player.sprite = SpriteFactory.Instance.CreateSprite("player_attack_right");
                     arrow = new WoodArrow(player.Position + new Vector2(arrowOffset, 0), player.facingDirection);
                     break;
 
                 case Direction.Down:
-                    sprite = SpriteFactory.Instance.CreateSprite("player_attack_down"); ;
+                    player.sprite = SpriteFactory.Instance.CreateSprite("player_attack_down"); ;
                     arrow = new WoodArrow(player.Position + new Vector2(0, arrowOffset), player.facingDirection);
                     break;
 
                 case Direction.Left:
-                    sprite = SpriteFactory.Instance.CreateSprite("player_attack_left");
+                    player.sprite = SpriteFactory.Instance.CreateSprite("player_attack_left");
                     arrow = new WoodArrow(player.Position + new Vector2(-arrowOffset, 0), player.facingDirection);
                     break;
 
@@ -99,14 +94,7 @@ namespace Project1.PlayerStates
                     player.state = new StillPlayerState(player);
                 }
             }
-            sprite.Update(gameTime);
             counter += (float) gameTime.ElapsedGameTime.TotalSeconds;
         }
-
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            sprite.Draw(spriteBatch, player.Position);
-        }
-
     }
 }

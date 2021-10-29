@@ -1,8 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Project1.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Project1.Commands
 {
@@ -12,7 +9,6 @@ namespace Project1.Commands
 
         public MoveInBoundsCommand(Collision col)
         {
-
             this.col = col;
         }
 

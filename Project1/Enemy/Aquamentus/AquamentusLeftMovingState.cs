@@ -1,14 +1,11 @@
 ﻿using System;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
-
-using Project1.Interfaces;
 
 namespace Project1.Enemy
 {
     public class AquamentusLeftMovingState : IEnemyState
     {
-        private Aquamentus aquamentus;
+        private IEnemy aquamentus;
         private int timer;
         // Could later used to assemble all the direction moving state
         private Direction currentDirection;
@@ -17,7 +14,7 @@ namespace Project1.Enemy
         private int choice;
         private int counter;
 
-        public AquamentusLeftMovingState(Aquamentus aquamentus)
+        public AquamentusLeftMovingState(IEnemy aquamentus)
         {
             this.aquamentus = aquamentus;
             aquamentus.sprite = SpriteFactory.Instance.CreateSprite("aquamentus_walking");

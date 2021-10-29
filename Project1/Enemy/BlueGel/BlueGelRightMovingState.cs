@@ -1,13 +1,11 @@
 ﻿using System;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
-using Project1.Interfaces;
 
 namespace Project1.Enemy
 {
     public class BlueGelRightMovingState : IEnemyState
     {
-        private BlueGel blueGel;
+        private IEnemy blueGel;
         private int choice;
         private Random rand = new Random();
         private int timer;
@@ -16,7 +14,7 @@ namespace Project1.Enemy
         private Vector2 deltaVector;
         private int counter;
 
-        public BlueGelRightMovingState(BlueGel blueGel)
+        public BlueGelRightMovingState(IEnemy blueGel)
         {
             this.blueGel = blueGel;
             blueGel.sprite = SpriteFactory.Instance.CreateSprite("BlueGel_walking");

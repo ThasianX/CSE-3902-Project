@@ -1,38 +1,31 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
-using Project1.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Microsoft.Xna.Framework;
 
 namespace Project1.PlayerStates
 {
     public class WalkingPlayerState : IPlayerState
     {
-        private Player player;
+        private IPlayer player;
 
-        private ISprite sprite;
-
-        public WalkingPlayerState(Player player)
+        public WalkingPlayerState(IPlayer player)
         {
             this.player = player;
 
             switch (player.facingDirection)
             {
                 case Direction.Up:
-                    sprite = SpriteFactory.Instance.CreateSprite("player_walking_up");
+                    player.sprite = SpriteFactory.Instance.CreateSprite("player_walking_up");
                     break;
 
                 case Direction.Right:
-                    sprite = SpriteFactory.Instance.CreateSprite("player_walking_right");
+                    player.sprite = SpriteFactory.Instance.CreateSprite("player_walking_right");
                     break;
 
                 case Direction.Down:
-                    sprite = SpriteFactory.Instance.CreateSprite("player_walking_down");
+                    player.sprite = SpriteFactory.Instance.CreateSprite("player_walking_down");
                     break;
 
                 case Direction.Left:
-                    sprite = SpriteFactory.Instance.CreateSprite("player_walking_left");
+                    player.sprite = SpriteFactory.Instance.CreateSprite("player_walking_left");
                     break;
 
                 default:
@@ -99,16 +92,9 @@ namespace Project1.PlayerStates
 
             player.Move(movement);
 
-            sprite.Update(gameTime);
-
             // Switch to still state if there is no movement input
             if (player.hasAnyMoveInput())
                 player.state = new StillPlayerState(player);
-        }
-
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            sprite.Draw(spriteBatch, player.Position);
         }
     }
 }

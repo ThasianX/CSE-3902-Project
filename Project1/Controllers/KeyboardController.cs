@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
 using Project1.Commands;
-using Project1.PlayerStates;
 using Project1.Interfaces;
 
 namespace Project1

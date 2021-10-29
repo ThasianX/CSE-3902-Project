@@ -1,16 +1,13 @@
-﻿using System;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
-using Project1.Interfaces;
+﻿using Microsoft.Xna.Framework;
 using Project1.Enemy;
 
 namespace Project1.NPC
 {
     class OldManStaticState : IEnemyState
     {
-        private OldMan oldMan;
+        private IEnemy oldMan;
 
-        public OldManStaticState(OldMan oldMan)
+        public OldManStaticState(IEnemy oldMan)
         {
             this.oldMan = oldMan;
             oldMan.sprite = SpriteFactory.Instance.CreateSprite("OldMan_standing");

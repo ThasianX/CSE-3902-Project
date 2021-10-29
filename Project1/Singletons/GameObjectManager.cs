@@ -1,7 +1,5 @@
-using System;
 using System.Collections.Generic;
 using Project1.Interfaces;
-using Project1.PlayerStates;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.ObjectModel;

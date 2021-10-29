@@ -1,38 +1,31 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
-using Project1.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Microsoft.Xna.Framework;
 
 namespace Project1.PlayerStates
 {
     public class StillPlayerState : IPlayerState
     {
-        private Player player;
+        private IPlayer player;
 
-        private ISprite sprite;
-
-        public StillPlayerState(Player player)
+        public StillPlayerState(IPlayer player)
         {
             this.player = player;
 
             switch (player.facingDirection)
             {
                 case Direction.Up:
-                    sprite = SpriteFactory.Instance.CreateSprite("player_idle_up");
+                    player.sprite = SpriteFactory.Instance.CreateSprite("player_idle_up");
                     break;
 
                 case Direction.Right:
-                    sprite = SpriteFactory.Instance.CreateSprite("player_idle_right");
+                    player.sprite = SpriteFactory.Instance.CreateSprite("player_idle_right");
                     break;
 
                 case Direction.Down:
-                    sprite = SpriteFactory.Instance.CreateSprite("player_idle_down");
+                    player.sprite = SpriteFactory.Instance.CreateSprite("player_idle_down");
                     break;
 
                 case Direction.Left:
-                    sprite = SpriteFactory.Instance.CreateSprite("player_idle_left");
+                    player.sprite = SpriteFactory.Instance.CreateSprite("player_idle_left");
                     break;
 
                 default:
@@ -76,12 +69,6 @@ namespace Project1.PlayerStates
 
         public void Update(GameTime gameTime)
         {
-            sprite.Update(gameTime);
-        }
-
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            sprite.Draw(spriteBatch, player.Position);
         }
     }
 }

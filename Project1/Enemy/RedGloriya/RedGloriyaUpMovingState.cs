@@ -1,14 +1,11 @@
 ﻿using System;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
-
-using Project1.Interfaces;
 
 namespace Project1.Enemy
 {
     public class RedGloriyaUpMovingState : IEnemyState
     {
-        private RedGloriya redGloriya;
+        private IEnemy redGloriya;
         // Up moving state, so Direction.Up
         private Direction currentDirection;
         private Vector2 deltaVector;
@@ -17,7 +14,7 @@ namespace Project1.Enemy
         private int timer;
         private int counter;
 
-        public RedGloriyaUpMovingState(RedGloriya redGloriya)
+        public RedGloriyaUpMovingState(IEnemy redGloriya)
         {
             this.redGloriya = redGloriya;
             redGloriya.sprite = SpriteFactory.Instance.CreateSprite("RedGloriya_walking_up");

@@ -7,12 +7,12 @@ namespace Project1.Enemy
 {
     public class Stalfos : IEnemy, ICollidable
     {
-        public IEnemyState state;
+        public IEnemyState state { get; set; }
         public ISprite sprite { get; set; }
         public Vector2 Position { get; set; }
+        public float movingSpeed { get; set; }
         public bool IsMover => true;
         public string CollisionType => "Enemy";
-        public float movingSpeed;
         private int choice;
         private Random rand = new Random();
         public IHealthState stalfosHealthState;

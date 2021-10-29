@@ -11,34 +11,21 @@ namespace Project1
     // It is based on the movement in Binding of Isaac: you can move any direction no matter which direction you are facing.
     public class Player : IPlayer, ICollidable
     {
+        public ISprite sprite{ get; set; }
         public Vector2 Position { get; set; }
-
-        public IPlayerState state;
+        public IPlayerState state { get; set; }
+        public Direction facingDirection { get; set; }
+        public float speed { get; set; }
+        // Keeps track of which directional movement inputs are pressed
+        public Dictionary<Direction, bool> activeMoveInputs { get; set; }
         public IHealthState healthState;
-
-        public SpriteBatch spriteBatch;
-
-        public Direction facingDirection;
-
         public Vector2 movement;
         public bool IsMover => true;
         public string CollisionType => "Player";
-
         private int immuneTime = 60;
         private int immnueTimeCounter;
         // Temporary collection list for player
         public Dictionary<string, int> collectionList;
-
-        // Keeps track of which directional movement inputs are pressed
-        public Dictionary<Direction, bool> activeMoveInputs = new Dictionary<Direction, bool>()
-        {
-            { Direction.Up, false },
-            { Direction.Right, false },
-            { Direction.Down, false },
-            { Direction.Left, false }
-        };
-
-        public float speed = 1f;
 
         public Player(Vector2 position)
         {
@@ -49,6 +36,14 @@ namespace Project1
             state = new StillPlayerState(this);
             healthState = new HealthState(this, 100);
             collectionList = new Dictionary<string, int>();
+            activeMoveInputs = new Dictionary<Direction, bool>()
+            {
+                { Direction.Up, false },
+                { Direction.Right, false },
+                { Direction.Down, false },
+                { Direction.Left, false }
+            };
+            speed = 1f;
         }
 
         // Does not appear in IPlayerState (helper method)
@@ -64,7 +59,6 @@ namespace Project1
                 && !activeMoveInputs[Direction.Down]
                 && !activeMoveInputs[Direction.Left]);
         }
-
 
         // Redirect to state behaviors
         public void FaceDirection(Direction direction)
@@ -99,6 +93,7 @@ namespace Project1
         public void Update(GameTime gameTime)
         {
             state.Update(gameTime);
+            sprite.Update(gameTime);
             // When takeDamage is called, update once and wait for Immune to be false
             if (Immune() && immnueTimeCounter == immuneTime)
             {
@@ -113,7 +108,7 @@ namespace Project1
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            state.Draw(spriteBatch);
+            sprite.Draw(spriteBatch, Position);
             healthState.Draw(spriteBatch);
             //DrawRectangle(spriteBatch);
 

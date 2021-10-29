@@ -1,13 +1,11 @@
 ﻿using System;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
-using Project1.Interfaces;
 
 namespace Project1.Enemy
 {
     public class BlueBatDownMovingState : IEnemyState
     {
-        private BlueBat blueBat;
+        private IEnemy blueBat;
         private int choice;
         private Random rand = new Random();
         private int timer;
@@ -16,7 +14,7 @@ namespace Project1.Enemy
         private Vector2 deltaVector;
         private int counter;
 
-        public BlueBatDownMovingState(BlueBat blueBat)
+        public BlueBatDownMovingState(IEnemy blueBat)
         {
             this.blueBat = blueBat;
             blueBat.sprite = SpriteFactory.Instance.CreateSprite("BlueBat_woving");

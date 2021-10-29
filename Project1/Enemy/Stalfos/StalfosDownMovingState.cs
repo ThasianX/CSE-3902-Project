@@ -1,14 +1,11 @@
 ﻿using System;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
-
-using Project1.Interfaces;
 
 namespace Project1.Enemy
 {
     public class StalfosDownMovingState : IEnemyState
     {
-        private Stalfos stalfos;
+        private IEnemy stalfos;
         private int choice;
         private Random rand = new Random();
         private int timer;
@@ -17,7 +14,7 @@ namespace Project1.Enemy
         private Vector2 deltaVector;
         private int counter;
 
-        public StalfosDownMovingState(Stalfos stalfos)
+        public StalfosDownMovingState(IEnemy stalfos)
         {
             this.stalfos = stalfos;
             stalfos.sprite = SpriteFactory.Instance.CreateSprite("stalfos_walking");

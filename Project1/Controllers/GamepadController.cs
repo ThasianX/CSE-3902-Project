@@ -1,7 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Input;
 using Project1.Commands;
 using Project1.Interfaces;
-using Project1.PlayerStates;
 
 namespace Project1
 {

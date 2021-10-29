@@ -8,11 +8,11 @@ namespace Project1.Enemy
 {
     public class AquamentusFireballAttackState : IEnemyState
     {
-        private Aquamentus aquamentus;
+        private IEnemy aquamentus;
         // The Fireball instance used for Update and Draw
-        private Fireball fireballOne;
-        private Fireball fireballTwo;
-        private Fireball fireballThree;
+        private IItem fireballOne;
+        private IItem fireballTwo;
+        private IItem fireballThree;
         // Not sure, need to ask Keenan !!
         private int fireballOffset = 8;
         // The length of animation frame boomerang will Update, also Not sure, need to ask Keenan !!
@@ -21,7 +21,7 @@ namespace Project1.Enemy
         private int timer;
         private Random rand = new Random();
 
-        public AquamentusFireballAttackState(Aquamentus aquamentus)
+        public AquamentusFireballAttackState(IEnemy aquamentus)
         {
             this.aquamentus = aquamentus;
             aquamentus.sprite = SpriteFactory.Instance.CreateSprite("aquamentus_walking");
