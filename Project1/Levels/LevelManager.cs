@@ -30,8 +30,7 @@ namespace Project1.Levels
             totalRooms = 0;
             currentRoomIndex = 0;
             rooms = new Collection<Room>();
-            //spriteData = XDocument.Load("Levels/LevelData/Level" + level + ".xml");
-            spriteData = XDocument.Load("Levels/LevelData/Level1_NEW.xml");
+            spriteData = XDocument.Load("Levels/LevelData/Level" + level + ".xml");
         }
 
         public Room GetCurrentRoom()
@@ -86,21 +85,13 @@ namespace Project1.Levels
                 string type = element.Element("type").Value;
                 string name = element.Element("name").Value;
                 XElement position = element.Element("position");
-                /*
-               int x = (int) MathF.Round(float.Parse(position_ratio.Element("x").Value) * 256);
-               int y = (int) MathF.Round(float.Parse(position_ratio.Element("y").Value) * 176);*/
+
                 float x = float.Parse(position.Element("x").Value) * Constants.TILE_SIZE;
                 float y = float.Parse(position.Element("y").Value) * Constants.TILE_SIZE;
 
                 System.Console.WriteLine(element.Element("type").Value + ": " + x + ", " + y);
 
                 LoadObject(room, type, name, new Vector2(x, y));
-
-                /*x = (int) MathF.Round(x / 16);
-                y = (int) MathF.Round(y / 16);
-
-                position_ratio.Element("x").Value = x.ToString();
-                position_ratio.Element("y").Value = y.ToString();*/
 
             }
             //spriteData.Save("new_level_1_data.xml");
