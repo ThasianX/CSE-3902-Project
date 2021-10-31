@@ -4,13 +4,11 @@ using Project1.Interfaces;
 
 namespace Project1.Objects
 {
-    public class Floor: IGameObject, ICollidable
+    public class Floor: IGameObject
     {
         public Vector2 Position { get; set; }
 
         ISprite sprite;
-        public bool IsMover => false;
-        public string CollisionType => "Block";
 
         public Floor(Vector2 position, int variation)
         {
@@ -26,11 +24,6 @@ namespace Project1.Objects
         public void Update(GameTime gameTime)
         {
             sprite.Update(gameTime);
-        }
-
-        public Rectangle GetRectangle()
-        {
-            return new Rectangle((int)Position.X, (int)Position.Y, 16, 16);
         }
     }
 }

@@ -3,6 +3,7 @@ using Project1.Interfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace Project1
 {
@@ -104,34 +105,20 @@ namespace Project1
             return list;
         }
 
+        private List<ICollidable> GetCollidables() {
+            return GetObjectsOfType<ICollidable>();
+        }
+
         // return a list of ICollidable that is also a mover
         public List<ICollidable> GetMoverList()
         {
-            List<ICollidable> movers = new List<ICollidable>();
-            foreach (ICollidable obj in gameObjects)
-            {
-                if (obj.IsMover)
-                {
-                    movers.Add(obj);
-                }
-            }
-
-            return movers;
+            return GetCollidables().Where(x => x.IsMover).ToList();
         }
 
         // return a list of ICollidable that is not a mover
         public List<ICollidable> GetStaticList()
         {
-            List<ICollidable> statics = new List<ICollidable>();
-            foreach (ICollidable obj in gameObjects)
-            {
-                if (!obj.IsMover)
-                {
-                    statics.Add(obj);
-                }
-            }
-
-            return statics;
+            return GetCollidables().Where(x => !x.IsMover).ToList();
         }
     }
 }
