@@ -14,6 +14,7 @@ namespace Project1
         private SpriteBatch spriteBatch;
 
         RenderTarget2D scene;
+        RenderTarget2D UI;
 
         private ArrayList controllerList;
 
@@ -88,13 +89,30 @@ namespace Project1
 
         protected override void Draw(GameTime gameTime)
         {
+            // Draw the game area to the scene render target
+            GraphicsDevice.SetRenderTarget(scene);
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            //GraphicsDevice.SetRenderTarget(scene);
+            spriteBatch.Begin();
+            GameObjectManager.Instance.DrawObjects(spriteBatch);
+            spriteBatch.End();
+
+            GraphicsDevice.SetRenderTarget(null);
+            GraphicsDevice.Clear(Color.Transparent);
+
+            // Draw the UI area to the UI render target
+            //TODO
+
+            // Draw the different render targets to their places in the game window
 
             spriteBatch.Begin();
 
-            GameObjectManager.Instance.DrawObjects(spriteBatch);
+            // Scale and draw the scene
+            float scale = 2.5f;
+            spriteBatch.Draw(scene, Vector2.Zero, null, Color.White, 0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
+
+            //Scale and draw the UI
+            //TODO
 
             spriteBatch.End();
 
