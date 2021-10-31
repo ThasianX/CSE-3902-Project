@@ -21,6 +21,7 @@
     <None Remove="Icon.ico" />
     <None Remove="Icon.bmp" />
     <None Remove="CodeRevies\" />
+    <None Remove="Levels\LevelData\Level1_NEW.xml" />
     <None Remove="sprite_data.xml" />
     <None Remove="sprite_dictionary.xml" />
   </ItemGroup>
@@ -38,6 +39,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Levels\LevelData\Level1.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Levels\LevelData\Level1_NEW.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

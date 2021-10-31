@@ -13,6 +13,8 @@ namespace Project1
         private static GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
 
+        RenderTarget2D scene;
+
         private ArrayList controllerList;
 
         private static Viewport ViewPort => graphics.GraphicsDevice.Viewport;
@@ -31,6 +33,8 @@ namespace Project1
         // We could use initialize to Reset our game
         protected override void Initialize()
         {
+            scene = new RenderTarget2D(graphics.GraphicsDevice, SCREEN_WIDTH, SCREEN_HEIGHT);
+
             controllerList = new ArrayList
             {
                 new KeyboardController(this),
@@ -85,6 +89,8 @@ namespace Project1
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
+
+            //GraphicsDevice.SetRenderTarget(scene);
 
             spriteBatch.Begin();
 

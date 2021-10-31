@@ -45,11 +45,13 @@ namespace Project1.Sprites
             timeCounter = 0f;
         }
 
-        // Old constructor (needed to compile)
-
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
             // define the rectangle on the screen to draw the sprite
+            // cast to location values to int to align to pixels
+
+            //location.Round();
+
             Rectangle destination = new Rectangle((int)location.X, (int)location.Y, draw_dimensions.width, draw_dimensions.height);
 
             // define the rectangle on the texture to get the sprite

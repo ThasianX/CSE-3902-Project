@@ -97,8 +97,13 @@ namespace Project1
             // get sprite draw dimensions
             Dimensions draw_dimensions;
             if(spriteNode.Element("draw_dimensions_ratio") != null) {
-                draw_dimensions.height = (int) (float.Parse(spriteNode.Element("draw_dimensions_ratio").Element("height").Value) * Game1.SCREEN_HEIGHT);
-                draw_dimensions.width = (int) (float.Parse(spriteNode.Element("draw_dimensions_ratio").Element("width").Value) * Game1.SCREEN_WIDTH);
+                //draw_dimensions.height = (int) (float.Parse(spriteNode.Element("draw_dimensions_ratio").Element("height").Value) * 176);
+                //draw_dimensions.width = (int) (float.Parse(spriteNode.Element("draw_dimensions_ratio").Element("width").Value) * 256);
+
+                //spriteNode.Element("draw_dimensions_ratio").Element("height").Value = ;
+
+                draw_dimensions.height = dimensions.height;
+                draw_dimensions.width = dimensions.width;
             } else {
                 draw_dimensions.height = dimensions.height;
                 draw_dimensions.width = dimensions.width;
