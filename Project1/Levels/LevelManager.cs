@@ -119,6 +119,15 @@ namespace Project1.Levels
                 case "Door":
                     room.AddObject(new Door(position, (Direction) Enum.Parse(typeof(Direction), name)));
                     break;
+                case "LockedDoor":
+                    room.AddObject(new LockedDoor(position, (Direction)Enum.Parse(typeof(Direction), name)));
+                    break;
+                case "NoDoor":
+                    room.AddObject(new NoDoor(position, (Direction)Enum.Parse(typeof(Direction), name)));
+                    break;
+                case "Hole":
+                    room.AddObject(new Hole(position, (Direction)Enum.Parse(typeof(Direction), name)));
+                    break;
                 case "Player":
                     room.AddObject(new Player(position));
                     break;
@@ -178,6 +187,12 @@ namespace Project1.Levels
                     break;
                 case "Stone":
                     room.AddObject(new StoneBlock(position));
+                    break;
+                case "LeftFacingStatue":
+                    room.AddObject(new LeftFacingStatueBlock(position));
+                    break;
+                case "RightFacingStatue":
+                    room.AddObject(new RightFacingStatueBlock(position));
                     break;
             }
         }

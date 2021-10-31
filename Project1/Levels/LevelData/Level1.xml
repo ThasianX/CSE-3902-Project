@@ -192,7 +192,7 @@
       </position_ratio>
     </object>
   </room>
-	<room id="2">
+  <room id="2">
 		<object>
 			<type>Floor</type>
 			<name>1</name>
@@ -306,7 +306,7 @@
 			</position_ratio>
 		</object>
 	</room>
-	<room id="3">
+  <room id="3">
 		<object>
 			<type>Floor</type>
 			<name>1</name>
