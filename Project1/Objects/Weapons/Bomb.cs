@@ -4,7 +4,7 @@ using Project1.Interfaces;
 
 namespace Project1.Objects
 {
-    public class Bomb : IItem, ICollidable
+    public class Bomb : IGameObject, ICollidable
     {
         public Vector2 Position { get; set; }
 
