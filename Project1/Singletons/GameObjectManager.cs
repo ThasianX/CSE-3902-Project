@@ -72,9 +72,19 @@ namespace Project1
             removeBuffer.Clear();
         }
 
-        public void AddOnNextFrame(IGameObject obj)
+        public void AddImmediate(IGameObject obj)
         {
             gameObjects.Add(obj);
+        }
+
+        public void RemoveImmediate(IGameObject obj)
+        {
+            gameObjects.Remove(obj);
+        }
+
+        public void AddOnNextFrame(IGameObject obj)
+        {
+            addBuffer.Add(obj);
         }
 
         public void RemoveOnNextFrame(IGameObject obj)
