@@ -4,17 +4,17 @@ using Project1.Interfaces;
 
 namespace Project1.Objects
 {
-    public class Triforce : IItem, ICollidable
+    public class Heart : IInstantUseItem, ICollidable
     {
         public Vector2 Position { get; set; }
-
+        public int heartHeal = 30;
         ISprite sprite;
         public bool IsMover => false;
-        public string CollisionType => "Item";
-        public Triforce(Vector2 position)
+        public string CollisionType => "InstantUseItem";
+        public Heart(Vector2 position)
         {
             this.Position = position;
-            sprite = SpriteFactory.Instance.CreateSprite("triforce");
+            sprite = SpriteFactory.Instance.CreateSprite("heart");
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -27,9 +27,14 @@ namespace Project1.Objects
             sprite.Update(gameTime);
         }
 
+        public void InstantUseItem(IPlayer player)
+        {
+            player.Heal(heartHeal);
+        }
+
         public Rectangle GetRectangle()
         {
-            return new Rectangle((int)Position.X, (int)Position.Y, 10, 10);
+            return new Rectangle((int)Position.X, (int)Position.Y, 7, 8);
         }
     }
 }

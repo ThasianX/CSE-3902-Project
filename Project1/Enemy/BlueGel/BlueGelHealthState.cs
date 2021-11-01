@@ -53,5 +53,9 @@ namespace Project1.Enemy
             }
         }
 
+        public void Heal(int heal)
+        {
+
+        }
     }
 }

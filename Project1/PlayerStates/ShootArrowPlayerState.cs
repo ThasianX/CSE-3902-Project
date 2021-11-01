@@ -7,7 +7,7 @@ namespace Project1.PlayerStates
     public class ShootArrowPlayerState : IPlayerState
     {
         private IPlayer player;
-        private IItem arrow;
+        private IGameObject arrow;
 
         private int arrowOffset = 8;
         private float activeTime = 0.1f, counter = 0f;

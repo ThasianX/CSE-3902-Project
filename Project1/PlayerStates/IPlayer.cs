@@ -21,8 +21,9 @@ namespace Project1
         void BoomerangAttack();
         void BombAttack();
         public void TakeDamage(int damage);
-        public void CollectItem(IGameObject collectible);
+        public void Heal(int heal);
+        public void CollectItem(IInventoryItem collectible);
         public void ShowCollection();
-
+        public void InstantUseItem(IInstantUseItem collectible);
     }
 }
