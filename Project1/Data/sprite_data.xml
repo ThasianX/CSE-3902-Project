@@ -625,6 +625,62 @@
 				</source_list>
 			</sprite>
 		</key>
+		<woodBoomerangPickup>
+			<sprite>
+				<spritesheet>item_spritesheet</spritesheet>
+				<dimensions>
+					<height>8</height>
+					<width>5</width>
+				</dimensions>
+				<time>1</time>
+				<source>
+					<x>129</x>
+					<y>3</y>
+				</source>
+			</sprite>
+		</woodBoomerangPickup>
+		<woodSwordPickup>
+			<sprite>
+				<spritesheet>item_spritesheet</spritesheet>
+				<dimensions>
+					<height>16</height>
+					<width>7</width>
+				</dimensions>
+				<time>1</time>
+				<source>
+					<x>104</x>
+					<y>0</y>
+				</source>
+			</sprite>
+		</woodSwordPickup>
+		<woodArrowPickup>
+			<sprite>
+				<spritesheet>item_spritesheet</spritesheet>
+				<dimensions>
+					<height>16</height>
+					<width>5</width>
+				</dimensions>
+				<time>1</time>
+				<source>
+					<x>154</x>
+					<y>0</y>
+				</source>
+			</sprite>
+		</woodArrowPickup>
+		<bombPickup>
+			<sprite>
+				<spritesheet>item_spritesheet</spritesheet>
+				<dimensions>
+					<height>14</height>
+					<width>8</width>
+				</dimensions>
+				<time>1</time>
+				<source>
+					<x>136</x>
+					<y>0</y>
+				</source>
+			</sprite>
+		</bombPickup>
 		<weapon>
 			<woodArrow>
 				<up>

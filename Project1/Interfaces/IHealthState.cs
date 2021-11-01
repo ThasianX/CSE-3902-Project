@@ -10,5 +10,6 @@ namespace Project1.Interfaces
         void Draw(SpriteBatch spriteBatch);
         void Update(GameTime gameTime);
         void TakeDamage(int damage);
+        void Heal(int heal);
     }
 }

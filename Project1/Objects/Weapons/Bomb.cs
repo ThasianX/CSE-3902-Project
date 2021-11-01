@@ -4,18 +4,20 @@ using Project1.Interfaces;
 
 namespace Project1.Objects
 {
-    public class Key : IItem, ICollidable
+    public class Bomb : IGameObject, ICollidable
     {
         public Vector2 Position { get; set; }
 
         ISprite sprite;
         public bool IsMover => false;
-        public string CollisionType => "Item";
 
-        public Key(Vector2 position)
+        //Unsure what collision type the placed bomb should have.
+        public string CollisionType => "Weapon";
+        
+        public Bomb(Vector2 position)
         {
             this.Position = position;
-            sprite = SpriteFactory.Instance.CreateSprite("key");
+            sprite = SpriteFactory.Instance.CreateSprite("bomb");
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -30,7 +32,8 @@ namespace Project1.Objects
 
         public Rectangle GetRectangle()
         {
-            return new Rectangle((int)Position.X, (int)Position.Y, 8, 16);
+            Dimensions dimensions = sprite.GetDimensions();
+            return new Rectangle((int)Position.X, (int)Position.Y, 16, 16);
         }
     }
 }

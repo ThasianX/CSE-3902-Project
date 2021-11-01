@@ -26,6 +26,11 @@
         <arg type="Project1.Collision">COLLISION</arg>
       </command>
     </Item>
+	<InstantUseItem>
+		<command type="Project1.Commands.PlayerCollectInstantUseItemCommand">
+			<arg type="Project1.Collision">COLLISION</arg>
+		</command>
+	</InstantUseItem> 
     <Weapon>
       
     </Weapon>

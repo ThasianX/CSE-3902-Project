@@ -4,7 +4,7 @@ using Project1.Interfaces;
 
 namespace Project1.Objects
 {
-    public class WoodSword : IItem, ICollidable
+    public class WoodSword : IGameObject, ICollidable
     {
         public int moveSpeed;
         public Vector2 Position { get; set; }

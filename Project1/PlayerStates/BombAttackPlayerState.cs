@@ -8,7 +8,7 @@ namespace Project1.PlayerStates
     public class BombAttackPlayerState : IPlayerState
     {
         private IPlayer player;
-        private IItem bomb;
+        private IGameObject bomb;
 
         private int bombOffset = 16;
         private int activeFrameCount = 40, counter = 0;

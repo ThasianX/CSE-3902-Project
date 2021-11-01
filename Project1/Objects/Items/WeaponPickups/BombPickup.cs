@@ -4,17 +4,19 @@ using Project1.Interfaces;
 
 namespace Project1.Objects
 {
-    public class BlueRuby : IItem, ICollidable
+    public class BombPickup : IInventoryItem, ICollidable
     {
+        public string Name => "Bomb";
+        public bool IsConsumable => true;
+        public int MaxStackCount => 10;
         public Vector2 Position { get; set; }
-
         ISprite sprite;
         public bool IsMover => false;
         public string CollisionType => "Item";
-        public BlueRuby(Vector2 position)
+        public BombPickup(Vector2 position)
         {
             this.Position = position;
-            sprite = SpriteFactory.Instance.CreateSprite("blueRuby");
+            sprite = SpriteFactory.Instance.CreateSprite("bombPickup");
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -29,7 +31,8 @@ namespace Project1.Objects
 
         public Rectangle GetRectangle()
         {
-            return new Rectangle((int)Position.X, (int)Position.Y, 8, 16);
+            Dimensions dimensions = sprite.GetDimensions();
+            return new Rectangle((int)Position.X, (int)Position.Y, dimensions.width, dimensions.height);
         }
     }
 }
