@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework;
 using Project1.Enemy;
 using Project1.Objects;
 using System.Collections.ObjectModel;
+using System.Xml;
 
 namespace Project1.Levels
 {
@@ -80,14 +81,21 @@ namespace Project1.Levels
 
         private void LoadRoom(XElement root) {
             Room room = new Room();
-            foreach (XElement element in root.Elements()) {
+            foreach (XElement element in root.Elements("object")) {
                 string type = element.Element("type").Value;
                 string name = element.Element("name").Value;
-                XElement position_ratio = element.Element("position_ratio");
-                int x = (int)(float.Parse(position_ratio.Element("x").Value) * Game1.SCREEN_WIDTH);
-                int y = (int)(float.Parse(position_ratio.Element("y").Value) * Game1.SCREEN_HEIGHT);
+                XElement position = element.Element("position");
+
+                float x = float.Parse(position.Element("x").Value) * Constants.TILE_SIZE;
+                float y = float.Parse(position.Element("y").Value) * Constants.TILE_SIZE;
+
+                System.Console.WriteLine(element.Element("type").Value + ": " + x + ", " + y);
+
                 LoadObject(room, type, name, new Vector2(x, y));
+
             }
+            //spriteData.Save("new_level_1_data.xml");
+
             rooms.Add(room);
         }
 

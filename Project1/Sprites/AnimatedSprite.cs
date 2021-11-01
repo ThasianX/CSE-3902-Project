@@ -7,7 +7,6 @@ namespace Project1.Sprites
     class AnimatedSprite: ISprite
     {
         readonly Dimensions dimensions;
-        readonly Dimensions draw_dimensions;
 
         private readonly (int x, int y)[] sources;
 
@@ -23,7 +22,6 @@ namespace Project1.Sprites
         public AnimatedSprite(
             Texture2D spriteSheet, 
             Dimensions dimensions,
-            Dimensions draw_dimensions,
             (int x, int y)[] sources, 
             double time)
         {
@@ -32,7 +30,6 @@ namespace Project1.Sprites
             sourceCount = sources.Length;
             this.sources = sources;
             this.dimensions = dimensions;
-            this.draw_dimensions = draw_dimensions;
 
             // the sprite is animated if it has more than one source
             isAnimated = sourceCount > 0;
@@ -45,12 +42,11 @@ namespace Project1.Sprites
             timeCounter = 0f;
         }
 
-        // Old constructor (needed to compile)
-
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
             // define the rectangle on the screen to draw the sprite
-            Rectangle destination = new Rectangle((int)location.X, (int)location.Y, draw_dimensions.width, draw_dimensions.height);
+            // cast to location values to int to align to pixels
+            Rectangle destination = new Rectangle((int)location.X, (int)location.Y, dimensions.width, dimensions.height);
 
             // define the rectangle on the texture to get the sprite
             Rectangle source = new Rectangle(sources[currentSourceIndex].x, sources[currentSourceIndex].y, dimensions.width, dimensions.height);
@@ -78,7 +74,7 @@ namespace Project1.Sprites
         }
 
         public Dimensions GetDimensions() {
-            return draw_dimensions;
+            return dimensions;
         }
     }
 }

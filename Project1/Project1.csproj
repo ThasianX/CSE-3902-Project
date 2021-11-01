@@ -14,13 +14,13 @@
     <Compile Remove="CodeRevies\**" />
     <EmbeddedResource Remove="CodeRevies\**" />
     <None Remove="CodeRevies\**" />
-    <None Remove="Levels\LevelData\Level1.xml" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Data\collision_response.xml" />
     <None Remove="Icon.ico" />
     <None Remove="Icon.bmp" />
     <None Remove="CodeRevies\" />
+    <None Remove="Levels\LevelData\Level1.xml" />
     <None Remove="sprite_data.xml" />
     <None Remove="sprite_dictionary.xml" />
   </ItemGroup>
@@ -37,7 +37,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Levels\LevelData\Level1.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

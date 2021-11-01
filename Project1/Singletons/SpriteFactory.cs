@@ -94,20 +94,10 @@ namespace Project1
                 sources.Add((x, y));
             }
 
-            // get sprite draw dimensions
-            Dimensions draw_dimensions;
-            if(spriteNode.Element("draw_dimensions_ratio") != null) {
-                draw_dimensions.height = (int) (float.Parse(spriteNode.Element("draw_dimensions_ratio").Element("height").Value) * Game1.SCREEN_HEIGHT);
-                draw_dimensions.width = (int) (float.Parse(spriteNode.Element("draw_dimensions_ratio").Element("width").Value) * Game1.SCREEN_WIDTH);
-            } else {
-                draw_dimensions.height = dimensions.height;
-                draw_dimensions.width = dimensions.width;
-            }
-
             // done collecting values =======================================================================
 
             // create the sprite
-            return new AnimatedSprite(texture, dimensions, draw_dimensions, sources.ToArray(), time);
+            return new AnimatedSprite(texture, dimensions, sources.ToArray(), time);
         }
 
         public ISprite CreateHealthSprite(IHealthState healthState, string fontName)
