@@ -3,6 +3,7 @@ using System.Xml.Linq;
 using Microsoft.Xna.Framework;
 using Project1.Enemy;
 using Project1.Objects;
+using Project1.NPC;
 using System.Collections.ObjectModel;
 using System.Xml;
 
@@ -128,6 +129,9 @@ namespace Project1.Levels
                 case "Hole":
                     room.AddObject(new Hole(position, (Direction)Enum.Parse(typeof(Direction), name)));
                     break;
+                case "ClosedDoor":
+                    room.AddObject(new ClosedDoor(position, (Direction)Enum.Parse(typeof(Direction), name)));
+                    break;
                 case "Player":
                     room.AddObject(new Player(position));
                     break;
@@ -162,6 +166,9 @@ namespace Project1.Levels
                 case "Stalfos":
                     room.AddObject(new Stalfos(position));
                     break;
+                case "OldMan":
+                    room.AddObject(new OldMan(position));
+                    break;
             }
         }
 
@@ -194,6 +201,9 @@ namespace Project1.Levels
                 case "RightFacingStatue":
                     room.AddObject(new RightFacingStatueBlock(position));
                     break;
+                case "Water":
+                    room.AddObject(new WaterBlock(position));
+                    break;
             }
         }
         private void MakeItem(Room room, string name, Vector2 position) {
@@ -218,6 +228,12 @@ namespace Project1.Levels
                     break;
                 case "YellowRuby":
                     room.AddObject(new YellowRuby(position));
+                    break;
+                case "Compass":
+                    room.AddObject(new Compass(position));
+                    break;
+                case "Map":
+                    room.AddObject(new Map(position));
                     break;
             }
         }

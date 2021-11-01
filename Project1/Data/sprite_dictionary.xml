@@ -22,6 +22,8 @@
 	<blueRuby>items/blueRuby/sprite</blueRuby>
 	<yellowRuby>items/yellowRuby/sprite</yellowRuby>
 	<key>items/key/sprite</key>
+	<compass>items/compass/sprite</compass>
+	<map>items/map/sprite</map>
 	
 	<woodArrow_up>items/weapon/woodArrow/up/sprite</woodArrow_up>
 	<woodArrow_left>items/weapon/woodArrow/left/sprite</woodArrow_left>
@@ -41,6 +43,7 @@
 	<stone_block>tiles/stone/block/sprite</stone_block>
 	<leftFacingStatue_block>tiles/leftFacingStatue/block/sprite</leftFacingStatue_block>
 	<rightFacingStatue_block>tiles/rightFacingStatue/block/sprite</rightFacingStatue_block>
+	<water_block>tiles/water/block/sprite</water_block>
 	
 	<stalfos_walking>enemies/stalfos/walking/sprite</stalfos_walking>
 	<RedGloriya_walking_up>enemies/RedGloriya/walking/up/sprite</RedGloriya_walking_up>
@@ -73,6 +76,10 @@
 	<hole_left>room/wall/dungeon/slot/hole/left/sprite</hole_left>
 	<hole_right>room/wall/dungeon/slot/hole/right/sprite</hole_right>
 	<hole_down>room/wall/dungeon/slot/hole/down/sprite</hole_down>
+	<closedDoor_up>room/wall/dungeon/slot/closedDoor/up/sprite</closedDoor_up>
+	<closedDoor_left>room/wall/dungeon/slot/closedDoor/left/sprite</closedDoor_left>
+	<closedDoor_right>room/wall/dungeon/slot/closedDoor/right/sprite</closedDoor_right>
+	<closedDoor_down>room/wall/dungeon/slot/closedDoor/down/sprite</closedDoor_down>
 	<floor1>room/floor/dungeon/plain/sprite</floor1>
 	<floor2>room/floor/dungeon/blocks/sprite</floor2>
 	<floor3>room/floor/dungeon/blocks2/sprite</floor3>

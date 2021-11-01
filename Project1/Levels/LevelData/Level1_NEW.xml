@@ -1286,7 +1286,7 @@
 	</object>
 </room>
 
-	// Room 4-4. Row 4 and cloumn 4 room from the top view of the level map.
+	// Room 4-3. Row 4 and cloumn 3 room from the top view of the level map.
 	// Entrance Room -> up -> up -> right
 	<room id="9">
 	<room_transform>
@@ -1356,7 +1356,826 @@
 		</position>
 	</object>
 	<object>
+		<type>NoDoor</type>
+		<name>Right</name>
+		<position>
+			<x>14</x>
+			<y>4.5</y>
+		</position>
+	</object>
+	<object>
+		<type>NoDoor</type>
+		<name>Down</name>
+		<position>
+			<x>7</x>
+			<y>9</y>
+		</position>
+	</object>
+
+	// Enemy
+	<object>
+		<type>Enemy</type>
+		<name>BlueBat</name>
+		<position>
+			<x>5</x>
+			<y>2</y>
+		</position>
+	</object>
+	<object>
+		<type>Enemy</type>
+		<name>BlueBat</name>
+		<position>
+			<x>12</x>
+			<y>3</y>
+		</position>
+	</object>
+	<object>
+		<type>Enemy</type>
+		<name>BlueBat</name>
+		<position>
+			<x>8</x>
+			<y>4</y>
+		</position>
+	</object>
+	<object>
+		<type>Enemy</type>
+		<name>BlueBat</name>
+		<position>
+			<x>10</x>
+			<y>4</y>
+		</position>
+	</object>
+	<object>
+		<type>Enemy</type>
+		<name>BlueBat</name>
+		<position>
+			<x>13</x>
+			<y>5</y>
+		</position>
+	</object>
+	<object>
+			<type>Enemy</type>
+			<name>BlueBat</name>
+			<position>
+				<x>10</x>
+				<y>6</y>
+			</position>
+		</object>
+	<object>
+			<type>Enemy</type>
+			<name>BlueBat</name>
+			<position>
+				<x>12</x>
+				<y>7</y>
+			</position>
+		</object>
+	<object>
+			<type>Enemy</type>
+			<name>BlueBat</name>
+			<position>
+				<x>5</x>
+				<y>8</y>
+			</position>
+		</object>
+
+	// Block
+	<object>
+		<type>Block</type>
+		<name>Pyramid</name>
+		<position>
+			<x>4</x>
+			<y>3</y>
+		</position>
+	</object>
+	<object>
+		<type>Block</type>
+		<name>Pyramid</name>
+		<position>
+			<x>11</x>
+			<y>3</y>
+		</position>
+	</object>
+	<object>
+		<type>Block</type>
+		<name>Pyramid</name>
+		<position>
+			<x>4</x>
+			<y>7</y>
+		</position>
+	</object>
+	<object>
+		<type>Block</type>
+		<name>Pyramid</name>
+		<position>
+			<x>11</x>
+			<y>7</y>
+		</position>
+	</object>
+		
+	// Item
+	<object>
+		<type>Item</type>
+		<name>Compass</name>
+		<position>
+			<x>12</x>
+			<y>5</y>
+		</position>
+	</object>
+</room>
+
+	// Room 4-1. Row 4 and cloumn 1 room from the top view of the level map.
+	// Entrance Room -> up -> up -> left
+	<room id="10">
+	<room_transform>
+		<x>0</x>
+		<y>0</y>
+		<z>0</z>
+	</room_transform>
+	// Wall
+	<object>
+		<type>Wall</type>
+		<name>Up</name>
+		<position>
+			<x>0</x>
+			<y>0</y>
+		</position>
+	</object>
+	<object>
+		<type>Wall</type>
+		<name>Down</name>
+		<position>
+			<x>0</x>
+			<y>9</y>
+		</position>
+	</object>
+	<object>
+		<type>Wall</type>
+		<name>Left</name>
+		<position>
+			<x>0</x>
+			<y>2</y>
+		</position>
+	</object>
+	<object>
+		<type>Wall</type>
+		<name>Right</name>
+		<position>
+			<x>14</x>
+			<y>2</y>
+		</position>
+	</object>
+
+	// Floor
+	<object>
+		<type>Floor</type>
+		<name>1</name>
+		<position>
+			<x>2</x>
+			<y>2</y>
+		</position>
+	</object>
+
+	// Door
+	<object>
+		<type>LockedDoor</type>
+		<name>Up</name>
+		<position>
+			<x>7</x>
+			<y>0</y>
+		</position>
+	</object>
+	<object>
+		<type>NoDoor</type>
+		<name>Left</name>
+		<position>
+			<x>0</x>
+			<y>4.5</y>
+		</position>
+	</object>
+	<object>
+		<type>ClosedDoor</type>
+		<name>Right</name>
+		<position>
+			<x>14</x>
+			<y>4.5</y>
+		</position>
+	</object>
+	<object>
+		<type>NoDoor</type>
+		<name>Down</name>
+		<position>
+			<x>7</x>
+			<y>9</y>
+		</position>
+	</object>
+
+	// Enemy
+	<object>
+		<type>Enemy</type>
+		<name>BlueBat</name>
+		<position>
+			<x>10</x>
+			<y>2</y>
+		</position>
+	</object>
+	<object>
+		<type>Enemy</type>
+		<name>BlueBat</name>
+		<position>
+			<x>3</x>
+			<y>3</y>
+		</position>
+	</object>
+	<object>
+		<type>Enemy</type>
+		<name>BlueBat</name>
+		<position>
+			<x>2</x>
+			<y>5</y>
+		</position>
+	</object>
+	<object>
+		<type>Enemy</type>
+		<name>BlueBat</name>
+		<position>
+			<x>5</x>
+			<y>6</y>
+		</position>
+	</object>
+	<object>
+		<type>Enemy</type>
+		<name>BlueBat</name>
+		<position>
+			<x>3</x>
+			<y>7</y>
+		</position>
+	</object>
+	<object>
+		<type>Enemy</type>
+		<name>BlueBat</name>
+		<position>
+			<x>10</x>
+			<y>8</y>
+		</position>
+	</object>
+
+	// Block
+	<object>
+		<type>Block</type>
+		<name>Pyramid</name>
+		<position>
+			<x>7</x>
+			<y>4</y>
+		</position>
+	</object>
+	<object>
+		<type>Block</type>
+		<name>Pyramid</name>
+		<position>
+			<x>8</x>
+			<y>4</y>
+		</position>
+	</object>
+	<object>
+		<type>Block</type>
+		<name>Pyramid</name>
+		<position>
+			<x>7</x>
+			<y>5</y>
+		</position>
+	</object>
+	<object>
+		<type>Block</type>
+		<name>Pyramid</name>
+		<position>
+			<x>8</x>
+			<y>5</y>
+		</position>
+	</object>
+	<object>
+			<type>Block</type>
+			<name>Pyramid</name>
+			<position>
+				<x>7</x>
+				<y>6</y>
+			</position>
+		</object>
+	<object>
+			<type>Block</type>
+			<name>Pyramid</name>
+			<position>
+				<x>8</x>
+				<y>6</y>
+			</position>
+		</object>
+
+</room>
+
+	// Room 3-2. Row 3 and cloumn 2 room from the top view of the level map.
+	// Entrance Room -> up -> up -> left -> up
+	<room id="11">
+	<room_transform>
+		<x>0</x>
+		<y>0</y>
+		<z>0</z>
+	</room_transform>
+	// Wall
+	<object>
+		<type>Wall</type>
+		<name>Up</name>
+		<position>
+			<x>0</x>
+			<y>0</y>
+		</position>
+	</object>
+	<object>
+		<type>Wall</type>
+		<name>Down</name>
+		<position>
+			<x>0</x>
+			<y>9</y>
+		</position>
+	</object>
+	<object>
+		<type>Wall</type>
+		<name>Left</name>
+		<position>
+			<x>0</x>
+			<y>2</y>
+		</position>
+	</object>
+	<object>
+		<type>Wall</type>
+		<name>Right</name>
+		<position>
+			<x>14</x>
+			<y>2</y>
+		</position>
+	</object>
+
+	// Floor
+	<object>
+		<type>Floor</type>
+		<name>1</name>
+		<position>
+			<x>2</x>
+			<y>2</y>
+		</position>
+	</object>
+
+	// Door
+	<object>
+		<type>NoDoor</type>
+		<name>Up</name>
+		<position>
+			<x>7</x>
+			<y>0</y>
+		</position>
+	</object>
+	<object>
+		<type>ClosedDoor</type>
+		<name>Left</name>
+		<position>
+			<x>0</x>
+			<y>4.5</y>
+		</position>
+	</object>
+	<object>
 		<type>Door</type>
+		<name>Right</name>
+		<position>
+			<x>14</x>
+			<y>4.5</y>
+		</position>
+	</object>
+	<object>
+		<type>Door</type>
+		<name>Down</name>
+		<position>
+			<x>7</x>
+			<y>9</y>
+		</position>
+	</object>
+
+	// Enemy
+	<object>
+		<type>Enemy</type>
+		<name>BlueGel</name>
+		<position>
+			<x>6</x>
+			<y>3</y>
+		</position>
+	</object>
+	<object>
+		<type>Enemy</type>
+		<name>BlueGel</name>
+		<position>
+			<x>11</x>
+			<y>3</y>
+		</position>
+	</object>
+	<object>
+		<type>Enemy</type>
+		<name>BlueGel</name>
+		<position>
+			<x>4</x>
+			<y>4</y>
+		</position>
+	</object>
+
+	// Block
+	<object>
+		<type>Block</type>
+		<name>Pyramid</name>
+		<position>
+			<x>7</x>
+			<y>5</y>
+		</position>
+	</object>
+	
+</room>
+
+	// Room 3-1. Row 3 and cloumn 1 room from the top view of the level map.
+	// Entrance Room -> up -> up -> left -> up -> left
+	<room id="12">
+	<room_transform>
+		<x>0</x>
+		<y>0</y>
+		<z>0</z>
+	</room_transform>
+	// Wall
+	<object>
+		<type>Wall</type>
+		<name>Up</name>
+		<position>
+			<x>0</x>
+			<y>0</y>
+		</position>
+	</object>
+	<object>
+		<type>Wall</type>
+		<name>Down</name>
+		<position>
+			<x>0</x>
+			<y>9</y>
+		</position>
+	</object>
+	<object>
+		<type>Wall</type>
+		<name>Left</name>
+		<position>
+			<x>0</x>
+			<y>2</y>
+		</position>
+	</object>
+	<object>
+		<type>Wall</type>
+		<name>Right</name>
+		<position>
+			<x>14</x>
+			<y>2</y>
+		</position>
+	</object>
+
+	// Door
+	<object>
+		<type>NoDoor</type>
+		<name>Up</name>
+		<position>
+			<x>7</x>
+			<y>0</y>
+		</position>
+	</object>
+	<object>
+		<type>NoDoor</type>
+		<name>Left</name>
+		<position>
+			<x>0</x>
+			<y>4.5</y>
+		</position>
+	</object>
+	<object>
+		<type>Door</type>
+		<name>Right</name>
+		<position>
+			<x>14</x>
+			<y>4.5</y>
+		</position>
+	</object>
+	<object>
+		<type>NoDoor</type>
+		<name>Down</name>
+		<position>
+			<x>7</x>
+			<y>9</y>
+		</position>
+	</object>
+
+	// NPC
+	<object>
+		<type>Enemy</type>
+		<name>OldMan</name>
+		<position>
+			<x>8</x>
+			<y>4</y>
+		</position>
+	</object>
+
+
+</room>
+
+	// Room 3-3. Row 3 and cloumn 3 room from the top view of the level map.
+	// Entrance Room -> up -> up -> left -> up -> right
+	<room id="13">
+	<room_transform>
+		<x>0</x>
+		<y>0</y>
+		<z>0</z>
+	</room_transform>
+	// Wall
+	<object>
+		<type>Wall</type>
+		<name>Up</name>
+		<position>
+			<x>0</x>
+			<y>0</y>
+		</position>
+	</object>
+	<object>
+		<type>Wall</type>
+		<name>Down</name>
+		<position>
+			<x>0</x>
+			<y>9</y>
+		</position>
+	</object>
+	<object>
+		<type>Wall</type>
+		<name>Left</name>
+		<position>
+			<x>0</x>
+			<y>2</y>
+		</position>
+	</object>
+	<object>
+		<type>Wall</type>
+		<name>Right</name>
+		<position>
+			<x>14</x>
+			<y>2</y>
+		</position>
+	</object>
+
+	// Floor
+	<object>
+		<type>Floor</type>
+		<name>1</name>
+		<position>
+			<x>2</x>
+			<y>2</y>
+		</position>
+	</object>
+
+	// Door
+	<object>
+		<type>Door</type>
+		<name>Up</name>
+		<position>
+			<x>7</x>
+			<y>0</y>
+		</position>
+	</object>
+	<object>
+		<type>Door</type>
+		<name>Left</name>
+		<position>
+			<x>0</x>
+			<y>4.5</y>
+		</position>
+	</object>
+	<object>
+		<type>LockedDoor</type>
+		<name>Right</name>
+		<position>
+			<x>14</x>
+			<y>4.5</y>
+		</position>
+	</object>
+	<object>
+		<type>Hole</type>
+		<name>Down</name>
+		<position>
+			<x>7</x>
+			<y>9</y>
+		</position>
+	</object>
+
+	// Enemy
+	<object>
+		<type>Enemy</type>
+		<name>BlueGel</name>
+		<position>
+			<x>7</x>
+			<y>3</y>
+		</position>
+	</object>
+	<object>
+		<type>Enemy</type>
+		<name>BlueGel</name>
+		<position>
+			<x>10</x>
+			<y>3</y>
+		</position>
+	</object>
+	<object>
+		<type>Enemy</type>
+		<name>BlueGel</name>
+		<position>
+			<x>12</x>
+			<y>2</y>
+		</position>
+	</object>
+	<object>
+			<type>Enemy</type>
+			<name>BlueGel</name>
+			<position>
+				<x>6</x>
+				<y>5</y>
+			</position>
+		</object>
+	<object>
+			<type>Enemy</type>
+			<name>BlueGel</name>
+			<position>
+				<x>11</x>
+				<y>5</y>
+			</position>
+		</object>
+
+	// Block
+	<object>
+		<type>Block</type>
+		<name>Pyramid</name>
+		<position>
+			<x>3</x>
+			<y>3</y>
+		</position>
+	</object>
+	<object>
+			<type>Block</type>
+			<name>Pyramid</name>
+			<position>
+				<x>4</x>
+				<y>3</y>
+			</position>
+		</object>
+	<object>
+			<type>Block</type>
+			<name>Pyramid</name>
+			<position>
+				<x>11</x>
+				<y>3</y>
+			</position>
+		</object>
+	<object>
+			<type>Block</type>
+			<name>Pyramid</name>
+			<position>
+				<x>12</x>
+				<y>3</y>
+			</position>
+		</object>
+	<object>
+			<type>Block</type>
+			<name>Pyramid</name>
+			<position>
+				<x>3</x>
+				<y>7</y>
+			</position>
+		</object>
+	<object>
+			<type>Block</type>
+			<name>Pyramid</name>
+			<position>
+				<x>4</x>
+				<y>7</y>
+			</position>
+		</object>
+	<object>
+			<type>Block</type>
+			<name>Pyramid</name>
+			<position>
+				<x>11</x>
+				<y>7</y>
+			</position>
+		</object>
+	<object>
+			<type>Block</type>
+			<name>Pyramid</name>
+			<position>
+				<x>12</x>
+				<y>7</y>
+			</position>
+		</object>
+	<object>
+			<type>Block</type>
+			<name>Pyramid</name>
+			<position>
+				<x>7</x>
+				<y>5</y>
+			</position>
+		</object>
+	<object>
+			<type>Block</type>
+			<name>Pyramid</name>
+			<position>
+				<x>8</x>
+				<y>5</y>
+			</position>
+		</object>
+
+	// Item
+	<object>
+			<type>Item</type>
+			<name>Map</name>
+			<position>
+				<x>12</x>
+				<y>5</y>
+			</position>
+		</object>
+</room>
+
+	// Room 2-1. Row 2 and cloumn 1 room from the top view of the level map.
+	// Entrance Room -> up -> up -> left -> up -> right -> up
+	<room id="14">
+	<room_transform>
+		<x>0</x>
+		<y>0</y>
+		<z>0</z>
+	</room_transform>
+	// Wall
+	<object>
+		<type>Wall</type>
+		<name>Up</name>
+		<position>
+			<x>0</x>
+			<y>0</y>
+		</position>
+	</object>
+	<object>
+		<type>Wall</type>
+		<name>Down</name>
+		<position>
+			<x>0</x>
+			<y>9</y>
+		</position>
+	</object>
+	<object>
+		<type>Wall</type>
+		<name>Left</name>
+		<position>
+			<x>0</x>
+			<y>2</y>
+		</position>
+	</object>
+	<object>
+		<type>Wall</type>
+		<name>Right</name>
+		<position>
+			<x>14</x>
+			<y>2</y>
+		</position>
+	</object>
+
+	// Floor
+	<object>
+		<type>Floor</type>
+		<name>1</name>
+		<position>
+			<x>2</x>
+			<y>2</y>
+		</position>
+	</object>
+
+	// Door
+	<object>
+		<type>LockedDoor</type>
+		<name>Up</name>
+		<position>
+			<x>7</x>
+			<y>0</y>
+		</position>
+	</object>
+	<object>
+		<type>NoDoor</type>
+		<name>Left</name>
+		<position>
+			<x>0</x>
+			<y>4.5</y>
+		</position>
+	</object>
+	<object>
+		<type>NoDoor</type>
 		<name>Right</name>
 		<position>
 			<x>14</x>
@@ -1377,31 +2196,7 @@
 		<type>Enemy</type>
 		<name>Stalfos</name>
 		<position>
-			<x>5</x>
-			<y>2</y>
-		</position>
-	</object>
-	<object>
-		<type>Enemy</type>
-		<name>Stalfos</name>
-		<position>
-			<x>9</x>
-			<y>2</y>
-		</position>
-	</object>
-	<object>
-		<type>Enemy</type>
-		<name>Stalfos</name>
-		<position>
-			<x>12</x>
-			<y>2</y>
-		</position>
-	</object>
-	<object>
-		<type>Enemy</type>
-		<name>Stalfos</name>
-		<position>
-			<x>13</x>
+			<x>3</x>
 			<y>5</y>
 		</position>
 	</object>
@@ -1410,43 +2205,400 @@
 		<name>Stalfos</name>
 		<position>
 			<x>9</x>
-			<y>7</y>
+			<y>3</y>
+		</position>
+	</object>
+	<object>
+		<type>Enemy</type>
+		<name>Stalfos</name>
+		<position>
+			<x>12</x>
+			<y>6</y>
 		</position>
 	</object>
 
 	// Block
 	<object>
 		<type>Block</type>
-		<name>Pyramid</name>
+		<name>Water</name>
+		<position>
+			<x>2</x>
+			<y>2</y>
+		</position>
+	</object>
+	<object>
+		<type>Block</type>
+		<name>Water</name>
+		<position>
+			<x>3</x>
+			<y>2</y>
+		</position>
+	</object>
+	<object>
+		<type>Block</type>
+		<name>Water</name>
 		<position>
 			<x>4</x>
-			<y>4</y>
+			<y>2</y>
 		</position>
 	</object>
 	<object>
 		<type>Block</type>
-		<name>Pyramid</name>
+		<name>Water</name>
+		<position>
+			<x>5</x>
+			<y>2</y>
+		</position>
+	</object>
+	<object>
+		<type>Block</type>
+		<name>Water</name>
+		<position>
+			<x>6</x>
+			<y>2</y>
+		</position>
+	</object>
+	<object>
+		<type>Block</type>
+		<name>Water</name>
+		<position>
+			<x>9</x>
+			<y>2</y>
+		</position>
+	</object>
+	<object>
+		<type>Block</type>
+		<name>Water</name>
+		<position>
+			<x>10</x>
+			<y>2</y>
+		</position>
+	</object>
+	<object>
+		<type>Block</type>
+		<name>Water</name>
 		<position>
 			<x>11</x>
-			<y>4</y>
+			<y>2</y>
 		</position>
 	</object>
 	<object>
 		<type>Block</type>
-		<name>Pyramid</name>
+		<name>Water</name>
 		<position>
-			<x>4</x>
-			<y>6</y>
+			<x>12</x>
+			<y>2</y>
 		</position>
 	</object>
 	<object>
 		<type>Block</type>
-		<name>Pyramid</name>
+		<name>Water</name>
 		<position>
-			<x>11</x>
-			<y>6</y>
+			<x>13</x>
+			<y>2</y>
+		</position>
+	</object>
+	<object>
+			<type>Block</type>
+			<name>Water</name>
+			<position>
+				<x>2</x>
+				<y>3</y>
+			</position>
+		</object>
+	<object>
+			<type>Block</type>
+			<name>Water</name>
+			<position>
+				<x>6</x>
+				<y>3</y>
+			</position>
+		</object>
+	<object>
+			<type>Block</type>
+			<name>Water</name>
+			<position>
+				<x>11</x>
+				<y>3</y>
+			</position>
+		</object>
+	<object>
+			<type>Block</type>
+			<name>Water</name>
+			<position>
+				<x>13</x>
+				<y>3</y>
+			</position>
+		</object>
+	<object>
+			<type>Block</type>
+			<name>Water</name>
+			<position>
+				<x>2</x>
+				<y>4</y>
+			</position>
+		</object>
+	<object>
+			<type>Block</type>
+			<name>Water</name>
+			<position>
+				<x>4</x>
+				<y>4</y>
+			</position>
+		</object>
+	<object>
+			<type>Block</type>
+			<name>Water</name>
+			<position>
+				<x>6</x>
+				<y>4</y>
+			</position>
+		</object>
+	<object>
+			<type>Block</type>
+			<name>Water</name>
+			<position>
+				<x>8</x>
+				<y>4</y>
+			</position>
+		</object>
+	<object>
+			<type>Block</type>
+			<name>Water</name>
+			<position>
+				<x>9</x>
+				<y>4</y>
+			</position>
+		</object>
+	<object>
+			<type>Block</type>
+			<name>Water</name>
+			<position>
+				<x>11</x>
+				<y>4</y>
+			</position>
+		</object>
+	<object>
+			<type>Block</type>
+			<name>Water</name>
+			<position>
+				<x>13</x>
+				<y>4</y>
+			</position>
+		</object>
+	<object>
+			<type>Block</type>
+			<name>Water</name>
+			<position>
+				<x>4</x>
+				<y>5</y>
+			</position>
+		</object>
+	<object>
+			<type>Block</type>
+			<name>Water</name>
+			<position>
+				<x>6</x>
+				<y>5</y>
+			</position>
+		</object>
+	<object>
+			<type>Block</type>
+			<name>Water</name>
+			<position>
+				<x>9</x>
+				<y>5</y>
+			</position>
+		</object>
+	<object>
+			<type>Block</type>
+			<name>Water</name>
+			<position>
+				<x>11</x>
+				<y>5</y>
+			</position>
+		</object>
+	<object>
+			<type>Block</type>
+			<name>Water</name>
+			<position>
+				<x>2</x>
+				<y>6</y>
+			</position>
+		</object>
+	<object>
+			<type>Block</type>
+			<name>Water</name>
+			<position>
+				<x>4</x>
+				<y>6</y>
+			</position>
+		</object>
+	<object>
+			<type>Block</type>
+			<name>Water</name>
+			<position>
+				<x>6</x>
+				<y>6</y>
+			</position>
+		</object>
+	<object>
+			<type>Block</type>
+			<name>Water</name>
+			<position>
+				<x>7</x>
+				<y>6</y>
+			</position>
+		</object>
+	<object>
+			<type>Block</type>
+			<name>Water</name>
+			<position>
+				<x>9</x>
+				<y>6</y>
+			</position>
+		</object>
+	<object>
+			<type>Block</type>
+			<name>Water</name>
+			<position>
+				<x>11</x>
+				<y>6</y>
+			</position>
+		</object>
+	<object>
+			<type>Block</type>
+			<name>Water</name>
+			<position>
+				<x>13</x>
+				<y>6</y>
+			</position>
+		</object>
+	<object>
+			<type>Block</type>
+			<name>Water</name>
+			<position>
+				<x>2</x>
+				<y>7</y>
+			</position>
+		</object>
+	<object>
+			<type>Block</type>
+			<name>Water</name>
+			<position>
+				<x>4</x>
+				<y>7</y>
+			</position>
+		</object>
+	<object>
+			<type>Block</type>
+			<name>Water</name>
+			<position>
+				<x>9</x>
+				<y>7</y>
+			</position>
+		</object>
+	<object>
+			<type>Block</type>
+			<name>Water</name>
+			<position>
+				<x>13</x>
+				<y>7</y>
+			</position>
+		</object>
+	<object>
+			<type>Block</type>
+			<name>Water</name>
+			<position>
+				<x>2</x>
+				<y>8</y>
+			</position>
+		</object>
+	<object>
+			<type>Block</type>
+			<name>Water</name>
+			<position>
+				<x>3</x>
+				<y>8</y>
+			</position>
+		</object>
+	<object>
+			<type>Block</type>
+			<name>Water</name>
+			<position>
+				<x>4</x>
+				<y>8</y>
+			</position>
+		</object>
+	<object>
+			<type>Block</type>
+			<name>Water</name>
+			<position>
+				<x>5</x>
+				<y>8</y>
+			</position>
+		</object>
+	<object>
+			<type>Block</type>
+			<name>Water</name>
+			<position>
+				<x>6</x>
+				<y>8</y>
+			</position>
+		</object>
+	<object>
+			<type>Block</type>
+			<name>Water</name>
+			<position>
+				<x>9</x>
+				<y>8</y>
+			</position>
+		</object>
+	<object>
+			<type>Block</type>
+			<name>Water</name>
+			<position>
+				<x>10</x>
+				<y>8</y>
+			</position>
+		</object>
+	<object>
+			<type>Block</type>
+			<name>Water</name>
+			<position>
+				<x>11</x>
+				<y>8</y>
+			</position>
+		</object>
+	<object>
+			<type>Block</type>
+			<name>Water</name>
+			<position>
+				<x>12</x>
+				<y>8</y>
+			</position>
+		</object>
+	<object>
+			<type>Block</type>
+			<name>Water</name>
+			<position>
+				<x>13</x>
+				<y>8</y>
+			</position>
+		</object>
+
+	// Item
+	<object>
+		<type>Item</type>
+		<name>Key</name>
+		<position>
+			<x>12</x>
+			<y>5</y>
 		</position>
 	</object>
 </room>
-	
+
+	// Room 1-2. Row 1 and cloumn 2 room from the top view of the level map.
+	// Entrance Room -> up -> up -> left -> up -> right -> up
+
 </Content>
