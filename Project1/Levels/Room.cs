@@ -20,7 +20,8 @@ namespace Project1.Levels
 
         public void Activate() {
             foreach(IGameObject gameObject in gameObjects) {
-                GameObjectManager.Instance.AddOnNextFrame(gameObject);
+                // Mark: Change AddNextFrame to AddImmediate
+                GameObjectManager.Instance.AddImmediate(gameObject);
             }
         }
 
