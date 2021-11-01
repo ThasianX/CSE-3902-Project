@@ -31,27 +31,54 @@ namespace Project1
             // CollisionDebug(col.target, col.source, col.side); 
 
             // retrieve the response corresponding to the two colliding objects
-            XElement response = responseData.Element(col.target.CollisionType).Element(col.source.CollisionType);
-
-            foreach (XElement command in response.Elements("command"))
+            XElement targetElement = responseData.Element(col.target.CollisionType);
+            XElement response = null;
+            if (targetElement != null)
             {
-                // Get the type of the command object
-                Type commandType = Type.GetType(command.Attribute("type").Value);
-
-                List<object> args = new List<object>();
-
-                foreach (XElement arg in command.Elements("arg"))
-                {
-                    args.Add(parseArg(arg, col));
-                }
-
-                ConstructorInfo constructor = commandType.GetConstructor(getTypes(args.ToArray()));
-
-                var commandInstance = (ICommand) constructor.Invoke(args.ToArray());
-
-                commandInstance.Execute();
+                response = targetElement.Element(col.source.CollisionType);
             }
 
+            // Collisions are reflexive, so swap target and source and check for response again
+            if (response == null)
+            {
+                col = swapTarget(col);
+                targetElement = responseData.Element(col.target.CollisionType);
+                if (targetElement != null)
+                {
+                    response = targetElement.Element(col.source.CollisionType);
+                }
+
+                // If still null, the response does not exist
+                if (response == null)
+                {
+                    // TODO: throw exception
+                    return;
+                }
+            }
+
+            // Execute each response command
+            foreach (XElement command in response.Elements("command"))
+            {
+                ExecuteCommandFromElement(command, col);
+            }
+
+        }
+
+        private void ExecuteCommandFromElement(XElement command, Collision col)
+        {
+            // Get the type of the command object
+            Type commandType = Type.GetType(command.Attribute("type").Value);
+
+            // Get the arguments
+            List<object> args = new List<object>();
+            foreach (XElement arg in command.Elements("arg"))
+            {
+                args.Add(parseArg(arg, col));
+            }
+
+            ConstructorInfo constructor = commandType.GetConstructor(getTypes(args.ToArray()));
+            var commandInstance = (ICommand)constructor.Invoke(args.ToArray());
+            commandInstance.Execute();
         }
 
         private object parseArg(XElement arg, Collision col)
@@ -107,6 +134,18 @@ namespace Project1
                 }
             }
             return obj;
+        }
+
+        public Collision swapTarget(Collision col)
+        {
+            // copy old collision
+            Collision swappedCol = col;
+
+            // swap source and target
+            swappedCol.source = col.target;
+            swappedCol.target = col.source;
+
+            return swappedCol;
         }
 
         Type[] getTypes(object[] objects)
