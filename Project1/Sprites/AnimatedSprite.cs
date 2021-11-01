@@ -54,6 +54,19 @@ namespace Project1.Sprites
             // Draw
             spriteBatch.Draw(spriteSheet, destination, source, Color.White);
         }
+        
+        // Overload of Draw for Decorator class
+        public void Draw(SpriteBatch spriteBatch, Vector2 location, Color color)
+        {
+            // define the rectangle on the screen to draw the sprite
+            Rectangle destination = new Rectangle((int)location.X, (int)location.Y, dimensions.width, dimensions.height);
+
+            // define the rectangle on the texture to get the sprite
+            Rectangle source = new Rectangle(sources[currentSourceIndex].x, sources[currentSourceIndex].y, dimensions.width, dimensions.height);
+
+            // Draw
+            spriteBatch.Draw(spriteSheet, destination, source, color);
+        }
 
         public void Update(GameTime gameTime)
         {

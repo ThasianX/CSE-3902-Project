@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -17,6 +18,7 @@ namespace Project1
         RenderTarget2D UI;
 
         private ArrayList controllerList;
+        private List<IPlayer> playerList = new List<IPlayer>();
 
         private static Viewport ViewPort => graphics.GraphicsDevice.Viewport;
         public static int SCREEN_WIDTH => ViewPort.Width;
@@ -48,10 +50,6 @@ namespace Project1
         void Setup()
         {
             LevelManager.Instance.LoadLevel();
-            foreach (IController controller in controllerList) {
-                controller.RegisterPlayer(GameObjectManager.Instance.GetPlayer());
-                controller.RegisterCommands();
-            }
         }
 
         protected override void LoadContent()
@@ -69,6 +67,16 @@ namespace Project1
             // Visualize rectangle for testing
             whiteRectangle = new Texture2D(GraphicsDevice, 1, 1);
             whiteRectangle.SetData(new[] { Color.White });
+
+            // TODO: DONT LEAVE THIS HERE
+            playerList.Add(new Player(new Vector2(SCREEN_WIDTH / 6, SCREEN_HEIGHT / 6)));
+            GameObjectManager.Instance.AddOnNextFrame(playerList[0]);
+
+            foreach (IController controller in controllerList)
+            {
+                controller.RegisterPlayer(playerList[0]);
+                controller.RegisterCommands();
+            }
         }
 
         protected override void Update(GameTime gameTime)

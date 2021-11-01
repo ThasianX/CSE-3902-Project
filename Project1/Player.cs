@@ -23,8 +23,6 @@ namespace Project1
         public Vector2 movement;
         public bool IsMover => true;
         public string CollisionType => "Player";
-        private int immuneTime = 60;
-        private int immnueTimeCounter;
         public InventoryManager playerInventory;
 
         public Player(Vector2 position)
@@ -94,16 +92,7 @@ namespace Project1
         {
             State.Update(gameTime);
             Sprite.Update(gameTime);
-            // When takeDamage is called, update once and wait for Immune to be false
-            if (Immune() && immnueTimeCounter == immuneTime)
-            {
-                healthState.Update(gameTime);
-                immnueTimeCounter--;
-            }
-            else if(Immune())
-            {
-                immnueTimeCounter --;
-            }
+            healthState.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -112,6 +101,12 @@ namespace Project1
             healthState.Draw(spriteBatch);
             //DrawRectangle(spriteBatch);
 
+        }
+
+        public void Draw(SpriteBatch spriteBatch, Color color)
+        {
+            Sprite.Draw(spriteBatch, Position, color);
+            healthState.Draw(spriteBatch);
         }
 
         private void DrawRectangle(SpriteBatch spriteBatch)
@@ -125,20 +120,13 @@ namespace Project1
             spriteBatch.Draw(Game1.whiteRectangle, new Rectangle(rectangle.X, rectangle.Y + rectangle.Height, rectangle.Width + lineWidth, lineWidth), Color.White);
         }
 
-        // determine if player can take damage
-        public bool Immune()
-        {
-            return immnueTimeCounter > 0;
-        }
 
         public void TakeDamage(int damage)
         {
-            // player can take damage only not immune
-            if (!Immune())
-            {
-                immnueTimeCounter = immuneTime;
-                healthState.TakeDamage(damage);
-            }
+            healthState.TakeDamage(damage);
+            // replace basePlayer with damagedPlayer
+            GameObjectManager.Instance.AddOnNextFrame(new DamagedPlayer(this));
+            GameObjectManager.Instance.RemoveOnNextFrame(this);
         }
 
         public void Heal(int heal)
