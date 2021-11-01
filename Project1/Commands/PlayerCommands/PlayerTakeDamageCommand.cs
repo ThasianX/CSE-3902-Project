@@ -13,6 +13,11 @@ namespace Project1.Commands
             this.amount = amount;
         }
 
+        public PlayerTakeDamageCommand(IPlayer player)
+        {
+            this.player = player;
+        }
+
         public void Execute()
         {
             player.TakeDamage(amount);

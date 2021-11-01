@@ -14,6 +14,11 @@ namespace Project1.Commands
             this.amount = amount;
         }
 
+        public EnemyTakeDamageCommand(IEnemy enemy)
+        {
+            this.enemy = enemy;
+        }
+
         public void Execute()
         {
             enemy.TakeDamage(amount);
