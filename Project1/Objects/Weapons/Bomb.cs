@@ -10,10 +10,12 @@ namespace Project1.Objects
 
         ISprite sprite;
         public bool IsMover => false;
-        public string CollisionType => "Block";
+
+        //Unsure what collision type the placed bomb should have.
+        public string CollisionType => "Weapon";
 
         private double timeCounter = 0;
-        
+
         public Bomb(Vector2 position)
         {
             this.Position = position;
@@ -32,13 +34,12 @@ namespace Project1.Objects
             {
                 GameObjectManager.Instance.RemoveOnNextFrame(this);
             }
-
-            // increment the timer by the realtime since last frame
             timeCounter += gameTime.ElapsedGameTime.TotalSeconds;
         }
 
         public Rectangle GetRectangle()
         {
+            Dimensions dimensions = sprite.GetDimensions();
             return new Rectangle((int)Position.X, (int)Position.Y, 16, 16);
         }
     }
