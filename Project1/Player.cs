@@ -100,7 +100,6 @@ namespace Project1
             Sprite.Draw(spriteBatch, Position);
             healthState.Draw(spriteBatch);
             //DrawRectangle(spriteBatch);
-
         }
 
         public void Draw(SpriteBatch spriteBatch, Color color)
@@ -136,7 +135,8 @@ namespace Project1
 
         public Rectangle GetRectangle()
         {
-            return new Rectangle((int)Position.X, (int)Position.Y, 16, 16);
+            Dimensions dimensions = Sprite.GetDimensions();
+            return new Rectangle((int)Position.X, (int)Position.Y, dimensions.width, dimensions.height);
         }
 
         public void CollectItem(IInventoryItem collectible)
