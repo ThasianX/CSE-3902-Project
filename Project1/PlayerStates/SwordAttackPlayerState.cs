@@ -9,7 +9,7 @@ namespace Project1.PlayerStates
     {
         private IPlayer player;
         private int swordOffset = 8;
-        private IItem sword;
+        private IGameObject sword;
 
         private int activeFrameCount = 20, counter = 0;
 

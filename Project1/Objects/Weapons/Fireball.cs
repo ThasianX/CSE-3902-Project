@@ -4,7 +4,7 @@ using Project1.Interfaces;
 
 namespace Project1.Objects
 {
-    public class Fireball : IItem, ICollidable
+    public class Fireball : IGameObject, ICollidable
     {
         public int moveSpeed;
         public Vector2 Position { get; set; }

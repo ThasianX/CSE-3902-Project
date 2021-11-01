@@ -10,9 +10,9 @@ namespace Project1.Enemy
     {
         private IEnemy aquamentus;
         // The Fireball instance used for Update and Draw
-        private IItem fireballOne;
-        private IItem fireballTwo;
-        private IItem fireballThree;
+        private IGameObject fireballOne;
+        private IGameObject fireballTwo;
+        private IGameObject fireballThree;
         // Not sure, need to ask Keenan !!
         private int fireballOffset = 8;
         // The length of animation frame boomerang will Update, also Not sure, need to ask Keenan !!

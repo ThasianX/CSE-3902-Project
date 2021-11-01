@@ -4,20 +4,20 @@ using Project1.Interfaces;
 
 namespace Project1.Objects
 {
-    public class Bomb : IGameObject, ICollidable
+    public class WoodBoomerangPickup : IInventoryItem, ICollidable
     {
+        public string Name => "Wood Boomerang";
+        public bool IsConsumable => false;
+        public int MaxStackCount => 1;
         public Vector2 Position { get; set; }
 
         ISprite sprite;
         public bool IsMover => false;
-
-        //Unsure what collision type the placed bomb should have.
-        public string CollisionType => "Weapon";
-        private double timeCounter = 0;
-        public Bomb(Vector2 position)
+        public string CollisionType => "Item";
+        public WoodBoomerangPickup(Vector2 position)
         {
             this.Position = position;
-            sprite = SpriteFactory.Instance.CreateSprite("bomb");
+            sprite = SpriteFactory.Instance.CreateSprite("woodBoomerangPickup");
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -28,17 +28,12 @@ namespace Project1.Objects
         public void Update(GameTime gameTime)
         {
             sprite.Update(gameTime);
-            if (timeCounter > 2)
-            {
-                GameObjectManager.Instance.RemoveOnNextFrame(this);
-            }
-            timeCounter += gameTime.ElapsedGameTime.TotalSeconds;
         }
 
         public Rectangle GetRectangle()
         {
             Dimensions dimensions = sprite.GetDimensions();
-            return new Rectangle((int)Position.X, (int)Position.Y, 16, 16);
+            return new Rectangle((int)Position.X, (int)Position.Y, dimensions.width, dimensions.height);
         }
     }
 }

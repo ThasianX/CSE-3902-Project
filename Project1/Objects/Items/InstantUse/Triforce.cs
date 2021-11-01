@@ -4,18 +4,17 @@ using Project1.Interfaces;
 
 namespace Project1.Objects
 {
-    public class Key : IItem, ICollidable
+    public class Triforce : IGameObject, ICollidable
     {
         public Vector2 Position { get; set; }
 
         ISprite sprite;
         public bool IsMover => false;
-        public string CollisionType => "Item";
-
-        public Key(Vector2 position)
+        public string CollisionType => "InstantUseItem";
+        public Triforce(Vector2 position)
         {
             this.Position = position;
-            sprite = SpriteFactory.Instance.CreateSprite("key");
+            sprite = SpriteFactory.Instance.CreateSprite("triforce");
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -28,9 +27,14 @@ namespace Project1.Objects
             sprite.Update(gameTime);
         }
 
+        public void InstantUseItem(IPlayer player)
+        {
+            //Win the game.
+        }
+
         public Rectangle GetRectangle()
         {
-            return new Rectangle((int)Position.X, (int)Position.Y, 8, 16);
+            return new Rectangle((int)Position.X, (int)Position.Y, 10, 10);
         }
     }
 }

@@ -25,8 +25,7 @@ namespace Project1
         public string CollisionType => "Player";
         private int immuneTime = 60;
         private int immnueTimeCounter;
-        // Temporary collection list for player
-        public Dictionary<string, int> collectionList;
+        public InventoryManager playerInventory;
 
         public Player(Vector2 position)
         {
@@ -36,7 +35,7 @@ namespace Project1
             // Set entry state
             State = new StillPlayerState(this);
             healthState = new HealthState(this, 100);
-            collectionList = new Dictionary<string, int>();
+            playerInventory = new InventoryManager();
             ActiveMoveInputs = new Dictionary<Direction, bool>()
             {
                 { Direction.Up, false },
@@ -142,40 +141,42 @@ namespace Project1
             }
         }
 
+        public void Heal(int heal)
+        {
+            healthState.Heal(heal);
+        }
+
         public Rectangle GetRectangle()
         {
             return new Rectangle((int)Position.X, (int)Position.Y, 16, 16);
         }
 
-        public void CollectItem(IGameObject collectible)
+        public void CollectItem(IInventoryItem collectible)
         {
-            var collectionName = collectible.GetType().Name;
-            if (collectionList.ContainsKey(collectionName))
-            {
-                collectionList[collectionName]++;
-            }
-            else
-            {
-                collectionList.Add(collectionName, 1);
-            }
+            playerInventory.AddItem(collectible);
             LevelManager.Instance.GetCurrentRoom().RemoveObject(collectible);
             GameObjectManager.Instance.RemoveOnNextFrame(collectible);
         }
 
         public void ShowCollection()
         {
-            // Debug for collection command
-            if (collectionList.Count == 0)
+            if (playerInventory.itemInv.Count == 0)
             {
-                Console.WriteLine("Link don't have any collection currently");
+                Console.WriteLine("Link don't have any items currently");
             }
             else
             {
-                foreach (var collection in collectionList)
+                foreach (var item in playerInventory.itemInv)
                 {
-                    Console.WriteLine($"{collection.Key}: {collection.Value}");
+                    Console.WriteLine($"{item.Key}: {item.Value}");
                 }
             }
+        }
+        public void InstantUseItem(IInstantUseItem collectible)
+        {
+            collectible.InstantUseItem(this);
+            LevelManager.Instance.GetCurrentRoom().RemoveObject(collectible);
+            GameObjectManager.Instance.RemoveOnNextFrame(collectible);
         }
     }
 }

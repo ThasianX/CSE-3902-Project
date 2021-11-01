@@ -22,6 +22,10 @@
 	<blueRuby>items/blueRuby/sprite</blueRuby>
 	<yellowRuby>items/yellowRuby/sprite</yellowRuby>
 	<key>items/key/sprite</key>
+	<woodBoomerangPickup>items/woodBoomerangPickup/sprite</woodBoomerangPickup>
+	<woodSwordPickup>items/woodSwordPickup/sprite</woodSwordPickup>
+	<woodArrowPickup>items/woodArrowPickup/sprite</woodArrowPickup>
+	<bombPickup>items/bombPickup/sprite</bombPickup>
 	
 	<woodArrow_up>items/weapon/woodArrow/up/sprite</woodArrow_up>
 	<woodArrow_left>items/weapon/woodArrow/left/sprite</woodArrow_left>
