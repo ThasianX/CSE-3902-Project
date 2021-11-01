@@ -56,6 +56,5 @@ namespace Project1.Enemy
         {
 
         }
-
     }
 }
