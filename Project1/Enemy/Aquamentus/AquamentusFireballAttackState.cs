@@ -28,6 +28,10 @@ namespace Project1.Enemy
             fireballOne = new Fireball(aquamentus.Position + new Vector2(fireballOffset, 0), new Vector2(0,-1), activeFrameCount);
             fireballTwo = new Fireball(aquamentus.Position + new Vector2(fireballOffset, 0), new Vector2(0,0), activeFrameCount);
             fireballThree = new Fireball(aquamentus.Position + new Vector2(fireballOffset, 0), new Vector2(0, 1), activeFrameCount);
+
+            GameObjectManager.Instance.AddOnNextFrame(fireballOne);
+            GameObjectManager.Instance.AddOnNextFrame(fireballTwo);
+            GameObjectManager.Instance.AddOnNextFrame(fireballThree);
         }
 
         public void FireBallAttack()
@@ -58,14 +62,6 @@ namespace Project1.Enemy
             fireballOne.Update(gameTime);
             fireballTwo.Update(gameTime);
             fireballThree.Update(gameTime);
-        }
-
-        // TODO: add fireball to GameObjectManager
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            fireballOne.Draw(spriteBatch);
-            fireballTwo.Draw(spriteBatch);
-            fireballThree.Draw(spriteBatch);
         }
     }
 }

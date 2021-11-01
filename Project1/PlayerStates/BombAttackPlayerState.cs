@@ -11,7 +11,7 @@ namespace Project1.PlayerStates
         private IItem bomb;
 
         private int bombOffset = 16;
-        private int activeFrameCount = 40, counter = 0;
+        private int activeFrameCount = 5, counter = 0;
 
         public BombAttackPlayerState(IPlayer player)
         {
@@ -43,6 +43,7 @@ namespace Project1.PlayerStates
                     bomb = new Bomb(player.Position + new Vector2(0, bombOffset));
                     break;
             }
+            GameObjectManager.Instance.AddOnNextFrame(bomb);
         }
 
         public void SetMoveInput(Direction direction, bool isPressed)
@@ -84,11 +85,6 @@ namespace Project1.PlayerStates
                 }
             }
             bomb.Update(gameTime);
-        }
-        // TODO: Add bomb to GameObjectManager
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            bomb.Draw(spriteBatch);
         }
 
     }

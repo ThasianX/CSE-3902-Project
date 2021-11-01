@@ -10,7 +10,9 @@ namespace Project1.Objects
 
         ISprite sprite;
         public bool IsMover => false;
-        public string CollisionType => "Item";
+        public string CollisionType => "Block";
+
+        private double timeCounter = 0;
         
         public Bomb(Vector2 position)
         {
@@ -26,6 +28,13 @@ namespace Project1.Objects
         public void Update(GameTime gameTime)
         {
             sprite.Update(gameTime);
+            if (timeCounter > 2)
+            {
+                GameObjectManager.Instance.RemoveOnNextFrame(this);
+            }
+
+            // increment the timer by the realtime since last frame
+            timeCounter += gameTime.ElapsedGameTime.TotalSeconds;
         }
 
         public Rectangle GetRectangle()
