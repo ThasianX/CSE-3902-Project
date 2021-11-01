@@ -27,7 +27,7 @@ namespace Project1.Objects
             sprite.Update(gameTime);
         }
 
-        public void InstantUseItem(Player player)
+        public void InstantUseItem(IPlayer player)
         {
             //Win the game.
         }

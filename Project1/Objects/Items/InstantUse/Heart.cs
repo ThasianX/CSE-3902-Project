@@ -27,9 +27,9 @@ namespace Project1.Objects
             sprite.Update(gameTime);
         }
 
-        public void InstantUseItem(Player player)
+        public void InstantUseItem(IPlayer player)
         {
-            player.healthState.Heal(heartHeal);
+            player.Heal(heartHeal);
         }
 
         public Rectangle GetRectangle()
