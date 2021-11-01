@@ -31,8 +31,7 @@ namespace Project1.Levels
             totalRooms = 0;
             currentRoomIndex = 0;
             rooms = new Collection<Room>();
-            //spriteData = XDocument.Load("Levels/LevelData/Level" + level + ".xml");
-            spriteData = XDocument.Load("Levels/LevelData/Level1_NEW.xml");
+            spriteData = XDocument.Load("Levels/LevelData/Level" + level + ".xml");
         }
 
         public Room GetCurrentRoom()
