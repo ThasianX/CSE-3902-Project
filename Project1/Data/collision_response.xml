@@ -6,7 +6,7 @@
 
 <!-- Type names must be fully qualified! (including the namespace!) (note: primitive type names are not the same as their keywords.) -->
 
-<!-- Mover-Mover collisions must have symetric responses (see: Player->Enemy and Enemy->Player) -->
+<!-- Mirrored responses (Player->Enemy vs. Enemy->Player) only require one defined response! -->
 
 <collision_response>
   <Player>
@@ -36,12 +36,6 @@
     </Weapon>
   </Player>
   <Enemy>
-    <Player>
-      <command type="Project1.Commands.PlayerTakeDamageCommand">
-        <arg type="Project1.Player">SOURCE</arg>
-        <arg type="System.Int32">5</arg>
-      </command>
-    </Player>
     <Weapon>
       <command type="Project1.Commands.EnemyTakeDamageCommand">
         <arg type="Project1.Enemy.IGameObject">TARGET</arg>
@@ -79,14 +73,6 @@
     </Block>
   </Weapon>
   <Projectile>
-    <Enemy>
-      <command type="Project1.Commands.EnemyTakeDamageCommand">
-        <arg type="Project1.Enemy.IEnemy">SOURCE</arg>
-      </command>
-      <command type="Project1.Commands.DeleteGameObjectCommand">
-        <arg type="Project1.Interfaces.IGameObject">TARGET</arg>
-      </command>
-    </Enemy>
     <Block>
       <command type="Project1.Commands.DeleteGameObjectCommand">
         <arg type="Project1.Interfaces.IGameObject">TARGET</arg>
