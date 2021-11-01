@@ -24,6 +24,8 @@
 	<key>items/key/sprite</key>
 	<compass>items/compass/sprite</compass>
 	<map>items/map/sprite</map>
+	<bow>items/bow/sprite</bow>
+	<boomerang>items/boomerang/sprite</boomerang>
 	
 	<woodArrow_up>items/weapon/woodArrow/up/sprite</woodArrow_up>
 	<woodArrow_left>items/weapon/woodArrow/left/sprite</woodArrow_left>
@@ -53,6 +55,7 @@
 	<aquamentus_walking>enemies/aquamentus/walking/sprite</aquamentus_walking>
 	<BlueGel_walking>enemies/BlueGel/walking/sprite</BlueGel_walking>
 	<BlueBat_woving>enemies/BlueBat/woving/sprite</BlueBat_woving>
+	<WallMaster_woving>enemies/WallMaster/woving/sprite</WallMaster_woving>
 
 	<OldMan_standing>NPC/OldMan/standing/sprite</OldMan_standing>
 	

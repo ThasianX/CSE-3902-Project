@@ -399,6 +399,28 @@
 				</sprite>
 			</woving>
 		</BlueBat>
+		<WallMaster>
+		  <woving>
+			  <sprite>
+				  <spritesheet>enemies</spritesheet>
+				  <dimensions>
+					  <height>16</height>
+					  <width>16</width>
+				  </dimensions>
+				  <time>0.5</time>
+				  <source_list>
+					  <source>
+						  <x>241</x>
+						  <y>0</y>
+					  </source>
+					  <source>
+						  <x>240</x>
+						  <y>30</y>
+					  </source>
+				  </source_list>
+			  </sprite>
+		  </woving>
+	  </WallMaster>
 	</enemies>
 	<NPC>
 		<OldMan>
@@ -652,11 +674,43 @@
 				<source_list>
 					<source>
 						<x>88</x>
-						<y>16</y>
+						<y>1</y>
 					</source>
 				</source_list>
 			</sprite>
 		</map>
+		<bow>
+			<sprite>
+				<spritesheet>item_spritesheet</spritesheet>
+				<dimensions>
+					<height>16</height>
+					<width>8</width>
+				</dimensions>
+				<time>1</time>
+				<source_list>
+					<source>
+						<x>144</x>
+						<y>1</y>
+					</source>
+				</source_list>
+			</sprite>
+		</bow>
+		<boomerang>
+			<sprite>
+				<spritesheet>item_spritesheet</spritesheet>
+				<dimensions>
+					<height>8</height>
+					<width>5</width>
+				</dimensions>
+				<time>1</time>
+				<source_list>
+					<source>
+						<x>129</x>
+						<y>3</y>
+					</source>
+				</source_list>
+			</sprite>
+		</boomerang>
 		<weapon>
 			<woodArrow>
 				<up>

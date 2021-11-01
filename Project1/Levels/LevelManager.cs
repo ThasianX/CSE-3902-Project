@@ -169,6 +169,9 @@ namespace Project1.Levels
                 case "OldMan":
                     room.AddObject(new OldMan(position));
                     break;
+                case "WallMaster":
+                    room.AddObject(new WallMaster(position));
+                    break;
             }
         }
 
@@ -234,6 +237,12 @@ namespace Project1.Levels
                     break;
                 case "Map":
                     room.AddObject(new Map(position));
+                    break;
+                case "Bow":
+                    room.AddObject(new Bow(position));
+                    break;
+                case "Boomerang":
+                    room.AddObject(new Boomerang(position));
                     break;
             }
         }
