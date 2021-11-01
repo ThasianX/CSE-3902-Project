@@ -4,19 +4,17 @@ using Project1.Interfaces;
 
 namespace Project1.Objects
 {
-    public class FlashingRuby : IGameObject, ICollidable
+    public class Heart : IInstantUseItem, ICollidable
     {
-    public Vector2 Position { get; set; }
-
+        public Vector2 Position { get; set; }
+        public int heartHeal = 30;
         ISprite sprite;
         public bool IsMover => false;
-        //Unsure collision type, I think this is used in shops to display cost.
-        public string CollisionType => "Block";
-
-        public FlashingRuby(Vector2 position)
+        public string CollisionType => "InstantUseItem";
+        public Heart(Vector2 position)
         {
             this.Position = position;
-            sprite = SpriteFactory.Instance.CreateSprite("flashingRuby");
+            sprite = SpriteFactory.Instance.CreateSprite("heart");
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -28,9 +26,15 @@ namespace Project1.Objects
         {
             sprite.Update(gameTime);
         }
+
+        public void InstantUseItem(IPlayer player)
+        {
+            player.Heal(heartHeal);
+        }
+
         public Rectangle GetRectangle()
         {
-            return new Rectangle((int)Position.X, (int)Position.Y, 8, 16);
+            return new Rectangle((int)Position.X, (int)Position.Y, 7, 8);
         }
     }
 }

@@ -86,21 +86,13 @@ namespace Project1.Levels
                 string type = element.Element("type").Value;
                 string name = element.Element("name").Value;
                 XElement position = element.Element("position");
-                /*
-               int x = (int) MathF.Round(float.Parse(position_ratio.Element("x").Value) * 256);
-               int y = (int) MathF.Round(float.Parse(position_ratio.Element("y").Value) * 176);*/
+
                 float x = float.Parse(position.Element("x").Value) * Constants.TILE_SIZE;
                 float y = float.Parse(position.Element("y").Value) * Constants.TILE_SIZE;
 
                 System.Console.WriteLine(element.Element("type").Value + ": " + x + ", " + y);
 
                 LoadObject(room, type, name, new Vector2(x, y));
-
-                /*x = (int) MathF.Round(x / 16);
-                y = (int) MathF.Round(y / 16);
-
-                position_ratio.Element("x").Value = x.ToString();
-                position_ratio.Element("y").Value = y.ToString();*/
 
             }
             //spriteData.Save("new_level_1_data.xml");
@@ -238,10 +230,10 @@ namespace Project1.Levels
                     room.AddObject(new Map(position));
                     break;
                 case "Bow":
-                    room.AddObject(new Bow(position));
+                    room.AddObject(new BowPickup(position));
                     break;
                 case "Boomerang":
-                    room.AddObject(new Boomerang(position));
+                    room.AddObject(new WoodBoomerangPickup(position));
                     break;
             }
         }

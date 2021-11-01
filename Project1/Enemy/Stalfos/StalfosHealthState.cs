@@ -52,5 +52,9 @@ namespace Project1.Enemy
                 health -= damage;
             }
         }
+        public void Heal(int heal)
+        {
+
+        }
     }
 }

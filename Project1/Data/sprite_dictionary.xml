@@ -24,8 +24,11 @@
 	<key>items/key/sprite</key>
 	<compass>items/compass/sprite</compass>
 	<map>items/map/sprite</map>
-	<bow>items/bow/sprite</bow>
-	<boomerang>items/boomerang/sprite</boomerang>
+	<bowPickup>items/bow/sprite</bowPickup>
+	<woodBoomerangPickup>items/boomerang/sprite</woodBoomerangPickup>
+	<woodSwordPickup>items/woodSwordPickup/sprite</woodSwordPickup>
+	<woodArrowPickup>items/woodArrowPickup/sprite</woodArrowPickup>
+	<bombPickup>items/bombPickup/sprite</bombPickup>
 	
 	<woodArrow_up>items/weapon/woodArrow/up/sprite</woodArrow_up>
 	<woodArrow_left>items/weapon/woodArrow/left/sprite</woodArrow_left>

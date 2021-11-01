@@ -4,7 +4,7 @@ using Project1.Interfaces;
 
 namespace Project1.Objects
 {
-    public class WoodSword : IItem, ICollidable
+    public class WoodSword : IGameObject, ICollidable
     {
         public int moveSpeed;
         public Vector2 Position { get; set; }
@@ -15,6 +15,7 @@ namespace Project1.Objects
         private int maxRange = 12;
         private Direction direction;
         private Vector2 deltaVector;
+        private double timeCounter = 0;
 
         ISprite swordSprite;
 
@@ -66,6 +67,11 @@ namespace Project1.Objects
         public void Update(GameTime gameTime)
         {
             this.Position += this.deltaVector;
+            if (timeCounter > .75)
+            {
+                GameObjectManager.Instance.RemoveOnNextFrame(this);
+            }
+            timeCounter += gameTime.ElapsedGameTime.TotalSeconds;
         }
 
         public Rectangle GetRectangle()

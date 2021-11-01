@@ -49,5 +49,16 @@ namespace Project1.PlayerStates
                 health -= damage;
             }
         }
+        public void Heal(int heal)
+        {
+            if (health >= 0)
+            {
+                health += maxHealth;
+                if (health > maxHealth)
+                {
+                    health = maxHealth;
+                }
+            }
+        }
     }
 }

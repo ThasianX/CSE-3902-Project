@@ -23,10 +23,7 @@ namespace Project1
         public Vector2 movement;
         public bool IsMover => true;
         public string CollisionType => "Player";
-        private int immuneTime = 60;
-        private int immnueTimeCounter;
-        // Temporary collection list for player
-        public Dictionary<string, int> collectionList;
+        public InventoryManager playerInventory;
 
         public Player(Vector2 position)
         {
@@ -36,7 +33,7 @@ namespace Project1
             // Set entry state
             State = new StillPlayerState(this);
             healthState = new HealthState(this, 100);
-            collectionList = new Dictionary<string, int>();
+            playerInventory = new InventoryManager();
             ActiveMoveInputs = new Dictionary<Direction, bool>()
             {
                 { Direction.Up, false },
@@ -95,16 +92,7 @@ namespace Project1
         {
             State.Update(gameTime);
             Sprite.Update(gameTime);
-            // When takeDamage is called, update once and wait for Immune to be false
-            if (Immune() && immnueTimeCounter == immuneTime)
-            {
-                healthState.Update(gameTime);
-                immnueTimeCounter--;
-            }
-            else if(Immune())
-            {
-                immnueTimeCounter --;
-            }
+            healthState.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -112,7 +100,12 @@ namespace Project1
             Sprite.Draw(spriteBatch, Position);
             healthState.Draw(spriteBatch);
             //DrawRectangle(spriteBatch);
+        }
 
+        public void Draw(SpriteBatch spriteBatch, Color color)
+        {
+            Sprite.Draw(spriteBatch, Position, color);
+            healthState.Draw(spriteBatch);
         }
 
         private void DrawRectangle(SpriteBatch spriteBatch)
@@ -126,56 +119,52 @@ namespace Project1
             spriteBatch.Draw(Game1.whiteRectangle, new Rectangle(rectangle.X, rectangle.Y + rectangle.Height, rectangle.Width + lineWidth, lineWidth), Color.White);
         }
 
-        // determine if player can take damage
-        public bool Immune()
-        {
-            return immnueTimeCounter > 0;
-        }
 
         public void TakeDamage(int damage)
         {
-            // player can take damage only not immune
-            if (!Immune())
-            {
-                immnueTimeCounter = immuneTime;
-                healthState.TakeDamage(damage);
-            }
+            healthState.TakeDamage(damage);
+            // replace basePlayer with damagedPlayer
+            GameObjectManager.Instance.AddOnNextFrame(new DamagedPlayer(this));
+            GameObjectManager.Instance.RemoveOnNextFrame(this);
+        }
+
+        public void Heal(int heal)
+        {
+            healthState.Heal(heal);
         }
 
         public Rectangle GetRectangle()
         {
-            return new Rectangle((int)Position.X, (int)Position.Y, 16, 16);
+            Dimensions dimensions = Sprite.GetDimensions();
+            return new Rectangle((int)Position.X, (int)Position.Y, dimensions.width, dimensions.height);
         }
 
-        public void CollectItem(IGameObject collectible)
+        public void CollectItem(IInventoryItem collectible)
         {
-            var collectionName = collectible.GetType().Name;
-            if (collectionList.ContainsKey(collectionName))
-            {
-                collectionList[collectionName]++;
-            }
-            else
-            {
-                collectionList.Add(collectionName, 1);
-            }
+            playerInventory.AddItem(collectible);
             LevelManager.Instance.GetCurrentRoom().RemoveObject(collectible);
             GameObjectManager.Instance.RemoveOnNextFrame(collectible);
         }
 
         public void ShowCollection()
         {
-            // Debug for collection command
-            if (collectionList.Count == 0)
+            if (playerInventory.itemInv.Count == 0)
             {
-                Console.WriteLine("Link don't have any collection currently");
+                Console.WriteLine("Link don't have any items currently");
             }
             else
             {
-                foreach (var collection in collectionList)
+                foreach (var item in playerInventory.itemInv)
                 {
-                    Console.WriteLine($"{collection.Key}: {collection.Value}");
+                    Console.WriteLine($"{item.Key}: {item.Value}");
                 }
             }
+        }
+        public void InstantUseItem(IInstantUseItem collectible)
+        {
+            collectible.InstantUseItem(this);
+            LevelManager.Instance.GetCurrentRoom().RemoveObject(collectible);
+            GameObjectManager.Instance.RemoveOnNextFrame(collectible);
         }
     }
 }
