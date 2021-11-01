@@ -13,7 +13,7 @@ namespace Project1.Objects
 
         //Unsure what collision type the placed bomb should have.
         public string CollisionType => "Weapon";
-        
+        private double timeCounter = 0;
         public Bomb(Vector2 position)
         {
             this.Position = position;
@@ -28,6 +28,11 @@ namespace Project1.Objects
         public void Update(GameTime gameTime)
         {
             sprite.Update(gameTime);
+            if (timeCounter > 2)
+            {
+                GameObjectManager.Instance.RemoveOnNextFrame(this);
+            }
+            timeCounter += gameTime.ElapsedGameTime.TotalSeconds;
         }
 
         public Rectangle GetRectangle()

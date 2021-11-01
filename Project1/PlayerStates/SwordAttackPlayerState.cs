@@ -43,6 +43,7 @@ namespace Project1.PlayerStates
                     this.sword = new WoodSword(player.Position + new Vector2(0, swordOffset), player.FacingDirection, activeFrameCount);
                     break;
             }
+            GameObjectManager.Instance.AddOnNextFrame(sword);
         }
 
         public void SetMoveInput(Direction direction, bool isPressed)
@@ -92,10 +93,5 @@ namespace Project1.PlayerStates
             sword.Update(gameTime);
         }
 
-        // TODO: Add sword to GameObjectManager
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            sword.Draw(spriteBatch);
-        }
     }
 }
