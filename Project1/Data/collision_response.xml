@@ -38,7 +38,7 @@
   <Enemy>
     <Weapon>
       <command type="Project1.Commands.EnemyTakeDamageCommand">
-        <arg type="Project1.Enemy.IGameObject">TARGET</arg>
+        <arg type="Project1.Enemy.IEnemy">TARGET</arg>
       </command>
     </Weapon>
     <Block>
