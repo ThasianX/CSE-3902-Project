@@ -11,12 +11,42 @@ namespace Project1
         public IPlayer basePlayer;
         public string CollisionType => "Player";
         public bool IsMover => true;
-        public ISprite Sprite { get; set; }
-        public IPlayerState State { get; set; }
-        public Vector2 Position { get; set; }
-        public Direction FacingDirection { get; set; }
-        public float Speed { get; set; }
-        public Dictionary<Direction, bool> ActiveMoveInputs { get; set; }
+        public ISprite Sprite
+        {
+            get { return basePlayer.Sprite; }
+            set { basePlayer.Sprite = value; }
+        }
+
+        public IPlayerState State
+        {
+            get { return basePlayer.State; }
+            set { basePlayer.State = value; }
+        }
+
+        public Vector2 Position
+        {
+            get { return basePlayer.Position; }
+            set { basePlayer.Position = value; }
+        }
+
+        public Direction FacingDirection
+        {
+            get { return basePlayer.FacingDirection; }
+            set { basePlayer.FacingDirection = value; }
+        }
+
+
+        public float Speed
+        {
+            get { return basePlayer.Speed; }
+            set { basePlayer.Speed = value; }
+        }
+
+        public Dictionary<Direction, bool> ActiveMoveInputs
+        {
+            get { return basePlayer.ActiveMoveInputs; }
+            set { basePlayer.ActiveMoveInputs = value; }
+        }
 
         private int immuneTime = 30;
 
@@ -50,8 +80,7 @@ namespace Project1
 
         public Rectangle GetRectangle()
         {
-            Dimensions dimensions = basePlayer.Sprite.GetDimensions();
-            return new Rectangle((int)Position.X, (int)Position.Y, dimensions.width, dimensions.height);
+            return ((ICollidable) basePlayer).GetRectangle();
         }
 
         public void Draw(SpriteBatch spriteBatch, Color color) { }
