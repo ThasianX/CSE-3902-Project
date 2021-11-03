@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -13,8 +14,14 @@ namespace Project1
         private static GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
 
+        private readonly int nativeX = 256, nativeY = 240;
+
+        private int renderScale = 6;
         RenderTarget2D scene;
-        RenderTarget2D UI;
+        RenderTarget2D HUD;
+
+        private Vector2 UIPosition = Vector2.Zero;
+        private Vector2 scenePosition = new Vector2(0, 80);
 
         private ArrayList controllerList;
 
@@ -29,14 +36,16 @@ namespace Project1
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
+
+            Window.AllowUserResizing = true;
+            // Register window size change event
+            Window.ClientSizeChanged += OnWindowResize;
         }
 
         // We could use initialize to Reset our game
         protected override void Initialize()
         {
-            Window.AllowUserResizing = true;
-
-            scene = new RenderTarget2D(graphics.GraphicsDevice, SCREEN_WIDTH, SCREEN_HEIGHT);
+            scene = new RenderTarget2D(graphics.GraphicsDevice, nativeX, nativeY);
             
             controllerList = new ArrayList
             {
@@ -104,16 +113,15 @@ namespace Project1
             GraphicsDevice.SetRenderTarget(null);
             GraphicsDevice.Clear(Color.Transparent);
 
-            // Draw the UI area to the UI render target
+            // Draw the HUD area to the HUD render target
             //TODO
 
             // Draw the different render targets to their places in the game window
 
             spriteBatch.Begin(samplerState: SamplerState.PointClamp);
 
-            // Scale and draw the scene. (must be int to prevent pixel warping
-            int scale = 3;
-            spriteBatch.Draw(scene, Vector2.Zero, null, Color.White, 0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
+            // Scale and draw the scene
+            spriteBatch.Draw(scene, scenePosition, null, Color.White, 0f, Vector2.Zero, renderScale, SpriteEffects.None, 0f);
 
             //Scale and draw the UI
             //TODO
@@ -123,10 +131,24 @@ namespace Project1
             base.Draw(gameTime);
         }
 
+        private void RenderScene()
+        {
+
+        }
+
         public void Reset() 
         {
             // TODO: This have problem when press R because KeyBoardController already initialized
             Setup();
+        }
+
+        private void OnWindowResize(Object sender, EventArgs e)
+        {
+            int clientSize = Math.Min(Window.ClientBounds.Width, Window.ClientBounds.Height);
+            renderScale = clientSize / nativeX;
+            
+            scenePosition.X = (Window.ClientBounds.Width / 2) - (scene.Width * renderScale / 2);
+            scenePosition.Y = (Window.ClientBounds.Height / 2) - (scene.Height * renderScale / 2);
         }
     }
 }
