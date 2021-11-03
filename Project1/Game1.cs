@@ -34,8 +34,10 @@ namespace Project1
         // We could use initialize to Reset our game
         protected override void Initialize()
         {
-            scene = new RenderTarget2D(graphics.GraphicsDevice, SCREEN_WIDTH, SCREEN_HEIGHT);
+            Window.AllowUserResizing = true;
 
+            scene = new RenderTarget2D(graphics.GraphicsDevice, SCREEN_WIDTH, SCREEN_HEIGHT);
+            
             controllerList = new ArrayList
             {
                 new KeyboardController(this),
@@ -93,9 +95,9 @@ namespace Project1
         {
             // Draw the game area to the scene render target
             GraphicsDevice.SetRenderTarget(scene);
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Transparent);
 
-            spriteBatch.Begin();
+            spriteBatch.Begin(samplerState: SamplerState.PointClamp);
             GameObjectManager.Instance.DrawObjects(spriteBatch);
             spriteBatch.End();
 
@@ -107,10 +109,10 @@ namespace Project1
 
             // Draw the different render targets to their places in the game window
 
-            spriteBatch.Begin();
+            spriteBatch.Begin(samplerState: SamplerState.PointClamp);
 
-            // Scale and draw the scene
-            float scale = 2.5f;
+            // Scale and draw the scene. (must be int to prevent pixel warping
+            int scale = 3;
             spriteBatch.Draw(scene, Vector2.Zero, null, Color.White, 0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
 
             //Scale and draw the UI
