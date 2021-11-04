@@ -20,26 +20,26 @@ namespace Project1.PlayerStates
             {
                 case Direction.Up:
                     player.Sprite = SpriteFactory.Instance.CreateSprite("player_attack_up");
-                    this.boomerang = new WoodBoomerang(player.Position + new Vector2(0, -boomerangOffset), player.FacingDirection, activeFrameCount);
+                    this.boomerang = new WoodBoomerang(player.Position + new Vector2(0, -boomerangOffset), player.FacingDirection, activeFrameCount, Owner.Player);
                     break;
 
                 case Direction.Right:
                     player.Sprite = SpriteFactory.Instance.CreateSprite("player_attack_right");
-                    this.boomerang = new WoodBoomerang(player.Position + new Vector2(boomerangOffset, 0), player.FacingDirection, activeFrameCount);
+                    this.boomerang = new WoodBoomerang(player.Position + new Vector2(boomerangOffset, 0), player.FacingDirection, activeFrameCount, Owner.Player);
                     break;
 
                 case Direction.Down:
                     player.Sprite = SpriteFactory.Instance.CreateSprite("player_attack_down");
-                    this.boomerang = new WoodBoomerang(player.Position + new Vector2(0, boomerangOffset), player.FacingDirection, activeFrameCount);
+                    this.boomerang = new WoodBoomerang(player.Position + new Vector2(0, boomerangOffset), player.FacingDirection, activeFrameCount, Owner.Player);
                     break;
 
                 case Direction.Left:
                     player.Sprite = SpriteFactory.Instance.CreateSprite("player_attack_left");
-                    this.boomerang = new WoodBoomerang(player.Position + new Vector2(-boomerangOffset, 0), player.FacingDirection, activeFrameCount);
+                    this.boomerang = new WoodBoomerang(player.Position + new Vector2(-boomerangOffset, 0), player.FacingDirection, activeFrameCount, Owner.Player);
                     break;
 
                 default:
-                    this.boomerang = new WoodBoomerang(player.Position + new Vector2(0, boomerangOffset), player.FacingDirection, activeFrameCount);
+                    this.boomerang = new WoodBoomerang(player.Position + new Vector2(0, boomerangOffset), player.FacingDirection, activeFrameCount, Owner.Player);
                     break;
             }
             GameObjectManager.Instance.AddOnNextFrame(boomerang);

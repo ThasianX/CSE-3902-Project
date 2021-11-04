@@ -66,6 +66,7 @@
     <Projectile>
       <command type="Project1.Commands.EnemyTakeDamageCommand">
         <arg type="Project1.Enemy.IEnemy">TARGET</arg>
+        <arg type="Project1.Interfaces.IProjectile">SOURCE</arg>
       </command>
       <command type="Project1.Commands.DeleteGameObjectCommand">
         <arg type="Project1.Interfaces.IGameObject">SOURCE</arg>

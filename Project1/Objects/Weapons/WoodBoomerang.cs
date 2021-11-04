@@ -4,26 +4,27 @@ using Project1.Interfaces;
 
 namespace Project1.Objects
 {
-    public class WoodBoomerang : IGameObject, ICollidable
+    public class WoodBoomerang : IProjectile, ICollidable
     {
         public int moveSpeed;
         public Vector2 Position { get; set; }
+        public Owner WeaponOwner { get; set; }
         public bool IsMover => true;
-        public string CollisionType => "Weapon";
-
+        public string CollisionType => "Projectile";
         //Distance Boomerang travels from Link
         private int maxRange = 150;
         private bool inRange = true;
         private Direction direction;
         private Vector2 deltaVector;
         private Vector2 initialPosition;
-
+        public Owner owner;
         ISprite boomerangSprite;
 
-        public WoodBoomerang(Vector2 position, Direction direction, int frames)
+        public WoodBoomerang(Vector2 position, Direction direction, int frames, Owner owner)
         {
             this.direction = direction; 
             this.Position = position; // position here is link/enemy position + boomerang offset.
+            this.WeaponOwner = owner;
             this.initialPosition = position;
             this.moveSpeed = (maxRange * 2) / frames;
             boomerangSprite = SpriteFactory.Instance.CreateSprite("woodBoomerang");

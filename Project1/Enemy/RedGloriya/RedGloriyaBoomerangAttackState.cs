@@ -27,22 +27,22 @@ namespace Project1.Enemy
             {
                 case Direction.Up:
                     redGloriya.Sprite = SpriteFactory.Instance.CreateSprite("RedGloriya_walking_up");
-                    this.boomerang = new WoodBoomerang(redGloriya.Position + new Vector2(0, -boomerangOffset), currentDirection, activeFrameCount);
+                    this.boomerang = new WoodBoomerang(redGloriya.Position + new Vector2(0, -boomerangOffset), currentDirection, activeFrameCount, Owner.Enemy);
                     break;
 
                 case Direction.Right:
                     redGloriya.Sprite = SpriteFactory.Instance.CreateSprite("RedGloriya_walking_right");
-                    this.boomerang = new WoodBoomerang(redGloriya.Position + new Vector2(boomerangOffset, 0), currentDirection, activeFrameCount);
+                    this.boomerang = new WoodBoomerang(redGloriya.Position + new Vector2(boomerangOffset, 0), currentDirection, activeFrameCount, Owner.Enemy);
                     break;
 
                 case Direction.Down:
                     redGloriya.Sprite = SpriteFactory.Instance.CreateSprite("RedGloriya_walking_down");
-                    this.boomerang = new WoodBoomerang(redGloriya.Position + new Vector2(0, boomerangOffset), currentDirection, activeFrameCount);
+                    this.boomerang = new WoodBoomerang(redGloriya.Position + new Vector2(0, boomerangOffset), currentDirection, activeFrameCount, Owner.Enemy);
                     break;
 
                 case Direction.Left:
                     redGloriya.Sprite = SpriteFactory.Instance.CreateSprite("RedGloriya_walking_left");
-                    this.boomerang = new WoodBoomerang(redGloriya.Position + new Vector2(-boomerangOffset, 0), currentDirection, activeFrameCount);
+                    this.boomerang = new WoodBoomerang(redGloriya.Position + new Vector2(-boomerangOffset, 0), currentDirection, activeFrameCount, Owner.Enemy);
                     break;
             }
             GameObjectManager.Instance.AddOnNextFrame(boomerang);

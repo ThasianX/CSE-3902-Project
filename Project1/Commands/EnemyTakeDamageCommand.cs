@@ -7,6 +7,7 @@ namespace Project1.Commands
     {
         IEnemy enemy;
         int amount = 2; // default amount
+        private bool takeDamage = true;
 
         public EnemyTakeDamageCommand(IEnemy enemy, int amount)
         {
@@ -19,9 +20,21 @@ namespace Project1.Commands
             this.enemy = enemy;
         }
 
+        public EnemyTakeDamageCommand(IEnemy enemy, IProjectile boomerang)
+        {
+            this.enemy = enemy;
+            if (boomerang.WeaponOwner == Owner.Enemy)
+            {
+                takeDamage = false;
+            }
+        }
+
         public void Execute()
         {
-            enemy.TakeDamage(amount);
+            if (takeDamage)
+            {
+                enemy.TakeDamage(amount);
+            }
         }
     }
 }
