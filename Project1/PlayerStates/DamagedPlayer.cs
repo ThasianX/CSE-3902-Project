@@ -9,7 +9,7 @@ namespace Project1
     public class DamagedPlayer : IPlayer, ICollidable
     {
         public IPlayer basePlayer;
-        public string CollisionType => "Player";
+        public string CollisionType => "DamagedPlayer";
         public bool IsMover => true;
         public ISprite Sprite
         {

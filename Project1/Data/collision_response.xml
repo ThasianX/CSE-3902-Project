@@ -15,7 +15,7 @@
         <arg type="Project1.Player">TARGET</arg>
         <arg type="System.Int32">5</arg>
       </command>
-      <command type="Project1.Commands.PlayerKnockedBackCommand">
+      <command type="Project1.Commands.KnockBackCommand">
         <arg type="Project1.Collision">COLLISION</arg>
       </command>
     </Enemy>
@@ -38,6 +38,15 @@
       
     </Weapon>
   </Player>
+
+  <DamagedPlayer>
+    <Block>
+      <command type="Project1.Commands.MoveInBoundsCommand">
+        <arg type="Project1.Collision">COLLISION</arg>
+      </command>
+    </Block>
+  </DamagedPlayer>
+
   <Enemy>
     <Weapon>
       <command type="Project1.Commands.EnemyTakeDamageCommand">
