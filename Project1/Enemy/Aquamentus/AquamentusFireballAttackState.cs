@@ -10,9 +10,9 @@ namespace Project1.Enemy
     {
         private IEnemy aquamentus;
         // The Fireball instance used for Update and Draw
-        private IGameObject fireballOne;
-        private IGameObject fireballTwo;
-        private IGameObject fireballThree;
+        private IProjectile fireballOne;
+        private IProjectile fireballTwo;
+        private IProjectile fireballThree;
         // Not sure, need to ask Keenan !!
         private int fireballOffset = 8;
         // The length of animation frame boomerang will Update, also Not sure, need to ask Keenan !!
@@ -25,9 +25,9 @@ namespace Project1.Enemy
         {
             this.aquamentus = aquamentus;
             aquamentus.Sprite = SpriteFactory.Instance.CreateSprite("aquamentus_walking");
-            fireballOne = new Fireball(aquamentus.Position + new Vector2(fireballOffset, 0), new Vector2(0,-1), activeFrameCount, Owner.Enemy);
-            fireballTwo = new Fireball(aquamentus.Position + new Vector2(fireballOffset, 0), new Vector2(0,0), activeFrameCount, Owner.Enemy);
-            fireballThree = new Fireball(aquamentus.Position + new Vector2(fireballOffset, 0), new Vector2(0, 1), activeFrameCount, Owner.Enemy);
+            fireballOne = new Fireball(aquamentus.Position + new Vector2(fireballOffset, fireballOffset), new Vector2(0,-0.154f), activeFrameCount, Owner.Enemy);
+            fireballTwo = new Fireball(aquamentus.Position + new Vector2(fireballOffset, fireballOffset), new Vector2(0,0), activeFrameCount, Owner.Enemy);
+            fireballThree = new Fireball(aquamentus.Position + new Vector2(fireballOffset, fireballOffset), new Vector2(0, 0.154f), activeFrameCount, Owner.Enemy);
 
             GameObjectManager.Instance.AddOnNextFrame(fireballOne);
             GameObjectManager.Instance.AddOnNextFrame(fireballTwo);

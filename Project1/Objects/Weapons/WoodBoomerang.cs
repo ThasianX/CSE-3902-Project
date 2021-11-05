@@ -8,11 +8,11 @@ namespace Project1.Objects
     {
         public int moveSpeed;
         public Vector2 Position { get; set; }
-        public Owner WeaponOwner { get; set; }
+        public Owner ProjectileOwner { get; set; }
         public bool IsMover => true;
         public string CollisionType => "Projectile";
         //Distance Boomerang travels from Link
-        private int maxRange = 150;
+        private int maxRange = 75;
         private bool inRange = true;
         private Direction direction;
         private Vector2 deltaVector;
@@ -24,7 +24,7 @@ namespace Project1.Objects
         {
             this.direction = direction; 
             this.Position = position; // position here is link/enemy position + boomerang offset.
-            this.WeaponOwner = owner;
+            this.ProjectileOwner = owner;
             this.initialPosition = position;
             this.moveSpeed = (maxRange * 2) / frames;
             boomerangSprite = SpriteFactory.Instance.CreateSprite("woodBoomerang");
@@ -55,21 +55,12 @@ namespace Project1.Objects
         public void Draw(SpriteBatch spriteBatch)
         {
             boomerangSprite.Draw(spriteBatch, this.Position);
-
-            // Visualize rectangle for testing
-            Rectangle rectangle = GetRectangle();
-            int lineWidth = 1;
-            spriteBatch.Draw(Game1.whiteRectangle, new Rectangle(rectangle.X, rectangle.Y, lineWidth, rectangle.Height + lineWidth), Color.Black);
-            spriteBatch.Draw(Game1.whiteRectangle, new Rectangle(rectangle.X, rectangle.Y, rectangle.Width + lineWidth, lineWidth), Color.Black);
-            spriteBatch.Draw(Game1.whiteRectangle, new Rectangle(rectangle.X + rectangle.Width, rectangle.Y, lineWidth, rectangle.Height + lineWidth), Color.Black);
-            spriteBatch.Draw(Game1.whiteRectangle, new Rectangle(rectangle.X, rectangle.Y + rectangle.Height, rectangle.Width + lineWidth, lineWidth), Color.Black);
         }
 
         public void Update(GameTime gameTime)
         {
             //Checks if sprite has achieved max distance before returning to link
             checkRange();
-            CheckPosition();
             if (this.inRange)
             {
                 this.Position += this.deltaVector;
@@ -79,38 +70,6 @@ namespace Project1.Objects
                 this.Position -= this.deltaVector;
             }
             boomerangSprite.Update(gameTime);
-        }
-        // Check Boomerang position, if it surpass player position + boomerang offset (initialPosition), delete it.
-        public void CheckPosition()
-        {
-            switch (this.direction)
-            {
-                case Direction.Up:
-                    if (this.Position.Y > initialPosition.Y)
-                    {
-                        GameObjectManager.Instance.RemoveOnNextFrame(this);
-                    } 
-                    break;
-                case Direction.Down:
-                    if (this.Position.Y < initialPosition.Y)
-                    {
-                        GameObjectManager.Instance.RemoveOnNextFrame(this);
-                    }
-                    break;
-                case Direction.Left:
-                    if (this.Position.X > initialPosition.X)
-                    {
-                        GameObjectManager.Instance.RemoveOnNextFrame(this);
-                    }
-                    break;
-                case Direction.Right:
-                    if (this.Position.X < initialPosition.X)
-                    {
-                        GameObjectManager.Instance.RemoveOnNextFrame(this);
-                    }
-                    break;
-                default: break;
-            }
         }
 
         public void checkRange()

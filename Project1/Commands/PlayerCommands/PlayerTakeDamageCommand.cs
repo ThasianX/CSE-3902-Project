@@ -6,6 +6,7 @@ namespace Project1.Commands
     {
         IPlayer player;
         int amount = 2; // default amount
+        private bool takeDamage = true;
 
         public PlayerTakeDamageCommand(IPlayer player, int amount)
         {
@@ -18,9 +19,21 @@ namespace Project1.Commands
             this.player = player;
         }
 
+        public PlayerTakeDamageCommand(IPlayer player, IProjectile projectile)
+        {
+            this.player = player;
+            if (projectile.ProjectileOwner == Owner.Player)
+            {
+                takeDamage = false;
+            }
+        }
+
         public void Execute()
         {
-            player.TakeDamage(amount);
+            if (takeDamage)
+            {
+                player.TakeDamage(amount);
+            }
         }
     }
 }

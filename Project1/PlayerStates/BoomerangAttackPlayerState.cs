@@ -7,7 +7,7 @@ namespace Project1.PlayerStates
     public class BoomerangAttackPlayerState : IPlayerState
     {
         private IPlayer player;
-        private IGameObject boomerang;
+        private IProjectile boomerang;
 
         private int boomerangOffset = 20;
         private int activeFrameCount = 50, counter = 0;

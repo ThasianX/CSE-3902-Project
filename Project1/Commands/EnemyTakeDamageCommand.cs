@@ -23,7 +23,7 @@ namespace Project1.Commands
         public EnemyTakeDamageCommand(IEnemy enemy, IProjectile projectile)
         {
             this.enemy = enemy;
-            if (projectile.WeaponOwner == Owner.Enemy)
+            if (projectile.ProjectileOwner == Owner.Enemy)
             {
                 takeDamage = false;
             }

@@ -10,7 +10,7 @@ namespace Project1.Objects
         public Vector2 Position { get; set; }
         public bool IsMover => true;
         public string CollisionType => "Projectile";
-        public Owner WeaponOwner { get; set; }
+        public Owner ProjectileOwner { get; set; }
         // Distance Fireball travels from Aquamentus
         private int maxRange = 250;
         private Vector2 deltaVector;
@@ -21,7 +21,7 @@ namespace Project1.Objects
         public Fireball(Vector2 position, Vector2 fireBalOffset, int frames, Owner owner)
         {
             this.Position = position;
-            this.WeaponOwner = owner;
+            this.ProjectileOwner = owner;
             // The direction for Aquamentus will always be left, so the delta vector will be the same
             deltaVector = new Vector2(-1, 0);
             this.fireBalOffset = fireBalOffset;

@@ -8,7 +8,7 @@ namespace Project1.Objects
     {
         public int moveSpeed = 10;
         public Vector2 Position { get; set; }
-        public Owner WeaponOwner { get; set; }
+        public Owner ProjectileOwner { get; set; }
         public bool IsMover => true;
         public string CollisionType => "Projectile";
 
@@ -23,7 +23,7 @@ namespace Project1.Objects
         {
             this.direction = direction;
             this.Position = position;
-            this.WeaponOwner = owner;
+            this.ProjectileOwner = owner;
             //this.moveSpeed = maxRange / frames;
             switch (this.direction)
             {
@@ -55,19 +55,10 @@ namespace Project1.Objects
         public void Draw(SpriteBatch spriteBatch)
         {
             arrowSprite.Draw(spriteBatch, this.Position);
-
-            // Visualize rectangle for testing
-            Rectangle rectangle = GetRectangle();
-            int lineWidth = 1;
-            spriteBatch.Draw(Game1.whiteRectangle, new Rectangle(rectangle.X, rectangle.Y, lineWidth, rectangle.Height + lineWidth), Color.Black);
-            spriteBatch.Draw(Game1.whiteRectangle, new Rectangle(rectangle.X, rectangle.Y, rectangle.Width + lineWidth, lineWidth), Color.Black);
-            spriteBatch.Draw(Game1.whiteRectangle, new Rectangle(rectangle.X + rectangle.Width, rectangle.Y, lineWidth, rectangle.Height + lineWidth), Color.Black);
-            spriteBatch.Draw(Game1.whiteRectangle, new Rectangle(rectangle.X, rectangle.Y + rectangle.Height, rectangle.Width + lineWidth, lineWidth), Color.Black);
         }
 
         public void Update(GameTime gameTime)
         {
-            
             this.Position += this.deltaVector;
 
             if (counter >= activeTime)

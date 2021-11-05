@@ -2,6 +2,6 @@
 {
     public interface IProjectile : IGameObject
     {
-        Owner WeaponOwner { get; set; }
+        Owner ProjectileOwner { get; set; }
     }
 }

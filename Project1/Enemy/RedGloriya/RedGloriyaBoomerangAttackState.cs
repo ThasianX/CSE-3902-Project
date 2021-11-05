@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
+using Project1.Interfaces;
 using Project1.Objects;
 
 namespace Project1.Enemy
@@ -10,7 +11,7 @@ namespace Project1.Enemy
         // The direction passed in
         private Direction direction;
         // The WoodBoomerang instance used for Update and Draw
-        private WoodBoomerang boomerang;
+        private IProjectile boomerang;
         // Not sure, need to ask Keenan !!
         private int boomerangOffset = 8;
         // The length of animation frame boomerang will Update, also Not sure, need to ask Keenan !!
