@@ -20,10 +20,10 @@ namespace Project1.Commands
             this.enemy = enemy;
         }
 
-        public EnemyTakeDamageCommand(IEnemy enemy, IProjectile boomerang)
+        public EnemyTakeDamageCommand(IEnemy enemy, IProjectile projectile)
         {
             this.enemy = enemy;
-            if (boomerang.WeaponOwner == Owner.Enemy)
+            if (projectile.WeaponOwner == Owner.Enemy)
             {
                 takeDamage = false;
             }

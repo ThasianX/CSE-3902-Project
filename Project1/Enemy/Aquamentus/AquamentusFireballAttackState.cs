@@ -25,9 +25,9 @@ namespace Project1.Enemy
         {
             this.aquamentus = aquamentus;
             aquamentus.Sprite = SpriteFactory.Instance.CreateSprite("aquamentus_walking");
-            fireballOne = new Fireball(aquamentus.Position + new Vector2(fireballOffset, 0), new Vector2(0,-1), activeFrameCount);
-            fireballTwo = new Fireball(aquamentus.Position + new Vector2(fireballOffset, 0), new Vector2(0,0), activeFrameCount);
-            fireballThree = new Fireball(aquamentus.Position + new Vector2(fireballOffset, 0), new Vector2(0, 1), activeFrameCount);
+            fireballOne = new Fireball(aquamentus.Position + new Vector2(fireballOffset, 0), new Vector2(0,-1), activeFrameCount, Owner.Enemy);
+            fireballTwo = new Fireball(aquamentus.Position + new Vector2(fireballOffset, 0), new Vector2(0,0), activeFrameCount, Owner.Enemy);
+            fireballThree = new Fireball(aquamentus.Position + new Vector2(fireballOffset, 0), new Vector2(0, 1), activeFrameCount, Owner.Enemy);
 
             GameObjectManager.Instance.AddOnNextFrame(fireballOne);
             GameObjectManager.Instance.AddOnNextFrame(fireballTwo);

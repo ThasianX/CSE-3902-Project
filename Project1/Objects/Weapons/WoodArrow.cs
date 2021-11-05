@@ -4,10 +4,11 @@ using Project1.Interfaces;
 
 namespace Project1.Objects
 {
-    public class WoodArrow : IGameObject, ICollidable
+    public class WoodArrow : IProjectile, ICollidable
     {
         public int moveSpeed = 10;
         public Vector2 Position { get; set; }
+        public Owner WeaponOwner { get; set; }
         public bool IsMover => true;
         public string CollisionType => "Projectile";
 
@@ -18,10 +19,11 @@ namespace Project1.Objects
 
         ISprite arrowSprite;
 
-        public WoodArrow(Vector2 position, Direction direction)
+        public WoodArrow(Vector2 position, Direction direction, Owner owner)
         {
             this.direction = direction;
             this.Position = position;
+            this.WeaponOwner = owner;
             //this.moveSpeed = maxRange / frames;
             switch (this.direction)
             {

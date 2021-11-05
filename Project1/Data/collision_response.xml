@@ -69,10 +69,12 @@
         <arg type="Project1.Interfaces.IProjectile">SOURCE</arg>
       </command>
       <command type="Project1.Commands.DeleteGameObjectCommand">
-        <arg type="Project1.Interfaces.IGameObject">SOURCE</arg>
+        <arg type="Project1.Interfaces.IProjectile">SOURCE</arg>
+        <arg type="Project1.Collision">COLLISION</arg>
       </command>
     </Projectile>
   </Enemy>
+
   <Weapon>
     <Enemy>
       <command type="Project1.Commands.EnemyTakeDamageCommand">
@@ -85,6 +87,7 @@
       
     </Block>
   </Weapon>
+
   <Projectile>
     <Block>
       <command type="Project1.Commands.DeleteGameObjectCommand">

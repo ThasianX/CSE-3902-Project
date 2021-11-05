@@ -20,26 +20,26 @@ namespace Project1.PlayerStates
             {
                 case Direction.Up:
                     player.Sprite = SpriteFactory.Instance.CreateSprite("player_attack_up");
-                    arrow = new WoodArrow(player.Position + new Vector2(0, -arrowOffset), player.FacingDirection);
+                    arrow = new WoodArrow(player.Position + new Vector2(0, -arrowOffset), player.FacingDirection, Owner.Player);
                     break;
 
                 case Direction.Right:
                     player.Sprite = SpriteFactory.Instance.CreateSprite("player_attack_right");
-                    arrow = new WoodArrow(player.Position + new Vector2(arrowOffset, 0), player.FacingDirection);
+                    arrow = new WoodArrow(player.Position + new Vector2(arrowOffset, 0), player.FacingDirection, Owner.Player);
                     break;
 
                 case Direction.Down:
                     player.Sprite = SpriteFactory.Instance.CreateSprite("player_attack_down"); ;
-                    arrow = new WoodArrow(player.Position + new Vector2(0, arrowOffset), player.FacingDirection);
+                    arrow = new WoodArrow(player.Position + new Vector2(0, arrowOffset), player.FacingDirection, Owner.Player);
                     break;
 
                 case Direction.Left:
                     player.Sprite = SpriteFactory.Instance.CreateSprite("player_attack_left");
-                    arrow = new WoodArrow(player.Position + new Vector2(-arrowOffset, 0), player.FacingDirection);
+                    arrow = new WoodArrow(player.Position + new Vector2(-arrowOffset, 0), player.FacingDirection, Owner.Player);
                     break;
 
                 default:
-                    arrow = new WoodArrow(player.Position + new Vector2(0, arrowOffset), player.FacingDirection);
+                    arrow = new WoodArrow(player.Position + new Vector2(0, arrowOffset), player.FacingDirection, Owner.Player);
                     break;
             }
 
