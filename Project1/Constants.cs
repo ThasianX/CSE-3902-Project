@@ -31,6 +31,6 @@ namespace Project1
 
     public enum Owner
     {
-       Player, Enemy
+        Player, Enemy
     }
 }
