@@ -28,6 +28,14 @@ namespace Project1
             this.gameObjects = new Collection<IGameObject>();
         }
 
+        public void ClearData()
+        {
+            instance = new GameObjectManager();
+            gameObjects.Clear();
+            removeBuffer.Clear();
+            addBuffer.Clear();
+        }
+
         public bool HasPlayer() {
             return Instance.GetObjectsOfType<IPlayer>().Count == 1;
         }

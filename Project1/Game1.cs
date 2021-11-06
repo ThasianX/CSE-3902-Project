@@ -47,7 +47,15 @@ namespace Project1
 
         void Setup()
         {
+            GameObjectManager.Instance.ClearData();
+            LevelManager.Instance.ClearData();
             LevelManager.Instance.LoadLevel();
+            foreach (IController controller in controllerList)
+            {
+                controller.ClearData();
+                controller.RegisterPlayer(GameObjectManager.Instance.GetPlayer());
+                controller.RegisterCommands();
+            }
         }
 
         protected override void LoadContent()
@@ -65,12 +73,6 @@ namespace Project1
             // Visualize rectangle for testing
             whiteRectangle = new Texture2D(GraphicsDevice, 1, 1);
             whiteRectangle.SetData(new[] { Color.White });
-
-            foreach (IController controller in controllerList)
-            {
-                controller.RegisterPlayer(GameObjectManager.Instance.GetPlayer());
-                controller.RegisterCommands();
-            }
         }
 
         protected override void Update(GameTime gameTime)
