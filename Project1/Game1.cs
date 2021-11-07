@@ -4,12 +4,16 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Project1.Controllers;
 using Project1.Interfaces;
+using Project1.GameStates;
 using Project1.Levels;
 
 namespace Project1
 {
     public class Game1 : Game
     {
+        public IGameState gameState;
+        public GameTime inGameTime;
+
         private static GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
 
@@ -41,6 +45,10 @@ namespace Project1
                 new KeyboardController(this),
                 new MouseController(this)
             };
+
+            inGameTime = new GameTime();
+
+            gameState = new PlayingGameState(this);
 
             base.Initialize();
         }
@@ -83,9 +91,8 @@ namespace Project1
                 controller.Update();
             }
 
-            GameObjectManager.Instance.UpdateObjects(gameTime);
-
-            CollisionManager.Instance.Update();
+            gameState.Update(gameTime);
+            
             base.Update(gameTime);
         }
 
@@ -95,9 +102,7 @@ namespace Project1
             GraphicsDevice.SetRenderTarget(scene);
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            spriteBatch.Begin();
-            GameObjectManager.Instance.DrawObjects(spriteBatch);
-            spriteBatch.End();
+            gameState.Draw(gameTime);
 
             GraphicsDevice.SetRenderTarget(null);
             GraphicsDevice.Clear(Color.Transparent);
@@ -119,6 +124,11 @@ namespace Project1
             spriteBatch.End();
 
             base.Draw(gameTime);
+        }
+
+        public void UpdateInGameTime()
+        {
+            base.Update(inGameTime);
         }
 
         public void Reset() 
