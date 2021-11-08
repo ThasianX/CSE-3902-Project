@@ -72,6 +72,7 @@ namespace Project1
         public void SwordAttack()
         {
             State.SwordAttack();
+            SoundManager.Instance.PlaySound("SwordSlash");
         }
         public void ShootArrow()
         {

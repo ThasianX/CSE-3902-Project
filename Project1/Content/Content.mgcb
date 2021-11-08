@@ -49,6 +49,12 @@
 /processorParam:TextureFormat=Color
 /build:dungeon_sheet.png
 
+#begin DungeonTheme.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:DungeonTheme.mp3
+
 #begin enemies.png
 /importer:TextureImporter
 /processor:TextureProcessor

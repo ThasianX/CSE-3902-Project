@@ -2,6 +2,7 @@
 using System.IO;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Audio;
+using System.Diagnostics;
 
 namespace Project1
 {
@@ -33,7 +34,11 @@ namespace Project1
             FileInfo[] files = dir.GetFiles("*.*");
             foreach (FileInfo file in files)
             {
-                loadedSounds.Add(file.ToString(), content.Load<SoundEffect>("SoundEffects/" + file.Name.Split('.')[0]));
+                //Bug where DungeonTheme is included and is .mp3 file
+                if (file.Name.Split('.')[0].ToString() != "DungeonTheme")
+                {
+                    loadedSounds.Add(file.Name.Split('.')[0].ToString(), content.Load<SoundEffect>("SoundEffects/" + file.Name.Split('.')[0]));
+                } 
             }
         }
     }

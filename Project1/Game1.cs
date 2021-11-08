@@ -3,6 +3,7 @@ using System.Collections;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 using Project1.Controllers;
 using Project1.Interfaces;
 using Project1.Levels;
@@ -13,6 +14,7 @@ namespace Project1
     {
         private static GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
+        private Song dungeonSong;
 
         private readonly int nativeX = 256, nativeY = 176;
 
@@ -67,9 +69,16 @@ namespace Project1
             SpriteFactory.Instance.LoadSpriteData("Data/sprite_data.xml");
             SpriteFactory.Instance.loadSpriteDictionary("Data/sprite_dictionary.xml");
 
+            SoundManager.Instance.LoadAllSounds(Content);
+
             LevelManager.Instance.LoadLevel();
             CollisionHandler.Instance.LoadResponses("Data/collision_response.xml");
-            
+
+            //Loads and loops dungeon theme song
+            dungeonSong = Content.Load<Song>("DungeonTheme");
+            MediaPlayer.IsRepeating = true;
+            MediaPlayer.Play(dungeonSong);
+
             // Visualize rectangle for testing
             whiteRectangle = new Texture2D(GraphicsDevice, 1, 1);
             whiteRectangle.SetData(new[] { Color.White });
