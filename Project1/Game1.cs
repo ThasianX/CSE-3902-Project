@@ -79,10 +79,7 @@ namespace Project1
             LevelManager.Instance.LoadLevel();
             CollisionHandler.Instance.LoadResponses("Data/collision_response.xml");
 
-            //Loads and loops dungeon theme song
-            dungeonSong = Content.Load<Song>("DungeonTheme");
-            MediaPlayer.IsRepeating = true;
-            MediaPlayer.Play(dungeonSong);
+            LoadMusic();
             
             // Visualize rectangle for testing
             whiteRectangle = new Texture2D(GraphicsDevice, 1, 1);
@@ -181,6 +178,14 @@ namespace Project1
             HUDPosition = gamePosition;
             scenePosition.X = gamePosition.X;
             scenePosition.Y = gamePosition.Y + (HUD.Height * renderScale);
+        }
+
+        public void LoadMusic()
+        {
+            dungeonSong = Content.Load<Song>("DungeonTheme");
+            MediaPlayer.IsRepeating = true;
+            MediaPlayer.Play(dungeonSong);
+            MediaPlayer.Volume = 0.25f;
         }
     }
 }

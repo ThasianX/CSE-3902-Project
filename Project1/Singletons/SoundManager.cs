@@ -39,7 +39,7 @@ namespace Project1
                 {
                     loadedSounds.Add(file.Name.Split('.')[0].ToString(), content.Load<SoundEffect>("SoundEffects/" + file.Name.Split('.')[0]));
                 } 
-            }
+            }            
         }
 
         public SoundEffect GetSound(string soundName)
