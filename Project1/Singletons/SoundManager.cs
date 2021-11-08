@@ -41,5 +41,10 @@ namespace Project1
                 } 
             }
         }
+
+        public SoundEffect GetSound(string soundName)
+        {
+            return loadedSounds[soundName];
+        }
     }
 }

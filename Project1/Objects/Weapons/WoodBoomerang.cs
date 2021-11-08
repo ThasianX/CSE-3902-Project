@@ -7,6 +7,7 @@ namespace Project1.Objects
     public class WoodBoomerang : IGameObject, ICollidable
     {
         public int moveSpeed;
+        private int frames;
         public Vector2 Position { get; set; }
         public bool IsMover => true;
         public string CollisionType => "Weapon";
@@ -25,6 +26,7 @@ namespace Project1.Objects
             this.direction = direction; 
             this.Position = position; // position here is link/enemy position + boomerang offset.
             this.initialPosition = position;
+            this.frames = frames;
             this.moveSpeed = (maxRange * 2) / frames;
             boomerangSprite = SpriteFactory.Instance.CreateSprite("woodBoomerang");
 
@@ -77,6 +79,11 @@ namespace Project1.Objects
             {
                 this.Position -= this.deltaVector;
             }
+            if (frames % 5 == 0)
+            {
+                SoundManager.Instance.PlaySound("Boomerang");
+            }
+            frames++;
             boomerangSprite.Update(gameTime);
         }
         // Check Boomerang position, if it surpass player position + boomerang offset (initialPosition), delete it.

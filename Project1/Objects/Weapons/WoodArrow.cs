@@ -48,6 +48,7 @@ namespace Project1.Objects
                 default:
                     break;
             }
+            SoundManager.Instance.PlaySound("Arrow");
         }
 
         public void Draw(SpriteBatch spriteBatch)
