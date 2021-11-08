@@ -15,13 +15,11 @@ namespace Project1.GameStates
         {
             this.game = game;
         }
-        public void Update()
+        public void Update(GameTime gameTime)
         {
-            GameObjectManager.Instance.UpdateObjects(game.inGameTime);
+            GameObjectManager.Instance.UpdateObjects(gameTime);
 
             CollisionManager.Instance.Update();
-
-            game.UpdateInGameTime();
         }
         public void Draw(SpriteBatch spriteBatch)
         {

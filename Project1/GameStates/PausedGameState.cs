@@ -15,7 +15,7 @@ namespace Project1.GameStates
         {
             this.game = game;
         }
-        public void Update()
+        public void Update(GameTime gameTime)
         {
 
         }

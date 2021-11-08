@@ -13,7 +13,6 @@ namespace Project1
     public class Game1 : Game
     {
         public IGameState gameState;
-        public GameTime inGameTime;
 
         private static GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
@@ -59,8 +58,6 @@ namespace Project1
                 new MouseController(this)
             };
 
-            inGameTime = new GameTime();
-
             gameState = new PlayingGameState(this);
 
             base.Initialize();
@@ -99,7 +96,7 @@ namespace Project1
                 controller.Update();
             }
 
-            gameState.Update();
+            gameState.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -176,10 +173,5 @@ namespace Project1
             scenePosition.X = gamePosition.X;
             scenePosition.Y = gamePosition.Y + (HUD.Height * renderScale);
         }
-        public void UpdateInGameTime()
-        {
-            base.Update(inGameTime);
-        }
-
     }
 }
