@@ -29,7 +29,7 @@ namespace Project1.Objects
 
         public Rectangle GetRectangle()
         {
-            return new Rectangle((int)Position.X, (int)Position.Y, 24, 32);
+            return new Rectangle((int)Position.X, (int)Position.Y, 16, 16);
         }
     }
 }
