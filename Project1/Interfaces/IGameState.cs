@@ -9,16 +9,13 @@ namespace Project1.Interfaces
     {
 
         public void Update(GameTime gameTime)
-        {
-            
+        { 
         }
         public void Draw(GameTime gameTime)
         {
-
         }
         public void Pause()
         {
-
         }
     }
 }

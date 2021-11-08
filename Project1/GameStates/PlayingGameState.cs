@@ -30,10 +30,7 @@ namespace Project1.GameStates
             spriteBatch.Begin();
             GameObjectManager.Instance.DrawObjects(spriteBatch);
             spriteBatch.End();
-
-            
         }
-
         public void Pause()
         {
             game.gameState = new PausedGameState(game);

@@ -25,7 +25,6 @@ namespace Project1.GameStates
         {
 
         }
-
         public void Pause()
         {
             game.gameState = new PlayingGameState(game);
