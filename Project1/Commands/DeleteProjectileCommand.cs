@@ -1,4 +1,5 @@
-﻿using Project1.Interfaces;
+﻿using Project1.Enemy;
+using Project1.Interfaces;
 
 namespace Project1.Commands
 {
@@ -10,7 +11,7 @@ namespace Project1.Commands
         public DeleteProjectileCommand(IProjectile projectile)
         {
             this.projectile = projectile;
-            if (projectile.ProjectileOwner == Owner.Enemy)
+            if (projectile.Owner is IEnemy)
             {
                 remove = false;
             }

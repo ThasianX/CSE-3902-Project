@@ -28,9 +28,4 @@ namespace Project1
 
         public static int TILE_SIZE = 16;
     }
-
-    public enum Owner
-    {
-        Player, Enemy
-    }
 }

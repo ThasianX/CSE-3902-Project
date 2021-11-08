@@ -22,7 +22,7 @@ namespace Project1.Commands
         public PlayerTakeDamageCommand(IPlayer player, IProjectile projectile)
         {
             this.player = player;
-            if (projectile.ProjectileOwner == Owner.Player)
+            if (projectile.Owner is IPlayer)
             {
                 takeDamage = false;
             }

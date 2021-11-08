@@ -8,7 +8,7 @@ namespace Project1.Objects
     {
         public int moveSpeed;
         public Vector2 Position { get; set; }
-        public Owner ProjectileOwner { get; set; }
+        public IGameObject Owner { get; set; }
         public bool IsMover => true;
         public string CollisionType => "Projectile";
         //Distance Boomerang travels from Link
@@ -17,14 +17,13 @@ namespace Project1.Objects
         private Direction direction;
         private Vector2 deltaVector;
         private Vector2 initialPosition;
-        public Owner owner;
         ISprite boomerangSprite;
 
-        public WoodBoomerang(Vector2 position, Direction direction, int frames, Owner owner)
+        public WoodBoomerang(Vector2 position, Direction direction, int frames, IGameObject owner)
         {
             this.direction = direction; 
             this.Position = position; // position here is link/enemy position + boomerang offset.
-            this.ProjectileOwner = owner;
+            this.Owner = owner;
             this.initialPosition = position;
             this.moveSpeed = (maxRange * 2) / frames;
             boomerangSprite = SpriteFactory.Instance.CreateSprite("woodBoomerang");

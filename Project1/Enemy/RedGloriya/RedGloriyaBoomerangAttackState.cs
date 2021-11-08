@@ -28,22 +28,22 @@ namespace Project1.Enemy
             {
                 case Direction.Up:
                     redGloriya.Sprite = SpriteFactory.Instance.CreateSprite("RedGloriya_walking_up");
-                    this.boomerang = new WoodBoomerang(redGloriya.Position + new Vector2(0, -boomerangOffset), currentDirection, activeFrameCount, Owner.Enemy);
+                    this.boomerang = new WoodBoomerang(redGloriya.Position + new Vector2(0, -boomerangOffset), currentDirection, activeFrameCount, redGloriya);
                     break;
 
                 case Direction.Right:
                     redGloriya.Sprite = SpriteFactory.Instance.CreateSprite("RedGloriya_walking_right");
-                    this.boomerang = new WoodBoomerang(redGloriya.Position + new Vector2(boomerangOffset, 0), currentDirection, activeFrameCount, Owner.Enemy);
+                    this.boomerang = new WoodBoomerang(redGloriya.Position + new Vector2(boomerangOffset, 0), currentDirection, activeFrameCount, redGloriya);
                     break;
 
                 case Direction.Down:
                     redGloriya.Sprite = SpriteFactory.Instance.CreateSprite("RedGloriya_walking_down");
-                    this.boomerang = new WoodBoomerang(redGloriya.Position + new Vector2(0, boomerangOffset), currentDirection, activeFrameCount, Owner.Enemy);
+                    this.boomerang = new WoodBoomerang(redGloriya.Position + new Vector2(0, boomerangOffset), currentDirection, activeFrameCount, redGloriya);
                     break;
 
                 case Direction.Left:
                     redGloriya.Sprite = SpriteFactory.Instance.CreateSprite("RedGloriya_walking_left");
-                    this.boomerang = new WoodBoomerang(redGloriya.Position + new Vector2(-boomerangOffset, 0), currentDirection, activeFrameCount, Owner.Enemy);
+                    this.boomerang = new WoodBoomerang(redGloriya.Position + new Vector2(-boomerangOffset, 0), currentDirection, activeFrameCount, redGloriya);
                     break;
             }
             GameObjectManager.Instance.AddOnNextFrame(boomerang);

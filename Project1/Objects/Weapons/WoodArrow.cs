@@ -8,9 +8,9 @@ namespace Project1.Objects
     {
         public int moveSpeed = 10;
         public Vector2 Position { get; set; }
-        public Owner ProjectileOwner { get; set; }
         public bool IsMover => true;
         public string CollisionType => "Projectile";
+        public IGameObject Owner { get; set; }
 
         // time before the arrow deletes itself (seconds)
         private float activeTime = 5, counter = 0;
@@ -19,11 +19,11 @@ namespace Project1.Objects
 
         ISprite arrowSprite;
 
-        public WoodArrow(Vector2 position, Direction direction, Owner owner)
+        public WoodArrow(Vector2 position, Direction direction, IGameObject owner)
         {
             this.direction = direction;
             this.Position = position;
-            this.ProjectileOwner = owner;
+            this.Owner = owner;
             //this.moveSpeed = maxRange / frames;
             switch (this.direction)
             {
