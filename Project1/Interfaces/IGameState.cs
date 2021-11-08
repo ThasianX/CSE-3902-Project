@@ -8,10 +8,10 @@ namespace Project1.Interfaces
     public interface IGameState
     {
 
-        public void Update(GameTime gameTime)
+        public void Update()
         { 
         }
-        public void Draw(GameTime gameTime)
+        public void Draw(SpriteBatch spriteBatch)
         {
         }
         public void Pause()

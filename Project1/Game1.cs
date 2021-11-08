@@ -99,7 +99,7 @@ namespace Project1
                 controller.Update();
             }
 
-            gameState.Update(gameTime);
+            gameState.Update();
 
             base.Update(gameTime);
         }
@@ -138,7 +138,7 @@ namespace Project1
             GraphicsDevice.Clear(Color.Black);
 
             spriteBatch.Begin(samplerState: SamplerState.PointClamp);
-            GameObjectManager.Instance.DrawObjects(spriteBatch);
+            gameState.Draw(spriteBatch);
             spriteBatch.End();
 
             // Draw the HUD area to the HUD render target
@@ -176,5 +176,10 @@ namespace Project1
             scenePosition.X = gamePosition.X;
             scenePosition.Y = gamePosition.Y + (HUD.Height * renderScale);
         }
+        public void UpdateInGameTime()
+        {
+            base.Update(inGameTime);
+        }
+
     }
 }

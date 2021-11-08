@@ -11,13 +11,11 @@ namespace Project1.GameStates
     class PlayingGameState : IGameState
     {
         public Game1 game;
-        private SpriteBatch spriteBatch;
         public PlayingGameState(Game1 game)
         {
             this.game = game;
-            spriteBatch = new SpriteBatch(game.GraphicsDevice);
         }
-        public void Update(GameTime gametime)
+        public void Update()
         {
             GameObjectManager.Instance.UpdateObjects(game.inGameTime);
 
@@ -25,11 +23,9 @@ namespace Project1.GameStates
 
             game.UpdateInGameTime();
         }
-        public void Draw(GameTime gametime)
+        public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Begin();
             GameObjectManager.Instance.DrawObjects(spriteBatch);
-            spriteBatch.End();
         }
         public void Pause()
         {

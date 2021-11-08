@@ -11,17 +11,15 @@ namespace Project1.GameStates
     class PausedGameState : IGameState
     {
         public Game1 game;
-        private SpriteBatch spriteBatch;
         public PausedGameState(Game1 game)
         {
             this.game = game;
-            spriteBatch = new SpriteBatch(game.GraphicsDevice);
         }
         public void Update()
         {
 
         }
-        public void Draw(GameTime gametime)
+        public void Draw(SpriteBatch spriteBatch)
         {
 
         }
