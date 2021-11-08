@@ -136,7 +136,7 @@ namespace Project1
         public Rectangle GetRectangle()
         {
             Dimensions dimensions = Sprite.GetDimensions();
-            return new Rectangle((int)Position.X, (int)Position.Y, dimensions.width, dimensions.height);
+            return new Rectangle((int)Position.X, (int)Position.Y + 8, dimensions.width, dimensions.height - 8);
         }
 
         public void CollectItem(IInventoryItem collectible)
