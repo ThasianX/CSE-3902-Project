@@ -49,6 +49,7 @@ namespace Project1
 			onPressMappings.Add(Keys.D3, new PlayerBombAttackCommand(player));
 
             onPressMappings.Add(Keys.I, new PlayerShowCollectionCommand(player));
+			
 
 			// COMMANDS THAT EXECUTE ON RELEASE
 
@@ -63,7 +64,8 @@ namespace Project1
 			onPressMappings.Add(Keys.D0, new QuitCommand(myGame));
 			onReleaseMappings.Add(Keys.Q, new QuitCommand(myGame));
 			onReleaseMappings.Add(Keys.R, new ResetCommand(myGame));
-        }
+			onReleaseMappings.Add(Keys.Tab, new PauseCommand(myGame));
+		}
 
 		public void Update()
 		{

@@ -6,12 +6,15 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using Project1.Controllers;
 using Project1.Interfaces;
+using Project1.GameStates;
 using Project1.Levels;
 
 namespace Project1
 {
     public class Game1 : Game
     {
+        public IGameState gameState;
+
         private static GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
         private Song dungeonSong;
@@ -50,12 +53,14 @@ namespace Project1
             HUD = new RenderTarget2D(graphics.GraphicsDevice, 256, 64);
             scene = new RenderTarget2D(graphics.GraphicsDevice, 256, 176);
             OnWindowResize(this, null);
-            
+
             controllerList = new ArrayList
             {
                 new KeyboardController(this),
                 new MouseController(this)
             };
+
+            gameState = new PlayingGameState(this);
 
             base.Initialize();
         }
@@ -78,7 +83,7 @@ namespace Project1
             dungeonSong = Content.Load<Song>("DungeonTheme");
             MediaPlayer.IsRepeating = true;
             MediaPlayer.Play(dungeonSong);
-
+            
             // Visualize rectangle for testing
             whiteRectangle = new Texture2D(GraphicsDevice, 1, 1);
             whiteRectangle.SetData(new[] { Color.White });
@@ -100,9 +105,8 @@ namespace Project1
                 controller.Update();
             }
 
-            GameObjectManager.Instance.UpdateObjects(gameTime);
+            gameState.Update(gameTime);
 
-            CollisionManager.Instance.Update();
             base.Update(gameTime);
         }
 
@@ -140,7 +144,7 @@ namespace Project1
             GraphicsDevice.Clear(Color.Black);
 
             spriteBatch.Begin(samplerState: SamplerState.PointClamp);
-            GameObjectManager.Instance.DrawObjects(spriteBatch);
+            gameState.Draw(spriteBatch);
             spriteBatch.End();
 
             // Draw the HUD area to the HUD render target
