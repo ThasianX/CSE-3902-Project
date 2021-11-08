@@ -75,7 +75,7 @@ namespace Project1.PlayerStates
 
         public void Update(GameTime gameTime)
         {
-            // End the attack after reacing its active frame count
+            // End the attack after reaching its active frame count
             if (counter++ >= activeFrameCount)
             {
                 if (player.hasAnyMoveInput())

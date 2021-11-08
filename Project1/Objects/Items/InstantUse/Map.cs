@@ -10,7 +10,7 @@ namespace Project1.Objects
 
         ISprite sprite;
         public bool IsMover => false;
-        public string CollisionType => "Item";
+        public string CollisionType => "InstantUseItem";
 
         public Map(Vector2 position)
         {
@@ -30,7 +30,8 @@ namespace Project1.Objects
 
         public void InstantUseItem(IPlayer player)
         {
-            // To be implement 
+            // To be implemented
+            SoundManager.Instance.PlaySound("GetItem");
         }
 
         public Rectangle GetRectangle()

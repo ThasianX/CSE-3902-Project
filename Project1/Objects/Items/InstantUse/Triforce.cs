@@ -4,7 +4,7 @@ using Project1.Interfaces;
 
 namespace Project1.Objects
 {
-    public class Triforce : IGameObject, ICollidable
+    public class Triforce : IInstantUseItem, ICollidable
     {
         public Vector2 Position { get; set; }
 
@@ -30,6 +30,7 @@ namespace Project1.Objects
         public void InstantUseItem(IPlayer player)
         {
             //Win the game.
+            SoundManager.Instance.PlaySound("Fanfare");
         }
 
         public Rectangle GetRectangle()
