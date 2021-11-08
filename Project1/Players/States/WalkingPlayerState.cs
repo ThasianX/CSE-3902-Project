@@ -93,7 +93,7 @@ namespace Project1.PlayerStates
             player.Move(movement);
 
             // Switch to still state if there is no movement input
-            if (player.hasAnyMoveInput())
+            if (!player.hasAnyMoveInput())
                 player.State = new StillPlayerState(player);
         }
     }

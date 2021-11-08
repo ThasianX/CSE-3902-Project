@@ -52,10 +52,10 @@ namespace Project1
 
         public bool hasAnyMoveInput()
         {
-            return (!ActiveMoveInputs[Direction.Up]
-                && !ActiveMoveInputs[Direction.Right]
-                && !ActiveMoveInputs[Direction.Down]
-                && !ActiveMoveInputs[Direction.Left]);
+            return (ActiveMoveInputs[Direction.Up]
+                || ActiveMoveInputs[Direction.Right]
+                || ActiveMoveInputs[Direction.Down]
+                || ActiveMoveInputs[Direction.Left]);
         }
 
         // Redirect to state behaviors
