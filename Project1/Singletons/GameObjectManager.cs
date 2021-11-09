@@ -28,6 +28,14 @@ namespace Project1
             this.gameObjects = new Collection<IGameObject>();
         }
 
+        public void ClearData()
+        {
+            instance = new GameObjectManager();
+            gameObjects.Clear();
+            removeBuffer.Clear();
+            addBuffer.Clear();
+        }
+
         public bool HasPlayer() {
             return Instance.GetObjectsOfType<IPlayer>().Count == 1;
         }
@@ -58,7 +66,10 @@ namespace Project1
         {
             foreach (IGameObject gameObject in addBuffer)
             {
-                gameObjects.Add(gameObject);
+                if (!gameObjects.Contains(gameObject))
+                {
+                    gameObjects.Add(gameObject);
+                }
             }
             addBuffer.Clear();
         }
@@ -69,7 +80,7 @@ namespace Project1
            {
                gameObjects.Remove(gameObject);
            }
-            removeBuffer.Clear();
+           removeBuffer.Clear();
         }
 
         public void AddImmediate(IGameObject obj)
@@ -84,7 +95,10 @@ namespace Project1
 
         public void AddOnNextFrame(IGameObject obj)
         {
-            addBuffer.Add(obj);
+            if (!addBuffer.Contains(obj))
+            {
+                addBuffer.Add(obj);
+            }
         }
 
         public void RemoveOnNextFrame(IGameObject obj)

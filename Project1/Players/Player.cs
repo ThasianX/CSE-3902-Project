@@ -24,6 +24,7 @@ namespace Project1
         public bool IsMover => true;
         public string CollisionType => "Player";
         public InventoryManager playerInventory;
+        public bool Decorated { get; set; }
 
         public Player(Vector2 position)
         {
@@ -42,6 +43,7 @@ namespace Project1
                 { Direction.Left, false }
             };
             Speed = 1f;
+            Decorated = false;
         }
 
         // Does not appear in IPlayerState (helper method)
@@ -119,13 +121,21 @@ namespace Project1
             spriteBatch.Draw(Game1.whiteRectangle, new Rectangle(rectangle.X, rectangle.Y + rectangle.Height, rectangle.Width + lineWidth, lineWidth), Color.White);
         }
 
+        public void KnockBack(Direction damagedDir)
+        {
+            State = new PlayerKnockBackState(this, damagedDir);
+        }
 
         public void TakeDamage(int damage)
         {
             healthState.TakeDamage(damage);
             // replace basePlayer with damagedPlayer
-            GameObjectManager.Instance.AddOnNextFrame(new DamagedPlayer(this));
-            GameObjectManager.Instance.RemoveOnNextFrame(this);
+            if (!Decorated)
+            {
+                Decorated = true;
+                GameObjectManager.Instance.AddOnNextFrame(new DamagedPlayer(this));
+                GameObjectManager.Instance.RemoveOnNextFrame(this);
+            }
         }
 
         public void Heal(int heal)

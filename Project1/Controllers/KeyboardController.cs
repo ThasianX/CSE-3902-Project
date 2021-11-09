@@ -27,6 +27,12 @@ namespace Project1
 			this.player = player;
         }
 
+        public void ClearData()
+        {
+            onPressMappings.Clear();
+            onReleaseMappings.Clear();
+        }
+
 		public void RegisterCommands()
 		{
 			// COMMANDS THAT EXECUTE ON PRESS =============================================

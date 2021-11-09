@@ -4,12 +4,13 @@ using Project1.Interfaces;
 
 namespace Project1.Objects
 {
-    public class WoodArrow : IGameObject, ICollidable
+    public class WoodArrow : IProjectile, ICollidable
     {
         public int moveSpeed = 10;
         public Vector2 Position { get; set; }
         public bool IsMover => true;
         public string CollisionType => "Projectile";
+        public IGameObject Owner { get; set; }
 
         // time before the arrow deletes itself (seconds)
         private float activeTime = 5, counter = 0;
@@ -18,10 +19,11 @@ namespace Project1.Objects
 
         ISprite arrowSprite;
 
-        public WoodArrow(Vector2 position, Direction direction)
+        public WoodArrow(Vector2 position, Direction direction, IGameObject owner)
         {
             this.direction = direction;
             this.Position = position;
+            this.Owner = owner;
             //this.moveSpeed = maxRange / frames;
             switch (this.direction)
             {
@@ -54,19 +56,10 @@ namespace Project1.Objects
         public void Draw(SpriteBatch spriteBatch)
         {
             arrowSprite.Draw(spriteBatch, this.Position);
-
-            // Visualize rectangle for testing
-            Rectangle rectangle = GetRectangle();
-            int lineWidth = 1;
-            spriteBatch.Draw(Game1.whiteRectangle, new Rectangle(rectangle.X, rectangle.Y, lineWidth, rectangle.Height + lineWidth), Color.Black);
-            spriteBatch.Draw(Game1.whiteRectangle, new Rectangle(rectangle.X, rectangle.Y, rectangle.Width + lineWidth, lineWidth), Color.Black);
-            spriteBatch.Draw(Game1.whiteRectangle, new Rectangle(rectangle.X + rectangle.Width, rectangle.Y, lineWidth, rectangle.Height + lineWidth), Color.Black);
-            spriteBatch.Draw(Game1.whiteRectangle, new Rectangle(rectangle.X, rectangle.Y + rectangle.Height, rectangle.Width + lineWidth, lineWidth), Color.Black);
         }
 
         public void Update(GameTime gameTime)
         {
-            
             this.Position += this.deltaVector;
 
             if (counter >= activeTime)

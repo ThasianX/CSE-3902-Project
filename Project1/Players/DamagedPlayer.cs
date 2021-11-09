@@ -9,8 +9,14 @@ namespace Project1
     public class DamagedPlayer : IPlayer, ICollidable
     {
         public IPlayer basePlayer;
-        public string CollisionType => "Player";
+        public string CollisionType => "DamagedPlayer";
         public bool IsMover => true;
+
+        public bool Decorated
+        {
+            get { return basePlayer.Decorated; }
+            set { basePlayer.Decorated = value; }
+        }
         public ISprite Sprite
         {
             get { return basePlayer.Sprite; }
@@ -69,6 +75,7 @@ namespace Project1
 
         public void RemoveDecorator()
         {
+            basePlayer.Decorated = false;
             GameObjectManager.Instance.RemoveOnNextFrame(this);
             GameObjectManager.Instance.AddOnNextFrame(basePlayer);
         }
@@ -102,5 +109,6 @@ namespace Project1
         public void Move(Vector2 delta) { basePlayer.Move(delta); }
         public void Heal(int heal) { basePlayer.Heal(heal); }
         public void InstantUseItem(IInstantUseItem collectible) { basePlayer.InstantUseItem(collectible); }
+        public void KnockBack(Direction damagedDir) { basePlayer.KnockBack(damagedDir); }
     }
 }

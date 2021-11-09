@@ -55,14 +55,6 @@ namespace Project1.Objects
         public void Draw(SpriteBatch spriteBatch)
         {
             swordSprite.Draw(spriteBatch, this.Position);
-
-            // Visualize rectangle for testing
-            Rectangle rectangle = GetRectangle();
-            int lineWidth = 1;
-            spriteBatch.Draw(Game1.whiteRectangle, new Rectangle(rectangle.X, rectangle.Y, lineWidth, rectangle.Height + lineWidth), Color.Black);
-            spriteBatch.Draw(Game1.whiteRectangle, new Rectangle(rectangle.X, rectangle.Y, rectangle.Width + lineWidth, lineWidth), Color.Black);
-            spriteBatch.Draw(Game1.whiteRectangle, new Rectangle(rectangle.X + rectangle.Width, rectangle.Y, lineWidth, rectangle.Height + lineWidth), Color.Black);
-            spriteBatch.Draw(Game1.whiteRectangle, new Rectangle(rectangle.X, rectangle.Y + rectangle.Height, rectangle.Width + lineWidth, lineWidth), Color.Black);
         }
 
         public void Update(GameTime gameTime)

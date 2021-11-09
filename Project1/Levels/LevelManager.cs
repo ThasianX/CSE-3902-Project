@@ -6,6 +6,7 @@ using Project1.Objects;
 using Project1.NPC;
 using System.Collections.ObjectModel;
 using System.Xml;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Project1.Levels
 {
@@ -70,6 +71,11 @@ namespace Project1.Levels
             GetCurrentRoom().AddObject(player);
             // =========================================================================================
             GetCurrentRoom().Activate();
+        }
+
+        public void ClearData()
+        {
+            instance = new LevelManager(1);
         }
 
         public void LoadLevel() {

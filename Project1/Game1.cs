@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Diagnostics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -61,8 +62,20 @@ namespace Project1
             };
 
             gameState = new PlayingGameState(this);
-
             base.Initialize();
+        }
+
+        void Setup()
+        {
+            GameObjectManager.Instance.ClearData();
+            LevelManager.Instance.ClearData();
+            LevelManager.Instance.LoadLevel();
+            foreach (IController controller in controllerList)
+            {
+                controller.ClearData();
+                controller.RegisterPlayer(GameObjectManager.Instance.GetPlayer());
+                controller.RegisterCommands();
+            }
         }
 
         protected override void LoadContent()
@@ -74,9 +87,8 @@ namespace Project1
             SpriteFactory.Instance.LoadSpriteData("Data/sprite_data.xml");
             SpriteFactory.Instance.loadSpriteDictionary("Data/sprite_dictionary.xml");
 
+            Setup();
             SoundManager.Instance.LoadAllSounds(Content);
-
-            LevelManager.Instance.LoadLevel();
             CollisionHandler.Instance.LoadResponses("Data/collision_response.xml");
 
             LoadMusic();
@@ -84,12 +96,6 @@ namespace Project1
             // Visualize rectangle for testing
             whiteRectangle = new Texture2D(GraphicsDevice, 1, 1);
             whiteRectangle.SetData(new[] { Color.White });
-
-            foreach (IController controller in controllerList)
-            {
-                controller.RegisterPlayer(GameObjectManager.Instance.GetPlayer());
-                controller.RegisterCommands();
-            }
         }
 
         protected override void Update(GameTime gameTime)
@@ -103,7 +109,6 @@ namespace Project1
             }
 
             gameState.Update(gameTime);
-
             base.Update(gameTime);
         }
 
@@ -131,7 +136,7 @@ namespace Project1
 
         public void Reset()
         {
-            // TODO
+            Setup();
         }
 
         private void RenderScene()

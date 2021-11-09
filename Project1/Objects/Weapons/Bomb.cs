@@ -7,10 +7,8 @@ namespace Project1.Objects
     public class Bomb : IGameObject, ICollidable
     {
         public Vector2 Position { get; set; }
-
         ISprite sprite;
         public bool IsMover => false;
-
         //Unsure what collision type the placed bomb should have.
         public string CollisionType => "Weapon";
         private double timeCounter = 0;

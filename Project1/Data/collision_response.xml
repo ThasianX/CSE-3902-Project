@@ -15,6 +15,10 @@
         <arg type="Project1.Player">TARGET</arg>
         <arg type="System.Int32">5</arg>
       </command>
+      <command type="Project1.Commands.PlayerKnockBackCommand">
+        <arg type="Project1.Player">TARGET</arg>
+        <arg type="Project1.Collision">COLLISION</arg>
+      </command>
     </Enemy>
     <Block>
       <command type="Project1.Commands.MoveInBoundsCommand">
@@ -34,7 +38,36 @@
     <Weapon>
       
     </Weapon>
+    <Projectile>
+      <command type="Project1.Commands.PlayerTakeDamageCommand">
+        <arg type="Project1.Player">TARGET</arg>
+        <arg type="Project1.Interfaces.IProjectile">SOURCE</arg>
+      </command>
+      <command type="Project1.Commands.DeleteGameObjectCommand">
+        <arg type="Project1.Interfaces.IGameObject">SOURCE</arg>
+      </command>
+    </Projectile>
+    <Boomerang>
+      <command type="Project1.Commands.PlayerTakeDamageCommand">
+        <arg type="Project1.Player">TARGET</arg>
+        <arg type="Project1.Interfaces.IProjectile">SOURCE</arg>
+      </command>
+    </Boomerang>
   </Player>
+
+  <DamagedPlayer>
+    <Block>
+      <command type="Project1.Commands.MoveInBoundsCommand">
+        <arg type="Project1.Collision">COLLISION</arg>
+      </command>
+    </Block>
+    <Item>
+      <command type="Project1.Commands.PlayerCollectItemCommand">
+        <arg type="Project1.Collision">COLLISION</arg>
+      </command>
+    </Item>
+  </DamagedPlayer>
+
   <Enemy>
     <Weapon>
       <command type="Project1.Commands.EnemyTakeDamageCommand">
@@ -54,12 +87,20 @@
     <Projectile>
       <command type="Project1.Commands.EnemyTakeDamageCommand">
         <arg type="Project1.Enemy.IEnemy">TARGET</arg>
+        <arg type="Project1.Interfaces.IProjectile">SOURCE</arg>
       </command>
-      <command type="Project1.Commands.DeleteGameObjectCommand">
-        <arg type="Project1.Interfaces.IGameObject">SOURCE</arg>
+      <command type="Project1.Commands.DeleteProjectileByOwnerCommand">
+        <arg type="Project1.Interfaces.IProjectile">SOURCE</arg>
       </command>
     </Projectile>
+    <Boomerang>
+      <command type="Project1.Commands.EnemyTakeDamageCommand">
+        <arg type="Project1.Enemy.IEnemy">TARGET</arg>
+        <arg type="Project1.Interfaces.IProjectile">SOURCE</arg>
+      </command>
+    </Boomerang>
   </Enemy>
+
   <Weapon>
     <Enemy>
       <command type="Project1.Commands.EnemyTakeDamageCommand">
@@ -72,6 +113,7 @@
       
     </Block>
   </Weapon>
+
   <Projectile>
     <Block>
       <command type="Project1.Commands.DeleteGameObjectCommand">
@@ -82,4 +124,11 @@
       
     </Item>
   </Projectile>
+
+  <Boomerang>
+    <Enemy>
+
+    </Enemy>
+
+  </Boomerang>
 </collision_response>
