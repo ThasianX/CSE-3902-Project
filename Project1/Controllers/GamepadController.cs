@@ -15,7 +15,11 @@ namespace Project1
 			myPlayer = player;
 		}
 
-        public void RegisterPlayer(IPlayer player) 
+        public void ClearData()
+        {
+        }
+
+		public void RegisterPlayer(IPlayer player) 
 		{
 		}
 
@@ -44,5 +48,5 @@ namespace Project1
 			if (newState.IsButtonDown(Buttons.DPadLeft))
 				new PlayerFaceLeftCommand(myPlayer).Execute();
 		}
-	}
+    }
 }

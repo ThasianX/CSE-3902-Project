@@ -14,6 +14,10 @@ namespace Project1.Controllers
 			myGame = game;
 		}
 
+        public void ClearData()
+        {
+        }
+
 		public void RegisterCommands() 
 		{
 		}

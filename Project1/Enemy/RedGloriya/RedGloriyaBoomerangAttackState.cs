@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
+using Project1.Interfaces;
 using Project1.Objects;
 
 namespace Project1.Enemy
@@ -10,14 +11,12 @@ namespace Project1.Enemy
         // The direction passed in
         private Direction direction;
         // The WoodBoomerang instance used for Update and Draw
-        private WoodBoomerang boomerang;
+        private IProjectile boomerang;
         // Not sure, need to ask Keenan !!
         private int boomerangOffset = 8;
-        // The length of animation frame boomerang will Update, also Not sure, need to ask Keenan !!
-        private int activeFrameCount = 50;
         private int choice;
-        private int timer;
         private Random rand = new Random();
+        private float activeTime = 0.1f, counter = 0f;
 
         public RedGloriyaBoomerangAttackState(IEnemy redGloriya, Direction currentDirection)
         {
@@ -27,22 +26,22 @@ namespace Project1.Enemy
             {
                 case Direction.Up:
                     redGloriya.Sprite = SpriteFactory.Instance.CreateSprite("RedGloriya_walking_up");
-                    this.boomerang = new WoodBoomerang(redGloriya.Position + new Vector2(0, -boomerangOffset), currentDirection, activeFrameCount);
+                    this.boomerang = new WoodBoomerang(redGloriya.Position + new Vector2(0, -boomerangOffset), currentDirection, redGloriya);
                     break;
 
                 case Direction.Right:
                     redGloriya.Sprite = SpriteFactory.Instance.CreateSprite("RedGloriya_walking_right");
-                    this.boomerang = new WoodBoomerang(redGloriya.Position + new Vector2(boomerangOffset, 0), currentDirection, activeFrameCount);
+                    this.boomerang = new WoodBoomerang(redGloriya.Position + new Vector2(boomerangOffset, 0), currentDirection, redGloriya);
                     break;
 
                 case Direction.Down:
                     redGloriya.Sprite = SpriteFactory.Instance.CreateSprite("RedGloriya_walking_down");
-                    this.boomerang = new WoodBoomerang(redGloriya.Position + new Vector2(0, boomerangOffset), currentDirection, activeFrameCount);
+                    this.boomerang = new WoodBoomerang(redGloriya.Position + new Vector2(0, boomerangOffset), currentDirection, redGloriya);
                     break;
 
                 case Direction.Left:
                     redGloriya.Sprite = SpriteFactory.Instance.CreateSprite("RedGloriya_walking_left");
-                    this.boomerang = new WoodBoomerang(redGloriya.Position + new Vector2(-boomerangOffset, 0), currentDirection, activeFrameCount);
+                    this.boomerang = new WoodBoomerang(redGloriya.Position + new Vector2(-boomerangOffset, 0), currentDirection, redGloriya);
                     break;
             }
             GameObjectManager.Instance.AddOnNextFrame(boomerang);
@@ -70,11 +69,12 @@ namespace Project1.Enemy
 
         public void Update(GameTime gameTime)
         {
-            // When finish BoomerangAttack, change a random direction
-            if (timer++ == activeFrameCount)
+            // End the attack after reacing its active frame count
+            if (counter >= activeTime)
             {
                 ChangeDirection();
             }
+            counter += (float)gameTime.ElapsedGameTime.TotalSeconds;
         }
     }
 }

@@ -49,6 +49,12 @@
 /processorParam:TextureFormat=Color
 /build:dungeon_sheet.png
 
+#begin DungeonTheme.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:DungeonTheme.mp3
+
 #begin enemies.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -115,4 +121,172 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:smb_enemies_sheet.png
+
+#begin SoundEffects/Arrow.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:SoundEffects/Arrow.wav
+
+#begin SoundEffects/BombBlow.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:SoundEffects/BombBlow.wav
+
+#begin SoundEffects/BombDrop.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:SoundEffects/BombDrop.wav
+
+#begin SoundEffects/Boomerang.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:SoundEffects/Boomerang.wav
+
+#begin SoundEffects/Candle.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:SoundEffects/Candle.wav
+
+#begin SoundEffects/ClimbStairs.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:SoundEffects/ClimbStairs.wav
+
+#begin SoundEffects/DoorUnlock.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:SoundEffects/DoorUnlock.wav
+
+#begin SoundEffects/EnemyDie.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:SoundEffects/EnemyDie.wav
+
+#begin SoundEffects/EnemyHit.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:SoundEffects/EnemyHit.wav
+
+#begin SoundEffects/Fanfare.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:SoundEffects/Fanfare.wav
+
+#begin SoundEffects/GetHeart.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:SoundEffects/GetHeart.wav
+
+#begin SoundEffects/GetItem.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:SoundEffects/GetItem.wav
+
+#begin SoundEffects/GetRupee.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:SoundEffects/GetRupee.wav
+
+#begin SoundEffects/KeyAppear.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:SoundEffects/KeyAppear.wav
+
+#begin SoundEffects/LinkDie.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:SoundEffects/LinkDie.wav
+
+#begin SoundEffects/LinkHurt.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:SoundEffects/LinkHurt.wav
+
+#begin SoundEffects/LowHealth.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:SoundEffects/LowHealth.wav
+
+#begin SoundEffects/MagicalWeapon.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:SoundEffects/MagicalWeapon.wav
+
+#begin SoundEffects/Recorder.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:SoundEffects/Recorder.wav
+
+#begin SoundEffects/RefillLoop.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:SoundEffects/RefillLoop.wav
+
+#begin SoundEffects/SecretFound.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:SoundEffects/SecretFound.wav
+
+#begin SoundEffects/ShieldDeflect.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:SoundEffects/ShieldDeflect.wav
+
+#begin SoundEffects/Shore.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:SoundEffects/Shore.wav
+
+#begin SoundEffects/SwordCombined.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:SoundEffects/SwordCombined.wav
+
+#begin SoundEffects/SwordShoot.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:SoundEffects/SwordShoot.wav
+
+#begin SoundEffects/SwordSlash.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:SoundEffects/SwordSlash.wav
+
+#begin SoundEffects/Text.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:SoundEffects/Text.wav
+
+#begin SoundEffects/TextSlow.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:SoundEffects/TextSlow.wav
 

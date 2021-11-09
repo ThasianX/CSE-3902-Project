@@ -4,28 +4,32 @@ using Project1.Interfaces;
 
 namespace Project1.Objects
 {
-    public class WoodBoomerang : IGameObject, ICollidable
+    public class WoodBoomerang : IProjectile, ICollidable
     {
         public int moveSpeed;
+        private int frames;
         public Vector2 Position { get; set; }
+        public IGameObject Owner { get; set; }
         public bool IsMover => true;
-        public string CollisionType => "Weapon";
-
+        public string CollisionType => "Boomerang";
         //Distance Boomerang travels from Link
-        private int maxRange = 150;
-        private bool inRange = true;
+        private int maxRange = 75;
+        private bool flyBack = false;
         private Direction direction;
         private Vector2 deltaVector;
         private Vector2 initialPosition;
-
         ISprite boomerangSprite;
+        private Vector2 directionToOwner;
+        private float epsilon;
 
-        public WoodBoomerang(Vector2 position, Direction direction, int frames)
+        public WoodBoomerang(Vector2 position, Direction direction, IGameObject owner)
         {
             this.direction = direction; 
-            this.Position = position; // position here is link/enemy position + boomerang offset.
+            this.Position = position;
+            this.Owner = owner;
             this.initialPosition = position;
-            this.moveSpeed = (maxRange * 2) / frames;
+            this.moveSpeed = 3;
+            epsilon = 1.5f;
             boomerangSprite = SpriteFactory.Instance.CreateSprite("woodBoomerang");
 
             switch (this.direction)
@@ -45,70 +49,42 @@ namespace Project1.Objects
                 case Direction.Left:
                     this.deltaVector = new Vector2(-moveSpeed, 0);
                     break;
-
-                default:
-                    break;
             }
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             boomerangSprite.Draw(spriteBatch, this.Position);
-
-            // Visualize rectangle for testing
-            Rectangle rectangle = GetRectangle();
-            int lineWidth = 1;
-            spriteBatch.Draw(Game1.whiteRectangle, new Rectangle(rectangle.X, rectangle.Y, lineWidth, rectangle.Height + lineWidth), Color.Black);
-            spriteBatch.Draw(Game1.whiteRectangle, new Rectangle(rectangle.X, rectangle.Y, rectangle.Width + lineWidth, lineWidth), Color.Black);
-            spriteBatch.Draw(Game1.whiteRectangle, new Rectangle(rectangle.X + rectangle.Width, rectangle.Y, lineWidth, rectangle.Height + lineWidth), Color.Black);
-            spriteBatch.Draw(Game1.whiteRectangle, new Rectangle(rectangle.X, rectangle.Y + rectangle.Height, rectangle.Width + lineWidth, lineWidth), Color.Black);
         }
 
         public void Update(GameTime gameTime)
         {
             //Checks if sprite has achieved max distance before returning to link
             checkRange();
-            CheckPosition();
-            if (this.inRange)
+            if (!flyBack)
             {
                 this.Position += this.deltaVector;
             }
             else
             {
-                this.Position -= this.deltaVector;
+                directionToOwner = Owner.Position - Position;
+                directionToOwner.Normalize();
+                this.Position += directionToOwner * moveSpeed;
+                CheckDeletion();
             }
+            if (frames % 5 == 0)
+            {
+                SoundManager.Instance.PlaySound("Boomerang");
+            }
+            frames++;
             boomerangSprite.Update(gameTime);
         }
-        // Check Boomerang position, if it surpass player position + boomerang offset (initialPosition), delete it.
-        public void CheckPosition()
+
+        private void CheckDeletion()
         {
-            switch (this.direction)
+            if (Vector2.Distance(Owner.Position, Position) <= epsilon)
             {
-                case Direction.Up:
-                    if (this.Position.Y > initialPosition.Y)
-                    {
-                        GameObjectManager.Instance.RemoveOnNextFrame(this);
-                    } 
-                    break;
-                case Direction.Down:
-                    if (this.Position.Y < initialPosition.Y)
-                    {
-                        GameObjectManager.Instance.RemoveOnNextFrame(this);
-                    }
-                    break;
-                case Direction.Left:
-                    if (this.Position.X > initialPosition.X)
-                    {
-                        GameObjectManager.Instance.RemoveOnNextFrame(this);
-                    }
-                    break;
-                case Direction.Right:
-                    if (this.Position.X < initialPosition.X)
-                    {
-                        GameObjectManager.Instance.RemoveOnNextFrame(this);
-                    }
-                    break;
-                default: break;
+                GameObjectManager.Instance.RemoveOnNextFrame(this);
             }
         }
 
@@ -117,27 +93,27 @@ namespace Project1.Objects
             switch (this.direction)
             {
                 case Direction.Up:
-                    if (this.Position.Y <= this.initialPosition.Y - maxRange)
+                    if (Position.Y <= initialPosition.Y - maxRange)
                     {
-                        this.inRange = false;
+                       flyBack = true;
                     }
                     break;
                 case Direction.Right:
-                    if (this.Position.X >= this.initialPosition.X + this.maxRange)
+                    if (Position.X >= initialPosition.X + maxRange)
                     {
-                        this.inRange = false;
+                        flyBack = true;
                     }
                     break;
                 case Direction.Down:
-                    if(this.Position.Y >= this.initialPosition.Y + this.maxRange)
+                    if(Position.Y >= initialPosition.Y + maxRange)
                     {
-                        this.inRange = false;
+                        flyBack = true;
                     }
                     break;
                 case Direction.Left:
-                    if (this.Position.X <= this.initialPosition.X - this.maxRange)
+                    if (Position.X <= initialPosition.X - maxRange)
                     {
-                        this.inRange = false;
+                        flyBack = true;
                     }
                     break;
                 default:
