@@ -4,13 +4,13 @@ using Project1.PlayerStates;
 
 namespace Project1.Commands
 {
-    class KnockBackCommand : ICommand
+    class OldKnockBackCommand : ICommand
     {
         private IGameObject target;
         private Direction damagedSide;
         private Vector2 KnockBackAmount;
 
-        public KnockBackCommand(Collision col)
+        public OldKnockBackCommand(Collision col)
         {
             this.target = col.target as IGameObject;
             damagedSide = col.side;

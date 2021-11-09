@@ -48,9 +48,6 @@ namespace Project1.Objects
                 case Direction.Left:
                     this.deltaVector = new Vector2(-moveSpeed, 0);
                     break;
-
-                default:
-                    break;
             }
         }
 

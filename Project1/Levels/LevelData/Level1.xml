@@ -81,14 +81,6 @@
       </position>
     </object>
     <object>
-      <type>Player</type>
-      <name>Link</name>
-      <position>
-        <x>4</x>
-        <y>5</y>
-      </position>
-    </object>
-    <object>
       <type>Enemy</type>
       <name>Stalfos</name>
       <position>
@@ -190,6 +182,14 @@
       <position>
         <x>8</x>
         <y>2</y>
+      </position>
+    </object>
+    <object>
+      <type>Player</type>
+      <name>Link</name>
+      <position>
+        <x>4</x>
+        <y>5</y>
       </position>
     </object>
   </room>

@@ -108,5 +108,6 @@ namespace Project1
         public void Move(Vector2 delta) { basePlayer.Move(delta); }
         public void Heal(int heal) { basePlayer.Heal(heal); }
         public void InstantUseItem(IInstantUseItem collectible) { basePlayer.InstantUseItem(collectible); }
+        public void KnockBack(Direction damagedDir) { basePlayer.KnockBack(damagedDir); }
     }
 }

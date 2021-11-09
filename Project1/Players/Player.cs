@@ -121,6 +121,10 @@ namespace Project1
             spriteBatch.Draw(Game1.whiteRectangle, new Rectangle(rectangle.X, rectangle.Y + rectangle.Height, rectangle.Width + lineWidth, lineWidth), Color.White);
         }
 
+        public void KnockBack(Direction damagedDir)
+        {
+            State = new PlayerKnockBackState(this, damagedDir);
+        }
 
         public void TakeDamage(int damage)
         {
