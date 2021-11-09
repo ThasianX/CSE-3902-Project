@@ -184,7 +184,7 @@
         <y>2</y>
       </position>
     </object>
-    <object>
+	<object>
       <type>Player</type>
       <name>Link</name>
       <position>

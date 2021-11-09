@@ -49,6 +49,7 @@ namespace Project1.Objects
                 default:
                     break;
             }
+            SoundManager.Instance.PlaySound("SwordSlash");
         }
 
         public void Draw(SpriteBatch spriteBatch)

@@ -50,6 +50,7 @@ namespace Project1.Objects
                 default:
                     break;
             }
+            SoundManager.Instance.PlaySound("Arrow");
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -70,7 +71,23 @@ namespace Project1.Objects
 
         public Rectangle GetRectangle()
         {
-            return new Rectangle((int)Position.X, (int)Position.Y, 16, 16);
+            switch (this.direction)
+            {
+                case Direction.Up:
+                    return new Rectangle((int)Position.X + 4, (int)Position.Y, 5, 16);
+
+                case Direction.Right:
+                    return new Rectangle((int)Position.X, (int)Position.Y + 4, 16, 5);
+
+                case Direction.Down:
+                    return new Rectangle((int)Position.X + 5, (int)Position.Y, 5, 16);
+
+                case Direction.Left:
+                    return new Rectangle((int)Position.X, (int)Position.Y + 5, 16, 5);
+
+                default:
+                    return new Rectangle((int)Position.X, (int)Position.Y, 16, 16);
+            }
         }
     }
 }

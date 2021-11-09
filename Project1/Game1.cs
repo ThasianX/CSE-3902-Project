@@ -4,6 +4,7 @@ using System.Diagnostics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 using Project1.Controllers;
 using Project1.Interfaces;
 using Project1.GameStates;
@@ -17,6 +18,7 @@ namespace Project1
 
         private static GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
+        private Song dungeonSong;
 
         private readonly int nativeX = 256, nativeY = 176;
 
@@ -86,8 +88,11 @@ namespace Project1
             SpriteFactory.Instance.loadSpriteDictionary("Data/sprite_dictionary.xml");
 
             Setup();
+            SoundManager.Instance.LoadAllSounds(Content);
             CollisionHandler.Instance.LoadResponses("Data/collision_response.xml");
 
+            LoadMusic();
+            
             // Visualize rectangle for testing
             whiteRectangle = new Texture2D(GraphicsDevice, 1, 1);
             whiteRectangle.SetData(new[] { Color.White });
@@ -178,6 +183,14 @@ namespace Project1
             HUDPosition = gamePosition;
             scenePosition.X = gamePosition.X;
             scenePosition.Y = gamePosition.Y + (HUD.Height * renderScale);
+        }
+
+        public void LoadMusic()
+        {
+            dungeonSong = Content.Load<Song>("DungeonTheme");
+            MediaPlayer.IsRepeating = true;
+            MediaPlayer.Play(dungeonSong);
+            MediaPlayer.Volume = 0.25f;
         }
     }
 }

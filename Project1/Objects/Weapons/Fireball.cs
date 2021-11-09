@@ -27,6 +27,7 @@ namespace Project1.Objects
             this.fireBalOffset = fireBalOffset;
             moveSpeed = (maxRange * 2) / frames;
             fireBallSprite = SpriteFactory.Instance.CreateSprite("fireball");
+            SoundManager.Instance.PlaySound("Candle");
         }
 
         public void Update(GameTime gameTime)

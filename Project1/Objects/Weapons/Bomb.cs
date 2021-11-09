@@ -16,6 +16,7 @@ namespace Project1.Objects
         {
             this.Position = position;
             sprite = SpriteFactory.Instance.CreateSprite("bomb");
+            SoundManager.Instance.PlaySound("BombDrop");
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -26,6 +27,11 @@ namespace Project1.Objects
         public void Update(GameTime gameTime)
         {
             sprite.Update(gameTime);
+            //I'm sure there is a better way to code this
+            if (timeCounter > 1 && timeCounter < 1.01)
+            {
+                SoundManager.Instance.PlaySound("BombBlow");
+            }
             if (timeCounter > 2)
             {
                 GameObjectManager.Instance.RemoveOnNextFrame(this);

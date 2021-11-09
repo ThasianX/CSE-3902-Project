@@ -15,6 +15,7 @@ namespace Project1.Commands
         {
             // add collectible game object to player collection
             player.CollectItem(collectible);
+            SoundManager.Instance.PlaySound("GetItem");
         }
     }
 }

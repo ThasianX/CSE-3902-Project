@@ -7,6 +7,7 @@ namespace Project1.Objects
     public class WoodBoomerang : IProjectile, ICollidable
     {
         public int moveSpeed;
+        private int frames;
         public Vector2 Position { get; set; }
         public IGameObject Owner { get; set; }
         public bool IsMover => true;
@@ -71,6 +72,11 @@ namespace Project1.Objects
                 this.Position += directionToOwner * moveSpeed;
                 CheckDeletion();
             }
+            if (frames % 5 == 0)
+            {
+                SoundManager.Instance.PlaySound("Boomerang");
+            }
+            frames++;
             boomerangSprite.Update(gameTime);
         }
 

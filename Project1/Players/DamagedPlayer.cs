@@ -59,6 +59,7 @@ namespace Project1
         public DamagedPlayer(IPlayer player)
         {
             this.basePlayer = player;
+            SoundManager.Instance.PlaySound("LinkHurt");
         }
 
         public void Update(GameTime gameTime)

@@ -30,6 +30,7 @@ namespace Project1.Objects
         public void InstantUseItem(IPlayer player)
         {
             player.Heal(heartHeal);
+            SoundManager.Instance.PlaySound("GetHeart");
         }
 
         public Rectangle GetRectangle()
