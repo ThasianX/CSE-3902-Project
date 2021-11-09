@@ -11,6 +11,12 @@ namespace Project1
         public IPlayer basePlayer;
         public string CollisionType => "DamagedPlayer";
         public bool IsMover => true;
+
+        public bool Decorated
+        {
+            get { return basePlayer.Decorated; }
+            set { basePlayer.Decorated = value; }
+        }
         public ISprite Sprite
         {
             get { return basePlayer.Sprite; }
@@ -68,6 +74,7 @@ namespace Project1
 
         public void RemoveDecorator()
         {
+            basePlayer.Decorated = false;
             GameObjectManager.Instance.RemoveOnNextFrame(this);
             GameObjectManager.Instance.AddOnNextFrame(basePlayer);
         }

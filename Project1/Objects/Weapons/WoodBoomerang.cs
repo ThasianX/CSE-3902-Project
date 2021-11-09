@@ -10,22 +10,25 @@ namespace Project1.Objects
         public Vector2 Position { get; set; }
         public IGameObject Owner { get; set; }
         public bool IsMover => true;
-        public string CollisionType => "Projectile";
+        public string CollisionType => "Boomerang";
         //Distance Boomerang travels from Link
         private int maxRange = 75;
-        private bool inRange = true;
+        private bool flyBack = false;
         private Direction direction;
         private Vector2 deltaVector;
         private Vector2 initialPosition;
         ISprite boomerangSprite;
+        private Vector2 directionToOwner;
+        private float epsilon;
 
-        public WoodBoomerang(Vector2 position, Direction direction, int frames, IGameObject owner)
+        public WoodBoomerang(Vector2 position, Direction direction, IGameObject owner)
         {
             this.direction = direction; 
-            this.Position = position; // position here is link/enemy position + boomerang offset.
+            this.Position = position;
             this.Owner = owner;
             this.initialPosition = position;
-            this.moveSpeed = (maxRange * 2) / frames;
+            this.moveSpeed = 3;
+            epsilon = 1.5f;
             boomerangSprite = SpriteFactory.Instance.CreateSprite("woodBoomerang");
 
             switch (this.direction)
@@ -60,15 +63,26 @@ namespace Project1.Objects
         {
             //Checks if sprite has achieved max distance before returning to link
             checkRange();
-            if (this.inRange)
+            if (!flyBack)
             {
                 this.Position += this.deltaVector;
             }
             else
             {
-                this.Position -= this.deltaVector;
+                directionToOwner = Owner.Position - Position;
+                directionToOwner.Normalize();
+                this.Position += directionToOwner * moveSpeed;
+                CheckDeletion();
             }
             boomerangSprite.Update(gameTime);
+        }
+
+        private void CheckDeletion()
+        {
+            if (Vector2.Distance(Owner.Position, Position) <= epsilon)
+            {
+                GameObjectManager.Instance.RemoveOnNextFrame(this);
+            }
         }
 
         public void checkRange()
@@ -76,27 +90,27 @@ namespace Project1.Objects
             switch (this.direction)
             {
                 case Direction.Up:
-                    if (this.Position.Y <= this.initialPosition.Y - maxRange)
+                    if (Position.Y <= initialPosition.Y - maxRange)
                     {
-                        this.inRange = false;
+                       flyBack = true;
                     }
                     break;
                 case Direction.Right:
-                    if (this.Position.X >= this.initialPosition.X + this.maxRange)
+                    if (Position.X >= initialPosition.X + maxRange)
                     {
-                        this.inRange = false;
+                        flyBack = true;
                     }
                     break;
                 case Direction.Down:
-                    if(this.Position.Y >= this.initialPosition.Y + this.maxRange)
+                    if(Position.Y >= initialPosition.Y + maxRange)
                     {
-                        this.inRange = false;
+                        flyBack = true;
                     }
                     break;
                 case Direction.Left:
-                    if (this.Position.X <= this.initialPosition.X - this.maxRange)
+                    if (Position.X <= initialPosition.X - maxRange)
                     {
-                        this.inRange = false;
+                        flyBack = true;
                     }
                     break;
                 default:

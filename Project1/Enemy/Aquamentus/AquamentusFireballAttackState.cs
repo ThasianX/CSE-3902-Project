@@ -59,9 +59,6 @@ namespace Project1.Enemy
             {
                 ChangeDirection();
             }
-            fireballOne.Update(gameTime);
-            fireballTwo.Update(gameTime);
-            fireballThree.Update(gameTime);
         }
     }
 }

@@ -13,6 +13,7 @@ namespace Project1
         public Direction FacingDirection { get; set; }
         public float Speed { get; set; }
         public Dictionary<Direction, bool> ActiveMoveInputs { get; set; }
+        public bool Decorated { get; set; }
         public bool hasAnyMoveInput();
         public void Move(Vector2 delta);
         public void Draw(SpriteBatch spriteBatch, Color color);

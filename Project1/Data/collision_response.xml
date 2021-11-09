@@ -42,10 +42,16 @@
         <arg type="Project1.Player">TARGET</arg>
         <arg type="Project1.Interfaces.IProjectile">SOURCE</arg>
       </command>
-      <command type="Project1.Commands.DeleteProjectileCommand">
-        <arg type="Project1.Interfaces.IProjectile">SOURCE</arg>
+      <command type="Project1.Commands.DeleteGameObjectCommand">
+        <arg type="Project1.Interfaces.IGameObject">SOURCE</arg>
       </command>
     </Projectile>
+    <Boomerang>
+      <command type="Project1.Commands.PlayerTakeDamageCommand">
+        <arg type="Project1.Player">TARGET</arg>
+        <arg type="Project1.Interfaces.IProjectile">SOURCE</arg>
+      </command>
+    </Boomerang>
   </Player>
 
   <DamagedPlayer>
@@ -77,10 +83,16 @@
         <arg type="Project1.Enemy.IEnemy">TARGET</arg>
         <arg type="Project1.Interfaces.IProjectile">SOURCE</arg>
       </command>
-      <command type="Project1.Commands.DeleteProjectileCommand">
+      <command type="Project1.Commands.DeleteProjectileByOwnerCommand">
         <arg type="Project1.Interfaces.IProjectile">SOURCE</arg>
       </command>
     </Projectile>
+    <Boomerang>
+      <command type="Project1.Commands.EnemyTakeDamageCommand">
+        <arg type="Project1.Enemy.IEnemy">TARGET</arg>
+        <arg type="Project1.Interfaces.IProjectile">SOURCE</arg>
+      </command>
+    </Boomerang>
   </Enemy>
 
   <Weapon>
@@ -106,4 +118,11 @@
       
     </Item>
   </Projectile>
+
+  <Boomerang>
+    <Enemy>
+
+    </Enemy>
+
+  </Boomerang>
 </collision_response>

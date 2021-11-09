@@ -24,6 +24,7 @@ namespace Project1
         public bool IsMover => true;
         public string CollisionType => "Player";
         public InventoryManager playerInventory;
+        public bool Decorated { get; set; }
 
         public Player(Vector2 position)
         {
@@ -42,6 +43,7 @@ namespace Project1
                 { Direction.Left, false }
             };
             Speed = 1f;
+            Decorated = false;
         }
 
         // Does not appear in IPlayerState (helper method)
@@ -124,8 +126,12 @@ namespace Project1
         {
             healthState.TakeDamage(damage);
             // replace basePlayer with damagedPlayer
-            GameObjectManager.Instance.AddOnNextFrame(new DamagedPlayer(this));
-            GameObjectManager.Instance.RemoveOnNextFrame(this);
+            if (!Decorated)
+            {
+                Decorated = true;
+                GameObjectManager.Instance.AddOnNextFrame(new DamagedPlayer(this));
+                GameObjectManager.Instance.RemoveOnNextFrame(this);
+            }
         }
 
         public void Heal(int heal)
