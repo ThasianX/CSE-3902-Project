@@ -50,5 +50,7 @@ namespace Project1.NPC
         {
             return new Rectangle((int)Position.X, (int)Position.Y, 16, 16);
         }
+
+        public void Draw(SpriteBatch spriteBatch, Color color) { }
     }
 }

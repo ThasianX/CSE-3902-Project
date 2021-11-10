@@ -114,4 +114,7 @@
   <digit_7>UI/counters/digit_7/sprite</digit_7>
   <digit_8>UI/counters/digit_8/sprite</digit_8>
   <digit_9>UI/counters/digit_9/sprite</digit_9>
+
+	<titleScreen>game/title/sprite</titleScreen>
+	<inventorySelect>game/inventorySelect/sprite</inventorySelect>
 </sprite_dictionary>

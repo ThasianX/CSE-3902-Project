@@ -29,6 +29,11 @@
         <arg type="Project1.Collision">COLLISION</arg>
       </command>
     </Item>
+	  <Rupee>
+		  <command type="Project1.Commands.PlayerCollectRupeeCommand">
+			  <arg type="Project1.Collision">COLLISION</arg>
+		  </command>
+	  </Rupee>
 	  <InstantUseItem>
 		  <command type="Project1.Commands.PlayerCollectInstantUseItemCommand">
 			  <arg type="Project1.Collision">COLLISION</arg>
@@ -103,7 +108,7 @@
   <Weapon>
     <Enemy>
       <command type="Project1.Commands.EnemyTakeDamageCommand">
-        <arg type="Project1.IEnemy">SOURCE</arg>
+        <arg type="Project1.Enemy.IEnemy">SOURCE</arg>
       </command>
     </Enemy>
     <Player>

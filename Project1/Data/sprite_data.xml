@@ -1844,4 +1844,38 @@
       </sprite>
     </blank>
   </UI>
+	<game>
+		<title>
+			<sprite>
+				<spritesheet>TitleScreens</spritesheet>
+				<dimensions>
+					<height>224</height>
+					<width>256</width>
+				</dimensions>
+				<time>1</time>
+				<source_list>
+					<source>
+						<x>1</x>
+						<y>11</y>
+					</source>
+				</source_list>
+			</sprite>
+		</title>
+		<inventorySelect>
+			<sprite>
+				<spritesheet>HUDPauseScreen</spritesheet>
+				<dimensions>
+					<height>88</height>
+					<width>256</width>
+				</dimensions>
+				<time>1</time>
+				<source_list>
+					<source>
+						<x>1</x>
+						<y>11</y>
+					</source>
+				</source_list>
+			</sprite>
+		</inventorySelect>
+	</game>
 </sprite_data>

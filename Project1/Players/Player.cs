@@ -155,7 +155,12 @@ namespace Project1
             LevelManager.Instance.GetCurrentRoom().RemoveObject(collectible);
             GameObjectManager.Instance.RemoveOnNextFrame(collectible);
         }
-
+        public void CollectRupee(IRupee rupee)
+        {
+            playerInventory.AddRupees(rupee.amount);
+            LevelManager.Instance.GetCurrentRoom().RemoveObject(rupee);
+            GameObjectManager.Instance.RemoveOnNextFrame(rupee);
+        }
         public void ShowCollection()
         {
             if (playerInventory.itemInv.Count == 0)

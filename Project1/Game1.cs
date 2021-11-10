@@ -103,12 +103,8 @@ namespace Project1
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            foreach (IController controller in controllerList)
-            {
-                controller.Update();
-            }
+            gameState.Update(gameTime, controllerList);
 
-            gameState.Update(gameTime);
             base.Update(gameTime);
         }
 

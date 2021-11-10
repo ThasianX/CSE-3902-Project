@@ -16,7 +16,7 @@ namespace Project1.Enemy
         private int choice;
         private Random rand = new Random();
         public IHealthState stalfosHealthState;
-        private int immuneTime = 60;
+        private int immuneTime = 30;
         private int immnueTimeCounter;
         //private bool isLinkNearby;
 
@@ -80,6 +80,14 @@ namespace Project1.Enemy
             //DrawRectangle(spriteBatch)
         }
 
+        public void Draw(SpriteBatch spriteBatch, Color color)
+        {
+            Sprite.Draw(spriteBatch, Position, color);
+            stalfosHealthState.Draw(spriteBatch);
+
+            //DrawRectangle(spriteBatch)
+        }
+
         private void DrawRectangle(SpriteBatch spriteBatch)
         {
             // Visualize rectangle for testing
@@ -97,6 +105,9 @@ namespace Project1.Enemy
             {
                 immnueTimeCounter = immuneTime;
                 stalfosHealthState.TakeDamage(damage);
+                SoundManager.Instance.PlaySound("EnemyHit");
+                GameObjectManager.Instance.AddOnNextFrame(new DamagedEnemy(this));
+                GameObjectManager.Instance.RemoveOnNextFrame(this);
             }
         }
 

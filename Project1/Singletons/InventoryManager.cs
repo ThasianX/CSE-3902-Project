@@ -14,6 +14,7 @@ namespace Project1
         public Dictionary<Type, int> itemInv = new Dictionary<Type, int>();
         public List<IInventoryItem> weapons = new List<IInventoryItem>();
         public List<Type> UIItems = new List<Type>();
+        public int rupees = 0;
 
         private static InventoryManager instance = new InventoryManager();
         public static InventoryManager Instance
@@ -63,6 +64,19 @@ namespace Project1
             {
 
                 UIManager.Instance.UpdateCounter(item.GetType(), itemInv[itemType]);
+            }
+        }
+
+        public void AddRupees(int amount)
+        {
+            rupees += amount;
+            if (rupees < 0)
+            {
+                rupees = 0;
+            }
+            else if (rupees > 999)
+            {
+                rupees = 999;
             }
         }
 

@@ -1,4 +1,7 @@
 ﻿using Project1.Interfaces;
+using System.Collections.Generic;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Project1.Enemy
 {
@@ -7,6 +10,7 @@ namespace Project1.Enemy
         public IEnemyState State { get; set; }
         public ISprite Sprite { get; set; }
         public float MovingSpeed { get; set; }
+        public void Draw(SpriteBatch spriteBatch, Color color);
         public void FireBallAttack();
         public void BoomerangAttack();
         public void ChangeDirection();
