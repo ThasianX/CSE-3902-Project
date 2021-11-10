@@ -61,16 +61,10 @@ namespace Project1.Enemy
         {
             // Update the current state
             // Possible state: direction, fireball attack
-            if (!DeadEnemy())
-            {
-                State.Update(gameTime);
-                Sprite.Update(gameTime);
-                wallMasterHealthState.Update(gameTime);
-            }
-            else
-            {
-                KillEnemy();
-            }
+            GameObjectDeletionManager.Instance.EnemyDeletionCheck(this, wallMasterHealthState);
+            State.Update(gameTime);
+            Sprite.Update(gameTime);
+            wallMasterHealthState.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -88,7 +82,7 @@ namespace Project1.Enemy
         public void TakeDamage(int damage)
         {
             wallMasterHealthState.TakeDamage(damage);
-            if (!DeadEnemy())
+            if (wallMasterHealthState.health > 0)
             {
                 SoundManager.Instance.PlaySound("EnemyHit");
                 GameObjectManager.Instance.AddOnNextFrame(new DamagedEnemy(this));
@@ -98,17 +92,6 @@ namespace Project1.Enemy
             {
                 SoundManager.Instance.PlaySound("EnemyDie");
             }
-        }
-
-        public bool DeadEnemy()
-        {
-            return wallMasterHealthState.health <= 0;
-        }
-
-        public void KillEnemy()
-        {
-            LevelManager.Instance.GetCurrentRoom().RemoveObject(this);
-            GameObjectManager.Instance.RemoveOnNextFrame(this);
         }
 
         public Rectangle GetRectangle()

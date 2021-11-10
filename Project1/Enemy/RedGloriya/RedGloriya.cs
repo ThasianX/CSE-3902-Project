@@ -62,16 +62,10 @@ namespace Project1.Enemy
         {
             // Update the current state
             // Possible state: direction, attack
-            if (!DeadEnemy())
-            {
-                State.Update(gameTime);
-                Sprite.Update(gameTime);
-                redGloriyaHealthState.Update(gameTime);
-            }
-            else
-            {
-                KillEnemy();
-            }
+            GameObjectDeletionManager.Instance.EnemyDeletionCheck(this, redGloriyaHealthState);
+            State.Update(gameTime);
+            Sprite.Update(gameTime);
+            redGloriyaHealthState.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -89,7 +83,7 @@ namespace Project1.Enemy
         public void TakeDamage(int damage)
         {
             redGloriyaHealthState.TakeDamage(damage);
-            if (!DeadEnemy())
+            if (redGloriyaHealthState.health > 0)
             {
                 SoundManager.Instance.PlaySound("EnemyHit");
                 GameObjectManager.Instance.AddOnNextFrame(new DamagedEnemy(this));
@@ -99,17 +93,6 @@ namespace Project1.Enemy
             {
                 SoundManager.Instance.PlaySound("EnemyDie");
             }
-        }
-
-        public bool DeadEnemy()
-        {
-            return redGloriyaHealthState.health <= 0;
-        }
-
-        public void KillEnemy()
-        {
-            LevelManager.Instance.GetCurrentRoom().RemoveObject(this);
-            GameObjectManager.Instance.RemoveOnNextFrame(this);
         }
 
         public Rectangle GetRectangle()
