@@ -22,7 +22,7 @@ namespace Project1.PlayerStates
             health = maxHealth;
 
             sprite = SpriteFactory.Instance.CreateHealthSprite(this, "Name");
-            UIManager.Instance.UpdateHealthBar(maxHealth);
+            UIManager.Instance.UpdateHealthBar(maxHealth, heartContainers);
         }
 
         public void Update(GameTime gameTime)
@@ -39,7 +39,7 @@ namespace Project1.PlayerStates
         {
             health -= damage;
 
-            UIManager.Instance.UpdateHealthBar(health);
+            UIManager.Instance.UpdateHealthBar(health, heartContainers);
 
             if (health <= 0)
             {
@@ -54,7 +54,7 @@ namespace Project1.PlayerStates
                 health = maxHealth;
             }
 
-            UIManager.Instance.UpdateHealthBar(health);
+            UIManager.Instance.UpdateHealthBar(health, heartContainers);
         }
     }
 }

@@ -56,7 +56,7 @@ namespace Project1
             itemCounters[type].SetValue(newValue);
         }
 
-        public void UpdateHealthBar(int newValue)
+        public void UpdateHealthBar(int newValue, int HeartContainers)
         {
             healthBar.SetValue(newValue);
         }
