@@ -22,10 +22,12 @@ namespace Project1
         {
             get { return baseEnemy.State; }
             set { baseEnemy.State = value; }
+
         }
 
         public Vector2 Position
         {
+
             get { return baseEnemy.Position; }
             set { baseEnemy.Position = value; }
         }
@@ -35,6 +37,7 @@ namespace Project1
         {
             get { return baseEnemy.MovingSpeed; }
             set { baseEnemy.MovingSpeed = value; }
+
         }
 
         private int immuneTime = 30;
@@ -53,18 +56,21 @@ namespace Project1
             }
 
             baseEnemy.Update(gameTime);
+
         }
 
         public void RemoveDecorator()
         {
             GameObjectManager.Instance.RemoveOnNextFrame(this);
             GameObjectManager.Instance.AddOnNextFrame(baseEnemy);
+
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             Color color = Color.Red;
             baseEnemy.Draw(spriteBatch, color);
+
         }
 
         public Rectangle GetRectangle()
@@ -77,6 +83,7 @@ namespace Project1
         public void BoomerangAttack() { baseEnemy.BoomerangAttack(); }
         public void ChangeDirection() { baseEnemy.ChangeDirection(); }
         public void TakeDamage(int damage) { }
+
 
     }
 }

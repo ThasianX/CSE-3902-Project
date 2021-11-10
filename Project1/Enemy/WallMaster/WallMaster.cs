@@ -16,7 +16,7 @@ namespace Project1.Enemy
         public bool IsMover => true;
         public string CollisionType => "Enemy";
         public IHealthState wallMasterHealthState;
-        private int immuneTime = 60;
+        private int immuneTime = 30;
         private int immnueTimeCounter;
         //private bool isLinkNearby;
 

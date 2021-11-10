@@ -16,7 +16,7 @@ namespace Project1.Enemy
         private int choice;
         private Random rand = new Random();
         public IHealthState stalfosHealthState;
-        private int immuneTime = 60;
+        private int immuneTime = 30;
         private int immnueTimeCounter;
         //private bool isLinkNearby;
 
