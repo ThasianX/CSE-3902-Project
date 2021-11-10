@@ -10,25 +10,19 @@ namespace Project1.PlayerStates
         private Player player;
 
         private int maxHealth;
-        private int _health;
-        public int health
-        {
-            get
-            {
-                return _health;
-            }
-            set
-            {
-                _health = value;
-            }
-        }
+        private int heartContainers;
+        public int health { get; set; }
 
-        public HealthState(Player player, int maxHealth)
+
+        public HealthState(Player player, int heartContainers)
         {
             this.player = player;
-            health = this.maxHealth = maxHealth;
+            this.heartContainers = heartContainers;
+            maxHealth = heartContainers * Constants.HP_PER_HEART;
+            health = maxHealth;
 
             sprite = SpriteFactory.Instance.CreateHealthSprite(this, "Name");
+            UIManager.Instance.UpdateHealthBar(maxHealth);
         }
 
         public void Update(GameTime gameTime)
@@ -43,22 +37,24 @@ namespace Project1.PlayerStates
 
         public void TakeDamage(int damage)
         {
-            if (health <= 0) {
-                health = maxHealth;
-            } else {
-                health -= damage;
+            health -= damage;
+
+            UIManager.Instance.UpdateHealthBar(health);
+
+            if (health <= 0)
+            {
+                //player.Die();
             }
         }
         public void Heal(int heal)
         {
-            if (health >= 0)
+            health += heal;
+            if (health > maxHealth)
             {
-                health += maxHealth;
-                if (health > maxHealth)
-                {
-                    health = maxHealth;
-                }
+                health = maxHealth;
             }
+
+            UIManager.Instance.UpdateHealthBar(health);
         }
     }
 }

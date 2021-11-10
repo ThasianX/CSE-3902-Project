@@ -15,7 +15,7 @@ namespace Project1
 
         Dictionary<Type, Counter> itemCounters = new Dictionary<Type, Counter>();
 
-        HealthBar healthBar = new HealthBar(new Vector2(176, 32), 16);
+        HealthBar healthBar = new HealthBar(new Vector2(176, 32), 3);
 
         private static UIManager instance = new UIManager();
         public static UIManager Instance
@@ -54,6 +54,11 @@ namespace Project1
         public void UpdateCounter(Type type, int newValue)
         {
             itemCounters[type].SetValue(newValue);
+        }
+
+        public void UpdateHealthBar(int newValue)
+        {
+            healthBar.SetValue(newValue);
         }
     }
 }

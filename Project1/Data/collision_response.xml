@@ -13,7 +13,6 @@
     <Enemy>
       <command type="Project1.Commands.PlayerTakeDamageCommand">
         <arg type="Project1.Player">TARGET</arg>
-        <arg type="System.Int32">5</arg>
       </command>
       <command type="Project1.Commands.PlayerKnockBackCommand">
         <arg type="Project1.Player">TARGET</arg>

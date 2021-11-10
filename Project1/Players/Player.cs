@@ -33,7 +33,7 @@ namespace Project1
             FacingDirection = Direction.Down;
             // Set entry state
             State = new StillPlayerState(this);
-            healthState = new HealthState(this, 100);
+            healthState = new HealthState(this, 3);
             playerInventory = new InventoryManager();
             ActiveMoveInputs = new Dictionary<Direction, bool>()
             {
