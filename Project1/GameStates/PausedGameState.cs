@@ -15,8 +15,8 @@ namespace Project1.GameStates
         public PausedGameState(Game1 game)
         {
             this.game = game;
-            //Obviously, don't want this image.
-            sprite = SpriteFactory.Instance.CreateSprite("inventorySelect");
+            //Insert Pause Screen Image here
+            //sprite = SpriteFactory.Instance.CreateSprite("inventorySelect");
         }
         public void Update(GameTime gameTime, ArrayList controllerList)
         {
