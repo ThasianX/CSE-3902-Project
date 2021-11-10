@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Project1.Interfaces;
+using Project1.Levels;
 
 namespace Project1.Enemy
 {
@@ -16,9 +17,6 @@ namespace Project1.Enemy
         public bool IsMover => true;
         public string CollisionType => "Enemy";
         public IHealthState blueGelHealthState;
-        private int immuneTime = 30;
-        private int immnueTimeCounter;
-        //private bool isLinkNearby;
 
         public BlueGel(Vector2 position)
         {
@@ -42,7 +40,7 @@ namespace Project1.Enemy
             }
             MovingSpeed = 1f;
 
-            blueGelHealthState = new BlueGelHealthState(this, 50);
+            blueGelHealthState = new BlueGelHealthState(this, 1);
         }
 
         public void FireBallAttack()
@@ -63,24 +61,10 @@ namespace Project1.Enemy
         {
             // Update the current state
             // Possible state: direction
+            GameObjectDeletionManager.Instance.EnemyDeletionCheck(this, blueGelHealthState);
             State.Update(gameTime);
             Sprite.Update(gameTime);
-            // Enemy will not take damage every frame, only take damage when immune time is over.
-            if (Immune() && immnueTimeCounter == immuneTime)
-            {
-                blueGelHealthState.Update(gameTime);
-                immnueTimeCounter--;
-            }
-            else if (Immune())
-            {
-                immnueTimeCounter--;
-            }
-        }
-
-        // determine if player can take damage
-        public bool Immune()
-        {
-            return immnueTimeCounter > 0;
+            blueGelHealthState.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -97,13 +81,16 @@ namespace Project1.Enemy
 
         public void TakeDamage(int damage)
         {
-            if (!Immune())
+            blueGelHealthState.TakeDamage(damage);
+            if (blueGelHealthState.health > 0)
             {
-                immnueTimeCounter = immuneTime;
-                blueGelHealthState.TakeDamage(damage);
                 SoundManager.Instance.PlaySound("EnemyHit");
                 GameObjectManager.Instance.AddOnNextFrame(new DamagedEnemy(this));
                 GameObjectManager.Instance.RemoveOnNextFrame(this);
+            }
+            else
+            {
+                SoundManager.Instance.PlaySound("EnemyDie");
             }
         }
 

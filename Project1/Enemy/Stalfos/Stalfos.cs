@@ -1,7 +1,9 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using Project1.Interfaces;
+using Project1.Levels;
 
 namespace Project1.Enemy
 {
@@ -16,9 +18,6 @@ namespace Project1.Enemy
         private int choice;
         private Random rand = new Random();
         public IHealthState stalfosHealthState;
-        private int immuneTime = 30;
-        private int immnueTimeCounter;
-        //private bool isLinkNearby;
 
         public Stalfos(Vector2 position)
         {
@@ -33,7 +32,7 @@ namespace Project1.Enemy
                 case 3: State = new StalfosLeftMovingState(this); break;
             }
             MovingSpeed = 1f;
-            stalfosHealthState = new StalfosHealthState(this, 100);
+            stalfosHealthState = new StalfosHealthState(this, 2);
         }
 
         public void FireBallAttack()
@@ -53,23 +52,10 @@ namespace Project1.Enemy
         {
             // Update the current state
             // Possible state: direction
+            GameObjectDeletionManager.Instance.EnemyDeletionCheck(this, stalfosHealthState);
             State.Update(gameTime);
             Sprite.Update(gameTime);
-            // If the enemy is in immune state, its health state do not need to update.
-            if (Immune() && immnueTimeCounter == immuneTime)
-            {
-                stalfosHealthState.Update(gameTime);
-                immnueTimeCounter--;
-            }
-            else if (Immune())
-            {
-                immnueTimeCounter--;
-            }
-        }
-
-        public bool Immune()
-        {
-            return immnueTimeCounter > 0;
+            stalfosHealthState.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -101,13 +87,16 @@ namespace Project1.Enemy
 
         public void TakeDamage(int damage)
         {
-            if (!Immune())
+            stalfosHealthState.TakeDamage(damage);
+            if (stalfosHealthState.health > 0)
             {
-                immnueTimeCounter = immuneTime;
-                stalfosHealthState.TakeDamage(damage);
                 SoundManager.Instance.PlaySound("EnemyHit");
                 GameObjectManager.Instance.AddOnNextFrame(new DamagedEnemy(this));
                 GameObjectManager.Instance.RemoveOnNextFrame(this);
+            }
+            else
+            {
+                SoundManager.Instance.PlaySound("EnemyDie");
             }
         }
 

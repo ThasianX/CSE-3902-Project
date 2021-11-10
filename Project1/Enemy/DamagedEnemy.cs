@@ -1,8 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Project1.Interfaces;
 using Microsoft.Xna.Framework.Graphics;
-using Project1.PlayerStates;
-using System.Collections.Generic;
 using Project1.Enemy;
 
 namespace Project1
@@ -40,7 +38,7 @@ namespace Project1
 
         }
 
-        private int immuneTime = 30;
+        private int immuneTime = 15;
 
         public DamagedEnemy(IEnemy enemy)
         {
