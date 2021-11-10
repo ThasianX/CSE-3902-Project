@@ -4,21 +4,18 @@ using Project1.Interfaces;
 
 namespace Project1.Objects
 {
-    public class BlueRuby : IInventoryItem, ICollidable
+    public class YellowRuby : IRupee, ICollidable
     {
-        public string Name => "Ruby";
-        public bool IsConsumable => true;
-        public int MaxStackCount => 999;
-
+        public int amount => 1;
         public Vector2 Position { get; set; }
 
         ISprite sprite;
         public bool IsMover => false;
-        public string CollisionType => "Item";
-        public BlueRuby(Vector2 position)
+        public string CollisionType => "Rupee";
+        public YellowRuby(Vector2 position)
         {
             this.Position = position;
-            sprite = SpriteFactory.Instance.CreateSprite("blueRuby");
+            sprite = SpriteFactory.Instance.CreateSprite("yellowRuby");
         }
 
         public void Draw(SpriteBatch spriteBatch)

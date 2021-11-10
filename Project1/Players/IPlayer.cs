@@ -27,6 +27,7 @@ namespace Project1
         public void TakeDamage(int damage);
         public void Heal(int heal);
         public void CollectItem(IInventoryItem collectible);
+        public void CollectRupee(IRupee rupee);
         public void ShowCollection();
         public void InstantUseItem(IInstantUseItem collectible);
     }
