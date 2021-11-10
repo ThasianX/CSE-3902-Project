@@ -28,7 +28,6 @@ namespace Project1.GameStates
         public void Draw(SpriteBatch spriteBatch)
         {
             GameObjectManager.Instance.DrawObjects(spriteBatch);
-            sprite.Draw(spriteBatch, new Vector2(0,0));
         }
         public void Pause()
         {
