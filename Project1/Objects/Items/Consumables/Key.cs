@@ -8,7 +8,7 @@ namespace Project1.Objects
     {
         public string Name => "Key";
         public bool IsConsumable => true;
-        public int MaxStackCount => 10;
+        public int MaxStackCount => 99;
         public Vector2 Position { get; set; }
 
         ISprite sprite;

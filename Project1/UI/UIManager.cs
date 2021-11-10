@@ -23,9 +23,9 @@ namespace Project1
         private UIManager()
         {
             // Create Counter objects and add to dictionary
-            itemCounters.Add(typeof(BombPickup), new Counter(Vector2.Zero));
-            itemCounters.Add(typeof(BlueRuby), new Counter(new Vector2(50, 0)));
-            itemCounters.Add(typeof(Key), new Counter(new Vector2(100, 0)));
+            itemCounters.Add(typeof(BombPickup), new Counter(new Vector2(112, 40)));
+            itemCounters.Add(typeof(BlueRuby), new Counter(new Vector2(112, 16)));
+            itemCounters.Add(typeof(Key), new Counter(new Vector2(112, 32)));
 
             // Register which items are displayed to the UI with the InventoryManager
             InventoryManager.Instance.AddUIItem(typeof(BombPickup));
@@ -51,6 +51,5 @@ namespace Project1
         {
             itemCounters[type].SetValue(newValue);
         }
-
     }
 }

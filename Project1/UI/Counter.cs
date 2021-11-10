@@ -15,12 +15,11 @@ namespace Project1.UI
         private int displayValue;
         public ISprite[] Sprites { get; set; }
         public Vector2 Position { get; set; }
-
         public Counter(Vector2 position)
         {
             Position = position;
             Sprites = new ISprite[digits.Length];
-            SetValue(99);
+            SetValue(0);
         }
 
         public void SetValue(int newValue)

@@ -11,7 +11,7 @@ namespace Project1
     public class InventoryManager
     {
         //Tracks consumables and weapons
-        public Dictionary<IInventoryItem, int> itemInv = new Dictionary<IInventoryItem, int>();
+        public Dictionary<Type, int> itemInv = new Dictionary<Type, int>();
         public List<IInventoryItem> weapons = new List<IInventoryItem>();
         public List<Type> UIItems = new List<Type>();
 
@@ -26,25 +26,26 @@ namespace Project1
         
         public void AddItem(IInventoryItem item, int quantity = 1)
         {
+            Type itemType = item.GetType();
             if (item.IsConsumable)
             {
                 //If Item already in inventory
-                if (itemInv.ContainsKey(item) && (itemInv[item] + quantity) < item.MaxStackCount)
+                if (itemInv.ContainsKey(itemType) && (itemInv[itemType] + quantity) < item.MaxStackCount)
                 {
-                    itemInv[item] += quantity;
+                    itemInv[itemType] += quantity;
                     //May need refactored if we want to partially add a stack of items or could return the difference.
-                    if (itemInv[item] >= item.MaxStackCount)
+                    if (itemInv[itemType] >= item.MaxStackCount)
                     {
-                        itemInv[item] = item.MaxStackCount;
+                        itemInv[itemType] = item.MaxStackCount;
                     }
                 }
                 //If item not in inventory
-                else if (!itemInv.ContainsKey(item))
+                else if (!itemInv.ContainsKey(itemType))
                 {
-                    itemInv.Add(item, quantity);
-                    if (itemInv[item] >= item.MaxStackCount)
+                    itemInv.Add(itemType, quantity);
+                    if (itemInv[itemType] >= item.MaxStackCount)
                     {
-                        itemInv[item] = item.MaxStackCount;
+                        itemInv[itemType] = item.MaxStackCount;
                     }
                 }
                 //If inventory is at max quantity for item
@@ -61,18 +62,19 @@ namespace Project1
             if (UIItems.Contains(item.GetType()))
             {
 
-                UIManager.Instance.UpdateCounter(item.GetType(), itemInv[item]);
+                UIManager.Instance.UpdateCounter(item.GetType(), itemInv[itemType]);
             }
         }
 
         public void Remove(IInventoryItem item, int quantity = 1)
         {
+            Type itemType = item.GetType();
             if (item.IsConsumable)
             {
-                itemInv[item] -= quantity;
-                if (itemInv[item] <= 0)
+                itemInv[itemType] -= quantity;
+                if (itemInv[itemType] <= 0)
                 {
-                    itemInv.Remove(item);
+                    itemInv.Remove(itemType);
                 }
             }
             else
@@ -84,7 +86,7 @@ namespace Project1
             if (UIItems.Contains(item.GetType()))
             {
                 
-                UIManager.Instance.UpdateCounter(item.GetType(), itemInv[item]);
+                UIManager.Instance.UpdateCounter(item.GetType(), itemInv[itemType]);
             }
             
         }
