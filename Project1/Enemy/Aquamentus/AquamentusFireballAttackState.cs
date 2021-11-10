@@ -20,14 +20,15 @@ namespace Project1.Enemy
         private int choice;
         private int timer;
         private Random rand = new Random();
+        private float cosAmount = 0.154f;
 
         public AquamentusFireballAttackState(IEnemy aquamentus)
         {
             this.aquamentus = aquamentus;
             aquamentus.Sprite = SpriteFactory.Instance.CreateSprite("aquamentus_walking");
-            fireballOne = new Fireball(aquamentus.Position + new Vector2(fireballOffset, fireballOffset), new Vector2(0,-0.154f), activeFrameCount, aquamentus);
+            fireballOne = new Fireball(aquamentus.Position + new Vector2(fireballOffset, fireballOffset), new Vector2(0, -cosAmount), activeFrameCount, aquamentus);
             fireballTwo = new Fireball(aquamentus.Position + new Vector2(fireballOffset, fireballOffset), new Vector2(0,0), activeFrameCount, aquamentus);
-            fireballThree = new Fireball(aquamentus.Position + new Vector2(fireballOffset, fireballOffset), new Vector2(0, 0.154f), activeFrameCount, aquamentus);
+            fireballThree = new Fireball(aquamentus.Position + new Vector2(fireballOffset, fireballOffset), new Vector2(0, cosAmount), activeFrameCount, aquamentus);
 
             GameObjectManager.Instance.AddOnNextFrame(fireballOne);
             GameObjectManager.Instance.AddOnNextFrame(fireballTwo);

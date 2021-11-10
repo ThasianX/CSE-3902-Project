@@ -6,7 +6,7 @@ namespace Project1.Commands
     class EnemyTakeDamageCommand : ICommand
     {
         IEnemy enemy;
-        int amount = 2; // default amount
+        int amount = 1; // default amount
         private bool takeDamage = true;
 
         public EnemyTakeDamageCommand(IEnemy enemy, int amount)
