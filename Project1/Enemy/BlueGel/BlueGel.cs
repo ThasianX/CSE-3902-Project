@@ -101,6 +101,7 @@ namespace Project1.Enemy
             {
                 immnueTimeCounter = immuneTime;
                 blueGelHealthState.TakeDamage(damage);
+                SoundManager.Instance.PlaySound("EnemyHit");
                 GameObjectManager.Instance.AddOnNextFrame(new DamagedEnemy(this));
                 GameObjectManager.Instance.RemoveOnNextFrame(this);
             }

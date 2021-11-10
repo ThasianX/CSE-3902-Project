@@ -16,7 +16,7 @@ namespace Project1.Enemy
         public bool IsMover => true;
         public string CollisionType => "Enemy";
         public IHealthState aquamentusHealthState;
-        private int immuneTime = 60;
+        private int immuneTime = 30;
         private int immnueTimeCounter;
         //private bool isLinkNearby;
 
@@ -96,6 +96,7 @@ namespace Project1.Enemy
             {
                 immnueTimeCounter = immuneTime;
                 aquamentusHealthState.TakeDamage(damage);
+                SoundManager.Instance.PlaySound("EnemyHit");
                 GameObjectManager.Instance.AddOnNextFrame(new DamagedEnemy(this));
                 GameObjectManager.Instance.RemoveOnNextFrame(this);
             }
