@@ -7,14 +7,8 @@ namespace Project1.Interfaces
 {
     public interface IGameState
     {
-        public void Update(GameTime gametime, ArrayList controllerList)
-        { 
-        }
-        public void Draw(SpriteBatch spriteBatch)
-        {
-        }
-        public void Pause()
-        {
-        }
+        public void Update(GameTime gametime, ArrayList controllerList);
+        public void Draw(SpriteBatch spriteBatch);
+        public void Pause();
     }
 }
