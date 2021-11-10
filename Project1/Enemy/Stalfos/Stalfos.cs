@@ -94,11 +94,15 @@ namespace Project1.Enemy
         public void TakeDamage(int damage)
         {
             stalfosHealthState.TakeDamage(damage);
-            SoundManager.Instance.PlaySound("EnemyHit");
             if (!DeadEnemy())
             {
+                SoundManager.Instance.PlaySound("EnemyHit");
                 GameObjectManager.Instance.AddOnNextFrame(new DamagedEnemy(this));
                 GameObjectManager.Instance.RemoveOnNextFrame(this);
+            }
+            else
+            {
+                SoundManager.Instance.PlaySound("EnemyDie");
             }
         }
 
