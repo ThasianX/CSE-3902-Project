@@ -80,6 +80,14 @@ namespace Project1.Enemy
             //DrawRectangle(spriteBatch)
         }
 
+        public void Draw(SpriteBatch spriteBatch, Color color)
+        {
+            Sprite.Draw(spriteBatch, Position, color);
+            stalfosHealthState.Draw(spriteBatch);
+
+            //DrawRectangle(spriteBatch)
+        }
+
         private void DrawRectangle(SpriteBatch spriteBatch)
         {
             // Visualize rectangle for testing
@@ -97,6 +105,8 @@ namespace Project1.Enemy
             {
                 immnueTimeCounter = immuneTime;
                 stalfosHealthState.TakeDamage(damage);
+                GameObjectManager.Instance.AddOnNextFrame(new DamagedEnemy(this));
+                GameObjectManager.Instance.RemoveOnNextFrame(this);
             }
         }
 

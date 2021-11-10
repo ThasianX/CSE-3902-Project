@@ -89,12 +89,20 @@ namespace Project1.Enemy
             redGloriyaHealthState.Draw(spriteBatch);
         }
 
+        public void Draw(SpriteBatch spriteBatch, Color color)
+        {
+            Sprite.Draw(spriteBatch, Position, color);
+            redGloriyaHealthState.Draw(spriteBatch);
+        }
+
         public void TakeDamage(int damage)
         {
             if (!Immune())
             {
                 immnueTimeCounter = immuneTime;
                 redGloriyaHealthState.TakeDamage(damage);
+                GameObjectManager.Instance.AddOnNextFrame(new DamagedEnemy(this));
+                GameObjectManager.Instance.RemoveOnNextFrame(this);
             }
         }
 

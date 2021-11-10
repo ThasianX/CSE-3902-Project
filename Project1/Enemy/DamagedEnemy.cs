@@ -3,56 +3,45 @@ using Project1.Interfaces;
 using Microsoft.Xna.Framework.Graphics;
 using Project1.PlayerStates;
 using System.Collections.Generic;
+using Project1.Enemy;
 
 namespace Project1
 {
-    public class DamagedPlayer : IPlayer, ICollidable
+    public class DamagedEnemy : IEnemy, ICollidable
     {
-        public IPlayer basePlayer;
-        public string CollisionType => "Player";
+        public IEnemy baseEnemy;
+        public string CollisionType => "Enemy";
         public bool IsMover => true;
         public ISprite Sprite
         {
-            get { return basePlayer.Sprite; }
-            set { basePlayer.Sprite = value; }
+            get { return baseEnemy.Sprite; }
+            set { baseEnemy.Sprite = value; }
         }
 
-        public IPlayerState State
+        public IEnemyState State
         {
-            get { return basePlayer.State; }
-            set { basePlayer.State = value; }
+            get { return baseEnemy.State; }
+            set { baseEnemy.State = value; }
         }
 
         public Vector2 Position
         {
-            get { return basePlayer.Position; }
-            set { basePlayer.Position = value; }
-        }
-
-        public Direction FacingDirection
-        {
-            get { return basePlayer.FacingDirection; }
-            set { basePlayer.FacingDirection = value; }
+            get { return baseEnemy.Position; }
+            set { baseEnemy.Position = value; }
         }
 
 
-        public float Speed
+        public float MovingSpeed
         {
-            get { return basePlayer.Speed; }
-            set { basePlayer.Speed = value; }
-        }
-
-        public Dictionary<Direction, bool> ActiveMoveInputs
-        {
-            get { return basePlayer.ActiveMoveInputs; }
-            set { basePlayer.ActiveMoveInputs = value; }
+            get { return baseEnemy.MovingSpeed; }
+            set { baseEnemy.MovingSpeed = value; }
         }
 
         private int immuneTime = 30;
 
-        public DamagedPlayer(IPlayer player)
+        public DamagedEnemy(IEnemy enemy)
         {
-            this.basePlayer = player;
+            this.baseEnemy = enemy;
         }
 
         public void Update(GameTime gameTime)
@@ -63,43 +52,31 @@ namespace Project1
                 RemoveDecorator();
             }
 
-            basePlayer.Update(gameTime);
+            baseEnemy.Update(gameTime);
         }
 
         public void RemoveDecorator()
         {
             GameObjectManager.Instance.RemoveOnNextFrame(this);
-            GameObjectManager.Instance.AddOnNextFrame(basePlayer);
+            GameObjectManager.Instance.AddOnNextFrame(baseEnemy);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             Color color = Color.Red;
-            basePlayer.Draw(spriteBatch, color);
+            baseEnemy.Draw(spriteBatch, color);
         }
 
         public Rectangle GetRectangle()
         {
-            return ((ICollidable) basePlayer).GetRectangle();
+            return ((ICollidable)baseEnemy).GetRectangle();
         }
 
         public void Draw(SpriteBatch spriteBatch, Color color) { }
-        public void BombAttack() { basePlayer.BombAttack(); }
-        public void BoomerangAttack() { basePlayer.BoomerangAttack(); }
-        public void CollectItem(IInventoryItem collectible) { basePlayer.CollectItem(collectible); }
-        public void FaceDirection(Direction direction) { basePlayer.FaceDirection(direction); }
-        public void SetMoveInput(Direction direction, bool isPressed) { basePlayer.SetMoveInput(direction, isPressed); }
-        public void ShootArrow() { basePlayer.ShootArrow(); }
-        public void ShowCollection() { basePlayer.ShowCollection(); }
-        public void SwordAttack() { basePlayer.SwordAttack(); }
+        public void FireBallAttack() { baseEnemy.FireBallAttack(); }
+        public void BoomerangAttack() { baseEnemy.BoomerangAttack(); }
+        public void ChangeDirection() { baseEnemy.ChangeDirection(); }
         public void TakeDamage(int damage) { }
-        public bool hasAnyMoveInput()
-        {
-            return basePlayer.hasAnyMoveInput();
-        }
 
-        public void Move(Vector2 delta) { basePlayer.Move(delta); }
-        public void Heal(int heal) { basePlayer.Heal(heal); }
-        public void InstantUseItem(IInstantUseItem collectible) { basePlayer.InstantUseItem(collectible); }
     }
 }

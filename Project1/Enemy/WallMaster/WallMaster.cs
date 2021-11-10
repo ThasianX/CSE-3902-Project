@@ -88,12 +88,20 @@ namespace Project1.Enemy
             wallMasterHealthState.Draw(spriteBatch);
         }
 
+        public void Draw(SpriteBatch spriteBatch, Color color)
+        {
+            Sprite.Draw(spriteBatch, Position, color);
+            wallMasterHealthState.Draw(spriteBatch);
+        }
+
         public void TakeDamage(int damage)
         {
             if (!Immune())
             {
                 immnueTimeCounter = immuneTime;
                 wallMasterHealthState.TakeDamage(damage);
+                GameObjectManager.Instance.AddOnNextFrame(new DamagedEnemy(this));
+                GameObjectManager.Instance.RemoveOnNextFrame(this);
             }
         }
 

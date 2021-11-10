@@ -84,12 +84,20 @@ namespace Project1.Enemy
             aquamentusHealthState.Draw(spriteBatch);
         }
 
+        public void Draw(SpriteBatch spriteBatch, Color color)
+        {
+            Sprite.Draw(spriteBatch, Position, color);
+            aquamentusHealthState.Draw(spriteBatch);
+        }
+
         public void TakeDamage(int damage)
         {
             if (!Immune())
             {
                 immnueTimeCounter = immuneTime;
                 aquamentusHealthState.TakeDamage(damage);
+                GameObjectManager.Instance.AddOnNextFrame(new DamagedEnemy(this));
+                GameObjectManager.Instance.RemoveOnNextFrame(this);
             }
         }
 
