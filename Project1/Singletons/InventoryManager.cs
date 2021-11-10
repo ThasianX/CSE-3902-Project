@@ -11,6 +11,7 @@ namespace Project1
         //Tracks consumables and weapons
         public Dictionary<IInventoryItem, int> itemInv = new Dictionary<IInventoryItem, int>();
         public List<IInventoryItem> weapons = new List<IInventoryItem>();
+        public int rupees = 0;
 
         public InventoryManager()
         {
@@ -47,6 +48,19 @@ namespace Project1
             else
             {
                 weapons.Add(item);
+            }
+        }
+
+        public void AddRupees(int amount)
+        {
+            rupees += amount;
+            if (rupees < 0)
+            {
+                rupees = 0;
+            }
+            else if (rupees > 999)
+            {
+                rupees = 999;
             }
         }
 

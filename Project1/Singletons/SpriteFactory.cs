@@ -22,7 +22,9 @@ namespace Project1
             "enemies",
             "bosses",
             "characters",
-            "Enemy and Projectile"
+            "Enemy and Projectile",
+            "TitleScreens",
+            "HUDPauseScreen"
         };
 
         private readonly string[] fontNames =

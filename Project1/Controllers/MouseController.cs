@@ -42,5 +42,8 @@ namespace Project1.Controllers
 			}
 			previousState = mouseState;
 		}
+		public void UpdateOnRelease()
+		{
+		}
 	}
 }

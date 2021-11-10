@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -15,8 +15,13 @@ namespace Project1.GameStates
         {
             this.game = game;
         }
-        public void Update(GameTime gameTime)
+        public void Update(GameTime gameTime, ArrayList controllerList)
         {
+            foreach (IController controller in controllerList)
+            {
+                controller.Update();
+            }
+
             GameObjectManager.Instance.UpdateObjects(gameTime);
 
             CollisionManager.Instance.Update();
