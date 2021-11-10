@@ -40,7 +40,7 @@ namespace Project1.Levels
             return rooms[currentRoomIndex];
         }
 
-        public void IncrementRoom()
+        public void MoveRoom(int room)
         {
             GetCurrentRoom().Deactivate();
             // BAD SOLUTION! DO NOT LEAVE IN FOR SPRINT 4! =============================================
@@ -48,7 +48,7 @@ namespace Project1.Levels
             GetCurrentRoom().RemoveObject(player);
             // =========================================================================================
 
-            currentRoomIndex = (currentRoomIndex + 1) % totalRooms;
+            currentRoomIndex = room - 1;
 
             // =========================================================================================
             GetCurrentRoom().AddObject(player);
@@ -56,21 +56,14 @@ namespace Project1.Levels
             GetCurrentRoom().Activate();
         }
 
+        public void IncrementRoom()
+        {
+            MoveRoom(((currentRoomIndex + 1) % totalRooms) + 1);
+        }
+
         public void DecrementRoom()
         {
-            GetCurrentRoom().Deactivate();
-
-            // BAD SOLUTION! DO NOT LEAVE IN FOR SPRINT 4! =============================================
-            IPlayer player = GameObjectManager.Instance.GetObjectsOfType<IPlayer>()[0];
-            GetCurrentRoom().RemoveObject(player);
-            // =========================================================================================
-
-            currentRoomIndex = (currentRoomIndex - 1 < 0 ? totalRooms - 1 : currentRoomIndex - 1) % totalRooms;
-
-            // =========================================================================================
-            GetCurrentRoom().AddObject(player);
-            // =========================================================================================
-            GetCurrentRoom().Activate();
+            MoveRoom(((currentRoomIndex - 1 < 0 ? totalRooms - 1 : currentRoomIndex - 1) % totalRooms) + 1);
         }
 
         public void ClearData()
@@ -98,7 +91,9 @@ namespace Project1.Levels
 
                 System.Console.WriteLine(element.Element("type").Value + ": " + x + ", " + y);
 
-                LoadObject(room, type, name, new Vector2(x, y));
+                XElement metadata = element.Element("metadata");
+
+                LoadObject(room, type, name, new Vector2(x, y), metadata);
 
             }
             //spriteData.Save("new_level_1_data.xml");
@@ -106,7 +101,7 @@ namespace Project1.Levels
             rooms.Add(room);
         }
 
-        private void LoadObject(Room room, string type, string name, Vector2 position) {
+        private void LoadObject(Room room, string type, string name, Vector2 position, XElement metadata) {
             switch(type) {
                 case "Wall":
                     room.AddObject(new Wall(position, (Direction) Enum.Parse(typeof(Direction), name)));
@@ -115,7 +110,11 @@ namespace Project1.Levels
                     room.AddObject(new Floor(position, int.Parse(name)));
                     break;
                 case "Door":
-                    room.AddObject(new Door(position, (Direction) Enum.Parse(typeof(Direction), name)));
+                    int nextRoom = 1;
+                    if(metadata != null) {
+                        nextRoom = int.Parse(metadata.Element("nextRoom").Value);
+                    }
+                    room.AddObject(new Door(position, (Direction) Enum.Parse(typeof(Direction), name), nextRoom));
                     break;
                 case "LockedDoor":
                     room.AddObject(new LockedDoor(position, (Direction)Enum.Parse(typeof(Direction), name)));
