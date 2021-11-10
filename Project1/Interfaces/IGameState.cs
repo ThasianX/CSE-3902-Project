@@ -16,5 +16,8 @@ namespace Project1.Interfaces
         public void Pause()
         {
         }
+        public void PickUp(IPlayer player, IInventoryItem item)
+        {
+        }
     }
 }

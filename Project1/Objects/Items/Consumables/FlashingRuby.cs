@@ -10,7 +10,7 @@ namespace Project1.Objects
         public string Name => "Ruby";
         public bool IsConsumable => true;
         public int MaxStackCount => 999;
-        ISprite sprite;
+        public ISprite Sprite { get; set; }
         public bool IsMover => false;
         //Unsure collision type, I think this is used in shops to display cost.
         public string CollisionType => "Item";
@@ -18,17 +18,17 @@ namespace Project1.Objects
         public FlashingRuby(Vector2 position)
         {
             this.Position = position;
-            sprite = SpriteFactory.Instance.CreateSprite("flashingRuby");
+            Sprite = SpriteFactory.Instance.CreateSprite("flashingRuby");
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            sprite.Draw(spriteBatch, Position);
+            Sprite.Draw(spriteBatch, Position);
         }
 
         public void Update(GameTime gameTime)
         {
-            sprite.Update(gameTime);
+            Sprite.Update(gameTime);
         }
         public Rectangle GetRectangle()
         {

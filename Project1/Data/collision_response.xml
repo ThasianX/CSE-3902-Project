@@ -53,6 +53,11 @@
         <arg type="Project1.Interfaces.IProjectile">SOURCE</arg>
       </command>
     </Boomerang>
+    <PickUp>
+      <command type="Project1.Commands.PickUpCommand">
+        <arg type="Project1.Collision">COLLISION</arg>
+      </command>
+    </PickUp>
   </Player>
 
   <DamagedPlayer>

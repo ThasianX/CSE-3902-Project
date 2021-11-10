@@ -34,5 +34,8 @@ namespace Project1.GameStates
         {
             game.gameState = new PlayingGameState(game);
         }
+        public void PickUp(IPlayer player, IInventoryItem item)
+        {
+        }
     }
 }

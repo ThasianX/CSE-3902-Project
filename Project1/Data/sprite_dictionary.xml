@@ -12,6 +12,7 @@
 	<player_attack_right>players/link/attacking/right/sprite</player_attack_right>
 	<player_attack_down>players/link/attacking/down/sprite</player_attack_down>
 	<player_attack_left>players/link/attacking/left/sprite</player_attack_left>
+	<player_pickup>players/link/pickup/sprite</player_pickup>
 	
 	<bomb>items/bomb/sprite</bomb>
 	<fireball>items/fireball/sprite</fireball>
