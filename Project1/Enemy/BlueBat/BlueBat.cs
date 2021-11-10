@@ -16,7 +16,7 @@ namespace Project1.Enemy
         public bool IsMover => true;
         public string CollisionType => "Enemy";
         public IHealthState blueBatHealthState;
-        private int immuneTime = 60;
+        private int immuneTime = 30;
         private int immnueTimeCounter;
         //private bool isLinkNearby;
 
@@ -88,12 +88,21 @@ namespace Project1.Enemy
             blueBatHealthState.Draw(spriteBatch);
         }
 
+        public void Draw(SpriteBatch spriteBatch, Color color)
+        {
+            Sprite.Draw(spriteBatch, Position, color);
+            blueBatHealthState.Draw(spriteBatch);
+        }
+
         public void TakeDamage(int damage)
         {
             if (!Immune())
             {
                 immnueTimeCounter = immuneTime;
                 blueBatHealthState.TakeDamage(damage);
+                SoundManager.Instance.PlaySound("EnemyHit");
+                GameObjectManager.Instance.AddOnNextFrame(new DamagedEnemy(this));
+                GameObjectManager.Instance.RemoveOnNextFrame(this);
             }
         }
 
