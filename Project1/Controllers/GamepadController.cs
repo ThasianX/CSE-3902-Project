@@ -48,5 +48,8 @@ namespace Project1
 			if (newState.IsButtonDown(Buttons.DPadLeft))
 				new PlayerFaceLeftCommand(myPlayer).Execute();
 		}
+		public void UpdateOnRelease()
+        {
+        }
     }
 }
