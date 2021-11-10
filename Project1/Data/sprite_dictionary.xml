@@ -89,4 +89,7 @@
 	<floor1>room/floor/dungeon/plain/sprite</floor1>
 	<floor2>room/floor/dungeon/blocks/sprite</floor2>
 	<floor3>room/floor/dungeon/blocks2/sprite</floor3>
+
+	<titleScreen>game/title/sprite</titleScreen>
+	<inventorySelect>game/inventorySelect/sprite</inventorySelect>
 </sprite_dictionary>

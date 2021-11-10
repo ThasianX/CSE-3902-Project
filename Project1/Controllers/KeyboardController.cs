@@ -97,5 +97,21 @@ namespace Project1
 
 			oldState = Keyboard.GetState();
 		}
+
+		public void UpdateOnRelease()
+        {
+			currentState = Keyboard.GetState();
+
+			// On key release
+			foreach (Keys key in oldState.GetPressedKeys())
+			{
+				if (onReleaseMappings.ContainsKey(key) && !currentState.IsKeyDown(key))
+				{
+					onReleaseMappings[key].Execute();
+				}
+			}
+
+			oldState = Keyboard.GetState();
+		}
 	}
 }
