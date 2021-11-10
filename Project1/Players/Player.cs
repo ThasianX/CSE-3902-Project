@@ -33,7 +33,7 @@ namespace Project1
             FacingDirection = Direction.Down;
             // Set entry state
             State = new StillPlayerState(this);
-            healthState = new HealthState(this, 100);
+            healthState = new HealthState(this, 3);
             playerInventory = new InventoryManager();
             ActiveMoveInputs = new Dictionary<Direction, bool>()
             {
@@ -151,7 +151,7 @@ namespace Project1
 
         public void CollectItem(IInventoryItem collectible)
         {
-            playerInventory.AddItem(collectible);
+            InventoryManager.Instance.AddItem(collectible);
             LevelManager.Instance.GetCurrentRoom().RemoveObject(collectible);
             GameObjectManager.Instance.RemoveOnNextFrame(collectible);
         }

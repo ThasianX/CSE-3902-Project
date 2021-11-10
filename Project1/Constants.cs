@@ -27,5 +27,7 @@ namespace Project1
         public static int SPRITE_HEIGHT => 8;
 
         public static int TILE_SIZE = 16;
+
+        public static int HP_PER_HEART = 2;
     }
 }

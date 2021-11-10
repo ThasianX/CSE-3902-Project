@@ -23,6 +23,7 @@ namespace Project1
             "bosses",
             "characters",
             "Enemy and Projectile",
+            "zelda_UI",
             "TitleScreens",
             "HUDPauseScreen"
         };

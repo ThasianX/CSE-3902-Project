@@ -5,7 +5,7 @@ namespace Project1.Commands
     class PlayerTakeDamageCommand : ICommand
     {
         IPlayer player;
-        int amount = 2; // default amount
+        int amount = 1; // default amount
         private bool takeDamage = true;
 
         public PlayerTakeDamageCommand(IPlayer player, int amount)

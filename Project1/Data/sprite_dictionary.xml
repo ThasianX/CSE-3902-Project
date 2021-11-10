@@ -1,5 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <sprite_dictionary>
+
+  <!-- Player -->
 	<player_walking_up>players/link/walking/up/sprite</player_walking_up>
 	<player_walking_right>players/link/walking/right/sprite</player_walking_right>
 	<player_walking_down>players/link/walking/down/sprite</player_walking_down>
@@ -13,6 +15,7 @@
 	<player_attack_down>players/link/attacking/down/sprite</player_attack_down>
 	<player_attack_left>players/link/attacking/left/sprite</player_attack_left>
 	
+  <!-- Item -->
 	<bomb>items/bomb/sprite</bomb>
 	<fireball>items/fireball/sprite</fireball>
 	<flashingRuby>items/flashingRuby/sprite</flashingRuby>
@@ -30,6 +33,7 @@
 	<woodArrowPickup>items/woodArrowPickup/sprite</woodArrowPickup>
 	<bombPickup>items/bombPickup/sprite</bombPickup>
 	
+  <!-- Arrow -->
 	<woodArrow_up>items/weapon/woodArrow/up/sprite</woodArrow_up>
 	<woodArrow_left>items/weapon/woodArrow/left/sprite</woodArrow_left>
 	<woodArrow_right>items/weapon/woodArrow/right/sprite</woodArrow_right>
@@ -39,6 +43,7 @@
 	<woodSword_right>items/weapon/woodSword/right/sprite</woodSword_right>
 	<woodSword_down>items/weapon/woodSword/down/sprite</woodSword_down>
 	
+  <!-- Block -->
 	<diamond_block>tiles/diamond/block/sprite</diamond_block>
 	<pyramid_block>tiles/pyramid/block/sprite</pyramid_block>
 	<black_block>tiles/black/block/sprite</black_block>
@@ -50,6 +55,7 @@
 	<rightFacingStatue_block>tiles/rightFacingStatue/block/sprite</rightFacingStatue_block>
 	<water_block>tiles/water/block/sprite</water_block>
 	
+  <!-- Enemy -->
 	<stalfos_walking>enemies/stalfos/walking/sprite</stalfos_walking>
 	<RedGloriya_walking_up>enemies/RedGloriya/walking/up/sprite</RedGloriya_walking_up>
 	<RedGloriya_walking_right>enemies/RedGloriya/walking/right/sprite</RedGloriya_walking_right>
@@ -60,8 +66,10 @@
 	<BlueBat_woving>enemies/BlueBat/woving/sprite</BlueBat_woving>
 	<WallMaster_woving>enemies/WallMaster/woving/sprite</WallMaster_woving>
 
+  <!-- NPC -->
 	<OldMan_standing>NPC/OldMan/standing/sprite</OldMan_standing>
 	
+  <!-- Level -->
 	<top_wall>room/wall/dungeon/top/sprite</top_wall>
 	<left_wall>room/wall/dungeon/left/sprite</left_wall>
 	<right_wall>room/wall/dungeon/right/sprite</right_wall>
@@ -89,6 +97,23 @@
 	<floor1>room/floor/dungeon/plain/sprite</floor1>
 	<floor2>room/floor/dungeon/blocks/sprite</floor2>
 	<floor3>room/floor/dungeon/blocks2/sprite</floor3>
+
+  <!-- UI -->
+  <HUD_frame>UI/HUD/frame/sprite</HUD_frame>
+  <full_heart>UI/HUD/hearts/full/sprite</full_heart>
+  <half_heart>UI/HUD/hearts/half/sprite</half_heart>
+  <empty_heart>UI/HUD/hearts/empty/sprite</empty_heart>
+  <UI_blank>UI/blank/sprite</UI_blank>
+  <digit_0>UI/counters/digit_0/sprite</digit_0>
+  <digit_1>UI/counters/digit_1/sprite</digit_1>
+  <digit_2>UI/counters/digit_2/sprite</digit_2>
+  <digit_3>UI/counters/digit_3/sprite</digit_3>
+  <digit_4>UI/counters/digit_4/sprite</digit_4>
+  <digit_5>UI/counters/digit_5/sprite</digit_5>
+  <digit_6>UI/counters/digit_6/sprite</digit_6>
+  <digit_7>UI/counters/digit_7/sprite</digit_7>
+  <digit_8>UI/counters/digit_8/sprite</digit_8>
+  <digit_9>UI/counters/digit_9/sprite</digit_9>
 
 	<titleScreen>game/title/sprite</titleScreen>
 	<inventorySelect>game/inventorySelect/sprite</inventorySelect>
