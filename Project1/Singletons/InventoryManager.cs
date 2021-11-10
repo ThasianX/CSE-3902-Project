@@ -74,10 +74,12 @@ namespace Project1
             {
                 rupees = 0;
             }
-            else if (rupees > 999)
+            else if (rupees > 99)
             {
-                rupees = 999;
+                rupees = 99;
             }
+
+            UIManager.Instance.UpdateRupees(rupees);
         }
 
         public void Remove(IInventoryItem item, int quantity = 1)

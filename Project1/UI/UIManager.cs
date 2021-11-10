@@ -15,6 +15,8 @@ namespace Project1
 
         Dictionary<Type, Counter> itemCounters = new Dictionary<Type, Counter>();
 
+        Counter rupeeCounter = new Counter(new Vector2(112, 16));
+
         HealthBar healthBar = new HealthBar(new Vector2(176, 32), 3);
 
         private static UIManager instance = new UIManager();
@@ -30,12 +32,10 @@ namespace Project1
         {
             // Create Counter objects and add to dictionary
             itemCounters.Add(typeof(BombPickup), new Counter(new Vector2(112, 40)));
-            itemCounters.Add(typeof(BlueRuby), new Counter(new Vector2(112, 16)));
             itemCounters.Add(typeof(Key), new Counter(new Vector2(112, 32)));
 
             // Register which items are displayed to the UI with the InventoryManager
             InventoryManager.Instance.AddUIItem(typeof(BombPickup));
-            InventoryManager.Instance.AddUIItem(typeof(BlueRuby));
             InventoryManager.Instance.AddUIItem(typeof(Key));
         }
 
@@ -49,11 +49,17 @@ namespace Project1
             }
 
             healthBar.Draw(sb);
+            rupeeCounter.Draw(sb);
         }
 
         public void UpdateCounter(Type type, int newValue)
         {
             itemCounters[type].SetValue(newValue);
+        }
+
+        public void UpdateRupees(int newValue)
+        {
+            rupeeCounter.SetValue(newValue);
         }
 
         public void UpdateHealthBar(int newValue, int HeartContainers)
