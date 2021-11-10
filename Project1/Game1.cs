@@ -51,7 +51,7 @@ namespace Project1
         // We could use initialize to Reset our game
         protected override void Initialize()
         {
-            HUD = new RenderTarget2D(graphics.GraphicsDevice, 256, 64);
+            HUD = new RenderTarget2D(graphics.GraphicsDevice, 256, 56);
             scene = new RenderTarget2D(graphics.GraphicsDevice, 256, 176);
             OnWindowResize(this, null);
 
@@ -161,7 +161,7 @@ namespace Project1
             GraphicsDevice.Clear(Color.Black);
 
             spriteBatch.Begin(samplerState: SamplerState.PointClamp);
-            //TODO: HUDManager.Draw
+            UIManager.Instance.Draw(spriteBatch);
             spriteBatch.End();
         }
 

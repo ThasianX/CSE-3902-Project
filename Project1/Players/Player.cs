@@ -151,7 +151,7 @@ namespace Project1
 
         public void CollectItem(IInventoryItem collectible)
         {
-            playerInventory.AddItem(collectible);
+            InventoryManager.Instance.AddItem(collectible);
             LevelManager.Instance.GetCurrentRoom().RemoveObject(collectible);
             GameObjectManager.Instance.RemoveOnNextFrame(collectible);
         }

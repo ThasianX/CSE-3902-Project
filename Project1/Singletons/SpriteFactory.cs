@@ -22,7 +22,8 @@ namespace Project1
             "enemies",
             "bosses",
             "characters",
-            "Enemy and Projectile"
+            "Enemy and Projectile",
+            "zelda_UI"
         };
 
         private readonly string[] fontNames =

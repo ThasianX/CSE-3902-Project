@@ -3,6 +3,8 @@ using Project1.Interfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.ObjectModel;
+using Project1.Objects;
+using System;
 
 namespace Project1
 {
@@ -11,9 +13,15 @@ namespace Project1
         //Tracks consumables and weapons
         public Dictionary<IInventoryItem, int> itemInv = new Dictionary<IInventoryItem, int>();
         public List<IInventoryItem> weapons = new List<IInventoryItem>();
+        public List<Type> UIItems = new List<Type>();
 
-        public InventoryManager()
+        private static InventoryManager instance = new InventoryManager();
+        public static InventoryManager Instance
         {
+            get
+            {
+                return instance;
+            }
         }
         
         public void AddItem(IInventoryItem item, int quantity = 1)
@@ -48,6 +56,13 @@ namespace Project1
             {
                 weapons.Add(item);
             }
+
+            Console.WriteLine(item.GetType());
+            if (UIItems.Contains(item.GetType()))
+            {
+
+                UIManager.Instance.UpdateCounter(item.GetType(), itemInv[item]);
+            }
         }
 
         public void Remove(IInventoryItem item, int quantity = 1)
@@ -64,7 +79,19 @@ namespace Project1
             {
                 weapons.Remove(item);
             }
+
+            Console.WriteLine(item.GetType());
+            if (UIItems.Contains(item.GetType()))
+            {
+                
+                UIManager.Instance.UpdateCounter(item.GetType(), itemInv[item]);
+            }
             
+        }
+
+        public void AddUIItem(Type type)
+        {
+            UIItems.Add(type);
         }
 
         public void RemoveAll()
