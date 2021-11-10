@@ -1617,16 +1617,16 @@
       <hearts>
         <full>
           <sprite>
-            <spritesheet>HUD</spritesheet>
+            <spritesheet>zelda_UI</spritesheet>
             <dimensions>
-              <height>29</height>
-              <width>18</width>
+              <height>8</height>
+              <width>8</width>
             </dimensions>
             <time>1</time>
             <source_list>
               <source>
-                <x>123</x>
-                <y>8</y>
+                <x>645</x>
+                <y>117</y>
               </source>
             </source_list>
           </sprite>
@@ -1827,5 +1827,21 @@
         </sprite>
       </digit_9>
     </counters>
+    <blank>
+      <sprite>
+        <spritesheet>zelda_UI</spritesheet>
+        <dimensions>
+          <height>8</height>
+          <width>8</width>
+        </dimensions>
+        <time>1</time>
+        <source_list>
+          <source>
+            <x>506</x>
+            <y>59</y>
+          </source>
+        </source_list>
+      </sprite>
+    </blank>
   </UI>
 </sprite_data>

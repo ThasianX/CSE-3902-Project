@@ -103,6 +103,7 @@
   <full_heart>UI/HUD/hearts/full/sprite</full_heart>
   <half_heart>UI/HUD/hearts/half/sprite</half_heart>
   <empty_heart>UI/HUD/hearts/empty/sprite</empty_heart>
+  <UI_blank>UI/blank/sprite</UI_blank>
   <digit_0>UI/counters/digit_0/sprite</digit_0>
   <digit_1>UI/counters/digit_1/sprite</digit_1>
   <digit_2>UI/counters/digit_2/sprite</digit_2>
