@@ -30,6 +30,11 @@
         <arg type="Project1.Collision">COLLISION</arg>
       </command>
     </Item>
+	  <Rupee>
+		  <command type="Project1.Commands.PlayerCollectRupeeCommand">
+			  <arg type="Project1.Collision">COLLISION</arg>
+		  </command>
+	  </Rupee>
 	  <InstantUseItem>
 		  <command type="Project1.Commands.PlayerCollectInstantUseItemCommand">
 			  <arg type="Project1.Collision">COLLISION</arg>

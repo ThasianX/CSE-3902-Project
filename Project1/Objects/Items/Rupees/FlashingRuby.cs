@@ -4,16 +4,13 @@ using Project1.Interfaces;
 
 namespace Project1.Objects
 {
-    public class FlashingRuby : IInventoryItem, ICollidable
+    public class FlashingRuby : IRupee, ICollidable
     {
         public Vector2 Position { get; set; }
-        public string Name => "Ruby";
-        public bool IsConsumable => true;
-        public int MaxStackCount => 999;
+        public int amount => 25;
         ISprite sprite;
         public bool IsMover => false;
-        //Unsure collision type, I think this is used in shops to display cost.
-        public string CollisionType => "Item";
+        public string CollisionType => "Rupee";
 
         public FlashingRuby(Vector2 position)
         {
