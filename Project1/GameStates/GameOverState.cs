@@ -26,7 +26,7 @@ namespace Project1.GameStates
         {
             foreach (IController controller in controllerList)
             {
-                controller.Update();
+                controller.UpdateOnRelease();
             }
         }
     }
