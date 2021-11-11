@@ -105,21 +105,13 @@ namespace Project1
                 Exit();
 
             gameState.Update(gameTime, controllerList);
-
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
-            if (GameStateManager.Instance.GetGameState() != GameState.GameOver)
-            {
-                RenderScene();
-            }
-            else
-            {
-                RenderGameOver();
-            }
             // Draw to the scene and HUD render targets
+            RenderScene();
             RenderHUD();
 
             // Draw the render targets to their places in the game window
@@ -141,13 +133,20 @@ namespace Project1
         public void Reset()
         {
             Setup();
+            gameState = new PlayingGameState(this);
         }
 
-        private void RenderGameOver()
+        public void RenderGameOver()
         {
             // Draw the game area to the scene render target
             GraphicsDevice.SetRenderTarget(scene);
             GraphicsDevice.Clear(Color.Black);
+
+            //spriteBatch.Begin();
+
+            //spriteBatch.DrawString(font, "Game Over", new Vector2(100, 100), Color.Black);
+
+            //spriteBatch.End();
         }
 
         private void RenderScene()

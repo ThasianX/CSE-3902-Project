@@ -31,9 +31,4 @@ namespace Project1
 
         public static int HP_PER_HEART = 2;
     }
-
-    public enum GameState
-    {
-        Pause, Playing, GameOver
-    }
 }

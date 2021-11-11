@@ -17,6 +17,7 @@ namespace Project1.GameStates
         }
         public void Update(GameTime gameTime, ArrayList controllerList)
         {
+            GameOverCheck(GameObjectManager.Instance.GetPlayer(), GameObjectManager.Instance.GetPlayer().HealthState);
             foreach (IController controller in controllerList)
             {
                 controller.Update();
@@ -33,6 +34,15 @@ namespace Project1.GameStates
         public void Pause()
         {
             game.gameState = new PausedGameState(game);
+        }
+
+        public void GameOverCheck(IPlayer player, IHealthState playerHealth)
+        {
+            if (playerHealth.health <= 0 && !(game.gameState is GameOverState))
+            {
+                Console.WriteLine("Change");
+                game.gameState = new GameOverState(game);
+            }
         }
     }
 }

@@ -19,7 +19,7 @@ namespace Project1
         public float Speed { get; set; }
         // Keeps track of which directional movement inputs are pressed
         public Dictionary<Direction, bool> ActiveMoveInputs { get; set; }
-        public IHealthState healthState;
+        public IHealthState HealthState { get; set; }
         public Vector2 movement;
         public bool IsMover => true;
         public string CollisionType => "Player";
@@ -33,7 +33,7 @@ namespace Project1
             FacingDirection = Direction.Down;
             // Set entry state
             State = new StillPlayerState(this);
-            healthState = new HealthState(this, 3);
+            HealthState = new HealthState(this, 3);
             playerInventory = new InventoryManager();
             ActiveMoveInputs = new Dictionary<Direction, bool>()
             {
@@ -92,23 +92,22 @@ namespace Project1
         
         public void Update(GameTime gameTime)
         {
-            GameObjectDeletionManager.Instance.GameOverCheck(this, healthState);
             State.Update(gameTime);
             Sprite.Update(gameTime);
-            healthState.Update(gameTime);
+            HealthState.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             Sprite.Draw(spriteBatch, Position);
-            healthState.Draw(spriteBatch);
+            HealthState.Draw(spriteBatch);
             //DrawRectangle(spriteBatch);
         }
 
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
             Sprite.Draw(spriteBatch, Position, color);
-            healthState.Draw(spriteBatch);
+            HealthState.Draw(spriteBatch);
         }
 
         private void DrawRectangle(SpriteBatch spriteBatch)
@@ -129,7 +128,7 @@ namespace Project1
 
         public void TakeDamage(int damage)
         {
-            healthState.TakeDamage(damage);
+            HealthState.TakeDamage(damage);
             // replace basePlayer with damagedPlayer
             if (!Decorated)
             {
@@ -141,7 +140,7 @@ namespace Project1
 
         public void Heal(int heal)
         {
-            healthState.Heal(heal);
+            HealthState.Heal(heal);
         }
 
         public Rectangle GetRectangle()
