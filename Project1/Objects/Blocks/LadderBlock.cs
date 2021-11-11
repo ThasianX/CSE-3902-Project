@@ -4,13 +4,13 @@ using Project1.Interfaces;
 
 namespace Project1.Objects
 {
-    public class LadderBlock : IBlock, ICollidable
+    public class LadderBlock : IBlock
     {
         public Vector2 Position { get; set; }
 
         ISprite sprite;
         public bool IsMover => false;
-        public string CollisionType => "Block";
+        
 
         public LadderBlock(Vector2 position)
         {
