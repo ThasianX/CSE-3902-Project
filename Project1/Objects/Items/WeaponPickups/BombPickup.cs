@@ -10,28 +10,28 @@ namespace Project1.Objects
         public bool IsConsumable => true;
         public int MaxStackCount => 10;
         public Vector2 Position { get; set; }
-        ISprite sprite;
+        public ISprite Sprite { get; set; }
         public bool IsMover => false;
         public string CollisionType => "Item";
         public BombPickup(Vector2 position)
         {
             this.Position = position;
-            sprite = SpriteFactory.Instance.CreateSprite("bombPickup");
+            Sprite = SpriteFactory.Instance.CreateSprite("bombPickup");
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            sprite.Draw(spriteBatch, Position);
+            Sprite.Draw(spriteBatch, Position);
         }
 
         public void Update(GameTime gameTime)
         {
-            sprite.Update(gameTime);
+            Sprite.Update(gameTime);
         }
 
         public Rectangle GetRectangle()
         {
-            Dimensions dimensions = sprite.GetDimensions();
+            Dimensions dimensions = Sprite.GetDimensions();
             return new Rectangle((int)Position.X, (int)Position.Y, dimensions.width, dimensions.height);
         }
     }

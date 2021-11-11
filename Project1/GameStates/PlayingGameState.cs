@@ -34,5 +34,10 @@ namespace Project1.GameStates
         {
             game.gameState = new PausedGameState(game);
         }
+
+        public void PickUp(IPlayer player, IInventoryItem item)
+        {
+            game.gameState = new PickUpGameState(game, player, item);
+        }
     }
 }

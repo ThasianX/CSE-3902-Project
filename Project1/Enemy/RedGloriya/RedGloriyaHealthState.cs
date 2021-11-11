@@ -43,14 +43,7 @@ namespace Project1.Enemy
 
         public void TakeDamage(int damage)
         {
-            if (health <= 0)
-            {
-                health = maxHealth;
-            }
-            else
-            {
-                health -= damage;
-            }
+            health -= damage;
         }
         public void Heal(int heal)
         {
