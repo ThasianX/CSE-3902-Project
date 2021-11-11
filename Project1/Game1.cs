@@ -141,12 +141,16 @@ namespace Project1
             // Draw the game area to the scene render target
             GraphicsDevice.SetRenderTarget(scene);
             GraphicsDevice.Clear(Color.Black);
+            spriteBatch.DrawString(Content.Load<SpriteFont>("GameOver"), "Game Over", new Vector2(88, 48), Color.White);
+            spriteBatch.DrawString(Content.Load<SpriteFont>("GameOver"), "Press R to Retry", new Vector2(78, 108), Color.White);
+            spriteBatch.DrawString(Content.Load<SpriteFont>("GameOver"), "Press Q to Quit", new Vector2(78, 128), Color.White);
+        }
 
-            //spriteBatch.Begin();
-
-            //spriteBatch.DrawString(font, "Game Over", new Vector2(100, 100), Color.Black);
-
-            //spriteBatch.End();
+        public void RenderGameWin()
+        {
+            // Draw the game area to the scene render target
+            GraphicsDevice.SetRenderTarget(scene);
+            GraphicsDevice.Clear(Color.Black);
         }
 
         private void RenderScene()

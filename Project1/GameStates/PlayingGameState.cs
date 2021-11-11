@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Project1.Interfaces;
+using Project1.Objects;
 
 namespace Project1.GameStates
 {
@@ -43,6 +44,11 @@ namespace Project1.GameStates
                 Console.WriteLine("Change");
                 game.gameState = new GameOverState(game);
             }
+        }
+
+        public void GameWinCheck()
+        {
+            //if(InventoryManager.Instance.itemInv.ContainsKey()
         }
     }
 }
