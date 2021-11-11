@@ -4,13 +4,17 @@ using Project1.Interfaces;
 
 namespace Project1.Objects
 {
-    public class Triforce : IInstantUseItem, ICollidable
+    public class Triforce : IInventoryItem, ICollidable
     {
         public Vector2 Position { get; set; }
 
         ISprite sprite;
         public bool IsMover => false;
-        public string CollisionType => "InstantUseItem";
+        public string CollisionType => "Item";
+        public string Name => "Triforce";
+        public bool IsConsumable => false;
+        public int MaxStackCount => 1;
+
         public Triforce(Vector2 position)
         {
             this.Position = position;

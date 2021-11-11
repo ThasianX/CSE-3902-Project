@@ -24,6 +24,28 @@ namespace Project1
                 return instance;
             }
         }
+
+        public void ClearData()
+        {
+            itemInv.Clear();
+            weapons.Clear();
+            UIItems.Clear();
+            rupees = 0;
+        }
+
+        public bool HasTriforce()
+        {
+            int counter = 0;
+            // TODO: using weapons here
+            foreach (var item in weapons)
+            {
+                if (item.GetType().Name == "Triforce")
+                {
+                    counter++;
+                }
+            }
+            return counter > 0;
+        }
         
         public void AddItem(IInventoryItem item, int quantity = 1)
         {
@@ -110,11 +132,6 @@ namespace Project1
         public void AddUIItem(Type type)
         {
             UIItems.Add(type);
-        }
-
-        public void RemoveAll()
-        {
-            itemInv.Clear();
         }
     }
 }
