@@ -7,25 +7,28 @@ namespace Project1.Objects
     public class FlashingRuby : IRupee, ICollidable
     {
         public Vector2 Position { get; set; }
+        public string Name => "Ruby";
+        public bool IsConsumable => true;
+        public int MaxStackCount => 999;
+        public ISprite Sprite { get; set; }
         public int amount => 25;
-        ISprite sprite;
         public bool IsMover => false;
         public string CollisionType => "Rupee";
 
         public FlashingRuby(Vector2 position)
         {
             this.Position = position;
-            sprite = SpriteFactory.Instance.CreateSprite("flashingRuby");
+            Sprite = SpriteFactory.Instance.CreateSprite("flashingRuby");
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            sprite.Draw(spriteBatch, Position);
+            Sprite.Draw(spriteBatch, Position);
         }
 
         public void Update(GameTime gameTime)
         {
-            sprite.Update(gameTime);
+            Sprite.Update(gameTime);
         }
         public Rectangle GetRectangle()
         {

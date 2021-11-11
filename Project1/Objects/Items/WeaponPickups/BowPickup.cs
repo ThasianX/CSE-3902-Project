@@ -11,28 +11,28 @@ namespace Project1.Objects
         public int MaxStackCount => 1;
         public Vector2 Position { get; set; }
 
-        ISprite sprite;
+        public ISprite Sprite { get; set; }
         public bool IsMover => false;
-        public string CollisionType => "Item";
+        public string CollisionType => "PickUp";
         public BowPickup(Vector2 position)
         {
             this.Position = position;
-            sprite = SpriteFactory.Instance.CreateSprite("bowPickup");
+            Sprite = SpriteFactory.Instance.CreateSprite("bowPickup");
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            sprite.Draw(spriteBatch, Position);
+            Sprite.Draw(spriteBatch, Position);
         }
 
         public void Update(GameTime gameTime)
         {
-            sprite.Update(gameTime);
+            Sprite.Update(gameTime);
         }
 
         public Rectangle GetRectangle()
         {
-            Dimensions dimensions = sprite.GetDimensions();
+            Dimensions dimensions = Sprite.GetDimensions();
             return new Rectangle((int)Position.X, (int)Position.Y, dimensions.width, dimensions.height);
         }
     }
