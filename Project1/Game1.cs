@@ -14,6 +14,7 @@ namespace Project1
 {
     public class Game1 : Game
     {
+        public static Game1 instance;
         public IGameState gameState;
 
         private static GraphicsDeviceManager graphics;
@@ -39,6 +40,7 @@ namespace Project1
         public static Texture2D whiteRectangle;
         public Game1()
         {
+            instance = this;
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
