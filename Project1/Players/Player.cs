@@ -92,6 +92,7 @@ namespace Project1
         
         public void Update(GameTime gameTime)
         {
+            GameObjectDeletionManager.Instance.GameOverCheck(this, healthState);
             State.Update(gameTime);
             Sprite.Update(gameTime);
             healthState.Update(gameTime);

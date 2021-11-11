@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Project1.GameStates;
 using Project1.Interfaces;
 
 namespace Project1
@@ -29,5 +30,10 @@ namespace Project1
         public static int TILE_SIZE = 16;
 
         public static int HP_PER_HEART = 2;
+    }
+
+    public enum GameState
+    {
+        Pause, Playing, GameOver
     }
 }

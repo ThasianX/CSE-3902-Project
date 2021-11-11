@@ -25,9 +25,12 @@ namespace Project1
             }
         }
 
-        public void PlayerLossCheck(IPlayer player, IHealthState playerHealth)
+        public void GameOverCheck(IPlayer player, IHealthState playerHealth)
         {
-            // check player health, determine GameOverState
+            if (playerHealth.health <= 0)
+            {
+                GameStateManager.Instance.SetGameOverGameState();
+            }
         }
 
     }

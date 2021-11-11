@@ -15,7 +15,7 @@ namespace Project1
     public class Game1 : Game
     {
         public IGameState gameState;
-
+        public static Game1 instance;
         private static GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
         private Song dungeonSong;
@@ -39,6 +39,7 @@ namespace Project1
         public static Texture2D whiteRectangle;
         public Game1()
         {
+            instance = this;
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
@@ -110,8 +111,15 @@ namespace Project1
 
         protected override void Draw(GameTime gameTime)
         {
+            if (GameStateManager.Instance.GetGameState() != GameState.GameOver)
+            {
+                RenderScene();
+            }
+            else
+            {
+                RenderGameOver();
+            }
             // Draw to the scene and HUD render targets
-            RenderScene();
             RenderHUD();
 
             // Draw the render targets to their places in the game window
@@ -133,6 +141,13 @@ namespace Project1
         public void Reset()
         {
             Setup();
+        }
+
+        private void RenderGameOver()
+        {
+            // Draw the game area to the scene render target
+            GraphicsDevice.SetRenderTarget(scene);
+            GraphicsDevice.Clear(Color.Black);
         }
 
         private void RenderScene()
