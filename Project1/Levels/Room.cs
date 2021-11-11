@@ -1,11 +1,19 @@
 ﻿using Project1.Interfaces;
-using System.Collections.ObjectModel;
+using Project1.Objects;
+using System.Collections.Generic;
 
 namespace Project1.Levels
 {
     public class Room
     {
-        private Collection<IGameObject> gameObjects = new Collection<IGameObject>();
+        private List<IGameObject> gameObjects = new List<IGameObject>();
+        
+        private Dictionary<Direction, Direction> directionSwap = new Dictionary<Direction, Direction>(){
+            [Direction.Up] = Direction.Down,
+            [Direction.Down] = Direction.Up,
+            [Direction.Left] = Direction.Right,
+            [Direction.Right] = Direction.Left,
+        };
 
         // MARK: Setters
         public void AddObject(IGameObject gameObject) {
@@ -29,6 +37,12 @@ namespace Project1.Levels
             {
                 GameObjectManager.Instance.RemoveOnNextFrame(obj);
             }
+        }
+
+        public Door GetCorrespondingExit(Direction direction)
+        {
+            Direction swappedDirection = directionSwap[direction];
+            return gameObjects.Find(obj => obj is Door && (obj as Door).direction == swappedDirection) as Door;
         }
     }
 }

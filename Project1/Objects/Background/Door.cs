@@ -8,6 +8,7 @@ namespace Project1.Objects
     {
         public Vector2 Position { get; set; }
         public int nextRoom { get; }
+       public Direction direction { get; }
 
         ISprite sprite;
         public bool IsMover => true;
@@ -16,6 +17,7 @@ namespace Project1.Objects
         public Door(Vector2 position, Direction direction, int nextRoom)
         {
             this.Position = position;
+            this.direction = direction;
             this.nextRoom = nextRoom;
             switch(direction) {
                 case Direction.Up:
