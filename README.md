@@ -106,14 +106,14 @@ Key, Heart, Triforce, Compass, Map, YellowRuby, BlueRuby, FlashingRuby
 * Keys.Right: Link Facing Right
 * Keys.Left: Link Facing Left
 * Keys.Down: Link Facing Down
-
-* Link Moving
+<br />
+* Link Moving:
 * Keys.W: Link Moving Up
 * Keys.D: Link Moving Right
 * Keys.S: Link Moving Down
 * Keys.A: Link Moving Left
-
-* Link Attack
+<br />
+* Link Attack:
 * Keys.Z & Keys.N: Link Sword Attack
 * Keys.D1: Link Boomerang Attack
 * Keys.D2: Link Shoot Arrow
