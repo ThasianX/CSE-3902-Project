@@ -39,6 +39,7 @@
       <ul>
         <li><a href="#Player">Player</a></li>
         <li><a href="#Enemy-Type">Enemy Type</a></li>
+        <li><a href="#Weapon-Type">Weapon Type</a></li>
         <li><a href="#Item-Type">Item Type</a></li>
       </ul>
     </li>
@@ -85,10 +86,14 @@ Devin Turvey (turvey.6)
 Link
 
 ### Enemy Type
-Stalfos, RedGloriya, BlueBat, BlueGel, Aquamentus
+Stalfos, RedGloriya, BlueBat, BlueGel, Aquamentus, WallMaster
+
+### Weapon Type
+Bomb, Fireball, Arrow, Boomerang, Sword
 
 ### Item Type
-WoodArrow, Key, YellowRuby, BlueRuby, FlashingRuby, Heart, Triforce
+Key, Heart, Triforce, Compass, Map, YellowRuby, BlueRuby, FlashingRuby
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
