@@ -1,7 +1,7 @@
 # CSE-3902-Project
 
 * Game: The Legend of Zelda
-* Current Sprint: Sprint 3
+* Current Sprint: Sprint 4
 <!-- PROJECT SHIELDS -->
 
 [*Contributors][contributors-url]
@@ -33,12 +33,6 @@
     <li><a href="#Team-Members">Team Members</a></li>
     <li>
       <a href="#Team-Member-Assignment">Team Member Assignment</a>
-      <ul>
-        <li><a href="#Transformation-to-Data-driven-Design">Transformation to Data-driven Design</a></li>
-        <li><a href="#GameObjectManager-and-Level-Loading">GameObjectManager and Level Loading</a></li>
-        <li><a href="#Collision-Detetion-and-Collision-Resolution">Collision Detetion and Collision Resolution</a></li>
-        <li><a href="#Modify-Command-and-Gamepad-Support">Modify Command and Gamepad Support</a></li>
-      </ul>
     </li>
     <li>
       <a href="#In-Game-Resources">In Game Resources</a>
@@ -56,6 +50,7 @@
       </ul>
     </li>
     <li><a href="#Gamepad-Control">Gamepad Control</a></li>
+    <li><a href="#Mouse-Control-(Only-for-Test-Purpose)">Mouse Control (Only for Test Purpose)</a></li>
     <li><a href="#Code-Review">Code Review</a></li>
     <li><a href="#Things-Needs-Improve">Things Needs Improve</a></li>
     <li><a href="#Version-Control">Version Control</a></li>
@@ -78,18 +73,8 @@ Devin Turvey (turvey.6)
 
 
 ## Team Member Assignment
+<a href="https://github.com/ThasianX/CSE-3902-Project/projects/3"><strong>Detailed work assignment can be seen here »</strong></a>
 
-### Transformation to Data-driven Design
-Jake Suraba, Keenan Anderson, Zheyuan Gao
-
-### GameObjectManager and Level Loading
-Jake Suraba and Kevin Li
-
-### Collision Detetion and Collision Resolution
-Hongda Lin, Jake Suraba, Zheyuan Gao
-
-### Modify Command and Gamepad Support
-Keenan Anderson and Devin Turvey
 
 
 
@@ -132,9 +117,9 @@ WoodArrow, Key, YellowRuby, BlueRuby, FlashingRuby, Heart, Triforce
 ### Game Control
 * Keys.Q: Quit Game
 * Keys.R: Reset Game
+* Keys.Tab: Pause Game
+* Keys.I: Show Player Collection Page
 * Keys.E: Link takes damage 
-
-
 
 
 ## Gamepad Control
@@ -143,6 +128,11 @@ WoodArrow, Key, YellowRuby, BlueRuby, FlashingRuby, Heart, Triforce
 * D-pad Down: Link Facing Down
 * D-pad Right: Link Facing Right
 * D-pad Left: Link Facing Left
+
+
+## Mouse Control (Only for Test Purpose)
+* Left Click: Switch to previous room
+* Right Click: Switch to next room 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -158,6 +148,7 @@ WoodArrow, Key, YellowRuby, BlueRuby, FlashingRuby, Heart, Triforce
 ## Things Needs Improve
 
 * More comments on code.
+* Talk to Prof. Kirby our plan for new features for Sprint 5
 
 
 
