@@ -6,5 +6,6 @@ namespace Project1.Interfaces
         public string Name { get; }
         public bool IsConsumable { get; }
         public int MaxStackCount { get; }
+        public ISprite Sprite { get; }
     }
 }

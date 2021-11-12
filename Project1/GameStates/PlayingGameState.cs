@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Project1.Interfaces;
+using Project1.Objects;
 
 namespace Project1.GameStates
 {
@@ -17,6 +18,8 @@ namespace Project1.GameStates
         }
         public void Update(GameTime gameTime, ArrayList controllerList)
         {
+            GameOverCheck(GameObjectManager.Instance.GetPlayer(), GameObjectManager.Instance.GetPlayer().HealthState);
+            GameWinCheck();
             foreach (IController controller in controllerList)
             {
                 controller.Update();
@@ -33,6 +36,27 @@ namespace Project1.GameStates
         public void Pause()
         {
             game.gameState = new PausedGameState(game);
+        }
+
+        public void GameOverCheck(IPlayer player, IHealthState playerHealth)
+        {
+            if (playerHealth.health <= 0 && !(game.gameState is GameOverState))
+            {
+                game.gameState = new GameOverState(game);
+            }
+        }
+
+        public void GameWinCheck()
+        {
+            if (InventoryManager.Instance.HasTriforce() && !(game.gameState is GameWinState))
+            {
+                game.gameState = new GameWinState(game);
+            }
+        }
+        
+        public void PickUp(IPlayer player, IInventoryItem item)
+        {
+            game.gameState = new PickUpGameState(game, player, item);
         }
     }
 }

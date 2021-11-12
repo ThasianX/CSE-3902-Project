@@ -3,41 +3,72 @@ using Project1.Interfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.ObjectModel;
+using Project1.Objects;
+using System;
 
 namespace Project1
 {
     public class InventoryManager
     {
         //Tracks consumables and weapons
-        public Dictionary<IInventoryItem, int> itemInv = new Dictionary<IInventoryItem, int>();
+        public Dictionary<Type, int> itemInv = new Dictionary<Type, int>();
         public List<IInventoryItem> weapons = new List<IInventoryItem>();
+        public List<Type> UIItems = new List<Type>();
         public int rupees = 0;
 
-        public InventoryManager()
+        private static InventoryManager instance = new InventoryManager();
+        public static InventoryManager Instance
         {
+            get
+            {
+                return instance;
+            }
+        }
+
+        public void ClearData()
+        {
+            itemInv.Clear();
+            weapons.Clear();
+            UIItems.Clear();
+            rupees = 0;
+        }
+
+        public bool HasTriforce()
+        {
+            int counter = 0;
+            // TODO: using weapons here
+            foreach (var item in weapons)
+            {
+                if (item.GetType().Name == "Triforce")
+                {
+                    counter++;
+                }
+            }
+            return counter > 0;
         }
         
         public void AddItem(IInventoryItem item, int quantity = 1)
         {
+            Type itemType = item.GetType();
             if (item.IsConsumable)
             {
                 //If Item already in inventory
-                if (itemInv.ContainsKey(item) && (itemInv[item] + quantity) < item.MaxStackCount)
+                if (itemInv.ContainsKey(itemType) && (itemInv[itemType] + quantity) < item.MaxStackCount)
                 {
-                    itemInv[item] += quantity;
+                    itemInv[itemType] += quantity;
                     //May need refactored if we want to partially add a stack of items or could return the difference.
-                    if (itemInv[item] >= item.MaxStackCount)
+                    if (itemInv[itemType] >= item.MaxStackCount)
                     {
-                        itemInv[item] = item.MaxStackCount;
+                        itemInv[itemType] = item.MaxStackCount;
                     }
                 }
                 //If item not in inventory
-                else if (!itemInv.ContainsKey(item))
+                else if (!itemInv.ContainsKey(itemType))
                 {
-                    itemInv.Add(item, quantity);
-                    if (itemInv[item] >= item.MaxStackCount)
+                    itemInv.Add(itemType, quantity);
+                    if (itemInv[itemType] >= item.MaxStackCount)
                     {
-                        itemInv[item] = item.MaxStackCount;
+                        itemInv[itemType] = item.MaxStackCount;
                     }
                 }
                 //If inventory is at max quantity for item
@@ -49,6 +80,13 @@ namespace Project1
             {
                 weapons.Add(item);
             }
+
+            Console.WriteLine(item.GetType());
+            if (UIItems.Contains(item.GetType()))
+            {
+
+                UIManager.Instance.UpdateCounter(item.GetType(), itemInv[itemType]);
+            }
         }
 
         public void AddRupees(int amount)
@@ -58,32 +96,42 @@ namespace Project1
             {
                 rupees = 0;
             }
-            else if (rupees > 999)
+            else if (rupees > 99)
             {
-                rupees = 999;
+                rupees = 99;
             }
+
+            UIManager.Instance.UpdateRupees(rupees);
         }
 
         public void Remove(IInventoryItem item, int quantity = 1)
         {
+            Type itemType = item.GetType();
             if (item.IsConsumable)
             {
-                itemInv[item] -= quantity;
-                if (itemInv[item] <= 0)
+                itemInv[itemType] -= quantity;
+                if (itemInv[itemType] <= 0)
                 {
-                    itemInv.Remove(item);
+                    itemInv.Remove(itemType);
                 }
             }
             else
             {
                 weapons.Remove(item);
             }
+
+            Console.WriteLine(item.GetType());
+            if (UIItems.Contains(item.GetType()))
+            {
+                
+                UIManager.Instance.UpdateCounter(item.GetType(), itemInv[itemType]);
+            }
             
         }
 
-        public void RemoveAll()
+        public void AddUIItem(Type type)
         {
-            itemInv.Clear();
+            UIItems.Add(type);
         }
     }
 }

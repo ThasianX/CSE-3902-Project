@@ -13,7 +13,6 @@
     <Enemy>
       <command type="Project1.Commands.PlayerTakeDamageCommand">
         <arg type="Project1.Player">TARGET</arg>
-        <arg type="System.Int32">5</arg>
       </command>
       <command type="Project1.Commands.PlayerKnockBackCommand">
         <arg type="Project1.Player">TARGET</arg>
@@ -58,6 +57,11 @@
         <arg type="Project1.Interfaces.IProjectile">SOURCE</arg>
       </command>
     </Boomerang>
+    <PickUp>
+      <command type="Project1.Commands.PickUpCommand">
+        <arg type="Project1.Collision">COLLISION</arg>
+      </command>
+    </PickUp>
   </Player>
 
   <DamagedPlayer>
@@ -109,7 +113,7 @@
   <Weapon>
     <Enemy>
       <command type="Project1.Commands.EnemyTakeDamageCommand">
-        <arg type="Project1.IEnemy">SOURCE</arg>
+        <arg type="Project1.Enemy.IEnemy">SOURCE</arg>
       </command>
     </Enemy>
     <Player>

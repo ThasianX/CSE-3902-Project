@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Project1.Interfaces;
+using Project1.Levels;
 
 namespace Project1.Enemy
 {
@@ -16,9 +17,6 @@ namespace Project1.Enemy
         public bool IsMover => true;
         public string CollisionType => "Enemy";
         public IHealthState aquamentusHealthState;
-        private int immuneTime = 30;
-        private int immnueTimeCounter;
-        //private bool isLinkNearby;
 
         public Aquamentus(Vector2 position)
         {
@@ -37,7 +35,7 @@ namespace Project1.Enemy
 
             MovingSpeed = 1f;
 
-            aquamentusHealthState = new AquamentusHealthState(this, 300);
+            aquamentusHealthState = new AquamentusHealthState(this, 8);
         }
 
         public void FireBallAttack()
@@ -58,24 +56,10 @@ namespace Project1.Enemy
         {
             // Update the current state
             // Possible state: direction, fireball attack
+            GameObjectDeletionManager.Instance.EnemyDeletionCheck(this, aquamentusHealthState);
             State.Update(gameTime);
             Sprite.Update(gameTime);
-            // When damage taked, update only after the immune time is passed
-            if (Immune() && immnueTimeCounter == immuneTime)
-            {
-                aquamentusHealthState.Update(gameTime);
-                immnueTimeCounter--;
-            }
-            else if (Immune())
-            {
-                immnueTimeCounter--;
-            }
-        }
-
-        // determine if enemy can take damage
-        public bool Immune()
-        {
-            return immnueTimeCounter > 0;
+            aquamentusHealthState.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -92,13 +76,16 @@ namespace Project1.Enemy
 
         public void TakeDamage(int damage)
         {
-            if (!Immune())
+            aquamentusHealthState.TakeDamage(damage);
+            if (aquamentusHealthState.health > 0)
             {
-                immnueTimeCounter = immuneTime;
-                aquamentusHealthState.TakeDamage(damage);
                 SoundManager.Instance.PlaySound("EnemyHit");
                 GameObjectManager.Instance.AddOnNextFrame(new DamagedEnemy(this));
                 GameObjectManager.Instance.RemoveOnNextFrame(this);
+            }
+            else
+            {
+                SoundManager.Instance.PlaySound("EnemyDie");
             }
         }
 

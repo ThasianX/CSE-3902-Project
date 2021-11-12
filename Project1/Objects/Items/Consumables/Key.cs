@@ -8,27 +8,27 @@ namespace Project1.Objects
     {
         public string Name => "Key";
         public bool IsConsumable => true;
-        public int MaxStackCount => 10;
+        public int MaxStackCount => 99;
         public Vector2 Position { get; set; }
 
-        ISprite sprite;
+        public ISprite Sprite { get; set; }
         public bool IsMover => false;
         public string CollisionType => "Item";
 
         public Key(Vector2 position)
         {
             this.Position = position;
-            sprite = SpriteFactory.Instance.CreateSprite("key");
+            Sprite = SpriteFactory.Instance.CreateSprite("key");
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            sprite.Draw(spriteBatch, Position);
+            Sprite.Draw(spriteBatch, Position);
         }
 
         public void Update(GameTime gameTime)
         {
-            sprite.Update(gameTime);
+            Sprite.Update(gameTime);
         }
 
         public Rectangle GetRectangle()

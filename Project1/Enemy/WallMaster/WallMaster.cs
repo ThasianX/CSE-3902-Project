@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Project1.Interfaces;
+using Project1.Levels;
 
 namespace Project1.Enemy
 {
@@ -16,9 +17,6 @@ namespace Project1.Enemy
         public bool IsMover => true;
         public string CollisionType => "Enemy";
         public IHealthState wallMasterHealthState;
-        private int immuneTime = 30;
-        private int immnueTimeCounter;
-        //private bool isLinkNearby;
 
         public WallMaster(Vector2 position)
         {
@@ -42,7 +40,7 @@ namespace Project1.Enemy
             }
 
             MovingSpeed = 1f;
-            wallMasterHealthState = new WallMasterHealthState(this, 50);
+            wallMasterHealthState = new WallMasterHealthState(this, 1);
         }
 
         public void FireBallAttack()
@@ -63,23 +61,10 @@ namespace Project1.Enemy
         {
             // Update the current state
             // Possible state: direction, fireball attack
+            GameObjectDeletionManager.Instance.EnemyDeletionCheck(this, wallMasterHealthState);
             State.Update(gameTime);
             Sprite.Update(gameTime);
-            if (Immune() && immnueTimeCounter == immuneTime)
-            {
-                wallMasterHealthState.Update(gameTime);
-                immnueTimeCounter--;
-            }
-            else if (Immune())
-            {
-                immnueTimeCounter--;
-            }
-        }
-
-        // determine if enemy can take damage
-        public bool Immune()
-        {
-            return immnueTimeCounter > 0;
+            wallMasterHealthState.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -96,13 +81,16 @@ namespace Project1.Enemy
 
         public void TakeDamage(int damage)
         {
-            if (!Immune())
+            wallMasterHealthState.TakeDamage(damage);
+            if (wallMasterHealthState.health > 0)
             {
-                immnueTimeCounter = immuneTime;
-                wallMasterHealthState.TakeDamage(damage);
                 SoundManager.Instance.PlaySound("EnemyHit");
                 GameObjectManager.Instance.AddOnNextFrame(new DamagedEnemy(this));
                 GameObjectManager.Instance.RemoveOnNextFrame(this);
+            }
+            else
+            {
+                SoundManager.Instance.PlaySound("EnemyDie");
             }
         }
 
