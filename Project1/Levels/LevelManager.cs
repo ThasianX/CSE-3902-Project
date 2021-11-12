@@ -73,7 +73,7 @@ namespace Project1.Levels
             GetCurrentRoom().Activate();
         }
 
-        public void ClearData()
+        public void Reset()
         {
             instance = new LevelManager(1);
         }

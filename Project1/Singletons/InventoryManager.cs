@@ -25,12 +25,9 @@ namespace Project1
             }
         }
 
-        public void ClearData()
+        public void Reset()
         {
-            itemInv.Clear();
-            weapons.Clear();
-            UIItems.Clear();
-            rupees = 0;
+            instance = new InventoryManager();
         }
 
         public bool HasTriforce()

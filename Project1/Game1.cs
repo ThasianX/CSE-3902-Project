@@ -66,21 +66,6 @@ namespace Project1
             base.Initialize();
         }
 
-        void Setup()
-        {
-            UIManager.Instance.ClearData();
-            InventoryManager.Instance.ClearData();
-            GameObjectManager.Instance.ClearData();
-            LevelManager.Instance.ClearData();
-            LevelManager.Instance.LoadLevel();
-            foreach (IController controller in controllerList)
-            {
-                controller.ClearData();
-                controller.RegisterPlayer(GameObjectManager.Instance.GetPlayer());
-                controller.RegisterCommands();
-            }
-        }
-
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
@@ -89,10 +74,11 @@ namespace Project1
             SpriteFactory.Instance.LoadAllFonts(Content);
             SpriteFactory.Instance.LoadSpriteData("Data/sprite_data.xml");
             SpriteFactory.Instance.loadSpriteDictionary("Data/sprite_dictionary.xml");
-
-            Setup();
             SoundManager.Instance.LoadAllSounds(Content);
             CollisionHandler.Instance.LoadResponses("Data/collision_response.xml");
+            LevelManager.Instance.LoadLevel();
+
+            SetupControllers();
 
             LoadMusic();
             
@@ -118,7 +104,7 @@ namespace Project1
 
             // Draw the render targets to their places in the game window
             GraphicsDevice.SetRenderTarget(null);
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
             spriteBatch.Begin(samplerState: SamplerState.PointClamp);
 
             // Scale and draw the scene
@@ -132,9 +118,28 @@ namespace Project1
             base.Draw(gameTime);
         }
 
+        // HELPERS =======================================================================================================================
+
+        void SetupControllers() // Must be called AFTER the level is loaded!
+        {
+            foreach (IController controller in controllerList)
+            {
+                controller.ClearData();
+                controller.RegisterPlayer(GameObjectManager.Instance.GetPlayer());
+                controller.RegisterCommands();
+            }
+        }
+
         public void Reset()
         {
-            Setup();
+            InventoryManager.Instance.Reset();
+            UIManager.Instance.Reset();
+            GameObjectManager.Instance.Reset();
+            LevelManager.Instance.Reset();
+            LevelManager.Instance.LoadLevel();
+
+            SetupControllers();
+
             gameState = new PlayingGameState(this);
         }
 

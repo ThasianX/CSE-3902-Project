@@ -9,7 +9,7 @@ using System.Text;
 
 namespace Project1
 {
-    class UIManager
+    sealed class UIManager
     {
         public ISprite background = SpriteFactory.Instance.CreateSprite("HUD_frame");
 
@@ -28,7 +28,7 @@ namespace Project1
             }
         }
 
-        public void ClearData()
+        public void Reset()
         {
             instance = new UIManager();
         }
@@ -59,6 +59,7 @@ namespace Project1
 
         public void UpdateCounter(Type type, int newValue)
         {
+            Console.WriteLine("HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
             itemCounters[type].SetValue(newValue);
         }
 

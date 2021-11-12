@@ -28,12 +28,9 @@ namespace Project1
             this.gameObjects = new Collection<IGameObject>();
         }
 
-        public void ClearData()
+        public void Reset()
         {
             instance = new GameObjectManager();
-            gameObjects.Clear();
-            removeBuffer.Clear();
-            addBuffer.Clear();
         }
 
         public bool HasPlayer() {
