@@ -204,6 +204,9 @@ namespace Project1.Levels
                 case "Water":
                     room.AddObject(new WaterBlock(position));
                     break;
+                case "Half":
+                    room.AddObject(new HalfBlock(position));
+                    break;
             }
         }
         private void MakeItem(Room room, string name, Vector2 position) {
