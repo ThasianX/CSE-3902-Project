@@ -19,6 +19,10 @@ namespace Project1
 
         HealthBar healthBar = new HealthBar(new Vector2(176, 32), 3);
 
+        PickupSlot primarySlot = new PickupSlot(new Vector2(152, 24));
+
+        PickupSlot secondarySlot = new PickupSlot(new Vector2(120, 24));
+
         private static UIManager instance = new UIManager();
         public static UIManager Instance
         {
@@ -55,11 +59,11 @@ namespace Project1
 
             healthBar.Draw(sb);
             rupeeCounter.Draw(sb);
+            primarySlot.Draw(sb);
         }
 
         public void UpdateCounter(Type type, int newValue)
         {
-            Console.WriteLine("HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
             itemCounters[type].SetValue(newValue);
         }
 
@@ -71,6 +75,16 @@ namespace Project1
         public void UpdateHealthBar(int newValue, int HeartContainers)
         {
             healthBar.SetValue(newValue);
+        }
+
+        public void UpdatePrimarySlot(IInventoryItem item)
+        {
+            primarySlot.SetDisplay(item);
+        }
+
+        public void UpdateSecondarySlot(IInventoryItem item)
+        {
+            secondarySlot.SetDisplay(item);
         }
     }
 }

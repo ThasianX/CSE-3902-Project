@@ -76,12 +76,12 @@ namespace Project1
             else
             {
                 weapons.Add(item);
+                UIManager.Instance.UpdatePrimarySlot(item);
             }
 
             Console.WriteLine(item.GetType());
             if (UIItems.Contains(item.GetType()))
             {
-
                 UIManager.Instance.UpdateCounter(item.GetType(), itemInv[itemType]);
             }
         }
@@ -115,12 +115,12 @@ namespace Project1
             else
             {
                 weapons.Remove(item);
+                UIManager.Instance.UpdatePrimarySlot(null);
             }
 
             Console.WriteLine(item.GetType());
             if (UIItems.Contains(item.GetType()))
             {
-                
                 UIManager.Instance.UpdateCounter(item.GetType(), itemInv[itemType]);
             }
             

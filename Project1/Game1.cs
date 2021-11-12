@@ -20,8 +20,6 @@ namespace Project1
         private SpriteBatch spriteBatch;
         private Song dungeonSong;
 
-        private readonly int nativeX = 256, nativeY = 176;
-
         private int renderScale = 1;
         RenderTarget2D scene;
         RenderTarget2D HUD;
@@ -32,8 +30,6 @@ namespace Project1
         private ArrayList controllerList;
 
         private static Viewport ViewPort => graphics.GraphicsDevice.Viewport;
-        public static int SCREEN_WIDTH => ViewPort.Width;
-        public static int SCREEN_HEIGHT => ViewPort.Height;
 
         // Visualize rectangle for testing
         public static Texture2D whiteRectangle;
