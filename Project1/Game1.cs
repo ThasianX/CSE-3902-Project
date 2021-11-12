@@ -28,13 +28,15 @@ namespace Project1
         RenderTarget2D HUD;
 
         private Vector2 HUDPosition = Vector2.Zero;
-        private Vector2 scenePosition = new Vector2(0, 0);
+        public Vector2 scenePosition = new Vector2(0, 0);
 
         private ArrayList controllerList;
 
         private static Viewport ViewPort => graphics.GraphicsDevice.Viewport;
         public static int SCREEN_WIDTH => ViewPort.Width;
         public static int SCREEN_HEIGHT => ViewPort.Height;
+        public static int ROOM_WIDTH => 256;
+        public static int ROOM_HEIGHT => 176;
 
         // Visualize rectangle for testing
         public static Texture2D whiteRectangle;
@@ -53,8 +55,8 @@ namespace Project1
         // We could use initialize to Reset our game
         protected override void Initialize()
         {
-            HUD = new RenderTarget2D(graphics.GraphicsDevice, 256, 56);
-            scene = new RenderTarget2D(graphics.GraphicsDevice, 256, 176);
+            HUD = new RenderTarget2D(graphics.GraphicsDevice, ROOM_WIDTH, 56);
+            scene = new RenderTarget2D(graphics.GraphicsDevice, ROOM_WIDTH, ROOM_HEIGHT);
             OnWindowResize(this, null);
 
             controllerList = new ArrayList
@@ -105,6 +107,7 @@ namespace Project1
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
+            WindowManager.Instance.Update(gameTime);
             gameState.Update(gameTime, controllerList);
 
             base.Update(gameTime);
@@ -143,13 +146,13 @@ namespace Project1
             GraphicsDevice.SetRenderTarget(scene);
             GraphicsDevice.Clear(Color.Black);
 
-            spriteBatch.Begin(samplerState: SamplerState.PointClamp);
+            WindowManager.Instance.GameRoom(spriteBatch);
             gameState.Draw(spriteBatch);
             spriteBatch.End();
 
-            // Draw the HUD area to the HUD render target
-            GraphicsDevice.SetRenderTarget(HUD);
-            GraphicsDevice.Clear(Color.Black);
+            WindowManager.Instance.GameRoom2(spriteBatch);
+            gameState.Draw(spriteBatch);
+            spriteBatch.End();
         }
 
        private void RenderHUD()
