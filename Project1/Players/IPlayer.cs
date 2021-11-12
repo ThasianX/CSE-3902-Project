@@ -14,6 +14,7 @@ namespace Project1
         public float Speed { get; set; }
         public Dictionary<Direction, bool> ActiveMoveInputs { get; set; }
         public bool Decorated { get; set; }
+        public IHealthState HealthState { get; set; }
         public bool hasAnyMoveInput();
         public void KnockBack(Direction damagedDir);
         public void Move(Vector2 delta);

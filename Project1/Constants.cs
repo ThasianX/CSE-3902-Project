@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Project1.GameStates;
 using Project1.Interfaces;
 
 namespace Project1

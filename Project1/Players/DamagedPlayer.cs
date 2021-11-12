@@ -54,6 +54,12 @@ namespace Project1
             set { basePlayer.ActiveMoveInputs = value; }
         }
 
+        public IHealthState HealthState
+        {
+            get { return basePlayer.HealthState; }
+            set { basePlayer.HealthState = value; }
+        }
+
         private int immuneTime = 30;
 
         public DamagedPlayer(IPlayer player)

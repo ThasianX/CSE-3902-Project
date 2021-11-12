@@ -1,4 +1,5 @@
 ﻿using Project1.Enemy;
+using Project1.GameStates;
 using Project1.Interfaces;
 using Project1.Levels;
 
@@ -25,10 +26,6 @@ namespace Project1
             }
         }
 
-        public void PlayerLossCheck(IPlayer player, IHealthState playerHealth)
-        {
-            // check player health, determine GameOverState
-        }
 
     }
 
