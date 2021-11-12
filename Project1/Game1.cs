@@ -14,9 +14,8 @@ namespace Project1
 {
     public class Game1 : Game
     {
-        public static Game1 instance;
         public IGameState gameState;
-
+        public static Game1 instance;
         private static GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
         private Song dungeonSong;
@@ -69,6 +68,8 @@ namespace Project1
 
         void Setup()
         {
+            UIManager.Instance.ClearData();
+            InventoryManager.Instance.ClearData();
             GameObjectManager.Instance.ClearData();
             LevelManager.Instance.ClearData();
             LevelManager.Instance.LoadLevel();
@@ -106,7 +107,6 @@ namespace Project1
                 Exit();
 
             gameState.Update(gameTime, controllerList);
-
             base.Update(gameTime);
         }
 
@@ -135,6 +135,27 @@ namespace Project1
         public void Reset()
         {
             Setup();
+            gameState = new PlayingGameState(this);
+        }
+
+        public void RenderGameOver()
+        {
+            // Draw the game area to the scene render target
+            GraphicsDevice.SetRenderTarget(scene);
+            GraphicsDevice.Clear(Color.Black);
+            spriteBatch.DrawString(Content.Load<SpriteFont>("GameOver"), "Game Over", new Vector2(88, 48), Color.White);
+            spriteBatch.DrawString(Content.Load<SpriteFont>("GameOver"), "Press R to Retry", new Vector2(78, 108), Color.White);
+            spriteBatch.DrawString(Content.Load<SpriteFont>("GameOver"), "Press Q to Quit", new Vector2(78, 128), Color.White);
+        }
+
+        public void RenderGameWin()
+        {
+            // Draw the game area to the scene render target
+            GraphicsDevice.SetRenderTarget(scene);
+            GraphicsDevice.Clear(Color.Black);
+            spriteBatch.DrawString(Content.Load<SpriteFont>("GameOver"), "Game Win", new Vector2(88, 48), Color.White);
+            spriteBatch.DrawString(Content.Load<SpriteFont>("GameOver"), "Press R to Retry", new Vector2(78, 108), Color.White);
+            spriteBatch.DrawString(Content.Load<SpriteFont>("GameOver"), "Press Q to Quit", new Vector2(78, 128), Color.White);
         }
 
         private void RenderScene()

@@ -79,6 +79,13 @@
 /processorParam:TextureFormat=Color
 /build:Enemy and Projectile.png
 
+#begin GameOver.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:GameOver.spritefont
+
 #begin HUDPauseScreen.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -302,18 +309,6 @@
 /processorParam:Quality=Best
 /build:SoundEffects/TextSlow.wav
 
-#begin zelda_UI.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:zelda_UI.png
-
 #begin TitleScreens.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -325,4 +320,16 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:TitleScreens.png
+
+#begin zelda_UI.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:zelda_UI.png
 
