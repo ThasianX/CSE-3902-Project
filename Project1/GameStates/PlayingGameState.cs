@@ -53,5 +53,10 @@ namespace Project1.GameStates
                 game.gameState = new GameWinState(game);
             }
         }
+        
+        public void PickUp(IPlayer player, IInventoryItem item)
+        {
+            game.gameState = new PickUpGameState(game, player, item);
+        }
     }
 }

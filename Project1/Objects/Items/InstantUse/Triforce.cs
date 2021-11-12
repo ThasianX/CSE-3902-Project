@@ -8,7 +8,7 @@ namespace Project1.Objects
     {
         public Vector2 Position { get; set; }
 
-        ISprite sprite;
+        public ISprite Sprite { get; set; }
         public bool IsMover => false;
         public string CollisionType => "Item";
         public string Name => "Triforce";
@@ -18,17 +18,17 @@ namespace Project1.Objects
         public Triforce(Vector2 position)
         {
             this.Position = position;
-            sprite = SpriteFactory.Instance.CreateSprite("triforce");
+            Sprite = SpriteFactory.Instance.CreateSprite("triforce");
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            sprite.Draw(spriteBatch, Position);
+            Sprite.Draw(spriteBatch, Position);
         }
 
         public void Update(GameTime gameTime)
         {
-            sprite.Update(gameTime);
+            Sprite.Update(gameTime);
         }
 
         public void InstantUseItem(IPlayer player)

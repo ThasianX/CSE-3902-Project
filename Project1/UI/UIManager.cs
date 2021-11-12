@@ -28,6 +28,11 @@ namespace Project1
             }
         }
 
+        public void ClearData()
+        {
+            instance = new UIManager();
+        }
+
         private UIManager()
         {
             // Create Counter objects and add to dictionary

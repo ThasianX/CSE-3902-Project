@@ -9,23 +9,23 @@ namespace Project1.Objects
         public int amount => 5;
         public Vector2 Position { get; set; }
 
-        ISprite sprite;
+        public ISprite Sprite { get; set; }
         public bool IsMover => false;
         public string CollisionType => "Rupee";
         public BlueRuby(Vector2 position)
         {
             this.Position = position;
-            sprite = SpriteFactory.Instance.CreateSprite("blueRuby");
+            Sprite = SpriteFactory.Instance.CreateSprite("blueRuby");
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            sprite.Draw(spriteBatch, Position);
+            Sprite.Draw(spriteBatch, Position);
         }
 
         public void Update(GameTime gameTime)
         {
-            sprite.Update(gameTime);
+            Sprite.Update(gameTime);
         }
 
         public Rectangle GetRectangle()

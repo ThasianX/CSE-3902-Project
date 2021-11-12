@@ -15,8 +15,8 @@ namespace Project1.GameStates
         public PausedGameState(Game1 game)
         {
             this.game = game;
-            //Insert Pause Screen Image here
-            //sprite = SpriteFactory.Instance.CreateSprite("inventorySelect");
+            //Obviously, don't want this image.
+            sprite = SpriteFactory.Instance.CreateSprite("inventorySelect");
         }
         public void Update(GameTime gameTime, ArrayList controllerList)
         {
@@ -28,10 +28,14 @@ namespace Project1.GameStates
         public void Draw(SpriteBatch spriteBatch)
         {
             GameObjectManager.Instance.DrawObjects(spriteBatch);
+            sprite.Draw(spriteBatch, new Vector2(0,0));
         }
         public void Pause()
         {
             game.gameState = new PlayingGameState(game);
+        }
+        public void PickUp(IPlayer player, IInventoryItem item)
+        {
         }
     }
 }

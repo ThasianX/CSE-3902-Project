@@ -68,6 +68,7 @@ namespace Project1
 
         void Setup()
         {
+            UIManager.Instance.ClearData();
             InventoryManager.Instance.ClearData();
             GameObjectManager.Instance.ClearData();
             LevelManager.Instance.ClearData();
