@@ -50,7 +50,7 @@
       </ul>
     </li>
     <li><a href="#Gamepad-Control">Gamepad Control</a></li>
-    <li><a href="#Mouse-Control-(Only-for-Test-Purpose)">Mouse Control (Only for Test Purpose)</a></li>
+    <li><a href="#Mouse-Control-Only-for-Test-Purpose">Mouse Control Only for Test Purpose</a></li>
     <li><a href="#Code-Review">Code Review</a></li>
     <li><a href="#Things-Needs-Improve">Things Needs Improve</a></li>
     <li><a href="#Version-Control">Version Control</a></li>
@@ -130,7 +130,7 @@ WoodArrow, Key, YellowRuby, BlueRuby, FlashingRuby, Heart, Triforce
 * D-pad Left: Link Facing Left
 
 
-## Mouse Control (Only for Test Purpose)
+## Mouse Control Only for Test Purpose
 * Left Click: Switch to previous room
 * Right Click: Switch to next room 
 
