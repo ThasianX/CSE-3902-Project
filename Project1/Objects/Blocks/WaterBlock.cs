@@ -10,7 +10,7 @@ namespace Project1.Objects
 
         ISprite sprite;
         public bool IsMover => false;
-        public string CollisionType => "Block";
+        public string CollisionType => "Water";
         public WaterBlock(Vector2 position)
         {
             this.Position = position;

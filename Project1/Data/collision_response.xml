@@ -67,6 +67,11 @@
         <arg type="Project1.Collision">COLLISION</arg>
       </command>
     </PickUp>
+    <Water>
+      <command type="Project1.Commands.MoveInBoundsCommand">
+        <arg type="Project1.Collision">COLLISION</arg>
+      </command>
+    </Water>
   </Player>
 
   <DamagedPlayer>
@@ -75,6 +80,11 @@
         <arg type="Project1.Collision">COLLISION</arg>
       </command>
     </Block>
+    <Water>
+      <command type="Project1.Commands.MoveInBoundsCommand">
+        <arg type="Project1.Collision">COLLISION</arg>
+      </command>
+    </Water>
     <Item>
       <command type="Project1.Commands.PlayerCollectItemCommand">
         <arg type="Project1.Collision">COLLISION</arg>
@@ -93,6 +103,11 @@
         <arg type="Project1.Collision">COLLISION</arg>
       </command>
     </Block>
+    <Water>
+      <command type="Project1.Commands.MoveInBoundsCommand">
+        <arg type="Project1.Collision">COLLISION</arg>
+      </command>
+    </Water>
     <Item>
       <command type="Project1.Commands.MoveInBoundsCommand">
         <arg type="Project1.Collision">COLLISION</arg>

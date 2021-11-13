@@ -29,12 +29,9 @@ namespace Project1
             this.gameObjects = new Collection<IGameObject>();
         }
 
-        public void ClearData()
+        public void Reset()
         {
             instance = new GameObjectManager();
-            gameObjects.Clear();
-            removeBuffer.Clear();
-            addBuffer.Clear();
         }
 
         public bool HasPlayer() {
@@ -76,7 +73,7 @@ namespace Project1
             foreach (IGameObject obj in gameObjects)
             {
                 obj.Update(gameTime);
-            }
+            }  
         }
 
         private void AddObjectsInBuffer()
@@ -124,7 +121,7 @@ namespace Project1
             removeBuffer.Add(obj);
         }
 
-        public void RomoveAll()
+        public void RemoveAll()
         {
             foreach(IGameObject gameObject in gameObjects) {
                 removeBuffer.Add(gameObject);

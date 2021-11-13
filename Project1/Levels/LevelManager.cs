@@ -108,7 +108,7 @@ namespace Project1.Levels
             _moveRoom(((currentRoomIndex - 1 < 0 ? totalRooms - 1 : currentRoomIndex - 1) % totalRooms) + 1);
         }
 
-        public void ClearData()
+        public void Reset()
         {
             instance = new LevelManager(1);
         }
