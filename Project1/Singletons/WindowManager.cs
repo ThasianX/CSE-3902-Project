@@ -5,6 +5,9 @@ using Microsoft.Xna.Framework.Audio;
 using System.Diagnostics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Project1.Levels;
+using Project1.GameStates;
+
 
 namespace Project1
 {
@@ -30,6 +33,7 @@ namespace Project1
         public void GameRoom(SpriteBatch spriteBatch)
         {
             spriteBatch.Begin(
+              samplerState: SamplerState.PointClamp,
               transformMatrix: Matrix.CreateTranslation(currentTranslation)
             );
         }
@@ -39,27 +43,29 @@ namespace Project1
             Vector3 newTranslation = currentTranslation;
             switch(currentDirection) {
                 case Direction.Up:
-                    newTranslation.Y += Game1.ROOM_HEIGHT;
-                    break;
-                case Direction.Down:
                     newTranslation.Y -= Game1.ROOM_HEIGHT;
                     break;
+                case Direction.Down:
+                    newTranslation.Y += Game1.ROOM_HEIGHT;
+                    break;
                 case Direction.Left:
-                    newTranslation.X += Game1.ROOM_WIDTH;
+                    newTranslation.X -= Game1.ROOM_WIDTH;
                     break;
                 case Direction.Right:
-                    newTranslation.X -= Game1.ROOM_WIDTH;
+                    newTranslation.X += Game1.ROOM_WIDTH;
                     break;
                 default:
                     throw new System.Exception("Invalid direction");
             }
             spriteBatch.Begin(
+              samplerState: SamplerState.PointClamp,
               transformMatrix: Matrix.CreateTranslation(newTranslation)
             );
         }
 
         public void MoveCamera(Direction direction)
         {
+            Game1.instance.gameState = new PausedNoViewGameState();
             timeCounter = 0;
             startTranslation = currentTranslation;
             currentDirection = direction;
@@ -69,7 +75,15 @@ namespace Project1
         {
             if (timeCounter >= timePerSource)
             {
+                if(!Game1.instance.isTransitioning)
+                {
+                    return;
+                }
+              Game1.instance.gameState = new PlayingGameState(Game1.instance);
               timeCounter = timePerSource;
+              Game1.instance.isTransitioning = false;
+              LevelManager.Instance.DeactiveCurrentRoom(Game1.instance.nextRoomId);
+              currentTranslation = new Vector3(0, 0, 0);
               return;
             }
 
@@ -77,16 +91,16 @@ namespace Project1
             timeCounter += gameTime.ElapsedGameTime.TotalSeconds;
             switch(currentDirection) {
                 case Direction.Up:
-                    currentTranslation.Y = startTranslation.Y - (float)(Game1.ROOM_HEIGHT * timeCounter / timePerSource);
-                    break;
-                case Direction.Down:
                     currentTranslation.Y = startTranslation.Y + (float)(Game1.ROOM_HEIGHT * timeCounter / timePerSource);
                     break;
+                case Direction.Down:
+                    currentTranslation.Y = startTranslation.Y - (float)(Game1.ROOM_HEIGHT * timeCounter / timePerSource);
+                    break;
                 case Direction.Left:
-                    currentTranslation.X = startTranslation.X - (float)(Game1.ROOM_WIDTH * timeCounter / timePerSource);
+                    currentTranslation.X = startTranslation.X + (float)(Game1.ROOM_WIDTH * timeCounter / timePerSource);
                     break;
                 case Direction.Right:
-                    currentTranslation.X = startTranslation.X + (float)(Game1.ROOM_WIDTH * timeCounter / timePerSource);
+                    currentTranslation.X = startTranslation.X - (float)(Game1.ROOM_WIDTH * timeCounter / timePerSource);
                     break;
                 default:
                     throw new System.Exception("Invalid direction");

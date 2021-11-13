@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Project1.Interfaces;
+using Project1.Levels;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.ObjectModel;
@@ -46,9 +47,25 @@ namespace Project1
 
         public void DrawObjects(SpriteBatch sb)
         {
-            foreach (IGameObject obj in gameObjects)
+            if(Game1.instance.isTransitioning)
             {
-                obj.Draw(sb);
+                foreach (IGameObject obj in gameObjects)
+                {
+                    if(Game1.instance.animatingSecond) {
+                        if(LevelManager.Instance.GetRoom(Game1.instance.nextRoomId).HasObject(obj)) {
+                            obj.Draw(sb);
+                        }
+                    } else {
+                        if(!LevelManager.Instance.GetRoom(Game1.instance.nextRoomId).HasObject(obj)) {
+                            obj.Draw(sb);
+                        }
+                    }
+                }
+            } else {
+                foreach (IGameObject obj in gameObjects)
+                {
+                    obj.Draw(sb);
+                }
             }
         }
 

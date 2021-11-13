@@ -7,6 +7,7 @@ using Project1.NPC;
 using System.Collections.ObjectModel;
 using System.Xml;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 
 namespace Project1.Levels
 {
@@ -14,7 +15,7 @@ namespace Project1.Levels
     {
         private int totalRooms;
         private int currentRoomIndex;
-        private Collection<Room> rooms;
+        private List<Room> rooms;
         private XDocument spriteData;
 
         private static LevelManager instance = new LevelManager(1);
@@ -31,8 +32,13 @@ namespace Project1.Levels
         {
             totalRooms = 0;
             currentRoomIndex = 0;
-            rooms = new Collection<Room>();
+            rooms = new List<Room>();
             spriteData = XDocument.Load("Levels/LevelData/Level" + level + ".xml");
+        }
+
+        public Room GetRoom(int roomId)
+        {
+            return rooms[rooms.FindIndex(r => r.id == roomId)];
         }
 
         public Room GetCurrentRoom()
@@ -40,7 +46,43 @@ namespace Project1.Levels
             return rooms[currentRoomIndex];
         }
 
-        public void MoveRoom(int room)
+        public Room ActivateNextRoom(int roomId)
+        {
+            IPlayer player = GameObjectManager.Instance.GetObjectsOfType<IPlayer>()[0];
+            GetCurrentRoom().RemoveObject(player);
+            GameObjectManager.Instance.RemoveImmediate(player);
+
+            int nextRoomIndex = rooms.FindIndex(r => r.id == roomId);
+
+            // =========================================================================================
+            rooms[nextRoomIndex].AddObject(player);
+            // =========================================================================================
+            rooms[nextRoomIndex].Activate();
+
+            return rooms[nextRoomIndex];
+        }
+
+        public void DeactiveCurrentRoom(int roomId)
+        {
+            GetCurrentRoom().Deactivate();
+            currentRoomIndex = rooms.FindIndex(r => r.id == roomId);
+        }
+
+        public void MoveRoom(int roomId)
+        {
+            IPlayer player = GameObjectManager.Instance.GetObjectsOfType<IPlayer>()[0];
+            GetCurrentRoom().RemoveObject(player);
+            // =========================================================================================
+
+            currentRoomIndex = rooms.FindIndex(r => r.id == roomId);
+
+            // =========================================================================================
+            GetCurrentRoom().AddObject(player);
+            // =========================================================================================
+            GetCurrentRoom().Activate();
+        }
+
+        public void _moveRoom(int room)
         {
             GetCurrentRoom().Deactivate();
             // BAD SOLUTION! DO NOT LEAVE IN FOR SPRINT 4! =============================================
@@ -58,12 +100,12 @@ namespace Project1.Levels
 
         public void IncrementRoom()
         {
-            MoveRoom(((currentRoomIndex + 1) % totalRooms) + 1);
+            _moveRoom(((currentRoomIndex + 1) % totalRooms) + 1);
         }
 
         public void DecrementRoom()
         {
-            MoveRoom(((currentRoomIndex - 1 < 0 ? totalRooms - 1 : currentRoomIndex - 1) % totalRooms) + 1);
+            _moveRoom(((currentRoomIndex - 1 < 0 ? totalRooms - 1 : currentRoomIndex - 1) % totalRooms) + 1);
         }
 
         public void ClearData()
@@ -80,7 +122,7 @@ namespace Project1.Levels
         }
 
         private void LoadRoom(XElement root) {
-            Room room = new Room();
+            Room room = new Room(int.Parse(root.Attribute("id").Value));
             foreach (XElement element in root.Elements("object")) {
                 string type = element.Element("type").Value;
                 string name = element.Element("name").Value;

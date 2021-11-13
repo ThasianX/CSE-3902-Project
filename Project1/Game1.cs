@@ -39,6 +39,10 @@ namespace Project1
 
         // Visualize rectangle for testing
         public static Texture2D whiteRectangle;
+        public bool isTransitioning = false;
+        public bool animatingSecond = false;
+        public int nextRoomId = 0;
+
         public Game1()
         {
             instance = this;
@@ -171,9 +175,14 @@ namespace Project1
             gameState.Draw(spriteBatch);
             spriteBatch.End();
 
-            WindowManager.Instance.GameRoom2(spriteBatch);
-            gameState.Draw(spriteBatch);
-            spriteBatch.End();
+            if(isTransitioning)
+            {
+                animatingSecond = true;
+                WindowManager.Instance.GameRoom2(spriteBatch);
+                gameState.Draw(spriteBatch);
+                spriteBatch.End();
+                animatingSecond = false;
+            }
         }
 
        private void RenderHUD()

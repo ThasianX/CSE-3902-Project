@@ -7,6 +7,12 @@ namespace Project1.Levels
     public class Room
     {
         private List<IGameObject> gameObjects = new List<IGameObject>();
+        public int id;
+
+        public Room(int id)
+        {
+            this.id = id;
+        }
         
         private Dictionary<Direction, Direction> directionSwap = new Dictionary<Direction, Direction>(){
             [Direction.Up] = Direction.Down,
@@ -37,6 +43,11 @@ namespace Project1.Levels
             {
                 GameObjectManager.Instance.RemoveOnNextFrame(obj);
             }
+        }
+
+        public bool HasObject(IGameObject obj)
+        {
+            return gameObjects.Contains(obj);
         }
 
         public Door GetCorrespondingExit(Direction direction)
