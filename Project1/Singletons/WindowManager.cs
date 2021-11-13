@@ -30,7 +30,7 @@ namespace Project1
         private Vector3 startTranslation = new Vector3(0, 0, 0);
         private Direction currentDirection = Direction.Left;
 
-        public void GameRoom(SpriteBatch spriteBatch)
+        public void StartCurrentRoom(SpriteBatch spriteBatch)
         {
             spriteBatch.Begin(
               samplerState: SamplerState.PointClamp,
@@ -38,7 +38,7 @@ namespace Project1
             );
         }
 
-        public void GameRoom2(SpriteBatch spriteBatch)
+        public void StartNextRoom(SpriteBatch spriteBatch)
         {
             Vector3 newTranslation = currentTranslation;
             switch(currentDirection) {

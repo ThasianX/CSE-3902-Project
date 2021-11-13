@@ -44,24 +44,16 @@ namespace Project1
 
         public void DrawObjects(SpriteBatch sb)
         {
-            if(Game1.instance.isTransitioning)
+            foreach (IGameObject obj in gameObjects)
             {
-                foreach (IGameObject obj in gameObjects)
-                {
-                    if(Game1.instance.animatingSecond) {
-                        if(LevelManager.Instance.GetRoom(Game1.instance.nextRoomId).HasObject(obj)) {
-                            obj.Draw(sb);
-                        }
-                    } else {
-                        if(!LevelManager.Instance.GetRoom(Game1.instance.nextRoomId).HasObject(obj)) {
-                            obj.Draw(sb);
-                        }
-                    }
-                }
-            } else {
-                foreach (IGameObject obj in gameObjects)
-                {
+                // BAD COUPLING
+                if(!Game1.instance.isTransitioning) {
                     obj.Draw(sb);
+                } else {
+                    bool hasObject = LevelManager.Instance.GetRoom(Game1.instance.nextRoomId).HasObject(obj);
+                    if((Game1.instance.animatingSecond && hasObject) || (!Game1.instance.animatingSecond && !hasObject)) {
+                        obj.Draw(sb);
+                    }
                 }
             }
         }

@@ -35,6 +35,7 @@ namespace Project1
         public static int SCREEN_HEIGHT => ViewPort.Height;
         public static int ROOM_WIDTH => 256;
         public static int ROOM_HEIGHT => 176;
+        public static int HUD_HEIGHT => 56;
 
         // Visualize rectangle for testing
         public static Texture2D whiteRectangle;
@@ -57,7 +58,7 @@ namespace Project1
         // We could use initialize to Reset our game
         protected override void Initialize()
         {
-            HUD = new RenderTarget2D(graphics.GraphicsDevice, ROOM_WIDTH, 56);
+            HUD = new RenderTarget2D(graphics.GraphicsDevice, ROOM_WIDTH, HUD_HEIGHT);
             scene = new RenderTarget2D(graphics.GraphicsDevice, ROOM_WIDTH, ROOM_HEIGHT);
             OnWindowResize(this, null);
 
@@ -179,14 +180,19 @@ namespace Project1
             GraphicsDevice.SetRenderTarget(scene);
             GraphicsDevice.Clear(Color.Black);
 
-            WindowManager.Instance.GameRoom(spriteBatch);
+            // Renders the current room, which can either be the one the
+            // player is in or the one the player is going to.
+            // During transitions, this animates the old room off frame
+            // and becomes the new room afterwards
+            WindowManager.Instance.StartCurrentRoom(spriteBatch);
             gameState.Draw(spriteBatch);
             spriteBatch.End();
 
+            // Render the next room for animation purposes
             if(isTransitioning)
             {
                 animatingSecond = true;
-                WindowManager.Instance.GameRoom2(spriteBatch);
+                WindowManager.Instance.StartNextRoom(spriteBatch);
                 gameState.Draw(spriteBatch);
                 spriteBatch.End();
                 animatingSecond = false;

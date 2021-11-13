@@ -68,20 +68,6 @@ namespace Project1.Levels
             currentRoomIndex = rooms.FindIndex(r => r.id == roomId);
         }
 
-        public void MoveRoom(int roomId)
-        {
-            IPlayer player = GameObjectManager.Instance.GetObjectsOfType<IPlayer>()[0];
-            GetCurrentRoom().RemoveObject(player);
-            // =========================================================================================
-
-            currentRoomIndex = rooms.FindIndex(r => r.id == roomId);
-
-            // =========================================================================================
-            GetCurrentRoom().AddObject(player);
-            // =========================================================================================
-            GetCurrentRoom().Activate();
-        }
-
         public void _moveRoom(int room)
         {
             GetCurrentRoom().Deactivate();
