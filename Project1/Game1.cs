@@ -9,6 +9,7 @@ using Project1.Controllers;
 using Project1.Interfaces;
 using Project1.GameStates;
 using Project1.Levels;
+using Project1.Objects;
 
 namespace Project1
 {
@@ -20,8 +21,6 @@ namespace Project1
         private SpriteBatch spriteBatch;
         private Song dungeonSong;
 
-        private readonly int nativeX = 256, nativeY = 176;
-
         private int renderScale = 1;
         RenderTarget2D scene;
         RenderTarget2D HUD;
@@ -32,8 +31,6 @@ namespace Project1
         private ArrayList controllerList;
 
         private static Viewport ViewPort => graphics.GraphicsDevice.Viewport;
-        public static int SCREEN_WIDTH => ViewPort.Width;
-        public static int SCREEN_HEIGHT => ViewPort.Height;
 
         // Visualize rectangle for testing
         public static Texture2D whiteRectangle;
@@ -66,21 +63,6 @@ namespace Project1
             base.Initialize();
         }
 
-        void Setup()
-        {
-            UIManager.Instance.ClearData();
-            InventoryManager.Instance.ClearData();
-            GameObjectManager.Instance.ClearData();
-            LevelManager.Instance.ClearData();
-            LevelManager.Instance.LoadLevel();
-            foreach (IController controller in controllerList)
-            {
-                controller.ClearData();
-                controller.RegisterPlayer(GameObjectManager.Instance.GetPlayer());
-                controller.RegisterCommands();
-            }
-        }
-
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
@@ -89,13 +71,17 @@ namespace Project1
             SpriteFactory.Instance.LoadAllFonts(Content);
             SpriteFactory.Instance.LoadSpriteData("Data/sprite_data.xml");
             SpriteFactory.Instance.loadSpriteDictionary("Data/sprite_dictionary.xml");
-
-            Setup();
             SoundManager.Instance.LoadAllSounds(Content);
             CollisionHandler.Instance.LoadResponses("Data/collision_response.xml");
+            LevelManager.Instance.LoadLevel();
+
+            SetupControllers();
 
             LoadMusic();
-            
+
+            // Give link a sword to start (this should go somewhere else)
+            InventoryManager.Instance.AddItem(new WoodSwordPickup(Vector2.Zero));
+
             // Visualize rectangle for testing
             whiteRectangle = new Texture2D(GraphicsDevice, 1, 1);
             whiteRectangle.SetData(new[] { Color.White });
@@ -103,10 +89,8 @@ namespace Project1
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
-
             gameState.Update(gameTime, controllerList);
+
             base.Update(gameTime);
         }
 
@@ -118,7 +102,7 @@ namespace Project1
 
             // Draw the render targets to their places in the game window
             GraphicsDevice.SetRenderTarget(null);
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
             spriteBatch.Begin(samplerState: SamplerState.PointClamp);
 
             // Scale and draw the scene
@@ -132,10 +116,32 @@ namespace Project1
             base.Draw(gameTime);
         }
 
+        // HELPERS =======================================================================================================================
+
+        void SetupControllers() // Must be called AFTER the level is loaded!
+        {
+            foreach (IController controller in controllerList)
+            {
+                controller.ClearData();
+                controller.RegisterPlayer(GameObjectManager.Instance.GetPlayer());
+                controller.RegisterCommands();
+            }
+        }
+
         public void Reset()
         {
-            Setup();
+            InventoryManager.Instance.Reset();
+            UIManager.Instance.Reset();
+            GameObjectManager.Instance.Reset();
+            LevelManager.Instance.Reset();
+            LevelManager.Instance.LoadLevel();
+
+            SetupControllers();
+
             gameState = new PlayingGameState(this);
+
+            // Give link a sword to start (this should go somewhere else)
+            InventoryManager.Instance.AddItem(new WoodSwordPickup(Vector2.Zero));
         }
 
         public void RenderGameOver()

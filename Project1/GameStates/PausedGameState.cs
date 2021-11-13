@@ -5,18 +5,17 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Project1.Interfaces;
+using Project1.UI;
 
 namespace Project1.GameStates
 {
     class PausedGameState : IGameState
     {
         public Game1 game;
-        public ISprite sprite;
+
         public PausedGameState(Game1 game)
         {
             this.game = game;
-            //Obviously, don't want this image.
-            sprite = SpriteFactory.Instance.CreateSprite("inventorySelect");
         }
         public void Update(GameTime gameTime, ArrayList controllerList)
         {
@@ -28,7 +27,12 @@ namespace Project1.GameStates
         public void Draw(SpriteBatch spriteBatch)
         {
             GameObjectManager.Instance.DrawObjects(spriteBatch);
-            sprite.Draw(spriteBatch, new Vector2(0,0));
+
+            // BAD ===========================================================
+            UIManager.Instance.inventoryFrame.Draw(spriteBatch, Vector2.Zero);
+            UIManager.Instance.mapFrame.Draw(spriteBatch, new Vector2(0, 88));
+            UIManager.Instance.inventory.Draw(spriteBatch);
+            // BAD ===========================================================
         }
         public void Pause()
         {
