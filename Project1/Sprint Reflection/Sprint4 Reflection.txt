@@ -1,0 +1,25 @@
+﻿Sprint 4 Reflection(Team JellyLake/Blue 3)
+
+All aspects of sprint4 were improved compare to sprint3. During the class discussion on the first day of sprint assignment, 
+we decide to have a slightly different way to distribute work for this sprint. We realized that there are a lot of works need 
+to be done: Room transition, level layout, sound, etc. Therefore we decide to use a different approach than previous sprints.
+Instead of work in pair of two, We assign individual members of the team their own part of work. 
+
+During the sprint 3, we were out of time at the end of the sprint. Therefore this time we decide to start work early and it turns
+out great. We first start with some missing features that is required for Sprint 3. After done with that, we jump right into the 
+sprint 4 works. Because there are a lot of work to do for this sprint, the detailed division of labor can be seen in the
+"Projects/Sprint4" page. 
+
+Our plan is that everyone start their own work as soon as possible, except their work can only be done after some features are fully 
+implemented. Overall, the process of this sprint generally followed our planned time and schedule. The team members actively 
+helped each other and completed the tasks they were assigned through cooperation. Communication between the teams was still mainly 
+through discord, and basically we discussed the work progress on discord every day, and also had meetings on the voice channel.
+
+The project demo now basically meets the requirements of sprin4. We also have our code reviewed on 11/12 during the class. The overall
+quality of our code is pretty good which is great. In this sprint, we used a most detailed burndown chart than any other sprints we did 
+before to improve our planning. Code reviews between team members are still finished during pull requests and every member of the team 
+did at least one readability and one maintainability. 
+
+For the next sprint, there are several aspects we can do better. We can include more comments in our code to increase their readability.
+We could also increase the frequency of team meeting so that we can have a more clear idea about how the team members are doing. 
+But in general, our team performed very well in sprint 4.

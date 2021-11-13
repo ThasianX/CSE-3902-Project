@@ -4157,6 +4157,14 @@
 		</object>
 		<object>
 			<type>Block</type>
+			<name>Half</name>
+			<position>
+				<x>2</x>
+				<y>8</y>
+			</position>
+		</object>
+		<object>
+			<type>Block</type>
 			<name>Stone</name>
 			<position>
 				<x>2</x>
@@ -4329,6 +4337,14 @@
 		</object>
 		<object>
 			<type>Block</type>
+			<name>Half</name>
+			<position>
+				<x>4</x>
+				<y>8</y>
+			</position>
+		</object>
+		<object>
+			<type>Block</type>
 			<name>Stone</name>
 			<position>
 				<x>4</x>
@@ -4407,6 +4423,14 @@
 			<position>
 				<x>5</x>
 				<y>7</y>
+			</position>
+		</object>
+		<object>
+			<type>Block</type>
+			<name>Half</name>
+			<position>
+				<x>5</x>
+				<y>8</y>
 			</position>
 		</object>
 		<object>
@@ -4493,6 +4517,14 @@
 		</object>
 		<object>
 			<type>Block</type>
+			<name>Half</name>
+			<position>
+				<x>6</x>
+				<y>8</y>
+			</position>
+		</object>
+		<object>
+			<type>Block</type>
 			<name>Stone</name>
 			<position>
 				<x>6</x>
@@ -4551,6 +4583,14 @@
 		</object>
 		<object>
 			<type>Block</type>
+			<name>Half</name>
+			<position>
+				<x>7</x>
+				<y>5</y>
+			</position>
+		</object>
+		<object>
+			<type>Block</type>
 			<name>Stone</name>
 			<position>
 				<x>7</x>
@@ -4563,6 +4603,14 @@
 			<position>
 				<x>7</x>
 				<y>7</y>
+			</position>
+		</object>
+		<object>
+			<type>Block</type>
+			<name>Half</name>
+			<position>
+				<x>7</x>
+				<y>8</y>
 			</position>
 		</object>
 		<object>
@@ -4625,6 +4673,14 @@
 		</object>
 		<object>
 			<type>Block</type>
+			<name>Half</name>
+			<position>
+				<x>8</x>
+				<y>5</y>
+			</position>
+		</object>
+		<object>
+			<type>Block</type>
 			<name>Stone</name>
 			<position>
 				<x>8</x>
@@ -4637,6 +4693,14 @@
 			<position>
 				<x>8</x>
 				<y>7</y>
+			</position>
+		</object>
+		<object>
+			<type>Block</type>
+			<name>Half</name>
+			<position>
+				<x>8</x>
+				<y>8</y>
 			</position>
 		</object>
 		<object>
@@ -4699,6 +4763,14 @@
 		</object>
 		<object>
 			<type>Block</type>
+			<name>Half</name>
+			<position>
+				<x>9</x>
+				<y>5</y>
+			</position>
+		</object>
+		<object>
+			<type>Block</type>
 			<name>Stone</name>
 			<position>
 				<x>9</x>
@@ -4711,6 +4783,14 @@
 			<position>
 				<x>9</x>
 				<y>7</y>
+			</position>
+		</object>
+		<object>
+			<type>Block</type>
+			<name>Half</name>
+			<position>
+				<x>9</x>
+				<y>8</y>
 			</position>
 		</object>
 		<object>
@@ -4773,6 +4853,14 @@
 		</object>
 		<object>
 			<type>Block</type>
+			<name>Half</name>
+			<position>
+				<x>10</x>
+				<y>5</y>
+			</position>
+		</object>
+		<object>
+			<type>Block</type>
 			<name>Stone</name>
 			<position>
 				<x>10</x>
@@ -4785,6 +4873,14 @@
 			<position>
 				<x>10</x>
 				<y>7</y>
+			</position>
+		</object>
+		<object>
+			<type>Block</type>
+			<name>Half</name>
+			<position>
+				<x>10</x>
+				<y>8</y>
 			</position>
 		</object>
 		<object>
@@ -4843,6 +4939,14 @@
 			<position>
 				<x>11</x>
 				<y>4</y>
+			</position>
+		</object>
+		<object>
+			<type>Block</type>
+			<name>Half</name>
+			<position>
+				<x>11</x>
+				<y>5</y>
 			</position>
 		</object>
 		<object>
@@ -4929,6 +5033,14 @@
 		</object>
 		<object>
 			<type>Block</type>
+			<name>Half</name>
+			<position>
+				<x>12</x>
+				<y>5</y>
+			</position>
+		</object>
+		<object>
+			<type>Block</type>
 			<name>Stone</name>
 			<position>
 				<x>12</x>
@@ -4941,6 +5053,14 @@
 			<position>
 				<x>12</x>
 				<y>7</y>
+			</position>
+		</object>
+		<object>
+			<type>Block</type>
+			<name>Half</name>
+			<position>
+				<x>12</x>
+				<y>8</y>
 			</position>
 		</object>
 		<object>
@@ -5003,6 +5123,14 @@
 		</object>
 		<object>
 			<type>Block</type>
+			<name>Half</name>
+			<position>
+				<x>13</x>
+				<y>5</y>
+			</position>
+		</object>
+		<object>
+			<type>Block</type>
 			<name>Stone</name>
 			<position>
 				<x>13</x>
@@ -5015,6 +5143,14 @@
 			<position>
 				<x>13</x>
 				<y>7</y>
+			</position>
+		</object>
+		<object>
+			<type>Block</type>
+			<name>Half</name>
+			<position>
+				<x>13</x>
+				<y>8</y>
 			</position>
 		</object>
 		<object>
