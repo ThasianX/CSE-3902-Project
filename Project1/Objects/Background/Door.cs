@@ -4,17 +4,21 @@ using Project1.Interfaces;
 
 namespace Project1.Objects
 {
-    public class Door: IGameObject, ICollidable
+    public class Door: IExit, ICollidable
     {
         public Vector2 Position { get; set; }
+        public int nextRoom { get; }
+       public Direction direction { get; }
 
         ISprite sprite;
-        public bool IsMover => false;
-        public string CollisionType => "Block";
+        public bool IsMover => true;
+        public string CollisionType => "Door";
 
-        public Door(Vector2 position, Direction direction)
+        public Door(Vector2 position, Direction direction, int nextRoom)
         {
             this.Position = position;
+            this.direction = direction;
+            this.nextRoom = nextRoom;
             switch(direction) {
                 case Direction.Up:
                     sprite = SpriteFactory.Instance.CreateSprite("openDoor_up");

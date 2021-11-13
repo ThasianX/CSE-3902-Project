@@ -24,6 +24,11 @@
         <arg type="Project1.Collision">COLLISION</arg>
       </command>
     </Block>
+    <Door>
+      <command type="Project1.Commands.MoveToNextRoomCommand">
+        <arg type="Project1.Interfaces.IExit">SOURCE</arg>
+      </command>
+    </Door>
     <Item>
       <command type="Project1.Commands.PlayerCollectItemCommand">
         <arg type="Project1.Collision">COLLISION</arg>

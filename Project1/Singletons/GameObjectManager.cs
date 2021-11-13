@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Project1.Interfaces;
+using Project1.Levels;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.ObjectModel;
@@ -45,7 +46,15 @@ namespace Project1
         {
             foreach (IGameObject obj in gameObjects)
             {
-                obj.Draw(sb);
+                // BAD COUPLING
+                if(!Game1.instance.isTransitioning) {
+                    obj.Draw(sb);
+                } else {
+                    bool hasObject = LevelManager.Instance.GetRoom(Game1.instance.nextRoomId).HasObject(obj);
+                    if((Game1.instance.animatingSecond && hasObject) || (!Game1.instance.animatingSecond && !hasObject)) {
+                        obj.Draw(sb);
+                    }
+                }
             }
         }
 

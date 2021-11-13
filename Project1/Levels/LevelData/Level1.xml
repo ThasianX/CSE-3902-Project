@@ -1,200 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <!--All values are in tile space! (integers only)-->
 <Content>
-	//DELETE THIS ROOM LATER!!! ONLY for TEST for NOW! 
-	<room id="1">
-    <room_transform>
-      <x>0</x>
-      <y>0</y>
-      <z>0</z>
-    </room_transform>
-    <object>
-      <type>Wall</type>
-      <name>Up</name>
-      <position>
-        <x>0</x>
-        <y>0</y>
-      </position>
-    </object>
-    <object>
-      <type>Wall</type>
-      <name>Down</name>
-      <position>
-        <x>0</x>
-        <y>9</y>
-      </position>
-    </object>
-    <object>
-      <type>Wall</type>
-      <name>Left</name>
-      <position>
-        <x>0</x>
-        <y>2</y>
-      </position>
-    </object>
-    <object>
-      <type>Wall</type>
-      <name>Right</name>
-      <position>
-        <x>14</x>
-        <y>2</y>
-      </position>
-    </object>
-    <object>
-      <type>Floor</type>
-      <name>1</name>
-      <position>
-        <x>2</x>
-        <y>2</y>
-      </position>
-    </object>
-    <object>
-      <type>Door</type>
-      <name>Up</name>
-      <position>
-        <x>7</x>
-        <y>0</y>
-      </position>
-    </object>
-    <object>
-      <type>Door</type>
-      <name>Left</name>
-      <position>
-        <x>0</x>
-        <y>4.5</y>
-      </position>
-    </object>
-    <object>
-      <type>Door</type>
-      <name>Right</name>
-      <position>
-        <x>14</x>
-        <y>4.5</y>
-      </position>
-    </object>
-    <object>
-      <type>Door</type>
-      <name>Down</name>
-      <position>
-        <x>7</x>
-        <y>9</y>
-      </position>
-    </object>
-    <object>
-      <type>Enemy</type>
-      <name>Stalfos</name>
-      <position>
-        <x>12</x>
-        <y>5</y>
-      </position>
-    </object>
-    <object>
-      <type>Block</type>
-      <name>Diamond</name>
-      <position>
-        <x>5</x>
-        <y>3</y>
-      </position>
-    </object>
-    <object>
-      <type>Block</type>
-      <name>Diamond</name>
-      <position>
-        <x>5</x>
-        <y>7</y>
-      </position>
-    </object>
-    <object>
-      <type>Block</type>
-      <name>Diamond</name>
-      <position>
-        <x>6</x>
-        <y>3</y>
-      </position>
-    </object>
-    <object>
-      <type>Block</type>
-      <name>Diamond</name>
-      <position>
-        <x>6</x>
-        <y>7</y>
-      </position>
-    </object>
-    <object>
-      <type>Block</type>
-      <name>Diamond</name>
-      <position>
-        <x>10</x>
-        <y>3</y>
-      </position>
-    </object>
-    <object>
-      <type>Block</type>
-      <name>Diamond</name>
-      <position>
-        <x>10</x>
-        <y>7</y>
-      </position>
-    </object>
-    <object>
-      <type>Block</type>
-      <name>Diamond</name>
-      <position>
-        <x>11</x>
-        <y>3</y>
-      </position>
-    </object>
-    <object>
-      <type>Block</type>
-      <name>Diamond</name>
-      <position>
-        <x>11</x>
-        <y>7</y>
-      </position>
-    </object>
-    <object>
-      <type>Item</type>
-      <name>Heart</name>
-      <position>
-        <x>4</x>
-        <y>2</y>
-      </position>
-    </object>
-    <object>
-      <type>Item</type>
-      <name>FlashingRuby</name>
-      <position>
-        <x>5</x>
-        <y>2</y>
-      </position>
-    </object>
-    <object>
-      <type>Item</type>
-      <name>Key</name>
-      <position>
-        <x>7</x>
-        <y>2</y>
-      </position>
-    </object>
-    <object>
-      <type>Item</type>
-      <name>BlueRuby</name>
-      <position>
-        <x>8</x>
-        <y>2</y>
-      </position>
-    </object>
-	<object>
-      <type>Player</type>
-      <name>Link</name>
-      <position>
-        <x>4</x>
-        <y>5</y>
-      </position>
-    </object>
-  </room>
-	//--------------------------------------------------
-
 	// Room 6-2. Row 6 and cloumn 2 room from the top view of the level map.
 	// Entrance Room 
     <room id="4">
@@ -249,12 +55,15 @@
 		
 		// Door
 		<object>
-			<type>LockedDoor</type>
+			<type>Door</type>
 			<name>Up</name>
 			<position>
 				<x>7</x>
 				<y>0</y>
 			</position>
+			<metadata>
+				<nextRoom>7</nextRoom>
+			</metadata>
 		</object>
 		<object>
 			<type>Door</type>
@@ -263,6 +72,9 @@
 				<x>0</x>
 				<y>4.5</y>
 			</position>
+			<metadata>
+				<nextRoom>5</nextRoom>
+			</metadata>
 		</object>
 		<object>
 			<type>Door</type>
@@ -271,9 +83,12 @@
 				<x>14</x>
 				<y>4.5</y>
 			</position>
+			<metadata>
+				<nextRoom>6</nextRoom>
+			</metadata>
 		</object>
 		<object>
-			<type>Door</type>
+			<type>NoDoor</type>
 			<name>Down</name>
 			<position>
 				<x>7</x>
@@ -378,6 +193,14 @@
 				<y>7</y>
 			</position>
 		</object>
+		<object>
+			<type>Player</type>
+			<name>Link</name>
+			<position>
+				<x>4</x>
+				<y>5</y>
+			</position>
+		</object>
 	</room>
 
 	// Room 6-1. Row 6 and cloumn 1 room from the top view of the level map.
@@ -456,6 +279,9 @@
 				<x>14</x>
 				<y>4.5</y>
 			</position>
+			<metadata>
+				<nextRoom>4</nextRoom>
+			</metadata>
 		</object>
 	<object>
 			<type>NoDoor</type>
@@ -571,6 +397,9 @@
 				<x>0</x>
 				<y>4.5</y>
 			</position>
+			<metadata>
+				<nextRoom>4</nextRoom>
+			</metadata>
 		</object>
 		<object>
 			<type>NoDoor</type>
@@ -816,6 +645,9 @@
 			<x>7</x>
 			<y>0</y>
 		</position>
+		<metadata>
+			<nextRoom>8</nextRoom>
+		</metadata>
 	</object>
 	<object>
 		<type>NoDoor</type>
@@ -840,6 +672,9 @@
 			<x>7</x>
 			<y>9</y>
 		</position>
+		<metadata>
+			<nextRoom>4</nextRoom>
+		</metadata>
 	</object>
 
 	// Enemy
@@ -979,6 +814,9 @@
 			<x>7</x>
 			<y>0</y>
 		</position>
+		<metadata>
+			<nextRoom>10</nextRoom>
+		</metadata>
 	</object>
 	<object>
 		<type>Door</type>
@@ -987,6 +825,9 @@
 			<x>0</x>
 			<y>4.5</y>
 		</position>
+		<metadata>
+			<nextRoom>10</nextRoom>
+		</metadata>
 	</object>
 	<object>
 		<type>Door</type>
@@ -995,6 +836,9 @@
 			<x>14</x>
 			<y>4.5</y>
 		</position>
+		<metadata>
+			<nextRoom>9</nextRoom>
+		</metadata>
 	</object>
 	<object>
 		<type>Door</type>
@@ -1003,6 +847,9 @@
 			<x>7</x>
 			<y>9</y>
 		</position>
+		<metadata>
+			<nextRoom>7</nextRoom>
+		</metadata>
 	</object>
 
 	// Enemy
@@ -1150,6 +997,9 @@
 			<x>0</x>
 			<y>4.5</y>
 		</position>
+		<metadata>
+			<nextRoom>8</nextRoom>
+		</metadata>
 	</object>
 	<object>
 		<type>NoDoor</type>
@@ -1349,12 +1199,15 @@
 		</position>
 	</object>
 	<object>
-		<type>ClosedDoor</type>
+		<type>Door</type>
 		<name>Right</name>
 		<position>
 			<x>14</x>
 			<y>4.5</y>
 		</position>
+		<metadata>
+			<nextRoom>8</nextRoom>
+		</metadata>
 	</object>
 	<object>
 		<type>NoDoor</type>
@@ -1465,6 +1318,15 @@
 			</position>
 		</object>
 
+		// Item
+		<object>
+			<type>Item</type>
+			<name>Triforce</name>
+			<position>
+				<x>4.5</x>
+				<y>5</y>
+			</position>
+		</object>
 </room>
 
 	// Room 3-2. Row 3 and cloumn 2 room from the top view of the level map.
