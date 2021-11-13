@@ -11,7 +11,7 @@ namespace Project1.PlayerStates
         private int swordOffset = 8;
         private IGameObject sword;
 
-        private int activeFrameCount = 20, counter = 0;
+        private double activeTime = .25, counter = 0;
 
         public SwordAttackPlayerState(IPlayer player)
         {
@@ -21,26 +21,26 @@ namespace Project1.PlayerStates
             {
                 case Direction.Up:
                     player.Sprite = SpriteFactory.Instance.CreateSprite("player_attack_up");
-                    this.sword = new WoodSword(player.Position + new Vector2(0, -swordOffset), player.FacingDirection, activeFrameCount);
+                    this.sword = new WoodSword(player.Position + new Vector2(0, -swordOffset), player.FacingDirection, activeTime);
                     break;
 
                 case Direction.Right:
                     player.Sprite = SpriteFactory.Instance.CreateSprite("player_attack_right");
-                    this.sword = new WoodSword(player.Position + new Vector2(swordOffset, 0), player.FacingDirection, activeFrameCount);
+                    this.sword = new WoodSword(player.Position + new Vector2(swordOffset, 0), player.FacingDirection, activeTime);
                     break;
 
                 case Direction.Down:
                     player.Sprite = SpriteFactory.Instance.CreateSprite("player_attack_down");
-                    this.sword = new WoodSword(player.Position + new Vector2(0, swordOffset), player.FacingDirection, activeFrameCount);
+                    this.sword = new WoodSword(player.Position + new Vector2(0, swordOffset), player.FacingDirection, activeTime);
                     break;
 
                 case Direction.Left:
                     player.Sprite = SpriteFactory.Instance.CreateSprite("player_attack_left");
-                    this.sword = new WoodSword(player.Position + new Vector2(-swordOffset, 0), player.FacingDirection, activeFrameCount);
+                    this.sword = new WoodSword(player.Position + new Vector2(-swordOffset, 0), player.FacingDirection, activeTime);
                     break;
 
                 default:
-                    this.sword = new WoodSword(player.Position + new Vector2(0, swordOffset), player.FacingDirection, activeFrameCount);
+                    this.sword = new WoodSword(player.Position + new Vector2(0, swordOffset), player.FacingDirection, activeTime);
                     break;
             }
             GameObjectManager.Instance.AddOnNextFrame(sword);
@@ -76,10 +76,8 @@ namespace Project1.PlayerStates
 
         public void Update(GameTime gameTime)
         {
-            // TODO: Deal damage here
-
             // End the attack after reacing its active frame count
-            if (counter++ >= activeFrameCount)
+            if (counter >= activeTime)
             {
                 if (player.hasAnyMoveInput())
                 {
@@ -90,7 +88,7 @@ namespace Project1.PlayerStates
                     player.State = new StillPlayerState(player);
                 }
             }
-            sword.Update(gameTime);
+            counter += gameTime.ElapsedGameTime.TotalSeconds;
         }
 
     }

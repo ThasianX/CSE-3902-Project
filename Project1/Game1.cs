@@ -9,6 +9,7 @@ using Project1.Controllers;
 using Project1.Interfaces;
 using Project1.GameStates;
 using Project1.Levels;
+using Project1.Objects;
 
 namespace Project1
 {
@@ -77,7 +78,10 @@ namespace Project1
             SetupControllers();
 
             LoadMusic();
-            
+
+            // Give link a sword to start (this should go somewhere else)
+            InventoryManager.Instance.AddItem(new WoodSwordPickup(Vector2.Zero));
+
             // Visualize rectangle for testing
             whiteRectangle = new Texture2D(GraphicsDevice, 1, 1);
             whiteRectangle.SetData(new[] { Color.White });
@@ -85,10 +89,8 @@ namespace Project1
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
-
             gameState.Update(gameTime, controllerList);
+
             base.Update(gameTime);
         }
 
@@ -137,6 +139,9 @@ namespace Project1
             SetupControllers();
 
             gameState = new PlayingGameState(this);
+
+            // Give link a sword to start (this should go somewhere else)
+            InventoryManager.Instance.AddItem(new WoodSwordPickup(Vector2.Zero));
         }
 
         public void RenderGameOver()

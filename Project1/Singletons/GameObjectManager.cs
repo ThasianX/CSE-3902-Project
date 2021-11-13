@@ -56,7 +56,7 @@ namespace Project1
             foreach (IGameObject obj in gameObjects)
             {
                 obj.Update(gameTime);
-            }
+            }  
         }
 
         private void AddObjectsInBuffer()
@@ -104,7 +104,7 @@ namespace Project1
             removeBuffer.Add(obj);
         }
 
-        public void RomoveAll()
+        public void RemoveAll()
         {
             foreach(IGameObject gameObject in gameObjects) {
                 removeBuffer.Add(gameObject);

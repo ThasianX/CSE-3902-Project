@@ -15,15 +15,17 @@ namespace Project1.Objects
         private int maxRange = 12;
         private Direction direction;
         private Vector2 deltaVector;
+        private double activeTime;
         private double timeCounter = 0;
 
         ISprite swordSprite;
 
-        public WoodSword(Vector2 position, Direction direction, int frames)
+        public WoodSword(Vector2 position, Direction direction, double activeTime)
         {
+            this.activeTime = activeTime;
             this.direction = direction;
             this.Position = position;
-            this.moveSpeed = maxRange / frames;
+            this.moveSpeed = 2;
             switch (this.direction)
             {
                 case Direction.Up:
@@ -59,8 +61,9 @@ namespace Project1.Objects
 
         public void Update(GameTime gameTime)
         {
-            this.Position += this.deltaVector;
-            if (timeCounter > .75)
+            if (Position.Length() <= maxRange)
+                Position += this.deltaVector;
+            if (timeCounter > activeTime)
             {
                 GameObjectManager.Instance.RemoveOnNextFrame(this);
             }

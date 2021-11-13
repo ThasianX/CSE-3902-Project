@@ -11,10 +11,13 @@ namespace Project1
     public class InventoryManager
     {
         //Tracks consumables and weapons
-        public Dictionary<Type, int> itemInv = new Dictionary<Type, int>();
-        public List<IInventoryItem> weapons = new List<IInventoryItem>();
-        public List<Type> UIItems = new List<Type>();
+        public Dictionary<IInventoryItem, int> itemInv = new Dictionary<IInventoryItem, int>();
+        public List<Type> countedItems = new List<Type>();
         public int rupees = 0;
+
+        public int selectedSlot = 0;
+        private IInventoryItem primary;
+        private IInventoryItem secondary;
 
         private static InventoryManager instance = new InventoryManager();
         public static InventoryManager Instance
@@ -32,58 +35,94 @@ namespace Project1
 
         public bool HasTriforce()
         {
-            int counter = 0;
-            // TODO: using weapons here
-            foreach (var item in weapons)
-            {
-                if (item.GetType().Name == "Triforce")
-                {
-                    counter++;
-                }
-            }
-            return counter > 0;
+            return HasItem(new Triforce(Vector2.Zero));
         }
         
         public void AddItem(IInventoryItem item, int quantity = 1)
         {
-            Type itemType = item.GetType();
-            if (item.IsConsumable)
+            //If Item already in inventory
+            if (HasItem(item))
             {
-                //If Item already in inventory
-                if (itemInv.ContainsKey(itemType) && (itemInv[itemType] + quantity) < item.MaxStackCount)
+                SetCount(item, GetCount(item) + quantity);
+                if (GetCount(item) > item.MaxStackCount)
                 {
-                    itemInv[itemType] += quantity;
-                    //May need refactored if we want to partially add a stack of items or could return the difference.
-                    if (itemInv[itemType] >= item.MaxStackCount)
-                    {
-                        itemInv[itemType] = item.MaxStackCount;
-                    }
+                    SetCount(item, item.MaxStackCount);
                 }
-                //If item not in inventory
-                else if (!itemInv.ContainsKey(itemType))
-                {
-                    itemInv.Add(itemType, quantity);
-                    if (itemInv[itemType] >= item.MaxStackCount)
-                    {
-                        itemInv[itemType] = item.MaxStackCount;
-                    }
-                }
-                //If inventory is at max quantity for item
-                //Do nothing
-                //Could remove iteminv[item] + quantity) < item.MaxStackCount from first if and return full value
             }
-            //Non-consumable
-            else
+            //If item not in inventory
+            else if (!HasItem(item))
             {
-                weapons.Add(item);
-                UIManager.Instance.UpdatePrimarySlot(item);
+                itemInv.Add(item, quantity);
+
+                UIManager.Instance.UpdateInventory(GetItems());
+
+                if (GetCount(item) > item.MaxStackCount)
+                {
+                    SetCount(item, item.MaxStackCount);
+                }
+
+                if (!countedItems.Contains(item.GetType())) // BAD
+                { // BAD
+                    if (primary == null)
+                    {
+                        EquipPrimary(item);
+                    }
+                    else if (secondary == null)
+                    {
+                        EquipSecondary(item);
+                    }
+                } // BAD
+                    
             }
 
             Console.WriteLine(item.GetType());
-            if (UIItems.Contains(item.GetType()))
+            if (countedItems.Contains(item.GetType()))
             {
-                UIManager.Instance.UpdateCounter(item.GetType(), itemInv[itemType]);
+                UIManager.Instance.UpdateCounter(item.GetType(), GetCount(item));
             }
+        }
+
+        public bool HasItem(IInventoryItem checkItem)
+        {
+            foreach (IInventoryItem item in itemInv.Keys)
+            {
+                if (item.GetType() == checkItem.GetType())
+                    return true;
+            }
+            return false;
+        }
+
+        public int GetCount(IInventoryItem checkItem)
+        {
+            foreach (IInventoryItem item in itemInv.Keys)
+            {
+                if (item.GetType() == checkItem.GetType())
+                    return itemInv[item];
+            }
+            return 0;
+        }
+
+        public void SetCount(IInventoryItem checkItem, int count)
+        {
+            foreach (IInventoryItem item in itemInv.Keys)
+            {
+                if (item.GetType() == checkItem.GetType())
+                {
+                    itemInv[item] = count;
+                    return;
+                }
+                    
+            }
+        }
+
+        public List<IInventoryItem> GetItems()
+        {
+            List<IInventoryItem> items = new List<IInventoryItem>();
+            foreach (IInventoryItem item in itemInv.Keys)
+            {
+                items.Add(item);
+            }
+            return items;
         }
 
         public void AddRupees(int amount)
@@ -101,34 +140,70 @@ namespace Project1
             UIManager.Instance.UpdateRupees(rupees);
         }
 
-        public void Remove(IInventoryItem item, int quantity = 1)
+        public void RemoveItem(IInventoryItem item, int quantity = 1)
         {
             Type itemType = item.GetType();
-            if (item.IsConsumable)
+            if (true)//item.IsConsumable)
             {
-                itemInv[itemType] -= quantity;
-                if (itemInv[itemType] <= 0)
+                itemInv[item] -= quantity;
+                if (itemInv[item] <= 0)
                 {
-                    itemInv.Remove(itemType);
+                    itemInv.Remove(item);
                 }
             }
-            else
+/*            else
             {
                 weapons.Remove(item);
                 UIManager.Instance.UpdatePrimarySlot(null);
             }
-
+*/
             Console.WriteLine(item.GetType());
-            if (UIItems.Contains(item.GetType()))
+            if (countedItems.Contains(item.GetType()))
             {
-                UIManager.Instance.UpdateCounter(item.GetType(), itemInv[itemType]);
+                UIManager.Instance.UpdateCounter(item.GetType(), itemInv[item]);
             }
             
         }
 
-        public void AddUIItem(Type type)
+        public void AddCountedItem(Type type)
         {
-            UIItems.Add(type);
+            countedItems.Add(type);
+        }
+
+        public void EquipPrimary(IInventoryItem item)
+        {
+            if (HasItem(item))
+            {
+                primary = item;
+                UIManager.Instance.UpdatePrimarySlot(item);
+            }
+        }
+
+        public void EquipSecondary(IInventoryItem item)
+        {
+            if (HasItem(item))
+            {
+                secondary = item;
+                UIManager.Instance.UpdateSecondarySlot(item);
+            }
+        }
+
+        public void UnequipPrimary()
+        {
+            if (primary != null)
+            {
+                primary = null;
+                UIManager.Instance.UpdatePrimarySlot(null);
+            }
+        }
+
+        public void UnequipSecondary()
+        {
+            if (secondary != null)
+            {
+                secondary = null;
+                UIManager.Instance.UpdatePrimarySlot(null);
+            }
         }
     }
 }
