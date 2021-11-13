@@ -55,6 +55,7 @@
 	<leftFacingStatue_block>tiles/leftFacingStatue/block/sprite</leftFacingStatue_block>
 	<rightFacingStatue_block>tiles/rightFacingStatue/block/sprite</rightFacingStatue_block>
 	<water_block>tiles/water/block/sprite</water_block>
+	<half_block>tiles/half/block/sprite</half_block>
 	
   <!-- Enemy -->
 	<stalfos_walking>enemies/stalfos/walking/sprite</stalfos_walking>
