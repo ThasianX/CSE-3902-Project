@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Project1.PlayerStates;
 using Project1.Levels;
+using Project1.Objects;
 
 namespace Project1
 {
@@ -73,21 +74,30 @@ namespace Project1
 
         public void SwordAttack()
         {
-            State.SwordAttack();
+            // if (InventoryManager.Instance.HasItem(new WoodSwordPickup(Vector2.Zero))) //NEEDS REFACTOR
+                State.SwordAttack();
         }
         public void ShootArrow()
         {
-            State.ShootArrow();
+            if (InventoryManager.Instance.HasItem(new BowPickup(Vector2.Zero))) //NEEDS REFACTOR
+                State.ShootArrow();
         }
 
         public void BoomerangAttack()
         {
-            State.BoomerangAttack();
+            if (InventoryManager.Instance.HasItem(new WoodBoomerangPickup(Vector2.Zero))) //NEEDS REFACTOR
+                State.BoomerangAttack();
         }
 
         public void BombAttack()
         {
-            State.BombAttack();
+            //NEEDS REFACTOR
+            //BombPickup bomb = new BombPickup(Vector2.Zero);
+            //if (InventoryManager.Instance.HasItem(new BombPickup(Vector2.Zero)))
+            //{
+                State.BombAttack();
+                //InventoryManager.Instance.RemoveItem(bomb);
+            //}
         }
         
         public void Update(GameTime gameTime)

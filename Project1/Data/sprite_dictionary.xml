@@ -55,6 +55,7 @@
 	<leftFacingStatue_block>tiles/leftFacingStatue/block/sprite</leftFacingStatue_block>
 	<rightFacingStatue_block>tiles/rightFacingStatue/block/sprite</rightFacingStatue_block>
 	<water_block>tiles/water/block/sprite</water_block>
+	<half_block>tiles/half/block/sprite</half_block>
 	
   <!-- Enemy -->
 	<stalfos_walking>enemies/stalfos/walking/sprite</stalfos_walking>
@@ -115,6 +116,10 @@
   <digit_7>UI/counters/digit_7/sprite</digit_7>
   <digit_8>UI/counters/digit_8/sprite</digit_8>
   <digit_9>UI/counters/digit_9/sprite</digit_9>
+
+  <map_frame>UI/inventory/map/sprite</map_frame>
+  <inventory_frame>UI/inventory/frame/sprite</inventory_frame>
+  <item_selector>UI/inventory/item_selector/sprite</item_selector>
 
 	<titleScreen>game/title/sprite</titleScreen>
 	<inventorySelect>game/inventorySelect/sprite</inventorySelect>

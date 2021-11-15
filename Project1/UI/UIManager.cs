@@ -9,15 +9,24 @@ using System.Text;
 
 namespace Project1
 {
-    class UIManager
+    sealed class UIManager
     {
-        public ISprite background = SpriteFactory.Instance.CreateSprite("HUD_frame");
+        public ISprite HUDFrame = SpriteFactory.Instance.CreateSprite("HUD_frame");
+        public ISprite inventoryFrame = SpriteFactory.Instance.CreateSprite("inventory_frame");
+        public ISprite mapFrame = SpriteFactory.Instance.CreateSprite("map_frame");
 
         Dictionary<Type, Counter> itemCounters = new Dictionary<Type, Counter>();
 
         Counter rupeeCounter = new Counter(new Vector2(112, 16));
 
         HealthBar healthBar = new HealthBar(new Vector2(176, 32), 3);
+
+        PickupSlot primarySlot = new PickupSlot(new Vector2(152, 24));
+
+        PickupSlot secondarySlot = new PickupSlot(new Vector2(128, 24));
+
+        // this shouldnt be public, but it needs to be for a quick hacky solution
+        public DisplayInventory inventory = new DisplayInventory(new Vector2(132, 48));
 
         private static UIManager instance = new UIManager();
         public static UIManager Instance
@@ -28,7 +37,7 @@ namespace Project1
             }
         }
 
-        public void ClearData()
+        public void Reset()
         {
             instance = new UIManager();
         }
@@ -40,13 +49,13 @@ namespace Project1
             itemCounters.Add(typeof(Key), new Counter(new Vector2(112, 32)));
 
             // Register which items are displayed to the UI with the InventoryManager
-            InventoryManager.Instance.AddUIItem(typeof(BombPickup));
-            InventoryManager.Instance.AddUIItem(typeof(Key));
+            InventoryManager.Instance.AddCountedItem(typeof(BombPickup));
+            InventoryManager.Instance.AddCountedItem(typeof(Key));
         }
 
         public void Draw(SpriteBatch sb)
         {
-            background.Draw(sb, Vector2.Zero);
+            HUDFrame.Draw(sb, Vector2.Zero);
 
             foreach (Counter counter in itemCounters.Values)
             {
@@ -55,6 +64,11 @@ namespace Project1
 
             healthBar.Draw(sb);
             rupeeCounter.Draw(sb);
+            primarySlot.Draw(sb);
+            secondarySlot.Draw(sb);
+
+            // this needs to be here eventually
+            //inventory.Draw(sb);
         }
 
         public void UpdateCounter(Type type, int newValue)
@@ -70,6 +84,21 @@ namespace Project1
         public void UpdateHealthBar(int newValue, int HeartContainers)
         {
             healthBar.SetValue(newValue);
+        }
+
+        public void UpdatePrimarySlot(IInventoryItem item)
+        {
+            primarySlot.SetDisplay(item);
+        }
+
+        public void UpdateSecondarySlot(IInventoryItem item)
+        {
+            secondarySlot.SetDisplay(item);
+        }
+
+        public void UpdateInventory(List<IInventoryItem> items)
+        {
+            inventory.UpdateItems(items);
         }
     }
 }

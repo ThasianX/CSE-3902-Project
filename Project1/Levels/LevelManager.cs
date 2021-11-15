@@ -7,6 +7,7 @@ using Project1.NPC;
 using System.Collections.ObjectModel;
 using System.Xml;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 
 namespace Project1.Levels
 {
@@ -14,7 +15,7 @@ namespace Project1.Levels
     {
         private int totalRooms;
         private int currentRoomIndex;
-        private Collection<Room> rooms;
+        private List<Room> rooms;
         private XDocument spriteData;
 
         private static LevelManager instance = new LevelManager(1);
@@ -31,8 +32,13 @@ namespace Project1.Levels
         {
             totalRooms = 0;
             currentRoomIndex = 0;
-            rooms = new Collection<Room>();
+            rooms = new List<Room>();
             spriteData = XDocument.Load("Levels/LevelData/Level" + level + ".xml");
+        }
+
+        public Room GetRoom(int roomId)
+        {
+            return rooms[rooms.FindIndex(r => r.id == roomId)];
         }
 
         public Room GetCurrentRoom()
@@ -40,7 +46,29 @@ namespace Project1.Levels
             return rooms[currentRoomIndex];
         }
 
-        public void IncrementRoom()
+        public Room ActivateNextRoom(int roomId)
+        {
+            IPlayer player = GameObjectManager.Instance.GetObjectsOfType<IPlayer>()[0];
+            GetCurrentRoom().RemoveObject(player);
+            GameObjectManager.Instance.RemoveImmediate(player);
+
+            int nextRoomIndex = rooms.FindIndex(r => r.id == roomId);
+
+            // =========================================================================================
+            rooms[nextRoomIndex].AddObject(player);
+            // =========================================================================================
+            rooms[nextRoomIndex].Activate();
+
+            return rooms[nextRoomIndex];
+        }
+
+        public void DeactiveCurrentRoom(int roomId)
+        {
+            GetCurrentRoom().Deactivate();
+            currentRoomIndex = rooms.FindIndex(r => r.id == roomId);
+        }
+
+        public void _moveRoom(int room)
         {
             GetCurrentRoom().Deactivate();
             // BAD SOLUTION! DO NOT LEAVE IN FOR SPRINT 4! =============================================
@@ -48,32 +76,25 @@ namespace Project1.Levels
             GetCurrentRoom().RemoveObject(player);
             // =========================================================================================
 
-            currentRoomIndex = (currentRoomIndex + 1) % totalRooms;
+            currentRoomIndex = room - 1;
 
             // =========================================================================================
             GetCurrentRoom().AddObject(player);
             // =========================================================================================
             GetCurrentRoom().Activate();
+        }
+
+        public void IncrementRoom()
+        {
+            _moveRoom(((currentRoomIndex + 1) % totalRooms) + 1);
         }
 
         public void DecrementRoom()
         {
-            GetCurrentRoom().Deactivate();
-
-            // BAD SOLUTION! DO NOT LEAVE IN FOR SPRINT 4! =============================================
-            IPlayer player = GameObjectManager.Instance.GetObjectsOfType<IPlayer>()[0];
-            GetCurrentRoom().RemoveObject(player);
-            // =========================================================================================
-
-            currentRoomIndex = (currentRoomIndex - 1 < 0 ? totalRooms - 1 : currentRoomIndex - 1) % totalRooms;
-
-            // =========================================================================================
-            GetCurrentRoom().AddObject(player);
-            // =========================================================================================
-            GetCurrentRoom().Activate();
+            _moveRoom(((currentRoomIndex - 1 < 0 ? totalRooms - 1 : currentRoomIndex - 1) % totalRooms) + 1);
         }
 
-        public void ClearData()
+        public void Reset()
         {
             instance = new LevelManager(1);
         }
@@ -87,7 +108,7 @@ namespace Project1.Levels
         }
 
         private void LoadRoom(XElement root) {
-            Room room = new Room();
+            Room room = new Room(int.Parse(root.Attribute("id").Value));
             foreach (XElement element in root.Elements("object")) {
                 string type = element.Element("type").Value;
                 string name = element.Element("name").Value;
@@ -98,7 +119,9 @@ namespace Project1.Levels
 
                 System.Console.WriteLine(element.Element("type").Value + ": " + x + ", " + y);
 
-                LoadObject(room, type, name, new Vector2(x, y));
+                XElement metadata = element.Element("metadata");
+
+                LoadObject(room, type, name, new Vector2(x, y), metadata);
 
             }
             //spriteData.Save("new_level_1_data.xml");
@@ -106,7 +129,7 @@ namespace Project1.Levels
             rooms.Add(room);
         }
 
-        private void LoadObject(Room room, string type, string name, Vector2 position) {
+        private void LoadObject(Room room, string type, string name, Vector2 position, XElement metadata) {
             switch(type) {
                 case "Wall":
                     room.AddObject(new Wall(position, (Direction) Enum.Parse(typeof(Direction), name)));
@@ -115,7 +138,11 @@ namespace Project1.Levels
                     room.AddObject(new Floor(position, int.Parse(name)));
                     break;
                 case "Door":
-                    room.AddObject(new Door(position, (Direction) Enum.Parse(typeof(Direction), name)));
+                    int nextRoom = 1;
+                    if(metadata != null) {
+                        nextRoom = int.Parse(metadata.Element("nextRoom").Value);
+                    }
+                    room.AddObject(new Door(position, (Direction) Enum.Parse(typeof(Direction), name), nextRoom));
                     break;
                 case "LockedDoor":
                     room.AddObject(new LockedDoor(position, (Direction)Enum.Parse(typeof(Direction), name)));
@@ -203,6 +230,9 @@ namespace Project1.Levels
                     break;
                 case "Water":
                     room.AddObject(new WaterBlock(position));
+                    break;
+                case "Half":
+                    room.AddObject(new HalfBlock(position));
                     break;
             }
         }

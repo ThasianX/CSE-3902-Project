@@ -4,17 +4,17 @@ using Project1.Interfaces;
 
 namespace Project1.Objects
 {
-    public class WaterBlock : IBlock, ICollidable
+    public class HalfBlock : IBlock, ICollidable
     {
         public Vector2 Position { get; set; }
 
         ISprite sprite;
         public bool IsMover => false;
-        public string CollisionType => "Water";
-        public WaterBlock(Vector2 position)
+        public string CollisionType => "Block";
+        public HalfBlock(Vector2 position)
         {
             this.Position = position;
-            sprite = SpriteFactory.Instance.CreateSprite("water_block");
+            sprite = SpriteFactory.Instance.CreateSprite("half_block");
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -29,7 +29,7 @@ namespace Project1.Objects
 
         public Rectangle GetRectangle()
         {
-            return new Rectangle((int)Position.X, (int)Position.Y, 16, 16);
+            return new Rectangle((int)Position.X, (int)Position.Y, 16, 8);
         }
     }
 }
