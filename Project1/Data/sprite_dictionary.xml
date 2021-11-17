@@ -123,4 +123,8 @@
 
 	<titleScreen>game/title/sprite</titleScreen>
 	<inventorySelect>game/inventorySelect/sprite</inventorySelect>
+  
+  <!-- effects -->
+  <explosion>effects/explosion/sprite</explosion>
+  
 </sprite_dictionary>

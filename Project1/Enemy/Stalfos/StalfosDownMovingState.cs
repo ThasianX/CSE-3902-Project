@@ -1,4 +1,5 @@
 ﻿using System;
+using System;
 using Microsoft.Xna.Framework;
 
 namespace Project1.Enemy

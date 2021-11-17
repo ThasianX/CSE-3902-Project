@@ -1966,4 +1966,30 @@
 			</sprite>
 		</inventorySelect>
 	</game>
+  <effects>
+    <explosion>
+      <sprite>
+        <spritesheet>link_spritesheet</spritesheet>
+        <dimensions>
+          <height>16</height>
+          <width>16</width>
+        </dimensions>
+        <time>.51</time>
+        <source_list>
+          <source>
+            <x>138</x>
+            <y>185</y>
+          </source>
+          <source>
+            <x>155</x>
+            <y>185</y>
+          </source>
+          <source>
+            <x>172</x>
+            <y>185</y>
+          </source>
+        </source_list>
+      </sprite>
+    </explosion>
+  </effects>
 </sprite_data>

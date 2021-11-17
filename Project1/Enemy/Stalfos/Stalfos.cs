@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Project1.Interfaces;
 using Project1.Levels;
+using Project1.Objects.Effects;
 
 namespace Project1.Enemy
 {
@@ -52,7 +53,6 @@ namespace Project1.Enemy
         {
             // Update the current state
             // Possible state: direction
-            GameObjectDeletionManager.Instance.EnemyDeletionCheck(this, stalfosHealthState);
             State.Update(gameTime);
             Sprite.Update(gameTime);
             stalfosHealthState.Update(gameTime);
@@ -96,8 +96,15 @@ namespace Project1.Enemy
             }
             else
             {
-                SoundManager.Instance.PlaySound("EnemyDie");
+                Die();
             }
+        }
+
+        public void Die()
+        {
+            SoundManager.Instance.PlaySound("EnemyDie");
+            GameObjectManager.Instance.RemoveOnNextFrame(this);
+            GameObjectManager.Instance.AddOnNextFrame(new Poof(Position));
         }
 
         public Rectangle GetRectangle()
