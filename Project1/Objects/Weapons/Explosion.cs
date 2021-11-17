@@ -4,20 +4,19 @@ using Project1.Interfaces;
 
 namespace Project1.Objects
 {
-    public class Bomb : IGameObject
+    public class Explosion : IGameObject, ICollidable
     {
         public Vector2 Position { get; set; }
-        ISprite sprite;
+        ISprite sprite = SpriteFactory.Instance.CreateSprite("explosion");
         public bool IsMover => false;
-        //Unsure what collision type the placed bomb should have.
-        public string CollisionType => "Block";
-        private double activeTime = 1;
+
+        public string CollisionType => "Explosion";
+        private double activeTime = 0.25;
         private double counter = 0;
-        public Bomb(Vector2 position)
+        public Explosion(Vector2 position)
         {
             this.Position = position;
-            sprite = SpriteFactory.Instance.CreateSprite("bomb");
-            SoundManager.Instance.PlaySound("BombDrop");
+            SoundManager.Instance.PlaySound("BombBlow");
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -28,18 +27,17 @@ namespace Project1.Objects
         public void Update(GameTime gameTime)
         {
             sprite.Update(gameTime);
-            //I'm sure there is a better way to code this
             if (counter >= activeTime)
             {
-                Explode();
+                GameObjectManager.Instance.RemoveOnNextFrame(this);
             }
             counter += gameTime.ElapsedGameTime.TotalSeconds;
         }
 
-        public void Explode()
+        public Rectangle GetRectangle()
         {
-            GameObjectManager.Instance.RemoveOnNextFrame(this);
-            GameObjectManager.Instance.AddOnNextFrame(new Explosion(Position));
+            Dimensions dimensions = sprite.GetDimensions();
+            return new Rectangle((int)Position.X, (int)Position.Y, 16, 16);
         }
     }
 }

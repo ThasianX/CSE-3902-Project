@@ -13,7 +13,7 @@ namespace Project1.Objects.Effects
 
         private ISprite sprite = SpriteFactory.Instance.CreateSprite("explosion");
 
-        private double activeTime = 0.5f;
+        private double activeTime = 0.25;
         private double counter = 0f;
 
         public Poof(Vector2 position)
