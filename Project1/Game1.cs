@@ -39,9 +39,6 @@ namespace Project1
 
         // Visualize rectangle for testing
         public static Texture2D whiteRectangle;
-        public bool isTransitioning = false;
-        public bool animatingSecond = false;
-        public int nextRoomId = 0;
 
         public Game1()
         {
@@ -121,8 +118,6 @@ namespace Project1
             DisplayFrameRate(gameTime);
 
             spriteBatch.End();
-
-
 
             base.Draw(gameTime);
         }

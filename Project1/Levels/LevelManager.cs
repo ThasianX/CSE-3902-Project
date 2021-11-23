@@ -15,6 +15,7 @@ namespace Project1.Levels
     {
         private int totalRooms;
         private int currentRoomIndex;
+        private int lastRoomIndex;
         private List<Room> rooms;
         private XDocument spriteData;
 
@@ -36,11 +37,6 @@ namespace Project1.Levels
             spriteData = XDocument.Load("Levels/LevelData/Level" + level + ".xml");
         }
 
-        public Room GetRoom(int roomId)
-        {
-            return rooms[rooms.FindIndex(r => r.id == roomId)];
-        }
-
         public Room GetCurrentRoom()
         {
             return rooms[currentRoomIndex];
@@ -52,23 +48,22 @@ namespace Project1.Levels
             GetCurrentRoom().RemoveObject(player);
             GameObjectManager.Instance.RemoveImmediate(player);
 
-            int nextRoomIndex = rooms.FindIndex(r => r.id == roomId);
-
-            // =========================================================================================
-            rooms[nextRoomIndex].AddObject(player);
-            // =========================================================================================
-            rooms[nextRoomIndex].Activate();
-
-            return rooms[nextRoomIndex];
-        }
-
-        public void DeactiveCurrentRoom(int roomId)
-        {
-            GetCurrentRoom().Deactivate();
+            lastRoomIndex = currentRoomIndex;
             currentRoomIndex = rooms.FindIndex(r => r.id == roomId);
+            // =========================================================================================
+            GetCurrentRoom().AddObject(player);
+            // =========================================================================================
+            GetCurrentRoom().Activate();
+
+            return rooms[currentRoomIndex];
         }
 
-        public void _moveRoom(int room)
+        public void DeactivateCurrentRoom()
+        {
+            rooms[lastRoomIndex].Deactivate();
+        }
+
+        private void _moveRoom(int room)
         {
             GetCurrentRoom().Deactivate();
             // BAD SOLUTION! DO NOT LEAVE IN FOR SPRINT 4! =============================================

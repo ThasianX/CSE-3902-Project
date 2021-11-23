@@ -23,88 +23,41 @@ namespace Project1
             }
         }
         
-        private float startX = 0;
-        private double timePerSource = 1, timeCounter = 1;
-        private int currentFrame = 0;
-        private Vector3 currentTranslation = new Vector3(0, 0, 0);
-        private Vector3 startTranslation = new Vector3(0, 0, 0);
-        private Direction currentDirection = Direction.Left;
+        private float timePerSource = 1, timeCounter = 1;
+        private Vector3 currentPosition = new Vector3(0, 0, 0);
+        private Vector3 destinationPosition = new Vector3(0, 0, 0);
 
         public void StartCurrentRoom(SpriteBatch spriteBatch)
         {
+            Vector3 newTranslation = Vector3.Multiply(destinationPosition - currentPosition, timeCounter);
             spriteBatch.Begin(
               samplerState: SamplerState.PointClamp,
-              transformMatrix: Matrix.CreateTranslation(LevelManager.Instance.GetCurrentRoom().Position)
+              transformMatrix: Matrix.CreateTranslation(newTranslation)
             );
         }
 
-        public void StartNextRoom(SpriteBatch spriteBatch)
-        {
-            Vector3 newTranslation = currentTranslation;
-            switch(currentDirection) {
-                case Direction.Up:
-                    newTranslation.Y -= Game1.ROOM_HEIGHT;
-                    break;
-                case Direction.Down:
-                    newTranslation.Y += Game1.ROOM_HEIGHT;
-                    break;
-                case Direction.Left:
-                    newTranslation.X -= Game1.ROOM_WIDTH;
-                    break;
-                case Direction.Right:
-                    newTranslation.X += Game1.ROOM_WIDTH;
-                    break;
-                default:
-                    throw new System.Exception("Invalid direction");
-            }
-            spriteBatch.Begin(
-              samplerState: SamplerState.PointClamp,
-              transformMatrix: Matrix.CreateTranslation(LevelManager.Instance.GetCurrentRoom().Position)
-            );
-        }
-
-        public void MoveCamera(Direction direction)
+        public void MoveCamera(Vector3 position)
         {
             Game1.instance.gameState = new PausedNoViewGameState();
             timeCounter = 0;
-            startTranslation = currentTranslation;
-            currentDirection = direction;
+            destinationPosition = position;
         }
 
         public void Update(GameTime gameTime)
         {
-            if (timeCounter >= timePerSource)
+            if(timeCounter == timePerSource) {
+                return;
+            } else if (timeCounter > timePerSource)
             {
-                if(!Game1.instance.isTransitioning)
-                {
-                    return;
-                }
               Game1.instance.gameState = new PlayingGameState(Game1.instance);
               timeCounter = timePerSource;
-              Game1.instance.isTransitioning = false;
-              LevelManager.Instance.DeactiveCurrentRoom(Game1.instance.nextRoomId);
-              currentTranslation = new Vector3(0, 0, 0);
+              currentPosition = destinationPosition;
+              LevelManager.Instance.DeactivateCurrentRoom();
               return;
             }
 
             // increment the timer by the realtime since last frame
-            timeCounter += gameTime.ElapsedGameTime.TotalSeconds;
-            switch(currentDirection) {
-                case Direction.Up:
-                    currentTranslation.Y = startTranslation.Y + (float)(Game1.ROOM_HEIGHT * timeCounter / timePerSource);
-                    break;
-                case Direction.Down:
-                    currentTranslation.Y = startTranslation.Y - (float)(Game1.ROOM_HEIGHT * timeCounter / timePerSource);
-                    break;
-                case Direction.Left:
-                    currentTranslation.X = startTranslation.X + (float)(Game1.ROOM_WIDTH * timeCounter / timePerSource);
-                    break;
-                case Direction.Right:
-                    currentTranslation.X = startTranslation.X - (float)(Game1.ROOM_WIDTH * timeCounter / timePerSource);
-                    break;
-                default:
-                    throw new System.Exception("Invalid direction");
-            }
+            timeCounter += (float) gameTime.ElapsedGameTime.TotalSeconds;
         }
     }
 }

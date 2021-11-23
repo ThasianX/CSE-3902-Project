@@ -590,7 +590,7 @@
 	<room id="7">
 	<room_transform>
 		<x>0</x>
-		<y>1</y>
+		<y>-1</y>
 		<z>0</z>
 	</room_transform>
 	// Wall
