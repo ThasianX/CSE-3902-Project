@@ -30,5 +30,9 @@ namespace Project1
         public static int TILE_SIZE = 16;
 
         public static int HP_PER_HEART = 2;
+
+        public static int ROOM_WIDTH = 256;
+
+        public static int ROOM_HEIGHT = 176;
     }
 }

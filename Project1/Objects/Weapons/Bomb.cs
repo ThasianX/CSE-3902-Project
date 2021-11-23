@@ -28,7 +28,6 @@ namespace Project1.Objects
         public void Update(GameTime gameTime)
         {
             sprite.Update(gameTime);
-            //I'm sure there is a better way to code this
             if (counter >= activeTime)
             {
                 Explode();
@@ -40,6 +39,12 @@ namespace Project1.Objects
         {
             GameObjectManager.Instance.RemoveOnNextFrame(this);
             GameObjectManager.Instance.AddOnNextFrame(new Explosion(Position));
+            GameObjectManager.Instance.AddOnNextFrame(new Explosion(Position + new Vector2(16, 0)));
+            GameObjectManager.Instance.AddOnNextFrame(new Explosion(Position + new Vector2(-16, 0)));
+            GameObjectManager.Instance.AddOnNextFrame(new Explosion(Position + new Vector2(8, 16)));
+            GameObjectManager.Instance.AddOnNextFrame(new Explosion(Position + new Vector2(-8, 16)));
+            GameObjectManager.Instance.AddOnNextFrame(new Explosion(Position + new Vector2(8, -16)));
+            GameObjectManager.Instance.AddOnNextFrame(new Explosion(Position + new Vector2(-8, -16)));
         }
     }
 }

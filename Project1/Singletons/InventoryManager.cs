@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System.Collections.ObjectModel;
 using Project1.Objects;
 using System;
+using System.Linq;
 
 namespace Project1
 {
@@ -15,17 +16,37 @@ namespace Project1
         public List<Type> countedItems = new List<Type>();
         public int rupees = 0;
 
-        public int selectedSlot = 0;
+        private int selectedSlot = 0;
         private IInventoryItem primary;
         private IInventoryItem secondary;
 
         private static InventoryManager instance = new InventoryManager();
+
+        public IInventoryItem SelectedItem
+        {
+            get
+            {
+                return itemInv.ElementAt(selectedSlot).Key;
+            }
+        }
         public static InventoryManager Instance
         {
             get
             {
                 return instance;
             }
+        }
+
+        public void SelectNext()
+        {
+            selectedSlot = ++selectedSlot % itemInv.Count;
+            UIManager.Instance.UpdateSelection(selectedSlot);
+        }
+
+        public void SelectPrevious()
+        {
+            selectedSlot = --selectedSlot % itemInv.Count;
+            UIManager.Instance.UpdateSelection(selectedSlot);
         }
 
         public void Reset()
@@ -80,6 +101,10 @@ namespace Project1
             {
                 UIManager.Instance.UpdateCounter(item.GetType(), GetCount(item));
             }
+
+            //TEMP
+            SelectNext();
+            
         }
 
         public bool HasItem(IInventoryItem checkItem)
@@ -179,6 +204,12 @@ namespace Project1
             }
         }
 
+        public void EquipPrimary()
+        {
+                primary = SelectedItem;
+                UIManager.Instance.UpdatePrimarySlot(SelectedItem);
+        }
+
         public void EquipSecondary(IInventoryItem item)
         {
             if (HasItem(item))
@@ -186,6 +217,12 @@ namespace Project1
                 secondary = item;
                 UIManager.Instance.UpdateSecondarySlot(item);
             }
+        }
+
+        public void EquipSecondary()
+        {
+            primary = SelectedItem;
+            UIManager.Instance.UpdateSecondarySlot(SelectedItem);
         }
 
         public void UnequipPrimary()

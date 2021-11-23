@@ -15,6 +15,7 @@ namespace Project1.Enemy
         public void BoomerangAttack();
         public void ChangeDirection();
         public void TakeDamage(int damage);
+        public void Die();
 
     }
 }

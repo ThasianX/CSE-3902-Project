@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Project1.PlayerStates;
 using Project1.Levels;
 using Project1.Objects;
+using Project1.Commands;
 
 namespace Project1
 {
@@ -151,6 +152,11 @@ namespace Project1
         public void Heal(int heal)
         {
             HealthState.Heal(heal);
+        }
+
+        public void Die()
+        {
+            new GameOverCommand(Game1.instance).Execute();
         }
 
         public Rectangle GetRectangle()

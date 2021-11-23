@@ -100,5 +100,10 @@ namespace Project1
         {
             inventory.UpdateItems(items);
         }
+
+        public void UpdateSelection(int selection)
+        {
+            inventory.UpdateSelection(selection);
+        }
     }
 }

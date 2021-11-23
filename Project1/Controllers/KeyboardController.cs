@@ -49,13 +49,15 @@ namespace Project1
 			onPressMappings.Add(Keys.A, new PlayerMoveLeftCommand(player));
 
 			onPressMappings.Add(Keys.Z, new PlayerSwordAttackCommand(player));
-			onPressMappings.Add(Keys.N, new PlayerSwordAttackCommand(player));
 			onPressMappings.Add(Keys.D1, new PlayerBoomerangAttackCommand(player));
 			onPressMappings.Add(Keys.D2, new PlayerShootArrowCommand(player));
 			onPressMappings.Add(Keys.D3, new PlayerBombAttackCommand(player));
 
             onPressMappings.Add(Keys.I, new PlayerShowCollectionCommand(player));
             onPressMappings.Add(Keys.E, new PlayerTakeDamageCommand(player, 5));
+
+			onPressMappings.Add(Keys.B, new SelectPreviousCommand());
+			onPressMappings.Add(Keys.N, new SelectNextCommand());
 
 			// COMMANDS THAT EXECUTE ON RELEASE
 

@@ -41,6 +41,11 @@ namespace Project1.PlayerStates
 
             UIManager.Instance.UpdateHealthBar(health, heartContainers);
 
+            if (health <= 0)
+            {
+                player.Die();
+            }
+
         }
         public void Heal(int heal)
         {

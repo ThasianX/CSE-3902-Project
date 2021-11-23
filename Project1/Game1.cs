@@ -91,9 +91,6 @@ namespace Project1
             // Give link a sword to start (this should go somewhere else)
             InventoryManager.Instance.AddItem(new WoodSwordPickup(Vector2.Zero));
 
-            // Visualize rectangle for testing
-            whiteRectangle = new Texture2D(GraphicsDevice, 1, 1);
-            whiteRectangle.SetData(new[] { Color.White });
         }
 
         protected override void Update(GameTime gameTime)
@@ -112,7 +109,7 @@ namespace Project1
 
             // Draw the render targets to their places in the game window
             GraphicsDevice.SetRenderTarget(null);
-            GraphicsDevice.Clear(Color.Black);
+            GraphicsDevice.Clear(Color.Beige);
             spriteBatch.Begin(samplerState: SamplerState.PointClamp);
 
             // Scale and draw the scene
@@ -121,7 +118,11 @@ namespace Project1
             //Scale and draw the HUD
             spriteBatch.Draw(HUD, HUDPosition, null, Color.White, 0f, Vector2.Zero, renderScale, SpriteEffects.None, 0f);
 
+            DisplayFrameRate(gameTime);
+
             spriteBatch.End();
+
+
 
             base.Draw(gameTime);
         }
@@ -189,14 +190,14 @@ namespace Project1
             spriteBatch.End();
 
             // Render the next room for animation purposes
-            if(isTransitioning)
+           /* if (isTransitioning)
             {
                 animatingSecond = true;
                 WindowManager.Instance.StartNextRoom(spriteBatch);
                 gameState.Draw(spriteBatch);
                 spriteBatch.End();
                 animatingSecond = false;
-            }
+            }*/
         }
 
        private void RenderHUD()
@@ -236,6 +237,13 @@ namespace Project1
             MediaPlayer.IsRepeating = true;
             MediaPlayer.Play(dungeonSong);
             MediaPlayer.Volume = 0.25f;
+        }
+
+        public void DisplayFrameRate(GameTime gameTime)
+        {
+            double framerate = 1 / gameTime.ElapsedGameTime.TotalSeconds;
+            framerate = Math.Round(framerate);
+            spriteBatch.DrawString(Content.Load<SpriteFont>("GameOver"), framerate.ToString(), Vector2.Zero, Color.Black);
         }
     }
 }

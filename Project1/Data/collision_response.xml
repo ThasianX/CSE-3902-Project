@@ -77,6 +77,11 @@
         <arg type="Project1.Player">TARGET</arg>
       </command>
     </Explosion>
+    <Triforce>
+      <command type="Project1.Commands.WinCommand">
+        <arg type="Project1.Game1">GAME</arg>
+      </command>
+    </Triforce>
   </Player>
 
   <DamagedPlayer>

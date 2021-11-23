@@ -127,6 +127,9 @@ namespace Project1
                     case "COLLISION":
                         obj = col;
                         break;
+                    case "GAME":
+                        obj = Game1.instance;
+                        break;
                     default:
                         obj = null;
                         Console.WriteLine("unable to parse argument");

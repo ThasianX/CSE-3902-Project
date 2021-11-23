@@ -20,6 +20,8 @@ namespace Project1
         }
 
         //We can add more specific lists if needed e.g. Item, Block, Enemy
+
+        public Collection<IPlayer> players;
         public Collection<IGameObject> gameObjects;
         private Collection<IGameObject> removeBuffer = new Collection<IGameObject>();
         private Collection<IGameObject> addBuffer = new Collection<IGameObject>();
@@ -44,14 +46,21 @@ namespace Project1
 
         public void DrawObjects(SpriteBatch sb)
         {
+
+
+
             foreach (IGameObject obj in gameObjects)
             {
                 // BAD COUPLING
-                if(!Game1.instance.isTransitioning) {
+                if (!Game1.instance.isTransitioning)
+                {
                     obj.Draw(sb);
-                } else {
+                }
+                else
+                {
                     bool hasObject = LevelManager.Instance.GetRoom(Game1.instance.nextRoomId).HasObject(obj);
-                    if((Game1.instance.animatingSecond && hasObject) || (!Game1.instance.animatingSecond && !hasObject)) {
+                    if ((Game1.instance.animatingSecond && hasObject) || (!Game1.instance.animatingSecond && !hasObject))
+                    {
                         obj.Draw(sb);
                     }
                 }
@@ -60,12 +69,15 @@ namespace Project1
 
         public void UpdateObjects(GameTime gameTime)
         {
+
+
+
             RemoveObjectsInBuffer();
             AddObjectsInBuffer();
             foreach (IGameObject obj in gameObjects)
             {
                 obj.Update(gameTime);
-            }  
+            }
         }
 
         private void AddObjectsInBuffer()

@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Project1.Interfaces;
 using Project1.Levels;
+using Project1.Objects.Effects;
 
 namespace Project1.Enemy
 {
@@ -91,8 +92,16 @@ namespace Project1.Enemy
             }
             else
             {
-                SoundManager.Instance.PlaySound("EnemyDie");
+                Die();
             }
+        }
+
+        public void Die()
+        {
+            SoundManager.Instance.PlaySound("EnemyDie");
+            GameObjectManager.Instance.RemoveOnNextFrame(this);
+            LevelManager.Instance.GetCurrentRoom().RemoveObject(this);
+            GameObjectManager.Instance.AddOnNextFrame(new Poof(Position));
         }
 
         public Rectangle GetRectangle()

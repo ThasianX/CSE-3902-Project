@@ -109,13 +109,20 @@ namespace Project1.Levels
 
         private void LoadRoom(XElement root) {
             Room room = new Room(int.Parse(root.Attribute("id").Value));
+
+            room.Position = ParseTransform(root.Element("room_transform"));
             foreach (XElement element in root.Elements("object")) {
                 string type = element.Element("type").Value;
                 string name = element.Element("name").Value;
                 XElement position = element.Element("position");
 
+                // Position in screen space
                 float x = float.Parse(position.Element("x").Value) * Constants.TILE_SIZE;
                 float y = float.Parse(position.Element("y").Value) * Constants.TILE_SIZE;
+
+                // transform to world space
+                x += (int) room.Position.X * Constants.ROOM_WIDTH;
+                y += (int) room.Position.Y * Constants.ROOM_HEIGHT;
 
                 System.Console.WriteLine(element.Element("type").Value + ": " + x + ", " + y);
 
@@ -127,6 +134,17 @@ namespace Project1.Levels
             //spriteData.Save("new_level_1_data.xml");
 
             rooms.Add(room);
+        }
+
+        private Vector3 ParseTransform(XElement root)
+        {
+            Vector3 transform = new Vector3();
+
+            transform.X = int.Parse(root.Element("x").Value);
+            transform.Y = int.Parse(root.Element("y").Value);
+            transform.Z = int.Parse(root.Element("z").Value);
+
+            return transform;
         }
 
         private void LoadObject(Room room, string type, string name, Vector2 position, XElement metadata) {

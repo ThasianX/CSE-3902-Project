@@ -30,7 +30,7 @@ namespace Project1.UI
 
         public void UpdateSelection(int index)
         {
-
+            selectedItem = index;
         }
 
         public void UpdateItems(List<IInventoryItem> items)
@@ -48,22 +48,18 @@ namespace Project1.UI
             }
         }
 
-        public void UpdateSelector(int index)
-        {
-            selectedItem = index;
-        }
-
         public void Draw(SpriteBatch sb)
         {
             for (int row = 0; row < rows; row++)
             {
                 for (int column = 0; column < columns; column++)
                 {
-                    Sprites[column + (row * columns)].Draw(sb, Position + new Vector2((column * spacing), row * spacing));
+                    Sprites[column + (row * columns)].Draw(sb, Position + new Vector2(column * spacing, row * spacing));
                 }
             }
 
             //TODO: Draw selector
+            selector.Draw(sb, Position + new Vector2((selectedItem / rows) * spacing, (selectedItem / columns) * spacing));
         }
     }
 }

@@ -104,6 +104,7 @@ namespace Project1.Enemy
         {
             SoundManager.Instance.PlaySound("EnemyDie");
             GameObjectManager.Instance.RemoveOnNextFrame(this);
+            LevelManager.Instance.GetCurrentRoom().RemoveObject(this);
             GameObjectManager.Instance.AddOnNextFrame(new Poof(Position));
         }
 

@@ -56,7 +56,7 @@ namespace Project1.Enemy
         {
             // Update the current state
             // Possible state: direction, fireball attack
-            GameObjectDeletionManager.Instance.EnemyDeletionCheck(this, aquamentusHealthState);
+            //GameObjectDeletionManager.Instance.EnemyDeletionCheck(this, aquamentusHealthState);
             State.Update(gameTime);
             Sprite.Update(gameTime);
             aquamentusHealthState.Update(gameTime);
@@ -85,8 +85,15 @@ namespace Project1.Enemy
             }
             else
             {
-                SoundManager.Instance.PlaySound("EnemyDie");
+                Die();
             }
+        }
+
+        public void Die()
+        {
+            SoundManager.Instance.PlaySound("EnemyDie");
+            GameObjectManager.Instance.RemoveOnNextFrame(this);
+            LevelManager.Instance.GetCurrentRoom().RemoveObject(this);
         }
 
         public Rectangle GetRectangle()

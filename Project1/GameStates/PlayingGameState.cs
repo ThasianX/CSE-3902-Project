@@ -18,8 +18,8 @@ namespace Project1.GameStates
         }
         public void Update(GameTime gameTime, ArrayList controllerList)
         {
-            GameOverCheck(GameObjectManager.Instance.GetPlayer(), GameObjectManager.Instance.GetPlayer().HealthState);
-            GameWinCheck();
+            //GameOverCheck(GameObjectManager.Instance.GetPlayer(), GameObjectManager.Instance.GetPlayer().HealthState);
+            //GameWinCheck();
             foreach (IController controller in controllerList)
             {
                 controller.Update();

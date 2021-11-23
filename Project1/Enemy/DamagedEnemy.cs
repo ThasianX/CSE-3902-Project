@@ -82,6 +82,7 @@ namespace Project1
         public void ChangeDirection() { baseEnemy.ChangeDirection(); }
         public void TakeDamage(int damage) { }
 
+        public void Die() { }
 
     }
 }

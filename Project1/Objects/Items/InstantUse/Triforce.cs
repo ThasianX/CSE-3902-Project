@@ -10,7 +10,7 @@ namespace Project1.Objects
 
         public ISprite Sprite { get; set; }
         public bool IsMover => false;
-        public string CollisionType => "Item";
+        public string CollisionType => "Triforce";
         public string Name => "Triforce";
         public bool IsConsumable => false;
         public int MaxStackCount => 1;

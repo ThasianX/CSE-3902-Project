@@ -2,6 +2,8 @@
 using Microsoft.Xna.Framework.Graphics;
 using Project1.Enemy;
 using Project1.Interfaces;
+using Project1.Levels;
+using Project1.Objects.Effects;
 
 namespace Project1.NPC
 {
@@ -34,6 +36,14 @@ namespace Project1.NPC
 
         public void TakeDamage(int damage)
         {
+        }
+
+        public void Die()
+        {
+            SoundManager.Instance.PlaySound("EnemyDie");
+            GameObjectManager.Instance.RemoveOnNextFrame(this);
+            LevelManager.Instance.GetCurrentRoom().RemoveObject(this);
+            GameObjectManager.Instance.AddOnNextFrame(new Poof(Position));
         }
 
         public void Update(GameTime gameTime)

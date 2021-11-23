@@ -34,7 +34,7 @@ namespace Project1
         {
             spriteBatch.Begin(
               samplerState: SamplerState.PointClamp,
-              transformMatrix: Matrix.CreateTranslation(currentTranslation)
+              transformMatrix: Matrix.CreateTranslation(LevelManager.Instance.GetCurrentRoom().Position)
             );
         }
 
@@ -59,7 +59,7 @@ namespace Project1
             }
             spriteBatch.Begin(
               samplerState: SamplerState.PointClamp,
-              transformMatrix: Matrix.CreateTranslation(newTranslation)
+              transformMatrix: Matrix.CreateTranslation(LevelManager.Instance.GetCurrentRoom().Position)
             );
         }
 
