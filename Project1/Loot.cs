@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Project1.Interfaces;
 using Project1.Enemy;
-
+using System;
 
 namespace Project1
 {
@@ -10,10 +10,10 @@ namespace Project1
         //This function gets and instances an item from the enemies loot table.
         public static void RandomLoot(LootTable lootTable, Vector2 position)
         {
-            IGameObject item = lootTable.GetLoot();
+            Type itemType = lootTable.GetLootType();
 
             //Sets the position of the object to presumably the enemies location before defeat
-            item.Position = position;
+            IGameObject item = (IGameObject) Activator.CreateInstance(itemType, position);
 
             if (item != null)
             {

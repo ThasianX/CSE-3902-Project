@@ -13,12 +13,12 @@ namespace Project1.Enemy
         public ISprite Sprite { get; set; }
         public Vector2 Position { get; set; }
         public float MovingSpeed { get; set; }
+        public LootTable LootTable { get; }
         public bool IsMover => true;
         public string CollisionType => "Enemy";
         private int choice;
         private Random rand = new Random();
         public IHealthState stalfosHealthState;
-        private LootTable lootTable = new DefaultLootTable();
         public Stalfos(Vector2 position)
         {
             this.Position = position;
@@ -33,6 +33,7 @@ namespace Project1.Enemy
             }
             MovingSpeed = 1f;
             stalfosHealthState = new StalfosHealthState(this, 2);
+            LootTable = new DefaultLootTable();
         }
 
         public void FireBallAttack()
@@ -97,7 +98,6 @@ namespace Project1.Enemy
             else
             {
                 SoundManager.Instance.PlaySound("EnemyDie");
-                Loot.RandomLoot(lootTable, Position);
             }
         }
 

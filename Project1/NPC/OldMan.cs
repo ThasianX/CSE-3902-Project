@@ -13,11 +13,15 @@ namespace Project1.NPC
         public float MovingSpeed { get; set; }
         public bool IsMover => false;
         public string CollisionType => "Block";
+
+        //I don't think NPCs should implement IEnemy
+        public LootTable LootTable { get; }
         public OldMan(Vector2 position)
         {
             this.Position = position;
             State = new OldManStaticState(this);
             MovingSpeed = 0f;
+            LootTable = new DefaultLootTable();
         }
 
         public void FireBallAttack()

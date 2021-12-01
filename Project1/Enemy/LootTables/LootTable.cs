@@ -12,29 +12,29 @@ namespace Project1.Enemy
 
         Vector2 tempPos = new Vector2(0, 0);
 
-        Dictionary<Rarity, List<IGameObject>> loots = new Dictionary<Rarity, List<IGameObject>>()
+        Dictionary<Rarity, List<Type>> loots = new Dictionary<Rarity, List<Type>>()
         {
-            { Rarity.Common,    new List<IGameObject>() { new BlueRuby(new Vector2(0, 0)), new WoodArrowPickup(new Vector2(0, 0)) } },
-            { Rarity.Uncommon,  new List<IGameObject>() { new YellowRuby(new Vector2(0, 0)), new Heart(new Vector2(0, 0))} },
-            { Rarity.Epic,      new List<IGameObject>() { new FlashingRuby(new Vector2(0,0)), new BombPickup(new Vector2(0, 0))} }
+            { Rarity.Common,    new List<Type>() { typeof(BlueRuby), typeof(WoodArrowPickup) } },
+            { Rarity.Uncommon,  new List<Type>() { typeof(YellowRuby), typeof(Heart) } },
+            { Rarity.Rare,      new List<Type>() { typeof(FlashingRuby), typeof(BombPickup) } }
         };
 
-        public IGameObject GetLoot()
+        public Type GetLootType()
         {
             int lootTier = rand.Next(0, 99);
 
             Rarity rarity = GetRarity(lootTier);
 
-            IGameObject item = GetItem(rarity);
+            Type item = GetItem(rarity);
 
             return item;
         }
 
-        public IGameObject GetItem(Rarity rare)
+        public Type GetItem(Rarity rare)
         {
-            List<IGameObject> loot = loots[rare];
-            int itemIndex = rand.Next(0, loot.Count);
-            return loot[itemIndex];
+            List<Type> lootTypes = loots[rare];
+            int itemIndex = rand.Next(0, lootTypes.Count);
+            return lootTypes[itemIndex];
         }
 
         //Made a simple loot tier table with 3 rarities, can be overridden to include more.
