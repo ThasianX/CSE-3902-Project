@@ -196,6 +196,18 @@ namespace Project1.Levels
                 case "WallMaster":
                     room.AddObject(new WallMaster(position));
                     break;
+                case "Snake":
+                    room.AddObject(new Snake(position));
+                    break;
+                case "Spike":
+                    room.AddObject(new Spike(position));
+                    break;
+                case "Flame":
+                    room.AddObject(new Flame(position));
+                    break;
+                case "Dodongo":
+                    room.AddObject(new Dodongo(position));
+                    break;
             }
         }
 
@@ -233,6 +245,9 @@ namespace Project1.Levels
                     break;
                 case "Half":
                     room.AddObject(new HalfBlock(position));
+                    break;
+                case "Sand":
+                    room.AddObject(new SandBlock(position));
                     break;
             }
         }
