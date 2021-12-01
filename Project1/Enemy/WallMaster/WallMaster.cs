@@ -17,7 +17,7 @@ namespace Project1.Enemy
         public bool IsMover => true;
         public string CollisionType => "Enemy";
         public IHealthState wallMasterHealthState;
-
+        private LootTable lootTable = new DefaultLootTable();
         public WallMaster(Vector2 position)
         {
             this.Position = position;
@@ -91,6 +91,7 @@ namespace Project1.Enemy
             else
             {
                 SoundManager.Instance.PlaySound("EnemyDie");
+                Loot.RandomLoot(lootTable, Position);
             }
         }
 

@@ -18,7 +18,7 @@ namespace Project1.Enemy
         private int choice;
         private Random rand = new Random();
         public IHealthState stalfosHealthState;
-
+        private LootTable lootTable = new DefaultLootTable();
         public Stalfos(Vector2 position)
         {
             this.Position = position;
@@ -97,6 +97,7 @@ namespace Project1.Enemy
             else
             {
                 SoundManager.Instance.PlaySound("EnemyDie");
+                Loot.RandomLoot(lootTable, Position);
             }
         }
 

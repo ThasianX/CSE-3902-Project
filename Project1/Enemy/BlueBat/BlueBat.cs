@@ -2,7 +2,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Project1.Interfaces;
-using Project1.Levels;
 
 namespace Project1.Enemy
 {
@@ -18,6 +17,7 @@ namespace Project1.Enemy
         public string CollisionType => "Enemy";
         public IHealthState blueBatHealthState;
 
+        private LootTable lootTable = new DefaultLootTable();
         public BlueBat(Vector2 position)
         {
             this.Position = position;
@@ -90,6 +90,7 @@ namespace Project1.Enemy
             else
             {
                 SoundManager.Instance.PlaySound("EnemyDie");
+                Loot.RandomLoot(lootTable, Position);
             }
         }
 

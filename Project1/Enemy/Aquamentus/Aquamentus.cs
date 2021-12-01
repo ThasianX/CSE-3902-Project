@@ -17,7 +17,7 @@ namespace Project1.Enemy
         public bool IsMover => true;
         public string CollisionType => "Enemy";
         public IHealthState aquamentusHealthState;
-
+        private LootTable lootTable = new DefaultLootTable();
         public Aquamentus(Vector2 position)
         {
             this.Position = position;
@@ -86,6 +86,7 @@ namespace Project1.Enemy
             else
             {
                 SoundManager.Instance.PlaySound("EnemyDie");
+                Loot.RandomLoot(lootTable, Position);
             }
         }
 
