@@ -20,7 +20,7 @@ namespace Project1.Maze
 
         public GridGraph<Direction> Build()
         {
-            // 10 * 10 directional grid graph
+            // x * x directional grid graph
             GridGraph<Direction> directionGridGraph = new GridGraph<Direction>(rows, columns);
             // set all grid direction to Blank
             InitializeDirectionMaze(directionGridGraph);

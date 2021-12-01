@@ -14,26 +14,27 @@ namespace Project1.Maze
         // All possible directions are defined and initialized
         public static class Directions
         {
-            // Dead Ends
+            // Dead Ends, the cell with only 1 direction, like (1,1) South.
+            // Note that (0,0) should not be count as DeadEnd because the algorithm only set 1 direction at begin
             public static readonly List<Direction> DeadEnds = new List<Direction>()
                 {Direction.North, Direction.East, Direction.South, Direction.West};
 
-            // Turns
+            // Turns, the cell with 2 direction that form a right angle, ex: (1,1) North, West
             public static readonly List<Direction> Turns = new List<Direction>()
             {
                 Direction.North | Direction.West, Direction.North | Direction.East, Direction.East | Direction.South,
                 Direction.South | Direction.West
             };
 
-            // CrossSection
+            // CrossSection, the cell with all 4 direction
             public static readonly Direction CrossSection =
                 Direction.North | Direction.West | Direction.East | Direction.South;
 
-            // Straights
+            // Straights, the cell that has direction N&&S or E&&W, basically a straight line
             public static readonly List<Direction> Straights = new List<Direction>()
                 {Direction.North | Direction.South, Direction.East | Direction.West};
 
-            // TJunctions
+            // TJunctions, the cell with 3 direction
             public static readonly List<Direction> TJunctions = new List<Direction>()
             {
                 Direction.North | Direction.West | Direction.South,
