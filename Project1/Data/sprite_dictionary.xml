@@ -56,6 +56,7 @@
 	<rightFacingStatue_block>tiles/rightFacingStatue/block/sprite</rightFacingStatue_block>
 	<water_block>tiles/water/block/sprite</water_block>
 	<half_block>tiles/half/block/sprite</half_block>
+	<sand_block>tiles/sand/block/sprite</sand_block>
 	
   <!-- Enemy -->
 	<stalfos_walking>enemies/stalfos/walking/sprite</stalfos_walking>
@@ -67,6 +68,16 @@
 	<BlueGel_walking>enemies/BlueGel/walking/sprite</BlueGel_walking>
 	<BlueBat_woving>enemies/BlueBat/woving/sprite</BlueBat_woving>
 	<WallMaster_woving>enemies/WallMaster/woving/sprite</WallMaster_woving>
+	<Snake_walking_up>enemies/Snake/walking/up/sprite</Snake_walking_up>
+	<Snake_walking_right>enemies/Snake/walking/right/sprite</Snake_walking_right>
+	<Snake_walking_down>enemies/Snake/walking/down/sprite</Snake_walking_down>
+	<Snake_walking_left>enemies/Snake/walking/left/sprite</Snake_walking_left>
+	<Spike_moving>enemies/Spike/moving/sprite</Spike_moving>
+	<Flame_moving>enemies/Flame/moving/sprite</Flame_moving>
+	<Dodongo_walking_up>enemies/Dodongo/walking/up/sprite</Dodongo_walking_up>
+	<Dodongo_walking_right>enemies/Dodongo/walking/right/sprite</Dodongo_walking_right>
+	<Dodongo_walking_down>enemies/Dodongo/walking/down/sprite</Dodongo_walking_down>
+	<Dodongo_walking_left>enemies/Dodongo/walking/left/sprite</Dodongo_walking_left>
 
   <!-- NPC -->
 	<OldMan_standing>NPC/OldMan/standing/sprite</OldMan_standing>
@@ -123,4 +134,5 @@
 
 	<titleScreen>game/title/sprite</titleScreen>
 	<inventorySelect>game/inventorySelect/sprite</inventorySelect>
+
 </sprite_dictionary>
