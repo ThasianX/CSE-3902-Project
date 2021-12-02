@@ -16,6 +16,7 @@ namespace Project1.Enemy
         private Random rand = new Random();
         public bool IsMover => true;
         private bool isFreeze;
+        private float freezeTime;
         public string CollisionType => "Enemy";
         public IHealthState blueBatHealthState;
 
@@ -41,6 +42,7 @@ namespace Project1.Enemy
             }
             MovingSpeed = 1f;
             blueBatHealthState = new BlueBatHealthState(this, 1);
+            freezeTime = 3f;
         }
 
         public void FireBallAttack()
@@ -58,15 +60,34 @@ namespace Project1.Enemy
 
         public void Freeze()
         {
+            freezeTime = 3f;
             isFreeze = true;
         }
+
+        private void Defreeze(GameTime gameTime)
+        {
+            freezeTime -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if (freezeTime <= 0)
+            {
+                isFreeze = false;
+            }
+        }
+
         public void Update(GameTime gameTime)
         {
             // Update the current state
             // Possible state: direction, fireball attack
             GameObjectDeletionManager.Instance.EnemyDeletionCheck(this, blueBatHealthState);
-            State.Update(gameTime);
-            Sprite.Update(gameTime);
+            if (!isFreeze)
+            {
+                State.Update(gameTime);
+                Sprite.Update(gameTime);
+            }
+            else
+            {
+                Defreeze(gameTime);
+            }
+
             blueBatHealthState.Update(gameTime);
         }
 

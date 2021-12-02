@@ -16,6 +16,7 @@ namespace Project1.Enemy
         private Random rand = new Random();
         public bool IsMover => true;
         private bool isFreeze;
+        private float freezeTime;
         public string CollisionType => "Enemy";
 
         public Flame(Vector2 position)
@@ -39,6 +40,7 @@ namespace Project1.Enemy
                     break;
             }
             MovingSpeed = 1f;
+            freezeTime = 3f;
         }
 
         public void FireBallAttack()
@@ -56,14 +58,31 @@ namespace Project1.Enemy
 
         public void Freeze()
         {
+            freezeTime = 3f;
             isFreeze = true;
+        }
+
+        private void Defreeze(GameTime gameTime)
+        {
+            freezeTime -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if (freezeTime <= 0)
+            {
+                isFreeze = false;
+            }
         }
 
         public void Update(GameTime gameTime)
         {
 
-            State.Update(gameTime);
-            Sprite.Update(gameTime);
+            if (!isFreeze)
+            {
+                State.Update(gameTime);
+                Sprite.Update(gameTime);
+            }
+            else
+            {
+                Defreeze(gameTime);
+            }
 
         }
 
