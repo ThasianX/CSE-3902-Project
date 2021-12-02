@@ -268,6 +268,9 @@ namespace Project1.Levels
                 case "Key":
                     room.AddObject(new Key(position));
                     break;
+                case "Fairy":
+                    room.AddObject(new Fairy(position));
+                    break;
                 case "Triforce":
                     room.AddObject(new Triforce(position));
                     break;

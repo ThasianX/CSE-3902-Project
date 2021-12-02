@@ -21,6 +21,7 @@
 	<fireball>items/fireball/sprite</fireball>
 	<flashingRuby>items/flashingRuby/sprite</flashingRuby>
 	<heart>items/heart/sprite</heart>
+  <fairy>items/fairy/sprite</fairy>
 	<triforce>items/triforce/sprite</triforce>
 	<woodBoomerang>items/woodBoomerang/sprite</woodBoomerang>
 	<blueRuby>items/blueRuby/sprite</blueRuby>

@@ -771,6 +771,22 @@
 				</source_list>
 			</sprite>
 		</heart>
+    <fairy>
+      <sprite>
+        <spritesheet>item_spritesheet</spritesheet>
+        <dimensions>
+          <height>18</height>
+          <width>8</width>
+        </dimensions>
+        <time>1</time>
+        <source_list>
+          <source>
+            <x>39</x>
+            <y>1</y>
+          </source>
+        </source_list>
+      </sprite>
+    </fairy>
 		<triforce>
 			<sprite>
 				<spritesheet>item_spritesheet</spritesheet>
