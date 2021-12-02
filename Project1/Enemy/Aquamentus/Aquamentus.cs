@@ -15,6 +15,7 @@ namespace Project1.Enemy
         private int choice;
         private Random rand = new Random();
         public bool IsMover => true;
+        private bool isFreeze;
         public string CollisionType => "Enemy";
         public IHealthState aquamentusHealthState;
 
@@ -52,13 +53,21 @@ namespace Project1.Enemy
             State.ChangeDirection();
         }
 
+        public void Freeze()
+        {
+            isFreeze = true;
+        }
+
         public void Update(GameTime gameTime)
         {
             // Update the current state
             // Possible state: direction, fireball attack
             GameObjectDeletionManager.Instance.EnemyDeletionCheck(this, aquamentusHealthState);
-            State.Update(gameTime);
-            Sprite.Update(gameTime);
+            if (!isFreeze)
+            {
+                State.Update(gameTime);
+                Sprite.Update(gameTime);
+            }
             aquamentusHealthState.Update(gameTime);
         }
 

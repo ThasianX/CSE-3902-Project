@@ -36,6 +36,10 @@ namespace Project1.NPC
         {
         }
 
+        public void Freeze()
+        {
+        }
+
         public void Update(GameTime gameTime)
         {
             Sprite.Update(gameTime);

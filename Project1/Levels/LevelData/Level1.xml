@@ -229,15 +229,7 @@
 			</position>
 		</object>
 
-    // Item
-    <object>
-      <type>Item</type>
-      <name>Fairy</name>
-      <position>
-        <x>8</x>
-        <y>5</y>
-      </position>
-    </object>
+   
 		
 		<object>
 			<type>Player</type>
@@ -831,7 +823,8 @@
 				<y>5</y>
 			</position>
 		</object>
-	</room>
+
+  </room>
 
 	// Room 5-1. Row 5 and cloumn 1 room from the top view of the level map.
 	// Entrance Room -> up

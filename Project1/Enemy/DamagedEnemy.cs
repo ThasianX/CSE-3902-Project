@@ -45,6 +45,10 @@ namespace Project1
             this.baseEnemy = enemy;
         }
 
+        public void Freeze()
+        {
+        }
+
         public void Update(GameTime gameTime)
         {
             immuneTime--;

@@ -14,6 +14,7 @@ namespace Project1.Enemy
         public Vector2 Position { get; set; }
         public float MovingSpeed { get; set; }
         public bool IsMover => true;
+        private bool isFreeze;
         public string CollisionType => "Enemy";
         private int choice;
         private Random rand = new Random();
@@ -56,6 +57,11 @@ namespace Project1.Enemy
             State.Update(gameTime);
             Sprite.Update(gameTime);
             stalfosHealthState.Update(gameTime);
+        }
+
+        public void Freeze()
+        {
+            isFreeze = true;
         }
 
         public void Draw(SpriteBatch spriteBatch)

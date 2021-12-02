@@ -15,6 +15,7 @@ namespace Project1.Enemy
         private int choice;
         private Random rand = new Random();
         public bool IsMover => true;
+        private bool isFreeze;
         public string CollisionType => "Enemy";
         public IHealthState redGloriyaHealthState;
 
@@ -57,6 +58,10 @@ namespace Project1.Enemy
             State.ChangeDirection();
         }
 
+        public void Freeze()
+        {
+            isFreeze = true;
+        }
 
         public void Update(GameTime gameTime)
         {
