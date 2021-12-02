@@ -12,6 +12,7 @@ namespace Project1.Enemy
         public ISprite Sprite { get; set; }
         public Vector2 Position { get; set; }
         public float MovingSpeed { get; set; }
+        public LootTable LootTable { get; }
         private int choice;
         private Random rand = new Random();
         public bool IsMover => true;
@@ -38,6 +39,7 @@ namespace Project1.Enemy
                     break;
             }
             MovingSpeed = 1f;
+            LootTable = new DefaultLootTable();
         }
 
         public void FireBallAttack()
