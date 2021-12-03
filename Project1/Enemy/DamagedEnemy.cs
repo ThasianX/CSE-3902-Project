@@ -23,6 +23,12 @@ namespace Project1
 
         }
 
+        public bool isFreeze
+        {
+            get { return baseEnemy.isFreeze; }
+            set { baseEnemy.isFreeze = value; }
+        }
+
         public Vector2 Position
         {
 
@@ -46,6 +52,10 @@ namespace Project1
         }
 
         public void Freeze()
+        {
+        }
+
+        public void Defreeze(GameTime gameTime)
         {
         }
 

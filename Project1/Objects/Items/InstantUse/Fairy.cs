@@ -17,7 +17,7 @@ namespace Project1.Objects
         public int heartHeal = 30;
         ISprite sprite;
         public bool IsMover => true;
-        public string CollisionType => "Fairy";
+        public string CollisionType => "InstantUseItem";
         public Fairy(Vector2 position)
         {
             this.Position = position;

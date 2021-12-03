@@ -16,6 +16,8 @@ namespace Project1.Enemy
         public void ChangeDirection();
         public void TakeDamage(int damage);
         public void Freeze();
+        public void Defreeze(GameTime gameTime);
+        public bool isFreeze { get; set; }
 
     }
 }

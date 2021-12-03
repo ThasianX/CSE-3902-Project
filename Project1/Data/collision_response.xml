@@ -44,11 +44,6 @@
 			  <arg type="Project1.Collision">COLLISION</arg>
 		  </command>
 	  </InstantUseItem>
-    <Fairy>
-      <command type="Project1.Commands.PlayerCollectInstantUseItemCommand">
-        <arg type="Project1.Collision">COLLISION</arg>
-      </command>
-    </Fairy>
     <Weapon>
       
     </Weapon>

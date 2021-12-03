@@ -15,7 +15,7 @@ namespace Project1.Enemy
         private int choice;
         private Random rand = new Random();
         public bool IsMover => true;
-        private bool isFreeze;
+        public bool isFreeze { get; set; }
         private float freezeTime;
         public string CollisionType => "Enemy";
         public IHealthState snakeHealthState;
@@ -43,7 +43,6 @@ namespace Project1.Enemy
 
             MovingSpeed = 1f;
             snakeHealthState = new SnakeHealthState(this, 2);
-            freezeTime = 3f;
         }
 
         public void FireBallAttack()
@@ -61,11 +60,11 @@ namespace Project1.Enemy
 
         public void Freeze()
         {
-            freezeTime = 3f;
+            freezeTime = Constants.freezeTime;
             isFreeze = true;
         }
 
-        private void Defreeze(GameTime gameTime)
+        public void Defreeze(GameTime gameTime)
         {
             freezeTime -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (freezeTime <= 0)
