@@ -13,6 +13,7 @@ namespace Project1.NPC
         public float MovingSpeed { get; set; }
         public bool IsMover => false;
         public string CollisionType => "Block";
+        public bool isFreeze { get; set; }
         public OldMan(Vector2 position)
         {
             this.Position = position;
@@ -33,6 +34,14 @@ namespace Project1.NPC
         }
 
         public void TakeDamage(int damage)
+        {
+        }
+
+        public void Freeze()
+        {
+        }
+
+        public void Defreeze(GameTime gameTime)
         {
         }
 
