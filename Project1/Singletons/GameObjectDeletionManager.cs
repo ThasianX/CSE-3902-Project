@@ -23,6 +23,7 @@ namespace Project1
             {
                 LevelManager.Instance.GetCurrentRoom().RemoveObject(enemy);
                 GameObjectManager.Instance.RemoveOnNextFrame(enemy);
+                Loot.RandomLoot(enemy.LootTable, enemy.Position);
             }
         }
 

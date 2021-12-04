@@ -939,12 +939,12 @@
 					<width>5</width>
 				</dimensions>
 				<time>1</time>
-        <source_list>
-          <source>
-            <x>154</x>
-            <y>0</y>
-          </source>
-        </source_list>
+				<source_list>
+				<source>
+					<x>154</x>
+					<y>0</y>
+				</source>
+				</source_list>
 			</sprite>
 		</woodArrowPickup>
 		<bombPickup>
@@ -955,10 +955,12 @@
 					<width>8</width>
 				</dimensions>
 				<time>1</time>
+				<source_list>
 				<source>
 					<x>136</x>
 					<y>0</y>
 				</source>
+				</source_list>
 			</sprite>
 		</bombPickup>
 		<compass>

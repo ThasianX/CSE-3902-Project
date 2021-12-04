@@ -20,7 +20,6 @@ namespace Project1
         {
             get { return baseEnemy.State; }
             set { baseEnemy.State = value; }
-
         }
 
         public bool isFreeze
@@ -31,7 +30,6 @@ namespace Project1
 
         public Vector2 Position
         {
-
             get { return baseEnemy.Position; }
             set { baseEnemy.Position = value; }
         }
@@ -41,7 +39,11 @@ namespace Project1
         {
             get { return baseEnemy.MovingSpeed; }
             set { baseEnemy.MovingSpeed = value; }
+        }
 
+        public LootTable LootTable
+        {
+            get { return baseEnemy.LootTable; }
         }
 
         private int immuneTime = 15;

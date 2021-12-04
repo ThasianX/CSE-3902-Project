@@ -10,6 +10,7 @@ namespace Project1.Enemy
         public IEnemyState State { get; set; }
         public ISprite Sprite { get; set; }
         public float MovingSpeed { get; set; }
+        public LootTable LootTable { get; }
         public void Draw(SpriteBatch spriteBatch, Color color);
         public void FireBallAttack();
         public void BoomerangAttack();

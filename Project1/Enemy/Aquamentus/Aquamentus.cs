@@ -12,6 +12,7 @@ namespace Project1.Enemy
         public ISprite Sprite { get; set; }
         public Vector2 Position { get; set; }
         public float MovingSpeed { get; set; }
+        public LootTable LootTable { get; }
         private int choice;
         private Random rand = new Random();
         public bool IsMover => true;
@@ -19,7 +20,6 @@ namespace Project1.Enemy
         private float freezeTime;
         public string CollisionType => "Enemy";
         public IHealthState aquamentusHealthState;
-
         public Aquamentus(Vector2 position)
         {
             this.Position = position;
@@ -38,6 +38,7 @@ namespace Project1.Enemy
             MovingSpeed = 1f;
 
             aquamentusHealthState = new AquamentusHealthState(this, 8);
+            LootTable = new DefaultLootTable();
         }
 
         public void FireBallAttack()

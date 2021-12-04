@@ -2,7 +2,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Project1.Interfaces;
-using Project1.Levels;
 
 namespace Project1.Enemy
 {
@@ -12,6 +11,7 @@ namespace Project1.Enemy
         public ISprite Sprite { get; set; }
         public Vector2 Position { get; set; }
         public float MovingSpeed { get; set; }
+        public LootTable LootTable { get; }
         private int choice;
         private Random rand = new Random();
         public bool IsMover => true;
@@ -19,7 +19,6 @@ namespace Project1.Enemy
         private float freezeTime;
         public string CollisionType => "Enemy";
         public IHealthState blueBatHealthState;
-
         public BlueBat(Vector2 position)
         {
             this.Position = position;
@@ -42,6 +41,7 @@ namespace Project1.Enemy
             }
             MovingSpeed = 1f;
             blueBatHealthState = new BlueBatHealthState(this, 1);
+            LootTable = new DefaultLootTable();
         }
 
         public void FireBallAttack()
