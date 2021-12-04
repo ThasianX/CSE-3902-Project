@@ -20,12 +20,16 @@ namespace Project1
         {
             get { return baseEnemy.State; }
             set { baseEnemy.State = value; }
+        }
 
+        public bool isFreeze
+        {
+            get { return baseEnemy.isFreeze; }
+            set { baseEnemy.isFreeze = value; }
         }
 
         public Vector2 Position
         {
-
             get { return baseEnemy.Position; }
             set { baseEnemy.Position = value; }
         }
@@ -35,7 +39,11 @@ namespace Project1
         {
             get { return baseEnemy.MovingSpeed; }
             set { baseEnemy.MovingSpeed = value; }
+        }
 
+        public LootTable LootTable
+        {
+            get { return baseEnemy.LootTable; }
         }
 
         private int immuneTime = 15;
@@ -43,6 +51,14 @@ namespace Project1
         public DamagedEnemy(IEnemy enemy)
         {
             this.baseEnemy = enemy;
+        }
+
+        public void Freeze()
+        {
+        }
+
+        public void Defreeze(GameTime gameTime)
+        {
         }
 
         public void Update(GameTime gameTime)

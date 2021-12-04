@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 using System.Xml;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
+using Project1.Interfaces;
 
 namespace Project1.Levels
 {
@@ -196,6 +197,18 @@ namespace Project1.Levels
                 case "WallMaster":
                     room.AddObject(new WallMaster(position));
                     break;
+                case "Snake":
+                    room.AddObject(new Snake(position));
+                    break;
+                case "Spike":
+                    room.AddObject(new Spike(position));
+                    break;
+                case "Flame":
+                    room.AddObject(new Flame(position));
+                    break;
+                case "Dodongo":
+                    room.AddObject(new Dodongo(position));
+                    break;
             }
         }
 
@@ -234,6 +247,9 @@ namespace Project1.Levels
                 case "Half":
                     room.AddObject(new HalfBlock(position));
                     break;
+                case "Sand":
+                    room.AddObject(new SandBlock(position));
+                    break;
             }
         }
         private void MakeItem(Room room, string name, Vector2 position) {
@@ -252,6 +268,12 @@ namespace Project1.Levels
                     break;
                 case "Key":
                     room.AddObject(new Key(position));
+                    break;
+                case "Fairy":
+                    room.AddObject(new Fairy(position));
+                    break;
+                case "Clock":
+                    room.AddObject(new Clock(position));
                     break;
                 case "Triforce":
                     room.AddObject(new Triforce(position));

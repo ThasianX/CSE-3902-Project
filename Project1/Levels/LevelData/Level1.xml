@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <!--All values are in tile space! (integers only)-->
 <Content>
-	// Room 6-2. Row 6 and cloumn 2 room from the top view of the level map.
+	
+  // Room 6-2. Row 6 and cloumn 2 room from the top view of the level map.
 	// Entrance Room 
     <room id="4">
 		<room_transform>
@@ -327,6 +328,24 @@
 			<y>5</y>
 		</position>
 	</object>
+
+	// Test item (fairy and clock)
+  <object>
+    <type>Item</type>
+    <name>Fairy</name>
+    <position>
+      <x>10</x>
+      <y>4</y>
+    </position>
+  </object>
+  <object>
+    <type>Item</type>
+    <name>Clock</name>
+    <position>
+      <x>3</x>
+      <y>3</y>
+    </position>
+  </object>
 </room>
 
 	// Room 6-3. Row 6 and cloumn 3 room from the top view of the level map.
@@ -583,7 +602,8 @@
 				<y>5</y>
 			</position>
 		</object>
-	</room>
+
+  </room>
 
 	// Room 5-1. Row 5 and cloumn 1 room from the top view of the level map.
 	// Entrance Room -> up

@@ -13,13 +13,20 @@ namespace Project1.Levels
         {
             this.id = id;
         }
-        
+
+
         private Dictionary<Direction, Direction> directionSwap = new Dictionary<Direction, Direction>(){
             [Direction.Up] = Direction.Down,
             [Direction.Down] = Direction.Up,
             [Direction.Left] = Direction.Right,
             [Direction.Right] = Direction.Left,
         };
+
+        // Getter;
+        public List<IGameObject> GetObjects()
+        {
+            return gameObjects;
+        }
 
         // MARK: Setters
         public void AddObject(IGameObject gameObject) {

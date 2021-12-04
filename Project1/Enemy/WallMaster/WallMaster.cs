@@ -12,12 +12,14 @@ namespace Project1.Enemy
         public ISprite Sprite { get; set; }
         public Vector2 Position { get; set; }
         public float MovingSpeed { get; set; }
+        public LootTable LootTable { get; }
         private int choice;
         private Random rand = new Random();
         public bool IsMover => true;
+        public bool isFreeze { get; set; }
+        private float freezeTime;
         public string CollisionType => "Enemy";
         public IHealthState wallMasterHealthState;
-
         public WallMaster(Vector2 position)
         {
             this.Position = position;
@@ -41,6 +43,7 @@ namespace Project1.Enemy
 
             MovingSpeed = 1f;
             wallMasterHealthState = new WallMasterHealthState(this, 1);
+            LootTable = new DefaultLootTable();
         }
 
         public void FireBallAttack()
@@ -56,14 +59,35 @@ namespace Project1.Enemy
             State.ChangeDirection();
         }
 
+        public void Freeze()
+        {
+            freezeTime = Constants.freezeTime;
+            isFreeze = true;
+        }
+
+        public void Defreeze(GameTime gameTime)
+        {
+            freezeTime -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if (freezeTime <= 0)
+            {
+                isFreeze = false;
+            }
+        }
 
         public void Update(GameTime gameTime)
         {
             // Update the current state
             // Possible state: direction, fireball attack
             GameObjectDeletionManager.Instance.EnemyDeletionCheck(this, wallMasterHealthState);
-            State.Update(gameTime);
-            Sprite.Update(gameTime);
+            if (!isFreeze)
+            {
+                State.Update(gameTime);
+                Sprite.Update(gameTime);
+            }
+            else
+            {
+                Defreeze(gameTime);
+            }
             wallMasterHealthState.Update(gameTime);
         }
 

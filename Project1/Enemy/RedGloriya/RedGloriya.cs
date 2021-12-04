@@ -12,12 +12,14 @@ namespace Project1.Enemy
         public ISprite Sprite { get; set; }
         public Vector2 Position { get; set; }
         public float MovingSpeed { get; set; }
+        public LootTable LootTable { get; }
         private int choice;
         private Random rand = new Random();
         public bool IsMover => true;
+        public bool isFreeze { get; set; }
+        private float freezeTime;
         public string CollisionType => "Enemy";
         public IHealthState redGloriyaHealthState;
-
         public RedGloriya(Vector2 position)
         {
             this.Position = position;
@@ -41,6 +43,7 @@ namespace Project1.Enemy
 
             MovingSpeed = 1f;
             redGloriyaHealthState = new RedGloriyaHealthState(this, 2);
+            LootTable = new DefaultLootTable();
         }
 
         public void FireBallAttack()
@@ -57,14 +60,35 @@ namespace Project1.Enemy
             State.ChangeDirection();
         }
 
+        public void Freeze()
+        {
+            freezeTime = Constants.freezeTime;
+            isFreeze = true;
+        }
+
+        public void Defreeze(GameTime gameTime)
+        {
+            freezeTime -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if (freezeTime <= 0)
+            {
+                isFreeze = false;
+            }
+        }
 
         public void Update(GameTime gameTime)
         {
             // Update the current state
             // Possible state: direction, attack
             GameObjectDeletionManager.Instance.EnemyDeletionCheck(this, redGloriyaHealthState);
-            State.Update(gameTime);
-            Sprite.Update(gameTime);
+            if (!isFreeze)
+            {
+                State.Update(gameTime);
+                Sprite.Update(gameTime);
+            }
+            else
+            {
+                Defreeze(gameTime);
+            }
             redGloriyaHealthState.Update(gameTime);
         }
 

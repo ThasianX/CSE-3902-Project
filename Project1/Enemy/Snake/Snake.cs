@@ -2,10 +2,11 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Project1.Interfaces;
+using Project1.Levels;
 
 namespace Project1.Enemy
 {
-    public class BlueBat : IEnemy, ICollidable
+    public class Snake : IEnemy, ICollidable
     {
         public IEnemyState State { get; set; }
         public ISprite Sprite { get; set; }
@@ -18,29 +19,31 @@ namespace Project1.Enemy
         public bool isFreeze { get; set; }
         private float freezeTime;
         public string CollisionType => "Enemy";
-        public IHealthState blueBatHealthState;
-        public BlueBat(Vector2 position)
+        public IHealthState snakeHealthState;
+
+        public Snake(Vector2 position)
         {
             this.Position = position;
-            // When initialize, choose a random direction
             choice = rand.Next(4);
+            // When initialize, choose a random direction
             switch (choice)
             {
                 case 0:
-                    State = new BlueBatUpMovingState(this);
+                    State = new SnakeUpMovingState(this);
                     break;
                 case 1:
-                    State = new BlueBatDownMovingState(this);
+                    State = new SnakeDownMovingState(this);
                     break;
                 case 2:
-                    State = new BlueBatRightMovingState(this);
+                    State = new SnakeRightMovingState(this);
                     break;
                 case 3:
-                    State = new BlueBatLeftMovingState(this);
+                    State = new SnakeLeftMovingState(this);
                     break;
             }
+
             MovingSpeed = 1f;
-            blueBatHealthState = new BlueBatHealthState(this, 1);
+            snakeHealthState = new SnakeHealthState(this, 2);
             LootTable = new DefaultLootTable();
         }
 
@@ -49,7 +52,7 @@ namespace Project1.Enemy
         }
 
         public void BoomerangAttack()
-        {
+        {           
         }
 
         public void ChangeDirection()
@@ -75,8 +78,8 @@ namespace Project1.Enemy
         public void Update(GameTime gameTime)
         {
             // Update the current state
-            // Possible state: direction, fireball attack
-            GameObjectDeletionManager.Instance.EnemyDeletionCheck(this, blueBatHealthState);
+            // Possible state: direction, attack
+            GameObjectDeletionManager.Instance.EnemyDeletionCheck(this, snakeHealthState);
             if (!isFreeze)
             {
                 State.Update(gameTime);
@@ -86,26 +89,26 @@ namespace Project1.Enemy
             {
                 Defreeze(gameTime);
             }
-
-            blueBatHealthState.Update(gameTime);
+           
+            snakeHealthState.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             Sprite.Draw(spriteBatch, Position);
-            blueBatHealthState.Draw(spriteBatch);
+            snakeHealthState.Draw(spriteBatch);
         }
 
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
             Sprite.Draw(spriteBatch, Position, color);
-            blueBatHealthState.Draw(spriteBatch);
+            snakeHealthState.Draw(spriteBatch);
         }
 
         public void TakeDamage(int damage)
         {
-            blueBatHealthState.TakeDamage(damage);
-            if (blueBatHealthState.health > 0)
+            snakeHealthState.TakeDamage(damage);
+            if (snakeHealthState.health > 0)
             {
                 SoundManager.Instance.PlaySound("EnemyHit");
                 GameObjectManager.Instance.AddOnNextFrame(new DamagedEnemy(this));
@@ -119,7 +122,7 @@ namespace Project1.Enemy
 
         public Rectangle GetRectangle()
         {
-            return new Rectangle((int)Position.X, (int)Position.Y, 12, 10);
+            return new Rectangle((int)Position.X, (int)Position.Y, 14, 16);
         }
     }
 }
