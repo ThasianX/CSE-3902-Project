@@ -10,6 +10,7 @@ using Project1.Interfaces;
 using Project1.GameStates;
 using Project1.Levels;
 using Project1.Objects;
+using Project1.Maze;
 
 namespace Project1
 {
@@ -67,6 +68,15 @@ namespace Project1
                 new KeyboardController(this),
                 new MouseController(this)
             };
+
+            GridGraph<Maze.Direction> directionGridGraph = MazeGenerator.Instance.BuildMaze(3);
+            for (int i = 0; i < directionGridGraph.NumberOfRows; i++)
+            {
+                for (int j = 0; j < directionGridGraph.NumberOfColumns; j++)
+                {
+                    Console.WriteLine("Row: " + i + " Column: " + j + " Direction: " + directionGridGraph.GetCellValue(i, j));
+                }
+            }
 
             gameState = new PlayingGameState(this);
             base.Initialize();

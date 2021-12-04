@@ -14,9 +14,9 @@
             }
         }
 
-        public GridGraph<Direction> BuildMaze()
+        public GridGraph<Direction> BuildMaze(int num)
         {
-            directionGridGraph = new CreateDirectionalMaze(10, 10).Build();
+            directionGridGraph = new CreateDirectionalMaze(num, num).Build();
             return directionGridGraph;
         }
     }
