@@ -16,6 +16,7 @@ namespace Project1.NPC
 
         //I don't think NPCs should implement IEnemy
         public LootTable LootTable { get; }
+        public bool isFreeze { get; set; }
         public OldMan(Vector2 position)
         {
             this.Position = position;
@@ -37,6 +38,14 @@ namespace Project1.NPC
         }
 
         public void TakeDamage(int damage)
+        {
+        }
+
+        public void Freeze()
+        {
+        }
+
+        public void Defreeze(GameTime gameTime)
         {
         }
 

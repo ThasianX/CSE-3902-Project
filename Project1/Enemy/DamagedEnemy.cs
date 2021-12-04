@@ -22,6 +22,12 @@ namespace Project1
             set { baseEnemy.State = value; }
         }
 
+        public bool isFreeze
+        {
+            get { return baseEnemy.isFreeze; }
+            set { baseEnemy.isFreeze = value; }
+        }
+
         public Vector2 Position
         {
             get { return baseEnemy.Position; }
@@ -45,6 +51,14 @@ namespace Project1
         public DamagedEnemy(IEnemy enemy)
         {
             this.baseEnemy = enemy;
+        }
+
+        public void Freeze()
+        {
+        }
+
+        public void Defreeze(GameTime gameTime)
+        {
         }
 
         public void Update(GameTime gameTime)

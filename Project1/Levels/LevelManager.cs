@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 using System.Xml;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
+using Project1.Interfaces;
 
 namespace Project1.Levels
 {
@@ -267,6 +268,12 @@ namespace Project1.Levels
                     break;
                 case "Key":
                     room.AddObject(new Key(position));
+                    break;
+                case "Fairy":
+                    room.AddObject(new Fairy(position));
+                    break;
+                case "Clock":
+                    room.AddObject(new Clock(position));
                     break;
                 case "Triforce":
                     room.AddObject(new Triforce(position));
