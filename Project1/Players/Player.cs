@@ -79,25 +79,18 @@ namespace Project1
         }
         public void ShootArrow()
         {
-            if (InventoryManager.Instance.HasItem(new BowPickup(Vector2.Zero))) //NEEDS REFACTOR
-                State.ShootArrow();
+            State.ShootArrow();
         }
 
         public void BoomerangAttack()
         {
-            if (InventoryManager.Instance.HasItem(new WoodBoomerangPickup(Vector2.Zero))) //NEEDS REFACTOR
-                State.BoomerangAttack();
+            State.BoomerangAttack();
         }
 
         public void BombAttack()
         {
-            //NEEDS REFACTOR
-            //BombPickup bomb = new BombPickup(Vector2.Zero);
-            //if (InventoryManager.Instance.HasItem(new BombPickup(Vector2.Zero)))
-            //{
-                State.BombAttack();
-                //InventoryManager.Instance.RemoveItem(bomb);
-            //}
+
+            State.BombAttack();
         }
         
         public void Update(GameTime gameTime)

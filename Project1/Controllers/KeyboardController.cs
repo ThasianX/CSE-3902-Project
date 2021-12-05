@@ -54,6 +54,9 @@ namespace Project1
 			onPressMappings.Add(Keys.D2, new PlayerShootArrowCommand(player));
 			onPressMappings.Add(Keys.D3, new PlayerBombAttackCommand(player));
 
+			onPressMappings.Add(Keys.Space, new PlayerUsePrimaryCommand(player));
+			onPressMappings.Add(Keys.LeftShift, new PlayerUseSecondaryCommand(player));
+
             onPressMappings.Add(Keys.I, new PlayerShowCollectionCommand(player));
             onPressMappings.Add(Keys.E, new PlayerTakeDamageCommand(player, 5));
 

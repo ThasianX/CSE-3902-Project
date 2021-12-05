@@ -16,8 +16,8 @@ namespace Project1
         public int rupees = 0;
 
         public int selectedSlot = 0;
-        private IInventoryItem primary;
-        private IInventoryItem secondary;
+        private IEquippable primary;
+        private IEquippable secondary;
 
         private static InventoryManager instance = new InventoryManager();
         public static InventoryManager Instance
@@ -33,9 +33,11 @@ namespace Project1
             instance = new InventoryManager();
         }
 
+
+        // Why? This shouldn't be needed
         public bool HasTriforce()
         {
-            return HasItem(new Triforce(Vector2.Zero));
+            return false; // HasItem(new Triforce(Vector2.Zero));
         }
         
         public void AddItem(IInventoryItem item, int quantity = 1)
@@ -52,7 +54,7 @@ namespace Project1
             //If item not in inventory
             else if (!HasItem(item))
             {
-                itemInv.Add(item, quantity);
+                itemInv.Add(item.StaticInstance, quantity);
 
                 UIManager.Instance.UpdateInventory(GetItems());
 
@@ -61,7 +63,7 @@ namespace Project1
                     SetCount(item, item.MaxStackCount);
                 }
 
-                if (!countedItems.Contains(item.GetType())) // BAD
+                /*if (!countedItems.Contains(item.GetType())) // BAD
                 { // BAD
                     if (primary == null)
                     {
@@ -71,7 +73,7 @@ namespace Project1
                     {
                         EquipSecondary(item);
                     }
-                } // BAD
+                } // BAD*/
                     
             }
 
@@ -84,9 +86,11 @@ namespace Project1
 
         public bool HasItem(IInventoryItem checkItem)
         {
+            // ensure we have the static reference
+            IInventoryItem staticInst = checkItem.StaticInstance;
             foreach (IInventoryItem item in itemInv.Keys)
             {
-                if (item.GetType() == checkItem.GetType())
+                if (item.StaticInstance == checkItem.StaticInstance)
                     return true;
             }
             return false;
@@ -94,24 +98,27 @@ namespace Project1
 
         public int GetCount(IInventoryItem checkItem)
         {
+            // ensure we have the static reference
+            IInventoryItem staticInst = checkItem.StaticInstance;
             foreach (IInventoryItem item in itemInv.Keys)
             {
-                if (item.GetType() == checkItem.GetType())
-                    return itemInv[item];
+                if (item.StaticInstance == staticInst)
+                    return itemInv[staticInst];
             }
             return 0;
         }
 
         public void SetCount(IInventoryItem checkItem, int count)
         {
+            // ensure we have the static reference
+            IInventoryItem staticInst = checkItem.StaticInstance;
             foreach (IInventoryItem item in itemInv.Keys)
             {
-                if (item.GetType() == checkItem.GetType())
+                if (staticInst.StaticInstance == staticInst)
                 {
-                    itemInv[item] = count;
+                    itemInv[staticInst] = count;
                     return;
                 }
-                    
             }
         }
 
@@ -142,13 +149,14 @@ namespace Project1
 
         public void RemoveItem(IInventoryItem item, int quantity = 1)
         {
-            Type itemType = item.GetType();
-            if (true)//item.IsConsumable)
+            // ensure we have the static reference
+            IInventoryItem staticInst = item.StaticInstance;
+            if (HasItem(item))//item.IsConsumable)
             {
-                itemInv[item] -= quantity;
-                if (itemInv[item] <= 0)
+                itemInv[staticInst] -= quantity;
+                if (itemInv[staticInst.StaticInstance] <= 0)
                 {
-                    itemInv.Remove(item);
+                    itemInv.Remove(staticInst);
                 }
             }
 /*            else
@@ -160,7 +168,7 @@ namespace Project1
             Console.WriteLine(item.GetType());
             if (countedItems.Contains(item.GetType()))
             {
-                UIManager.Instance.UpdateCounter(item.GetType(), itemInv[item]);
+                UIManager.Instance.UpdateCounter(item.GetType(), itemInv[item.StaticInstance]);
             }
             
         }
@@ -170,21 +178,25 @@ namespace Project1
             countedItems.Add(type);
         }
 
-        public void EquipPrimary(IInventoryItem item)
+        public void EquipPrimary(IEquippable item)
         {
-            if (HasItem(item))
+            // ensure we have the static reference
+            IEquippable staticInst = (IEquippable)item.StaticInstance;
+            if (HasItem(staticInst))
             {
-                primary = item;
-                UIManager.Instance.UpdatePrimarySlot(item);
+                primary = staticInst;
+                UIManager.Instance.UpdatePrimarySlot(staticInst);
             }
         }
 
-        public void EquipSecondary(IInventoryItem item)
+        public void EquipSecondary(IEquippable item)
         {
-            if (HasItem(item))
+            // ensure we have the static reference
+            IEquippable staticInst = (IEquippable) item.StaticInstance;
+            if (HasItem(staticInst))
             {
-                secondary = item;
-                UIManager.Instance.UpdateSecondarySlot(item);
+                secondary = staticInst;
+                UIManager.Instance.UpdateSecondarySlot(staticInst);
             }
         }
 
@@ -204,6 +216,18 @@ namespace Project1
                 secondary = null;
                 UIManager.Instance.UpdatePrimarySlot(null);
             }
+        }
+
+        public void UsePrimary(IPlayer player)
+        {
+            if (primary != null)
+                primary.Use(player);
+        }
+
+        public void UseSecondary(IPlayer player)
+        {
+            if (secondary != null)
+                secondary.Use(player);
         }
     }
 }

@@ -4,10 +4,9 @@ using Project1.Interfaces;
 
 namespace Project1.Objects
 {
-    public class Triforce : IInventoryItem, ICollidable
+    public class Triforce : IInstantUseItem, ICollidable
     {
         public Vector2 Position { get; set; }
-
         public ISprite Sprite { get; set; }
         public bool IsMover => false;
         public string CollisionType => "Item";
