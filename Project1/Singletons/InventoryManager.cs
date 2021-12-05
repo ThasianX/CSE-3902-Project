@@ -46,7 +46,10 @@ namespace Project1
 
         public void SelectPrevious()
         {
-            selectedSlot = Math.Abs(--selectedSlot % itemInv.Count);
+            selectedSlot--;
+            if (selectedSlot < 0)
+                selectedSlot = itemInv.Count - 1;
+
             UIManager.Instance.UpdateSelection(selectedSlot);
         }
 
@@ -82,20 +85,7 @@ namespace Project1
                 if (GetCount(item) > item.MaxStackCount)
                 {
                     SetCount(item, item.MaxStackCount);
-                }
-
-                /*if (!countedItems.Contains(item.GetType())) // BAD
-                { // BAD
-                    if (primary == null)
-                    {
-                        EquipPrimary(item);
-                    }
-                    else if (secondary == null)
-                    {
-                        EquipSecondary(item);
-                    }
-                } // BAD*/
-                    
+                }   
             }
 
             Console.WriteLine(item.GetType());
@@ -135,7 +125,7 @@ namespace Project1
             IInventoryItem staticInst = checkItem.StaticInstance;
             foreach (IInventoryItem item in itemInv.Keys)
             {
-                if (staticInst.StaticInstance == staticInst)
+                if (item.StaticInstance == staticInst)
                 {
                     itemInv[staticInst] = count;
                     return;
@@ -181,16 +171,11 @@ namespace Project1
                     UIManager.Instance.UpdateInventory(GetItems());
                 }
             }
-/*            else
-            {
-                weapons.Remove(item);
-                UIManager.Instance.UpdatePrimarySlot(null);
-            }
-*/
+
             Console.WriteLine(item.GetType());
             if (countedItems.Contains(item.GetType()))
             {
-                UIManager.Instance.UpdateCounter(item.GetType(), itemInv[item.StaticInstance]);
+                UIManager.Instance.UpdateCounter(item.GetType(), itemInv[staticInst]);
             }
             
         }
@@ -203,7 +188,7 @@ namespace Project1
         public void EquipPrimary(IEquippable item)
         {
             // ensure we have the static reference
-            IEquippable staticInst = (IEquippable)item.StaticInstance;
+            IEquippable staticInst = (IEquippable) item.StaticInstance;
             if (HasItem(staticInst))
             {
                 primary = staticInst;
