@@ -71,14 +71,11 @@ namespace Project1
             GridGraph<Maze.Direction> directionGridGraph = MazeGenerator.Instance.BuildMaze(3);
             DirectionDictionaryMaze dictionaryMaze = new DirectionDictionaryMaze(directionGridGraph);
             Dictionary<Maze.Direction, bool>[,] maze = dictionaryMaze.Dictionarify();
-            for (int i = 0; i < dictionaryMaze.rows; i++)
+            for (int i = 0; i < directionGridGraph.NumberOfRows; i++)
             {
-                for (int j = 0; j < dictionaryMaze.columns; j++)
+                for (int j = 0; j < directionGridGraph.NumberOfColumns; j++)
                 {
-                    foreach (var value in maze[i, j])
-                    {
-                        Console.WriteLine($"{i} {j} {value}");
-                    }
+                    Console.WriteLine($"{i} {j} {directionGridGraph.GetCellValue(i, j)}");
                 }
             }
 
