@@ -55,9 +55,12 @@ namespace Project1.Enemy
             State.ChangeDirection();
         }
 
-        public void Freeze()
+        public void Freeze(float freezeTime)
         {
-            freezeTime = Constants.freezeTime;
+            if (this.freezeTime < freezeTime)
+            {
+                this.freezeTime = freezeTime;
+            }
             isFreeze = true;
         }
 
@@ -104,6 +107,7 @@ namespace Project1.Enemy
             aquamentusHealthState.TakeDamage(damage);
             if (aquamentusHealthState.health > 0)
             {
+                Freeze(Constants.stunTime);
                 SoundManager.Instance.PlaySound("EnemyHit");
                 GameObjectManager.Instance.AddOnNextFrame(new DamagedEnemy(this));
                 GameObjectManager.Instance.RemoveOnNextFrame(this);

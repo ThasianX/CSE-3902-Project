@@ -34,7 +34,6 @@ namespace Project1
             set { baseEnemy.Position = value; }
         }
 
-
         public float MovingSpeed
         {
             get { return baseEnemy.MovingSpeed; }
@@ -53,7 +52,7 @@ namespace Project1
             this.baseEnemy = enemy;
         }
 
-        public void Freeze()
+        public void Freeze(float freezeTime)
         {
         }
 
@@ -97,7 +96,5 @@ namespace Project1
         public void BoomerangAttack() { baseEnemy.BoomerangAttack(); }
         public void ChangeDirection() { baseEnemy.ChangeDirection(); }
         public void TakeDamage(int damage) { }
-
-
     }
 }

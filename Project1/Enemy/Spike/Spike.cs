@@ -57,9 +57,12 @@ namespace Project1.Enemy
             State.ChangeDirection();
         }
 
-        public void Freeze()
+        public void Freeze(float freezeTime)
         {
-            freezeTime = Constants.freezeTime;
+            if (this.freezeTime < freezeTime)
+            {
+                this.freezeTime = freezeTime;
+            }
             isFreeze = true;
         }
 
