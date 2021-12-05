@@ -68,7 +68,12 @@ namespace Project1
 			onReleaseMappings.Add(Keys.S, new PlayerStopMoveDownCommand(player));
 			onReleaseMappings.Add(Keys.A, new PlayerStopMoveLeftCommand(player));
 
-            onPressMappings.Add(Keys.D0, new QuitCommand(myGame));
+			onReleaseMappings.Add(Keys.Right, new SelectNextCommand());
+			onReleaseMappings.Add(Keys.Left, new SelectPreviousCommand());
+			onReleaseMappings.Add(Keys.Space, new EquipPrimaryCommand(myGame));
+			onReleaseMappings.Add(Keys.LeftShift, new EquipSecondaryCommand(myGame));
+
+			onPressMappings.Add(Keys.D0, new QuitCommand(myGame));
 			onReleaseMappings.Add(Keys.Q, new QuitCommand(myGame));
 			onReleaseMappings.Add(Keys.R, new ResetCommand(myGame));
 			onReleaseMappings.Add(Keys.Tab, new PauseCommand(myGame));

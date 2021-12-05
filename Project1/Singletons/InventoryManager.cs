@@ -40,12 +40,13 @@ namespace Project1
         public void SelectNext()
         {
             selectedSlot = ++selectedSlot % itemInv.Count;
+            Console.WriteLine("selected slot: " + selectedSlot);
             UIManager.Instance.UpdateSelection(selectedSlot);
         }
 
         public void SelectPrevious()
         {
-            selectedSlot = --selectedSlot % itemInv.Count;
+            selectedSlot = Math.Abs(--selectedSlot % itemInv.Count);
             UIManager.Instance.UpdateSelection(selectedSlot);
         }
 
@@ -53,7 +54,6 @@ namespace Project1
         {
             instance = new InventoryManager();
         }
-
 
         // Why? This shouldn't be needed
         public bool HasTriforce()
@@ -175,9 +175,10 @@ namespace Project1
             if (HasItem(item))//item.IsConsumable)
             {
                 itemInv[staticInst] -= quantity;
-                if (itemInv[staticInst.StaticInstance] <= 0)
+                if (itemInv[staticInst] <= 0)
                 {
                     itemInv.Remove(staticInst);
+                    UIManager.Instance.UpdateInventory(GetItems());
                 }
             }
 /*            else
@@ -207,6 +208,22 @@ namespace Project1
             {
                 primary = staticInst;
                 UIManager.Instance.UpdatePrimarySlot(staticInst);
+            }
+        }
+
+        public void EquipSelectedPrimary()
+        {
+            if (SelectedItem is IEquippable)
+            {
+                EquipPrimary(SelectedItem as IEquippable);
+            }
+        }
+
+        public void EquipSelectedSecondary()
+        {
+            if (SelectedItem is IEquippable)
+            {
+                EquipSecondary(SelectedItem as IEquippable);
             }
         }
 
