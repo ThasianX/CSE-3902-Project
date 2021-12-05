@@ -12,8 +12,9 @@ namespace Project1.UI
         public Vector2 Position { get; set; }
         public ISprite[] Sprites { get; set; }
 
+        private Vector2 spriteOffset = new Vector2(4, 0);
         private ISprite selector = SpriteFactory.Instance.CreateSprite("item_selector");
-        private int selectedItem = 0;
+        private int selectedIndex = 0;
 
         private int rows = 2;
         private int columns = 4;
@@ -30,7 +31,8 @@ namespace Project1.UI
 
         public void UpdateSelection(int index)
         {
-
+            selectedIndex = index;
+            Console.WriteLine(index);
         }
 
         public void UpdateItems(List<IInventoryItem> items)
@@ -48,22 +50,17 @@ namespace Project1.UI
             }
         }
 
-        public void UpdateSelector(int index)
-        {
-            selectedItem = index;
-        }
-
         public void Draw(SpriteBatch sb)
         {
             for (int row = 0; row < rows; row++)
             {
                 for (int column = 0; column < columns; column++)
                 {
-                    Sprites[column + (row * columns)].Draw(sb, Position + new Vector2((column * spacing), row * spacing));
+                    Sprites[column + (row * columns)].Draw(sb, Position + spriteOffset + new Vector2(column * spacing, row * spacing));
                 }
             }
 
-            //TODO: Draw selector
+            selector.Draw(sb, Position + new Vector2((selectedIndex % columns) * spacing, (selectedIndex % rows)));
         }
     }
 }

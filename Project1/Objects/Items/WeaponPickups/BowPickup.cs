@@ -4,13 +4,17 @@ using Project1.Interfaces;
 
 namespace Project1.Objects
 {
-    public class BowPickup : IInventoryItem, ICollidable
+    public class BowPickup : IEquippable, ICollidable
     {
-        public string Name => "Wood Boomerang";
+        public static BowPickup staticInstance = new BowPickup(Vector2.Zero);
+        public IInventoryItem StaticInstance
+        {
+            get { return staticInstance; }
+        }
+        public string Name => "Bow";
         public bool IsConsumable => false;
         public int MaxStackCount => 1;
         public Vector2 Position { get; set; }
-
         public ISprite Sprite { get; set; }
         public bool IsMover => false;
         public string CollisionType => "PickUp";
@@ -28,6 +32,17 @@ namespace Project1.Objects
         public void Update(GameTime gameTime)
         {
             Sprite.Update(gameTime);
+        }
+
+        public void Use(IPlayer player)
+        {
+            WoodArrowPickup arrow = new WoodArrowPickup(Vector2.Zero);
+            if (InventoryManager.Instance.HasItem(arrow))
+            {
+                player.ShootArrow();
+                InventoryManager.Instance.RemoveItem(arrow);
+            }
+                
         }
 
         public Rectangle GetRectangle()

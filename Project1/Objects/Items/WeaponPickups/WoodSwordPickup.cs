@@ -4,13 +4,17 @@ using Project1.Interfaces;
 
 namespace Project1.Objects
 {
-    public class WoodSwordPickup : IInventoryItem, ICollidable
+    public class WoodSwordPickup : IEquippable, ICollidable
     {
+        public static WoodSwordPickup staticInstance = new WoodSwordPickup(Vector2.Zero);
+        public IInventoryItem StaticInstance
+        {
+            get { return staticInstance; }
+        }
         public string Name => "Wood Sword";
         public bool IsConsumable => false;
         public int MaxStackCount => 1;
         public Vector2 Position { get; set; }
-
         public ISprite Sprite { get; set; }
         public bool IsMover => false;
         public string CollisionType => "PickUp";
@@ -28,6 +32,11 @@ namespace Project1.Objects
         public void Update(GameTime gameTime)
         {
             Sprite.Update(gameTime);
+        }
+
+        public void Use(IPlayer player)
+        {
+            player.SwordAttack();
         }
 
         public Rectangle GetRectangle()

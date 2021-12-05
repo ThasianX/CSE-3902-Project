@@ -6,6 +6,11 @@ namespace Project1.Objects
 {
     public class BombPickup : IInventoryItem, ICollidable
     {
+        public static BombPickup staticInstance = new BombPickup(Vector2.Zero);
+        public IInventoryItem StaticInstance
+        {
+            get { return staticInstance; }
+        }
         public string Name => "Bomb";
         public bool IsConsumable => true;
         public int MaxStackCount => 10;

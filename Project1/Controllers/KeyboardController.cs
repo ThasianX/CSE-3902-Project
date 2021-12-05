@@ -54,6 +54,9 @@ namespace Project1
 			onPressMappings.Add(Keys.D2, new PlayerShootArrowCommand(player));
 			onPressMappings.Add(Keys.D3, new PlayerBombAttackCommand(player));
 
+			onPressMappings.Add(Keys.Space, new PlayerUsePrimaryCommand(player));
+			onPressMappings.Add(Keys.LeftShift, new PlayerUseSecondaryCommand(player));
+
             onPressMappings.Add(Keys.I, new PlayerShowCollectionCommand(player));
             onPressMappings.Add(Keys.E, new PlayerTakeDamageCommand(player, 5));
 
@@ -65,7 +68,12 @@ namespace Project1
 			onReleaseMappings.Add(Keys.S, new PlayerStopMoveDownCommand(player));
 			onReleaseMappings.Add(Keys.A, new PlayerStopMoveLeftCommand(player));
 
-            onPressMappings.Add(Keys.D0, new QuitCommand(myGame));
+			onReleaseMappings.Add(Keys.Right, new SelectNextCommand());
+			onReleaseMappings.Add(Keys.Left, new SelectPreviousCommand());
+			onReleaseMappings.Add(Keys.Space, new EquipPrimaryCommand(myGame));
+			onReleaseMappings.Add(Keys.LeftShift, new EquipSecondaryCommand(myGame));
+
+			onPressMappings.Add(Keys.D0, new QuitCommand(myGame));
 			onReleaseMappings.Add(Keys.Q, new QuitCommand(myGame));
 			onReleaseMappings.Add(Keys.R, new ResetCommand(myGame));
 			onReleaseMappings.Add(Keys.Tab, new PauseCommand(myGame));

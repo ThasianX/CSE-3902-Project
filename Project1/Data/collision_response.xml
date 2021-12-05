@@ -72,6 +72,11 @@
         <arg type="Project1.Collision">COLLISION</arg>
       </command>
     </Water>
+    <Explosion>
+      <command type="Project1.Commands.PlayerTakeDamageCommand">
+        <arg type="Project1.Player">TARGET</arg>
+      </command>
+    </Explosion>
   </Player>
 
   <DamagedPlayer>
@@ -128,6 +133,11 @@
         <arg type="Project1.Interfaces.IProjectile">SOURCE</arg>
       </command>
     </Boomerang>
+    <Explosion>
+      <command type="Project1.Commands.EnemyTakeDamageCommand">
+        <arg type="Project1.Enemy.IEnemy">TARGET</arg>
+      </command>
+    </Explosion>
   </Enemy>
 
   <Weapon>

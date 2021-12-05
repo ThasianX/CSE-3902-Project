@@ -4,14 +4,15 @@ using Project1.Interfaces;
 
 namespace Project1.Objects
 {
-    public class Bomb : IGameObject, ICollidable
+    public class Bomb : IGameObject
     {
         public Vector2 Position { get; set; }
         ISprite sprite;
         public bool IsMover => false;
         //Unsure what collision type the placed bomb should have.
-        public string CollisionType => "Weapon";
-        private double timeCounter = 0;
+        public string CollisionType => "Block";
+        private double activeTime = 1;
+        private double counter = 0;
         public Bomb(Vector2 position)
         {
             this.Position = position;
@@ -27,22 +28,23 @@ namespace Project1.Objects
         public void Update(GameTime gameTime)
         {
             sprite.Update(gameTime);
-            //I'm sure there is a better way to code this
-            if (timeCounter > 1 && timeCounter < 1.01)
+            if (counter >= activeTime)
             {
-                SoundManager.Instance.PlaySound("BombBlow");
+                Explode();
             }
-            if (timeCounter > 2)
-            {
-                GameObjectManager.Instance.RemoveOnNextFrame(this);
-            }
-            timeCounter += gameTime.ElapsedGameTime.TotalSeconds;
+            counter += gameTime.ElapsedGameTime.TotalSeconds;
         }
 
-        public Rectangle GetRectangle()
+        public void Explode()
         {
-            Dimensions dimensions = sprite.GetDimensions();
-            return new Rectangle((int)Position.X, (int)Position.Y, 16, 16);
+            GameObjectManager.Instance.RemoveOnNextFrame(this);
+            GameObjectManager.Instance.AddOnNextFrame(new Explosion(Position));
+            GameObjectManager.Instance.AddOnNextFrame(new Explosion(Position + new Vector2(16, 0)));
+            GameObjectManager.Instance.AddOnNextFrame(new Explosion(Position + new Vector2(-16, 0)));
+            GameObjectManager.Instance.AddOnNextFrame(new Explosion(Position + new Vector2(8, 16)));
+            GameObjectManager.Instance.AddOnNextFrame(new Explosion(Position + new Vector2(-8, 16)));
+            GameObjectManager.Instance.AddOnNextFrame(new Explosion(Position + new Vector2(8, -16)));
+            GameObjectManager.Instance.AddOnNextFrame(new Explosion(Position + new Vector2(-8, -16)));
         }
     }
 }

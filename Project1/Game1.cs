@@ -32,9 +32,6 @@ namespace Project1
 
         private ArrayList controllerList;
 
-        private static Viewport ViewPort => graphics.GraphicsDevice.Viewport;
-        public static int SCREEN_WIDTH => ViewPort.Width;
-        public static int SCREEN_HEIGHT => ViewPort.Height;
         public static int ROOM_WIDTH => 256;
         public static int ROOM_HEIGHT => 176;
         public static int HUD_HEIGHT => 56;
@@ -106,7 +103,13 @@ namespace Project1
             LoadMusic();
 
             // Give link a sword to start (this should go somewhere else)
-            InventoryManager.Instance.AddItem(new WoodSwordPickup(Vector2.Zero));
+            WoodSwordPickup sword = new WoodSwordPickup(Vector2.Zero);
+            InventoryManager.Instance.AddItem(sword);
+            InventoryManager.Instance.EquipPrimary(sword);
+
+            BowPickup bow = new BowPickup(Vector2.Zero);
+            InventoryManager.Instance.AddItem(bow);
+            InventoryManager.Instance.EquipSecondary(bow);
 
             // Visualize rectangle for testing
             whiteRectangle = new Texture2D(GraphicsDevice, 1, 1);
@@ -168,7 +171,9 @@ namespace Project1
             gameState = new PlayingGameState(this);
 
             // Give link a sword to start (this should go somewhere else)
-            InventoryManager.Instance.AddItem(new WoodSwordPickup(Vector2.Zero));
+            WoodSwordPickup temp = new WoodSwordPickup(Vector2.Zero);
+            InventoryManager.Instance.AddItem(temp);
+            InventoryManager.Instance.EquipPrimary(temp);
         }
 
         public void RenderGameOver()
