@@ -162,7 +162,7 @@ namespace Project1
         {
             // ensure we have the static reference
             IInventoryItem staticInst = item.StaticInstance;
-            if (HasItem(item))//item.IsConsumable)
+            if (HasItem(staticInst))
             {
                 itemInv[staticInst] -= quantity;
                 if (itemInv[staticInst] <= 0)
