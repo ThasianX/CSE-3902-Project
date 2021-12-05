@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace Project1.Maze
@@ -6,6 +7,7 @@ namespace Project1.Maze
     public class GridGraph<T> : IGridGraph<T>
     {
         private readonly T[,] internalGrid;
+
         public int NumberOfRows { get; private set; }
         public int NumberOfColumns { get; private set; }
 
@@ -43,5 +45,7 @@ namespace Project1.Maze
         {
             return GetEnumerator();
         }
+
+       
     }
 }

@@ -11,6 +11,7 @@ using Project1.GameStates;
 using Project1.Levels;
 using Project1.Objects;
 using Project1.Maze;
+using System.Collections.Generic;
 
 namespace Project1
 {
@@ -69,12 +70,18 @@ namespace Project1
                 new MouseController(this)
             };
 
+            // Used for testing
             GridGraph<Maze.Direction> directionGridGraph = MazeGenerator.Instance.BuildMaze(3);
-            for (int i = 0; i < directionGridGraph.NumberOfRows; i++)
+            DirectionDictionaryMaze dictionaryMaze = new DirectionDictionaryMaze(directionGridGraph);
+            Dictionary<Maze.Direction, bool>[,] maze = dictionaryMaze.Dictionarify();
+            for (int i = 0; i < dictionaryMaze.rows; i++)
             {
-                for (int j = 0; j < directionGridGraph.NumberOfColumns; j++)
+                for (int j = 0; j < dictionaryMaze.columns; j++)
                 {
-                    Console.WriteLine("Row: " + i + " Column: " + j + " Direction: " + directionGridGraph.GetCellValue(i, j));
+                    foreach (var value in maze[i, j])
+                    {
+                        Console.WriteLine($"{i} {j} {value}");
+                    }
                 }
             }
 

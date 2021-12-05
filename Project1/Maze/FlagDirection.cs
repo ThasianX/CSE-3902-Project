@@ -11,7 +11,7 @@ namespace Project1.Maze
             South = 8
         };
 
-        // All possible directions are defined and initialized
+    // All possible directions are defined and initialized
         public static class Directions
         {
             // Dead Ends, the cell with only 1 direction, like (1,1) South.
