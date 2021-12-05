@@ -29,6 +29,7 @@ namespace Project1.Maze
             return directionGridGraph;
         }
 
+
         // Initialize all grid to Blank
         private void InitializeDirectionMaze(GridGraph<Direction> directionGridGraph)
         {
@@ -36,7 +37,7 @@ namespace Project1.Maze
             {
                 for (int j = 0; j < columns; j++)
                 {
-                    directionGridGraph.SetCellValue(i, j, Direction.Blank);
+                    directionGridGraph.SetCellValue(i,j,Direction.Blank);
                 }
             }
         }

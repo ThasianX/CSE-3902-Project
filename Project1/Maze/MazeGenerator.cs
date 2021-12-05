@@ -1,9 +1,11 @@
-﻿namespace Project1.Maze
+﻿using System.Collections.Generic;
+
+namespace Project1.Maze
 {
     public class MazeGenerator
     {
         private GridGraph<Direction> directionGridGraph;
-
+        
         private static MazeGenerator instance = new MazeGenerator();
 
         public static MazeGenerator Instance
@@ -14,9 +16,9 @@
             }
         }
 
-        public GridGraph<Direction> BuildMaze()
+        public GridGraph<Direction> BuildMaze(int num)
         {
-            directionGridGraph = new CreateDirectionalMaze(10, 10).Build();
+            directionGridGraph = new CreateDirectionalMaze(num, num).Build();
             return directionGridGraph;
         }
     }

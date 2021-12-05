@@ -6,6 +6,11 @@ namespace Project1.Objects
 {
     public class Key : IInventoryItem, ICollidable
     {
+        public static Key staticInstance = new Key(Vector2.Zero);
+        public IInventoryItem StaticInstance
+        {
+            get { return staticInstance; }
+        }
         public string Name => "Key";
         public bool IsConsumable => true;
         public int MaxStackCount => 99;

@@ -6,6 +6,11 @@ namespace Project1.Objects
 {
     public class WoodArrowPickup : IInventoryItem, ICollidable
     {
+        public static WoodArrowPickup staticInstance = new WoodArrowPickup(Vector2.Zero);
+        public IInventoryItem StaticInstance
+        {
+            get { return staticInstance; }
+        }
         public string Name => "Wood Arrow";
         public bool IsConsumable => true;
         public int MaxStackCount => 99;
