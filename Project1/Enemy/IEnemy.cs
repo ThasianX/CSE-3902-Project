@@ -16,7 +16,7 @@ namespace Project1.Enemy
         public void BoomerangAttack();
         public void ChangeDirection();
         public void TakeDamage(int damage);
-        public void Freeze();
+        public void Freeze(float freezeTime);
         public void Defreeze(GameTime gameTime);
         public bool isFreeze { get; set; }
 

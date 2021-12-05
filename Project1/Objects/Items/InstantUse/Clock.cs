@@ -36,7 +36,7 @@ namespace Project1.Objects
                 if (gameObject is IEnemy)
                 {
                    IEnemy enemy = gameObject as IEnemy;
-                   enemy.Freeze();
+                   enemy.Freeze(Constants.freezeTime);
                 }
             }
         }

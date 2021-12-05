@@ -26,9 +26,5 @@ namespace Project1
                 Loot.RandomLoot(enemy.LootTable, enemy.Position);
             }
         }
-
-
     }
-
-
 }

@@ -31,6 +31,8 @@ namespace Project1
 
         public static int HP_PER_HEART = 2;
 
+        public static float stunTime = .25f;
+
         public static float freezeTime = 3f;
     }
 
