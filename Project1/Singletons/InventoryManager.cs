@@ -17,8 +17,8 @@ namespace Project1
         public int rupees = 0;
 
         private int selectedSlot = 0;
-        private IInventoryItem primary;
-        private IInventoryItem secondary;
+        private IEquippable primary;
+        private IEquippable secondary;
 
         private static InventoryManager instance = new InventoryManager();
 
