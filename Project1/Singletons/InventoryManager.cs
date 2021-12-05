@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System.Collections.ObjectModel;
 using Project1.Objects;
 using System;
+using System.Linq;
 
 namespace Project1
 {
@@ -15,17 +16,37 @@ namespace Project1
         public List<Type> countedItems = new List<Type>();
         public int rupees = 0;
 
-        public int selectedSlot = 0;
-        private IEquippable primary;
-        private IEquippable secondary;
+        private int selectedSlot = 0;
+        private IInventoryItem primary;
+        private IInventoryItem secondary;
 
         private static InventoryManager instance = new InventoryManager();
+
+        public IInventoryItem SelectedItem
+        {
+            get
+            {
+                return itemInv.ElementAt(selectedSlot).Key;
+            }
+        }
         public static InventoryManager Instance
         {
             get
             {
                 return instance;
             }
+        }
+
+        public void SelectNext()
+        {
+            selectedSlot = ++selectedSlot % itemInv.Count;
+            UIManager.Instance.UpdateSelection(selectedSlot);
+        }
+
+        public void SelectPrevious()
+        {
+            selectedSlot = --selectedSlot % itemInv.Count;
+            UIManager.Instance.UpdateSelection(selectedSlot);
         }
 
         public void Reset()
