@@ -12,6 +12,14 @@ namespace Project1.Commands
             this.col = col;
         }
 
+        /*public MoveInBoundsCommand(Collision col, bool reverse)
+        {
+            this.col=col;
+            ICollidable temp = col.target;
+            col.target = col.source;
+            col.source = temp;
+        }*/
+
         public void Execute()
         {
             IGameObject target = col.target as IGameObject;
