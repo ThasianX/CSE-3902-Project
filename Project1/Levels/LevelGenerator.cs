@@ -217,10 +217,11 @@ namespace Project1.Levels
                 case "Hole":
                     room.AddObject(new Hole(position, (Direction)Enum.Parse(typeof(Direction), name)));
                     break;
-                case "Stair":
+                case "Stair": {
                     stairRoomId = room.id;
                     room.AddObject(new Stair(position, Direction.Down, undergroundRoomId));
                     break;
+                }
                 case "Ladder":
                     room.AddObject(new Ladder(position, Direction.Up, stairRoomId));
                     break;
