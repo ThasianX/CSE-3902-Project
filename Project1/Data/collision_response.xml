@@ -155,9 +155,6 @@
 
   <Projectile>
     <Block>
-      <command type="Project1.Commands.DropArrowCommand">
-        <arg type="Project1.Interfaces.IGameObject">TARGET</arg>
-      </command>
       <command type="Project1.Commands.DeleteGameObjectCommand">
         <arg type="Project1.Interfaces.IGameObject">TARGET</arg>
       </command>

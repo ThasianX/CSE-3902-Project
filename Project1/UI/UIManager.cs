@@ -28,7 +28,7 @@ namespace Project1
         Minimap map = new Minimap(new Vector2(32, 12));
 
         // this shouldnt be public, but it needs to be for a quick hacky solution
-        public DisplayInventory inventory = new DisplayInventory(new Vector2(132, 48));
+        public DisplayInventory inventory = new DisplayInventory(new Vector2(125, 45));
 
         private static UIManager instance = new UIManager();
         public static UIManager Instance
