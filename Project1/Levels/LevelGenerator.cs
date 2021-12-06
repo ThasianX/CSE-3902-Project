@@ -48,6 +48,7 @@ namespace Project1.Levels
 
             int rows = dictionaryMaze.rows;
             int cols = dictionaryMaze.columns;
+            int i = 0;
             for (int row = 0; row < rows; row++)
             {
                 for (int col = 0; col < cols; col++)
@@ -61,7 +62,7 @@ namespace Project1.Levels
                         element = specialElements.Find(e => e.Attribute("id").Value == "boss");
                     } else
                     {
-                        element = elements[dictionaryMaze.columns * row + col];
+                        element = elements[i++];
                     }
                     LoadRoom(row, col, element, doorExists[row, col]);
                 }
