@@ -1311,24 +1311,6 @@
 			  </sprite>
 		  </block>
 	  </ladder>
-	  <stair>
-		  <block>
-			  <sprite>
-				  <spritesheet>dungeon_sheet</spritesheet>
-				  <dimensions>
-					  <height>16</height>
-					  <width>16</width>
-				  </dimensions>
-				  <time>1</time>
-				  <source_list>
-					  <source>
-						  <x>323</x>
-						  <y>59</y>
-					  </source>
-				  </source_list>
-			  </sprite>
-		  </block>
-	  </stair>
 	  <brick>
 		  <block>
 			  <sprite>
@@ -1915,6 +1897,24 @@
 				</blocks2>
 			</dungeon>
 		</floor>
+		<dungeon>
+			<stair>
+				<sprite>
+					<spritesheet>dungeon_sheet</spritesheet>
+					<dimensions>
+						<height>16</height>
+						<width>16</width>
+					</dimensions>
+					<time>1</time>
+					<source_list>
+						<source>
+							<x>323</x>
+							<y>59</y>
+						</source>
+					</source_list>
+				</sprite>
+			</stair>
+		</dungeon>
 	</room>
   <UI>
     <HUD>

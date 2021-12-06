@@ -52,7 +52,6 @@
 	<black_block>tiles/black/block/sprite</black_block>
 	<plain_block>tiles/plain/block/sprite</plain_block>
 	<ladder_block>tiles/ladder/block/sprite</ladder_block>
-	<stair_block>tiles/stair/block/sprite</stair_block>
 	<brick_block>tiles/brick/block/sprite</brick_block>
 	<leftFacingStatue_block>tiles/leftFacingStatue/block/sprite</leftFacingStatue_block>
 	<rightFacingStatue_block>tiles/rightFacingStatue/block/sprite</rightFacingStatue_block>
@@ -113,6 +112,7 @@
 	<floor1>room/floor/dungeon/plain/sprite</floor1>
 	<floor2>room/floor/dungeon/blocks/sprite</floor2>
 	<floor3>room/floor/dungeon/blocks2/sprite</floor3>
+	<stair>room/dungeon/stair/sprite</stair>
 
   <!-- UI -->
   <HUD_frame>UI/HUD/frame/sprite</HUD_frame>

@@ -15,7 +15,9 @@ namespace Project1.Levels
         public readonly List<Room> rooms;
         private readonly XDocument mazeRoomsDocument;
         private readonly XDocument specialRoomsDocument;
-        
+        private int stairRoomId;
+        private readonly int undergroundRoomId = 6969;
+
         public LevelGenerator(int level)
         {
             rooms = new List<Room>();
@@ -75,11 +77,28 @@ namespace Project1.Levels
                     {Maze.Direction.North, false},
                     {Maze.Direction.South, false}
                 });
+
+            LoadRoom(-1, -1,
+                specialElements.Find(e => e.Attribute("id").Value == "underground"),
+                new Dictionary<Maze.Direction, bool>()
+                {
+                    {Maze.Direction.East, false},
+                    {Maze.Direction.West, false},
+                    {Maze.Direction.North, false},
+                    {Maze.Direction.South, false}
+                });
         }
 
         private void LoadRoom(int row, int col, XElement current, Dictionary<Maze.Direction, bool> doors)
         {
             Room room = new Room(GetRoomId(row, col));
+            LoadRoomObjects(room, current);
+            LoadRoomDoors(room, row, col, doors);
+            rooms.Add(room);
+        }
+
+        private void LoadRoomObjects(Room room, XElement current)
+        {
             foreach (XElement element in current.Elements("object"))
             {
                 string type = element.Element("type").Value;
@@ -91,7 +110,10 @@ namespace Project1.Levels
 
                 LoadObject(room, type, name, new Vector2(x, y));
             }
+        }
 
+        private void LoadRoomDoors(Room room, int row, int col, Dictionary<Maze.Direction, bool> doors)
+        {
             foreach (var key in doors.Keys)
             {
                 if (doors[key])
@@ -103,13 +125,15 @@ namespace Project1.Levels
                     MakeDoor(room, key, -1);
                 }
             }
-
-            rooms.Add(room);
         }
 
         // Returns a unique id through an aribtrary calcalation
         private int GetRoomId(int row, int col)
         {
+            if(row == -1 && col == -1)
+            {
+                return undergroundRoomId;
+            }
             return row * 10 + col * 3;
         }
 
@@ -193,6 +217,13 @@ namespace Project1.Levels
                 case "Hole":
                     room.AddObject(new Hole(position, (Direction)Enum.Parse(typeof(Direction), name)));
                     break;
+                case "Stair":
+                    stairRoomId = room.id;
+                    room.AddObject(new Stair(position, Direction.Down, undergroundRoomId));
+                    break;
+                case "Ladder":
+                    room.AddObject(new Ladder(position, Direction.Up, stairRoomId));
+                    break;
                 case "Player":
                     room.AddObject(new Player(position));
                     break;
@@ -268,9 +299,6 @@ namespace Project1.Levels
                     break;
                 case "Stone":
                     room.AddObject(new BrickBlock(position));
-                    break;
-                case "Stair":
-                    room.AddObject(new StairBlock(position));
                     break;
                 case "LeftFacingStatue":
                     room.AddObject(new LeftFacingStatueBlock(position));
