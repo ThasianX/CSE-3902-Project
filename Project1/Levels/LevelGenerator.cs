@@ -35,11 +35,19 @@ namespace Project1.Levels
             DirectionDictionaryMaze dictionaryMaze = new DirectionDictionaryMaze(directionGridGraph);
             Dictionary<Maze.Direction, bool>[,] doorExists = dictionaryMaze.Dictionarify();
 
+            LevelManager.Instance.doorMatrix = doorExists; // Necessary Coupling: need to expose this for minimap
+
             for (int row = 0; row < dictionaryMaze.rows; row++)
             {
                 for (int col = 0; col < dictionaryMaze.columns; col++)
                 {
                     LoadRoom(row, col, elements[dictionaryMaze.columns * row + col], doorExists[row, col]);
+                    Console.WriteLine("Room " + row + ", " + col);
+                    foreach (KeyValuePair<Maze.Direction, bool> pair in doorExists[row, col])
+                    {
+                        Console.WriteLine(pair.Key + ": " + pair.Value);
+                    }
+                    
                 }
             }
         }

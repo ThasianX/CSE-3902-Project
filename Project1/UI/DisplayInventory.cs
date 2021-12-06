@@ -60,7 +60,7 @@ namespace Project1.UI
                 }
             }
 
-            selector.Draw(sb, Position + new Vector2((selectedIndex % columns) * spacing, (selectedIndex % rows)));
+            selector.Draw(sb, Position + new Vector2((selectedIndex % columns) * spacing, (selectedIndex / columns) * spacing));
         }
     }
 }

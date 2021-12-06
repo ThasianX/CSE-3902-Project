@@ -1918,7 +1918,7 @@
     <HUD>
       <frame>
         <sprite>
-          <spritesheet>zelda_UI</spritesheet>
+          <spritesheet>HUDPauseScreen</spritesheet>
           <dimensions>
             <height>56</height>
             <width>256</width>
@@ -2211,6 +2211,90 @@
         </sprite>
       </map>
     </inventory>
+    <minimap>
+      <room>
+        <sprite>
+          <spritesheet>HUDPauseScreen</spritesheet>
+          <dimensions>
+            <height>8</height>
+            <width>8</width>
+          </dimensions>
+          <time>1</time>
+          <source_list>
+            <source>
+              <x>519</x>
+              <y>108</y>
+            </source>
+          </source_list>
+        </sprite>
+      </room>
+      <doors>
+        <up>
+          <sprite>
+            <spritesheet>HUDPauseScreen</spritesheet>
+            <dimensions>
+              <height>8</height>
+              <width>8</width>
+            </dimensions>
+            <time>1</time>
+            <source_list>
+              <source>
+                <x>591</x>
+                <y>108</y>
+              </source>
+            </source_list>
+          </sprite>
+        </up>
+        <right>
+          <sprite>
+            <spritesheet>HUDPauseScreen</spritesheet>
+            <dimensions>
+              <height>8</height>
+              <width>8</width>
+            </dimensions>
+            <time>1</time>
+            <source_list>
+              <source>
+                <x>528</x>
+                <y>108</y>
+              </source>
+            </source_list>
+          </sprite>
+        </right>
+        <down>
+          <sprite>
+            <spritesheet>HUDPauseScreen</spritesheet>
+            <dimensions>
+              <height>8</height>
+              <width>8</width>
+            </dimensions>
+            <time>1</time>
+            <source_list>
+              <source>
+                <x>555</x>
+                <y>108</y>
+              </source>
+            </source_list>
+          </sprite>
+        </down>
+        <left>
+          <sprite>
+            <spritesheet>HUDPauseScreen</spritesheet>
+            <dimensions>
+              <height>8</height>
+              <width>8</width>
+            </dimensions>
+            <time>1</time>
+            <source_list>
+              <source>
+                <x>537</x>
+                <y>108</y>
+              </source>
+            </source_list>
+          </sprite>
+        </left>
+      </doors>
+    </minimap>
   </UI>
 	<game>
 		<title>

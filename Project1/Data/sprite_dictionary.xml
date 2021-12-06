@@ -138,6 +138,12 @@
 	<titleScreen>game/title/sprite</titleScreen>
 	<inventorySelect>game/inventorySelect/sprite</inventorySelect>
 
+  <minimap_room>UI/minimap/room/sprite</minimap_room>
+  <minimap_door_up>UI/minimap/doors/up/sprite</minimap_door_up>
+  <minimap_door_right>UI/minimap/doors/right/sprite</minimap_door_right>
+  <minimap_door_down>UI/minimap/doors/down/sprite</minimap_door_down>
+  <minimap_door_left>UI/minimap/doors/left/sprite</minimap_door_left>
+
   <!-- effects -->
   <explosion>effects/explosion/sprite</explosion>
   
