@@ -20,6 +20,7 @@ namespace Project1.Enemy
             snake.Sprite = SpriteFactory.Instance.CreateSprite("Snake_walking_right");
             currentDirection = Direction.Right;
             deltaVector = new Vector2(1, 0);
+            counter = 30;
         }
 
         public void FireBallAttack()
