@@ -170,4 +170,17 @@
     </Enemy>
 
   </Boomerang>
+
+  <MoveableBlock>
+	<Block>
+	    <command type="Project1.Commands.MoveInBoundsCommand">
+		    <arg type="Project1.Collision">COLLISION</arg>
+		</command>
+	</Block>
+	<Player>
+		<command type="Project1.Commands.MoveInBoundsCommand">
+			<arg type="Project1.Collision">COLLISION</arg>
+		</command>
+	</Player>
+  </MoveableBlock>
 </collision_response>

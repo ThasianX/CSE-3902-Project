@@ -21,8 +21,8 @@
 	<fireball>items/fireball/sprite</fireball>
 	<flashingRuby>items/flashingRuby/sprite</flashingRuby>
 	<heart>items/heart/sprite</heart>
-  <fairy>items/fairy/sprite</fairy>
-  <clock>items/clock/sprite</clock>
+	<fairy>items/fairy/sprite</fairy>
+	<clock>items/clock/sprite</clock>
 	<triforce>items/triforce/sprite</triforce>
 	<woodBoomerang>items/woodBoomerang/sprite</woodBoomerang>
 	<blueRuby>items/blueRuby/sprite</blueRuby>
@@ -53,7 +53,7 @@
 	<plain_block>tiles/plain/block/sprite</plain_block>
 	<ladder_block>tiles/ladder/block/sprite</ladder_block>
 	<stair_block>tiles/stair/block/sprite</stair_block>
-	<stone_block>tiles/stone/block/sprite</stone_block>
+	<brick_block>tiles/brick/block/sprite</brick_block>
 	<leftFacingStatue_block>tiles/leftFacingStatue/block/sprite</leftFacingStatue_block>
 	<rightFacingStatue_block>tiles/rightFacingStatue/block/sprite</rightFacingStatue_block>
 	<water_block>tiles/water/block/sprite</water_block>
@@ -83,8 +83,9 @@
 
   <!-- NPC -->
 	<OldMan_standing>NPC/OldMan/standing/sprite</OldMan_standing>
-	
-  <!-- Level -->
+	<Merchant_standing>NPC/Merchant/standing/sprite</Merchant_standing>
+
+	<!-- Level -->
 	<top_wall>room/wall/dungeon/top/sprite</top_wall>
 	<left_wall>room/wall/dungeon/left/sprite</left_wall>
 	<right_wall>room/wall/dungeon/right/sprite</right_wall>
