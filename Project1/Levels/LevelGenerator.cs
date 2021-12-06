@@ -117,7 +117,10 @@ namespace Project1.Levels
         {
             foreach (var key in doors.Keys)
             {
-                if (doors[key])
+                if(row == -1 && col == -1) 
+                {
+                    MakeDoor(room, key, undergroundRoomId);
+                } else if (doors[key])
                 {
                     MakeDoor(room, key, GetNextRoomId(row, col, key));
                 }
@@ -172,7 +175,7 @@ namespace Project1.Levels
             Direction d;
             switch(direction) {
                 case Maze.Direction.North: {
-                    position = new Vector2(7*Constants.TILE_SIZE, 0);
+                    position = new Vector2(7 * Constants.TILE_SIZE, 0);
                     d = Direction.Up;
                     break;
                 }
@@ -182,7 +185,7 @@ namespace Project1.Levels
                     break;
                 }
                 case Maze.Direction.West: {
-                    position = new Vector2(0, 4.5f*Constants.TILE_SIZE);
+                    position = new Vector2(0, 4.5f * Constants.TILE_SIZE);
                     d = Direction.Left;
                     break;
                 }
@@ -201,6 +204,9 @@ namespace Project1.Levels
             if(nextRoom == -1)
             {
                 room.AddObject(new NoDoor(position, d));
+            } else if(nextRoom == undergroundRoomId) 
+            {
+                room.AddObject(new BrickBlock(position));
             } else
             {
                 room.AddObject(new Door(position, d, nextRoom));
