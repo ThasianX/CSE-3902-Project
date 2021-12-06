@@ -1,0 +1,27 @@
+﻿Sprint 5 Reflection(Team JellyLake/Blue 3)
+
+This is the last sprint for this class. Before the sprint reflection, I want to thank all my teammates，you are all awesome!
+I am very honored to be a part of team JellyLake and to work with you guys!
+
+During the class discussion on the first week of sprint assignment, we basically determined our new feature for sprint5 through 
+discussion. We decided to develop our game closer to the rogue-like genre. Therefore, there are a lot of works need to be done: 
+Randomly generated mazes, more dungeon room types, enemy types, trap types, dungeon cubes, and random drops of enemy loot. etc. 
+And we assign individual members of the team their own part of works. 
+
+During this sprint, Because there is a thanksgiving break in the middle, we all start our work a little bit late than before. 
+But everyone on the team took the tasks given to them seriously and did a lot of coding in the days leading up to the deadline.
+Because there are a lot of work to do for this sprint, the detailed division of labor can be seen in the "Projects/Sprint4" page on GitHub.
+
+The team members actively helped each other and completed the tasks they were assigned through cooperation. Communication between 
+the teams were still mainly through discord, and basically, we discussed the work progress on discord every day, and also had meetings 
+on the voice channel to figure out the difficult parts of the sprint.
+
+The project demo now basically has the new features we planed to have for sprint5. Code reviews between team members are still 
+finished during pull requests and every member of the team did at least one for readability and another one for maintainability. 
+
+Since this is the last sprint, we have summarized the following main improvement points based on the experience of all previous sprints.
+1. Careful planning and division of labor.
+2. Including lots of meaningful code comments.
+3. Start coding early.
+4. Seek help from the team when problems are encountered.
+Overall, we did a great job and we are a great team.
