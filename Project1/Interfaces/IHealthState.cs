@@ -11,5 +11,7 @@ namespace Project1.Interfaces
         void Update(GameTime gameTime);
         void TakeDamage(int damage);
         void Heal(int heal);
+
+        public void AddHeartContainer();
     }
 }

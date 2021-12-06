@@ -21,7 +21,7 @@ namespace Project1.UI
         public Vector2 Position { get; set; }
         public HealthBar(Vector2 position, int initHeartContainers)
         {
-            maxContainers = rows * columns;
+            maxContainers = Constants.maxHearts;
             SetHeartContainerCount(initHeartContainers);
             maxValue = heartContainers * Constants.HP_PER_HEART;
             Position = position;
@@ -58,7 +58,7 @@ namespace Project1.UI
                 Sprites[i] = SpriteFactory.Instance.CreateSprite("empty_heart");
             }
             // Fill in the blanks
-            for (int i = heartContainers; i < maxContainers; i++)
+            for (int i = heartContainers; i < Constants.maxHearts; i++)
             {
                 Sprites[i] = SpriteFactory.Instance.CreateSprite("UI_blank");
             }
@@ -67,13 +67,14 @@ namespace Project1.UI
 
         public void AddHeartContainer()
         {
-            if (heartContainers < maxContainers)
+            if (heartContainers < Constants.maxHearts)
                 heartContainers++;
         }
 
         public void SetHeartContainerCount(int count)
         {
-            heartContainers = Math.Clamp(count, 0, maxContainers);
+            heartContainers = Math.Clamp(count, 0, Constants.maxHearts - 1); // " - 1 " is a quick hacky fix
+            maxValue = heartContainers * Constants.HP_PER_HEART;
         }
 
         public void Draw(SpriteBatch sb)

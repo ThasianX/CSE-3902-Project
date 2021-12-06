@@ -21,6 +21,7 @@
 	<fireball>items/fireball/sprite</fireball>
 	<flashingRuby>items/flashingRuby/sprite</flashingRuby>
 	<heart>items/heart/sprite</heart>
+  <heart_container>items/heart_container/sprite</heart_container>
   <fairy>items/fairy/sprite</fairy>
   <clock>items/clock/sprite</clock>
 	<triforce>items/triforce/sprite</triforce>

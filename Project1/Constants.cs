@@ -34,6 +34,8 @@ namespace Project1
         public static float stunTime = .25f;
 
         public static float freezeTime = 3f;
+
+        public static int maxHearts = 16;
     }
 
 }
