@@ -4,17 +4,18 @@ using Project1.Interfaces;
 
 namespace Project1.Objects
 {
-    public class StoneBlock : IBlock, ICollidable
+    public class MoveableBlock : IBlock, ICollidable
     {
         public Vector2 Position { get; set; }
 
         ISprite sprite;
-        public bool IsMover => false;
-        public string CollisionType => "Block";
-        public StoneBlock(Vector2 position)
+        public bool IsMover => true;
+        public string CollisionType => "MoveableBlock";
+
+        public MoveableBlock(Vector2 position)
         {
             this.Position = position;
-            sprite = SpriteFactory.Instance.CreateSprite("stone_block");
+            sprite = SpriteFactory.Instance.CreateSprite("pyramid_block");
         }
 
         public void Draw(SpriteBatch spriteBatch)

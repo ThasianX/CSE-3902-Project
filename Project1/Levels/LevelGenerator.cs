@@ -13,40 +13,93 @@ namespace Project1.Levels
     public class LevelGenerator
     {
         public readonly List<Room> rooms;
-        private readonly XDocument spriteData;
-        
+        private readonly XDocument mazeRoomsDocument;
+        private readonly XDocument specialRoomsDocument;
+        private int stairRoomId;
+        private readonly int undergroundRoomId = 6969;
+
         public LevelGenerator(int level)
         {
             rooms = new List<Room>();
-            spriteData = XDocument.Load("Levels/LevelData/Level" + level + ".xml");
+            mazeRoomsDocument = XDocument.Load("Levels/LevelData/MazeRoomResources.xml");
+            specialRoomsDocument = XDocument.Load("Levels/LevelData/SpecialRoomResources.xml");
         }
 
-        private List<XElement> GetShuffledElements()
+        private List<XElement> GetMazeElements()
         {
-            List<XElement> elements = spriteData.Root.Elements().ToList();
+            List<XElement> elements = mazeRoomsDocument.Root.Elements().ToList();
             elements.ShuffleAllExceptFirst();
             return elements;
         }
 
-        public void LoadLevel() {
-            List<XElement> elements = GetShuffledElements();
+        private List<XElement> GetSpecialElements()
+        {
+            return specialRoomsDocument.Root.Elements().ToList();
+        }
+
+        public void LoadLevel()
+        {
+            List<XElement> elements = GetMazeElements();
+            List<XElement> specialElements = GetSpecialElements();
 
             GridGraph<Maze.Direction> directionGridGraph = MazeGenerator.Instance.BuildMaze(4);
             DirectionDictionaryMaze dictionaryMaze = new DirectionDictionaryMaze(directionGridGraph);
             Dictionary<Maze.Direction, bool>[,] doorExists = dictionaryMaze.Dictionarify();
 
-            for (int row = 0; row < dictionaryMaze.rows; row++)
+            int rows = dictionaryMaze.rows;
+            int cols = dictionaryMaze.columns;
+            int i = 0;
+            for (int row = 0; row < rows; row++)
             {
-                for (int col = 0; col < dictionaryMaze.columns; col++)
+                for (int col = 0; col < cols; col++)
                 {
-                    LoadRoom(row, col, elements[dictionaryMaze.columns * row + col], doorExists[row, col]);
+                    XElement element;
+                    if(row == 0 && col == 0)
+                    {
+                        element = specialElements.Find(e => e.Attribute("id").Value == "entrance");
+                    } else if(row == rows - 1 && col == cols - 1)
+                    {
+                        element = specialElements.Find(e => e.Attribute("id").Value == "boss");
+                    } else
+                    {
+                        element = elements[i++];
+                    }
+                    LoadRoom(row, col, element, doorExists[row, col]);
                 }
             }
+
+            MakeDoor(rooms[^1], Maze.Direction.East, GetRoomId(rows, cols));
+            LoadRoom(rows, cols,
+                specialElements.Find(e => e.Attribute("id").Value == "triforce"),
+                new Dictionary<Maze.Direction, bool>()
+                {
+                    {Maze.Direction.East, false},
+                    {Maze.Direction.West, true},
+                    {Maze.Direction.North, false},
+                    {Maze.Direction.South, false}
+                });
+
+            LoadRoom(-1, -1,
+                specialElements.Find(e => e.Attribute("id").Value == "underground"),
+                new Dictionary<Maze.Direction, bool>()
+                {
+                    {Maze.Direction.East, false},
+                    {Maze.Direction.West, false},
+                    {Maze.Direction.North, false},
+                    {Maze.Direction.South, false}
+                });
         }
 
         private void LoadRoom(int row, int col, XElement current, Dictionary<Maze.Direction, bool> doors)
         {
             Room room = new Room(GetRoomId(row, col));
+            LoadRoomObjects(room, current);
+            LoadRoomDoors(room, row, col, doors);
+            rooms.Add(room);
+        }
+
+        private void LoadRoomObjects(Room room, XElement current)
+        {
             foreach (XElement element in current.Elements("object"))
             {
                 string type = element.Element("type").Value;
@@ -58,7 +111,10 @@ namespace Project1.Levels
 
                 LoadObject(room, type, name, new Vector2(x, y));
             }
+        }
 
+        private void LoadRoomDoors(Room room, int row, int col, Dictionary<Maze.Direction, bool> doors)
+        {
             foreach (var key in doors.Keys)
             {
                 if (doors[key])
@@ -70,13 +126,15 @@ namespace Project1.Levels
                     MakeDoor(room, key, -1);
                 }
             }
-
-            rooms.Add(room);
         }
 
         // Returns a unique id through an aribtrary calcalation
         private int GetRoomId(int row, int col)
         {
+            if(row == -1 && col == -1)
+            {
+                return undergroundRoomId;
+            }
             return row * 10 + col * 3;
         }
 
@@ -160,6 +218,14 @@ namespace Project1.Levels
                 case "Hole":
                     room.AddObject(new Hole(position, (Direction)Enum.Parse(typeof(Direction), name)));
                     break;
+                case "Stair": {
+                    stairRoomId = room.id;
+                    room.AddObject(new Stair(position, Direction.Down, undergroundRoomId));
+                    break;
+                }
+                case "Ladder":
+                    room.AddObject(new Ladder(position, Direction.Up, stairRoomId));
+                    break;
                 case "Player":
                     room.AddObject(new Player(position));
                     break;
@@ -194,6 +260,9 @@ namespace Project1.Levels
                     break;
                 case "OldMan":
                     room.AddObject(new OldMan(position));
+                    break;
+                case "Merchant":
+                    room.AddObject(new Merchant(position));
                     break;
                 case "WallMaster":
                     room.AddObject(new WallMaster(position));
@@ -230,11 +299,8 @@ namespace Project1.Levels
                 case "Pyramid":
                     room.AddObject(new PyramidBlock(position));
                     break;
-                case "Stair":
-                    room.AddObject(new StairBlock(position));
-                    break;
                 case "Stone":
-                    room.AddObject(new StoneBlock(position));
+                    room.AddObject(new BrickBlock(position));
                     break;
                 case "LeftFacingStatue":
                     room.AddObject(new LeftFacingStatueBlock(position));
@@ -250,6 +316,9 @@ namespace Project1.Levels
                     break;
                 case "Sand":
                     room.AddObject(new SandBlock(position));
+                    break;
+                case "MoveableBlock":
+                    room.AddObject(new MoveableBlock(position));
                     break;
             }
         }

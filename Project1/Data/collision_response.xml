@@ -29,6 +29,11 @@
         <arg type="Project1.Interfaces.IExit">SOURCE</arg>
       </command>
     </Door>
+	<Portal>
+      <command type="Project1.Commands.MoveDownStairsCommand">
+        <arg type="Project1.Interfaces.IPortal">SOURCE</arg>
+      </command>
+    </Portal>
     <Item>
       <command type="Project1.Commands.PlayerCollectItemCommand">
         <arg type="Project1.Collision">COLLISION</arg>
@@ -170,4 +175,17 @@
     </Enemy>
 
   </Boomerang>
+
+  <MoveableBlock>
+	<Block>
+	    <command type="Project1.Commands.MoveInBoundsCommand">
+		    <arg type="Project1.Collision">COLLISION</arg>
+		</command>
+	</Block>
+	<Player>
+		<command type="Project1.Commands.MoveInBoundsCommand">
+			<arg type="Project1.Collision">COLLISION</arg>
+		</command>
+	</Player>
+  </MoveableBlock>
 </collision_response>

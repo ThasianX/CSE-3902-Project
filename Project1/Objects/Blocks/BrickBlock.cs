@@ -4,7 +4,7 @@ using Project1.Interfaces;
 
 namespace Project1.Objects
 {
-    public class StairBlock : IBlock, ICollidable
+    public class BrickBlock : IBlock, ICollidable
     {
         public Vector2 Position { get; set; }
 
@@ -12,10 +12,10 @@ namespace Project1.Objects
         public bool IsMover => false;
         public string CollisionType => "Block";
 
-        public StairBlock(Vector2 position)
+        public BrickBlock(Vector2 position)
         {
             this.Position = position;
-            sprite = SpriteFactory.Instance.CreateSprite("stair_block");
+            sprite = SpriteFactory.Instance.CreateSprite("brick_block");
         }
 
         public void Draw(SpriteBatch spriteBatch)
