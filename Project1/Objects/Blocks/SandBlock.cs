@@ -4,14 +4,13 @@ using Project1.Interfaces;
 
 namespace Project1.Objects
 {
-    public class SandBlock : IBlock
+    public class SandBlock : IBlock, ICollidable
     {
         public Vector2 Position { get; set; }
 
         ISprite sprite;
         public bool IsMover => false;
-        
-
+        public string CollisionType => "Block";
         public SandBlock(Vector2 position)
         {
             this.Position = position;
