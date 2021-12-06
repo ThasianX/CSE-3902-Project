@@ -126,7 +126,6 @@ Key, Heart, Triforce, Compass, Map, YellowRuby, BlueRuby, FlashingRuby, Clock, F
 * Keys.D1: Link Boomerang Attack
 * Keys.D2: Link Shoot Arrow
 * Keys.D3: Link Place Bomb
-<br />
 
 ### Game Control
 * Keys.Q: Quit Game
