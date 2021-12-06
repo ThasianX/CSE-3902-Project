@@ -112,18 +112,21 @@ Key, Heart, Triforce, Compass, Map, YellowRuby, BlueRuby, FlashingRuby, Clock, F
 * Keys.Right: Link Facing Right
 * Keys.Left: Link Facing Left
 * Keys.Down: Link Facing Down
+<br />
 
 * Link Moving:
 * Keys.W: Link Moving Up
 * Keys.D: Link Moving Right
 * Keys.S: Link Moving Down
 * Keys.A: Link Moving Left
+<br />
 
 * Link Attack:
 * Keys.Z & Keys.N: Link Sword Attack
 * Keys.D1: Link Boomerang Attack
 * Keys.D2: Link Shoot Arrow
 * Keys.D3: Link Place Bomb
+<br />
 
 ### Game Control
 * Keys.Q: Quit Game
