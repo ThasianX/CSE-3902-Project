@@ -28,14 +28,11 @@ namespace Project1.GameStates
             offset.X = (player.Sprite.GetDimensions().width / 2) - (itemRef.Sprite.GetDimensions().width / 2);
 
             MediaPlayer.Pause();
-            if (!itemRef.Name.Equals("Triforce"))
-            {
-                SoundManager.Instance.PlaySound("Fanfare");
-            }            
+            SoundManager.Instance.PlaySound("Fanfare");          
         }
         public void Update(GameTime gameTime, ArrayList controllerList)
         {
-            if (itemRef.Name.Equals("Triforce"))
+            if (timer > 1.5 && itemRef.Name.Equals("Triforce"))
             {
                 game.gameState = new GameWinState(game);
             }
