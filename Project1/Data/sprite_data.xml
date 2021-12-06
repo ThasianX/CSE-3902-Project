@@ -2212,6 +2212,26 @@
       </map>
     </inventory>
     <minimap>
+      <marker>
+        <sprite>
+          <spritesheet>HUDPauseScreen</spritesheet>
+          <dimensions>
+            <height>8</height>
+            <width>8</width>
+          </dimensions>
+          <time>1</time>
+          <source_list>
+            <source>
+              <x>519</x>
+              <y>126</y>
+            </source>
+            <source>
+              <x>528</x>
+              <y>126</y>
+            </source>
+          </source_list>
+        </sprite>
+      </marker>
       <room>
         <sprite>
           <spritesheet>HUDPauseScreen</spritesheet>

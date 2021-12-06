@@ -26,7 +26,7 @@ namespace Project1
         {
             get
             {
-                return itemInv.ElementAt(selectedSlot).Key;
+                return itemInv.Count > 0 ? itemInv.ElementAt(selectedSlot).Key : null;
             }
         }
         public static InventoryManager Instance

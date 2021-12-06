@@ -106,5 +106,18 @@ namespace Project1
         {
             inventory.UpdateSelection(selection);
         }
+
+        // update marker
+        public void UpdateMinimap(Direction direction)
+        {
+            map.MoveMarker(direction);
+        }
+
+        // update to a new maze
+        public void UpdateMinimap()
+        {
+            map.SetMap();
+            map.SetMarker(0, 0);
+        }
     }
 }

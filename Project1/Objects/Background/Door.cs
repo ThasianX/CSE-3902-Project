@@ -8,7 +8,7 @@ namespace Project1.Objects
     {
         public Vector2 Position { get; set; }
         public int nextRoom { get; }
-       public Direction direction { get; }
+        public Direction direction { get; }
 
         ISprite sprite;
         public bool IsMover => true;
