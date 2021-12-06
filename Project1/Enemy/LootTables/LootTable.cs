@@ -16,7 +16,7 @@ namespace Project1.Enemy
         {
             { Rarity.Common,    new List<Type>() { typeof(BlueRuby), typeof(WoodArrowPickup) } },
             { Rarity.Uncommon,  new List<Type>() { typeof(YellowRuby), typeof(Heart) } },
-            { Rarity.Rare,      new List<Type>() { typeof(FlashingRuby), typeof(BombPickup) } }
+            { Rarity.Rare,      new List<Type>() { typeof(FlashingRuby), typeof(BombPickup), typeof(HeartContainer) } }
         };
 
         public Type GetLootType()

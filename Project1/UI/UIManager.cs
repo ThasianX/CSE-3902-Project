@@ -83,6 +83,7 @@ namespace Project1
 
         public void UpdateHealthBar(int newValue, int HeartContainers)
         {
+            healthBar.SetHeartContainerCount(HeartContainers);
             healthBar.SetValue(newValue);
         }
 

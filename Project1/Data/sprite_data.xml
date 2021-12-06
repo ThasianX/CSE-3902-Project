@@ -789,6 +789,22 @@
 				</source_list>
 			</sprite>
 		</heart>
+    <heart_container>
+      <sprite>
+        <spritesheet>item_spritesheet</spritesheet>
+        <dimensions>
+          <height>13</height>
+          <width>13</width>
+        </dimensions>
+        <time>1</time>
+        <source_list>
+          <source>
+            <x>25</x>
+            <y>1</y>
+          </source>
+        </source_list>
+      </sprite>
+    </heart_container>
     <fairy>
       <sprite>
         <spritesheet>item_spritesheet</spritesheet>

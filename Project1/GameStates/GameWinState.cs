@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Media;
 using Project1.Interfaces;
 
 namespace Project1.GameStates
@@ -11,6 +12,7 @@ namespace Project1.GameStates
         public GameWinState(Game1 game)
         {
             this.game = game;
+            SoundManager.Instance.PlayGameWinMusic();
         }
 
         public void Draw(SpriteBatch spriteBatch)

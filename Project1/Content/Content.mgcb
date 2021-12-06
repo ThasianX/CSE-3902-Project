@@ -79,6 +79,12 @@
 /processorParam:TextureFormat=Color
 /build:Enemy and Projectile.png
 
+#begin Game Over.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Game Over.mp3
+
 #begin GameOver.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
@@ -320,6 +326,12 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:TitleScreens.png
+
+#begin zelda_theme_snes-cut-mp3.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:zelda_theme_snes-cut-mp3.mp3
 
 #begin zelda_UI.png
 /importer:TextureImporter
