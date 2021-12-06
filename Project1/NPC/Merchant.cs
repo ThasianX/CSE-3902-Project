@@ -1,30 +1,30 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Project1.Enemy;
 using Project1.Interfaces;
 
-namespace Project1.Objects
+namespace Project1.NPC
 {
-    public class SandBlock : IBlock, ICollidable
+    public class Merchant : IGameObject, ICollidable
     {
+        public ISprite Sprite { get; set; }
         public Vector2 Position { get; set; }
-
-        ISprite sprite;
         public bool IsMover => false;
         public string CollisionType => "Block";
-        public SandBlock(Vector2 position)
+        public Merchant(Vector2 position)
         {
             this.Position = position;
-            sprite = SpriteFactory.Instance.CreateSprite("sand_block");
-        }
-
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            sprite.Draw(spriteBatch, Position);
+            this.Sprite = SpriteFactory.Instance.CreateSprite("Merchant_standing");
         }
 
         public void Update(GameTime gameTime)
         {
-            sprite.Update(gameTime);
+            Sprite.Update(gameTime);
+        }
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            Sprite.Draw(spriteBatch, Position);
         }
 
         public Rectangle GetRectangle()

@@ -14,13 +14,14 @@
     <Compile Remove="CodeRevies\**" />
     <EmbeddedResource Remove="CodeRevies\**" />
     <None Remove="CodeRevies\**" />
+    <None Remove="Levels\LevelData\SpecialRoomResources.xml" />
+    <None Remove="Levels\LevelData\MazeRoomResources.xml" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Data\collision_response.xml" />
     <None Remove="Icon.ico" />
     <None Remove="Icon.bmp" />
     <None Remove="CodeRevies\" />
-    <None Remove="Levels\LevelData\Level1.xml" />
     <None Remove="sprite_data.xml" />
     <None Remove="sprite_dictionary.xml" />
   </ItemGroup>
@@ -36,7 +37,10 @@
     <EmbeddedResource Include="Data\sprite_dictionary.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="Levels\LevelData\Level1.xml">
+    <EmbeddedResource Include="Levels\LevelData\SpecialRoomResources.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Levels\LevelData\MazeRoomResources.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>
@@ -59,6 +63,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Levels\LevelData\Level1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Levels\LevelData\SpecialRoomResources.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

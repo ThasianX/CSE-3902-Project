@@ -1,7 +1,7 @@
 # CSE-3902-Project
 
 * Game: The Legend of Zelda
-* Current Sprint: Sprint 4
+* Current Sprint: Sprint 5
 <!-- PROJECT SHIELDS -->
 
 [*Contributors][contributors-url]
@@ -35,6 +35,9 @@
       <a href="#Team-Member-Assignment">Team Member Assignment</a>
     </li>
     <li>
+      <a href="#Unique-Features">Unique Features</a>
+    </li>
+    <li>
       <a href="#In-Game-Resources">In Game Resources</a>
       <ul>
         <li><a href="#Player">Player</a></li>
@@ -63,20 +66,23 @@
 
 ## Team Members
 
-Hongda Lin (lin.3235)
-Kevin Li (li.10093)
-Keenan Anderson (anderson.2209)
-Jake Suraba (suraba.2)
-Zheyuan Gao (gao.1600)
-Devin Turvey (turvey.6)
-
-
+Hongda Lin (lin.3235) <br />
+Kevin Li (li.10093) <br />
+Keenan Anderson (anderson.2209) <br />
+Jake Suraba (suraba.2) <br />
+Zheyuan Gao (gao.1600)<br />
+Devin Turvey (turvey.6)<br />
 
 
 ## Team Member Assignment
-<a href="https://github.com/ThasianX/CSE-3902-Project/projects/3"><strong>Detailed work assignment can be seen here »</strong></a>
+<a href="https://github.com/ThasianX/CSE-3902-Project/projects/4"><strong>Detailed work assignment can be seen here »</strong></a>
 
+## Unique Features
 
+- Procedural Level Generation (Pre-made rooms will be connected by available doors to make a cohesive dungeon.) <br />
+- Loot Drops (Randomized based on a loot table) <br />
+- Weapon/Ability Swapping <br />
+- Additional Weapons/Abilities (Dash, Ricocheting projectile, etc.) <br />
 
 
 
@@ -86,13 +92,13 @@ Devin Turvey (turvey.6)
 Link
 
 ### Enemy Type
-Stalfos, RedGloriya, BlueBat, BlueGel, Aquamentus, WallMaster
+Stalfos, RedGloriya, BlueBat, BlueGel, Aquamentus, WallMaster, Snake, Dodongo, Flame, Spike
 
 ### Weapon Type
 Bomb, Fireball, Arrow, Boomerang, Sword
 
 ### Item Type
-Key, Heart, Triforce, Compass, Map, YellowRuby, BlueRuby, FlashingRuby
+Key, Heart, Triforce, Compass, Map, YellowRuby, BlueRuby, FlashingRuby, Clock, Fairy, HeartContainer
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -106,18 +112,25 @@ Key, Heart, Triforce, Compass, Map, YellowRuby, BlueRuby, FlashingRuby
 * Keys.Right: Link Facing Right
 * Keys.Left: Link Facing Left
 * Keys.Down: Link Facing Down
+<br />
 
 * Link Moving:
 * Keys.W: Link Moving Up
 * Keys.D: Link Moving Right
 * Keys.S: Link Moving Down
 * Keys.A: Link Moving Left
+<br />
 
 * Link Attack:
 * Keys.Z & Keys.N: Link Sword Attack
 * Keys.D1: Link Boomerang Attack
 * Keys.D2: Link Shoot Arrow
-* Keys.D3: Link Place Bomb
+* Keys.D3 & Keys.LCtrl: Link Place Bomb
+<br />
+
+* Link Ability:
+* Space: Primary Ability (A)
+* Keys.LShift: Secondary Ability (B)
 
 ### Game Control
 * Keys.Q: Quit Game
@@ -153,8 +166,6 @@ Key, Heart, Triforce, Compass, Map, YellowRuby, BlueRuby, FlashingRuby
 ## Things Needs Improve
 
 * More comments on code.
-* Talk to Prof. Kirby our plan for new features for Sprint 5
-
 
 
 
