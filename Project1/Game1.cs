@@ -67,21 +67,6 @@ namespace Project1
                 new MouseController(this)
             };
 
-            // Used for testing
-            GridGraph<Maze.Direction> directionGridGraph = MazeGenerator.Instance.BuildMaze(3);
-            DirectionDictionaryMaze dictionaryMaze = new DirectionDictionaryMaze(directionGridGraph);
-            Dictionary<Maze.Direction, bool>[,] maze = dictionaryMaze.Dictionarify();
-            for (int i = 0; i < dictionaryMaze.rows; i++)
-            {
-                for (int j = 0; j < dictionaryMaze.columns; j++)
-                {
-                    foreach (var value in maze[i, j])
-                    {
-                        Console.WriteLine($"{i} {j} {value}");
-                    }
-                }
-            }
-
             gameState = new PlayingGameState(this);
             base.Initialize();
         }
