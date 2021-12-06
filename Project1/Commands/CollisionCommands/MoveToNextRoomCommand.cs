@@ -6,22 +6,63 @@ namespace Project1.Commands
 {
     class MoveToNextRoomCommand : ICommand
     {
+        IPlayer player;
         IExit exit;
 
-        public MoveToNextRoomCommand(IExit exit)
+        public MoveToNextRoomCommand(IPlayer player, IExit exit)
         {
+            this.player = player;
             this.exit = exit;
+        }
+
+        private int GetNewX(Rectangle rect)
+        {
+            int newX;
+            switch(exit.direction) {
+                case Direction.Left: {
+                    newX = rect.X - rect.Width / 2;
+                    break;
+                }
+                case Direction.Right: {
+                    newX = rect.X + rect.Width + 4;
+                    break;
+                }
+                default: {
+                    newX = (int)player.Position.X;
+                    break;
+                }
+            }
+            return newX;
+        }
+
+        private int GetNewY(Rectangle rect)
+        {
+            int newY;
+            switch(exit.direction) {
+                case Direction.Up: {
+                    newY = rect.Y - rect.Height / 2;
+                    break;
+                }
+                case Direction.Down: {
+                    newY = rect.Y + rect.Height;
+                    break;
+                }
+                default: {
+                    newY = (int)player.Position.Y;
+                    break;
+                }
+            }
+            return newY;
         }
 
         public void Execute()
         {
             Game1.instance.isTransitioning = true;
             Game1.instance.nextRoomId = exit.nextRoom;
+
             Room nextRoom = LevelManager.Instance.ActivateNextRoom(exit.nextRoom);
             Rectangle doorRect = nextRoom.GetCorrespondingExit(exit.direction).GetRectangle();
-            int newX = exit.direction == Direction.Left ? doorRect.X - doorRect.Width / 2 : exit.direction == Direction.Right ? doorRect.X + doorRect.Width + 4 : doorRect.X;
-            int newY = exit.direction == Direction.Up ? doorRect.Y - doorRect.Height / 2 : exit.direction == Direction.Down ? doorRect.Y + doorRect.Height + 4 : doorRect.Y;
-            GameObjectManager.Instance.GetPlayer().Position = new Vector2(newX, newY);
+            GameObjectManager.Instance.GetPlayer().Position = new Vector2(GetNewX(doorRect), GetNewY(doorRect));
             WindowManager.Instance.MoveCamera(exit.direction);
         }
     }
