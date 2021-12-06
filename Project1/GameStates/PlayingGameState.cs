@@ -19,7 +19,6 @@ namespace Project1.GameStates
         public void Update(GameTime gameTime, ArrayList controllerList)
         {
             GameOverCheck(GameObjectManager.Instance.GetPlayer(), GameObjectManager.Instance.GetPlayer().HealthState);
-            GameWinCheck();
             foreach (IController controller in controllerList)
             {
                 controller.Update();
@@ -43,14 +42,6 @@ namespace Project1.GameStates
             if (playerHealth.health <= 0 && !(game.gameState is GameOverState))
             {
                 game.gameState = new GameOverState(game);
-            }
-        }
-
-        public void GameWinCheck()
-        {
-            if (InventoryManager.Instance.HasTriforce() && !(game.gameState is GameWinState))
-            {
-                game.gameState = new GameWinState(game);
             }
         }
         

@@ -52,5 +52,14 @@ namespace Project1.PlayerStates
 
             UIManager.Instance.UpdateHealthBar(health, heartContainers);
         }
+
+        public void AddHeartContainer()
+        {
+            heartContainers++;
+            maxHealth = heartContainers * Constants.HP_PER_HEART;
+            health = maxHealth;
+
+            UIManager.Instance.UpdateHealthBar(health, heartContainers);
+        }
     }
 }

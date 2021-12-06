@@ -21,7 +21,6 @@ namespace Project1
         public static Game1 instance;
         private static GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
-        private Song dungeonSong;
 
         private int renderScale = 1;
         RenderTarget2D scene;
@@ -85,16 +84,12 @@ namespace Project1
 
             SetupControllers();
 
-            LoadMusic();
-
             // Give link a sword to start (this should go somewhere else)
-            WoodSwordPickup sword = new WoodSwordPickup(Vector2.Zero);
-            InventoryManager.Instance.AddItem(sword);
-            InventoryManager.Instance.EquipPrimary(sword);
+            InventoryManager.Instance.AddItem(WoodSwordPickup.staticInstance);
+            InventoryManager.Instance.EquipPrimary(WoodSwordPickup.staticInstance);
 
-            BowPickup bow = new BowPickup(Vector2.Zero);
-            InventoryManager.Instance.AddItem(bow);
-            InventoryManager.Instance.EquipSecondary(bow);
+            InventoryManager.Instance.AddItem(BowPickup.staticInstance);
+            InventoryManager.Instance.EquipSecondary(BowPickup.staticInstance);
 
             // Visualize rectangle for testing
             whiteRectangle = new Texture2D(GraphicsDevice, 1, 1);
@@ -150,6 +145,7 @@ namespace Project1
             GameObjectManager.Instance.Reset();
             LevelManager.Instance.Reset();
             LevelManager.Instance.LoadLevel();
+            SoundManager.Instance.PlayDungeonMusic();
 
             SetupControllers();
 
@@ -235,14 +231,6 @@ namespace Project1
             HUDPosition = gamePosition;
             scenePosition.X = gamePosition.X;
             scenePosition.Y = gamePosition.Y + (HUD.Height * renderScale);
-        }
-
-        public void LoadMusic()
-        {
-            dungeonSong = Content.Load<Song>("DungeonTheme");
-            MediaPlayer.IsRepeating = true;
-            MediaPlayer.Play(dungeonSong);
-            MediaPlayer.Volume = 0.25f;
         }
     }
 }

@@ -11,6 +11,7 @@ namespace Project1.GameStates
         public GameOverState(Game1 game)
         {
             this.game = game;
+            SoundManager.Instance.PlayGameOverMusic();
         }
 
         public void Draw(SpriteBatch spriteBatch)
