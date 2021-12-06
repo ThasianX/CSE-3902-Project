@@ -42,7 +42,6 @@ namespace Project1.Objects
                 player.ShootArrow();
                 InventoryManager.Instance.RemoveItem(arrow);
             }
-                
         }
 
         public Rectangle GetRectangle()

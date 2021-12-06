@@ -57,12 +57,6 @@ namespace Project1
         {
             instance = new InventoryManager();
         }
-
-        // Why? This shouldn't be needed
-        public bool HasTriforce()
-        {
-            return false; // HasItem(new Triforce(Vector2.Zero));
-        }
         
         public void AddItem(IInventoryItem item, int quantity = 1)
         {

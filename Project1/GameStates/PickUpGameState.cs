@@ -14,26 +14,36 @@ namespace Project1.GameStates
         private double timer = 0;
         private IPlayer player;
         private Vector2 offset;
+        private IInventoryItem itemRef;
         
         public PickUpGameState(Game1 game, IPlayer player, IInventoryItem item)
         {
             this.game = game;
             this.player = player;
-            sprite = item.Sprite;
+            this.itemRef = item;
+            GameObjectManager.Instance.RemoveImmediate(item);
+            sprite = itemRef.Sprite;
             player.State = new PickUpPlayerState(player);
             offset.Y = -sprite.GetDimensions().height;
-            offset.X = (player.Sprite.GetDimensions().width / 2) - (item.Sprite.GetDimensions().width / 2);
+            offset.X = (player.Sprite.GetDimensions().width / 2) - (itemRef.Sprite.GetDimensions().width / 2);
 
             MediaPlayer.Pause();
-            SoundManager.Instance.PlaySound("Fanfare");
+            if (!itemRef.Name.Equals("Triforce"))
+            {
+                SoundManager.Instance.PlaySound("Fanfare");
+            }            
         }
         public void Update(GameTime gameTime, ArrayList controllerList)
         {
-            if(timer > 2)
+            if (itemRef.Name.Equals("Triforce"))
             {
-                MediaPlayer.Resume();
+                game.gameState = new GameWinState(game);
+            }
+            else if (timer > 2)
+            {
                 game.gameState = new PlayingGameState(game);
                 player.State = new StillPlayerState(player);
+                MediaPlayer.Resume();
             }
             timer += gameTime.ElapsedGameTime.TotalSeconds;
         }
