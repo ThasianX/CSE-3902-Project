@@ -4,12 +4,18 @@ using Project1.Interfaces;
 
 namespace Project1.Objects
 {
-    public class Triforce : IInstantUseItem, ICollidable
+    public class Triforce : IInventoryItem, ICollidable
     {
         public Vector2 Position { get; set; }
         public ISprite Sprite { get; set; }
+
+        public static Triforce staticInstance = new Triforce(Vector2.Zero);
+        public IInventoryItem StaticInstance
+        {
+            get { return staticInstance; }
+        }
         public bool IsMover => false;
-        public string CollisionType => "Item";
+        public string CollisionType => "PickUp";
         public string Name => "Triforce";
         public bool IsConsumable => false;
         public int MaxStackCount => 1;
@@ -28,12 +34,6 @@ namespace Project1.Objects
         public void Update(GameTime gameTime)
         {
             Sprite.Update(gameTime);
-        }
-
-        public void InstantUseItem(IPlayer player)
-        {
-            //Win the game.
-            SoundManager.Instance.PlaySound("Fanfare");
         }
 
         public Rectangle GetRectangle()

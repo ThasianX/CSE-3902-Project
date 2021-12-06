@@ -49,5 +49,7 @@ namespace Project1.Enemy
         {
 
         }
+
+        public void AddHeartContainer() { }
     }
 }
