@@ -81,7 +81,7 @@ Devin Turvey (turvey.6)<br />
 
 ## Unique Features
 
-- Procedural Level Generation (Pre-made rooms will be connected by available doors to make a cohesive dungeon.) <br />
+- Procedural Level Generation (Perfect maze generation using binary tree) <br />
 - Loot Drops (Randomized based on a loot table) <br />
 - Weapon/Ability Swapping <br />
 - Additional Weapons/Abilities (Dash, Ricocheting projectile, etc.) <br />
@@ -127,15 +127,16 @@ Key, Heart, Triforce, YellowRuby, BlueRuby, FlashingRuby, Clock, Fairy, HeartCon
 <br />
 
 * Link Attack:
-* Keys.Z & Keys.N: Link Sword Attack
-* Keys.D1: Link Boomerang Attack
-* Keys.D2: Link Shoot Arrow
-* Keys.D3 & Keys.LCtrl: Link Place Bomb
+* Space: Primary Attack (A)
+* Keys.LShift: Secondary Ability (B)
 <br />
 
-* Link Ability:
-* Space: Primary Ability (A)
-* Keys.LShift: Secondary Ability (B)
+* Link Ability Switch:
+* 1. Keys.Tab: Open pause menu
+* 2. Uses Keys.Arrow.Left & Keys.Arrow.Right to switch between selected weapon
+* 3. Press Space or Keys.LShift to equip that weapon to corresponding keys
+
+
 
 ### Game Control
 * Keys.Q: Quit Game
