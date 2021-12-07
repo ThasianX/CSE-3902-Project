@@ -52,7 +52,7 @@ namespace Project1.Commands
             int newY;
             switch(exit.direction) {
                 case Direction.Up: {
-                    newY = rect.Y - rect.Height;
+                    newY = rect.Y - Constants.TILE_SIZE;
                     break;
                 }
                 case Direction.Left:
