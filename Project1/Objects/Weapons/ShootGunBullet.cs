@@ -1,31 +1,33 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using System.Diagnostics;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Project1.Interfaces;
 
 namespace Project1.Objects
 {
-    public class Bullet : IProjectile, ICollidable
+    public class ShootGunBullet : IProjectile, ICollidable
     {
-
-        public int moveSpeed = 20;
-
+        public int moveSpeed = 3;
         public Vector2 Position { get; set; }
         public bool IsMover => true;
         public string CollisionType => "Projectile";
         public IGameObject Owner { get; set; }
 
         // time before the arrow deletes itself (seconds)
-        private float activeTime = 5, counter = 0;
+        private float activeTime = 0.2f, counter = 0;
         private Direction direction;
         private Vector2 deltaVector;
+        private Vector2 bulletOffset = Vector2.Zero;
 
         ISprite bulletSprite;
 
-        public Bullet(Vector2 position, Direction direction, IGameObject owner)
+        public ShootGunBullet(Vector2 position, Direction direction, Vector2 bulletOffset, IGameObject owner)
         {
             this.direction = direction;
             this.Position = position;
             this.Owner = owner;
+            this.bulletOffset = bulletOffset;
             //this.moveSpeed = maxRange / frames;
             switch (this.direction)
             {
@@ -62,7 +64,7 @@ namespace Project1.Objects
 
         public void Update(GameTime gameTime)
         {
-            this.Position += this.deltaVector;
+            this.Position += this.deltaVector + bulletOffset;
 
             if (counter >= activeTime)
             {
