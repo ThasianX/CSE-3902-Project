@@ -25,8 +25,10 @@ namespace Project1
 
         PickupSlot secondarySlot = new PickupSlot(new Vector2(128, 24));
 
+        Minimap map = new Minimap(new Vector2(32, 12));
+
         // this shouldnt be public, but it needs to be for a quick hacky solution
-        public DisplayInventory inventory = new DisplayInventory(new Vector2(132, 48));
+        public DisplayInventory inventory = new DisplayInventory(new Vector2(125, 45));
 
         private static UIManager instance = new UIManager();
         public static UIManager Instance
@@ -66,9 +68,7 @@ namespace Project1
             rupeeCounter.Draw(sb);
             primarySlot.Draw(sb);
             secondarySlot.Draw(sb);
-
-            // this needs to be here eventually
-            //inventory.Draw(sb);
+            map.Draw(sb);
         }
 
         public void UpdateCounter(Type type, int newValue)
@@ -105,6 +105,19 @@ namespace Project1
         public void UpdateSelection(int selection)
         {
             inventory.UpdateSelection(selection);
+        }
+
+        // update marker
+        public void UpdateMinimap(Direction direction)
+        {
+            map.MoveMarker(direction);
+        }
+
+        // update to a new maze
+        public void UpdateMinimap()
+        {
+            map.SetMap();
+            map.SetMarker(0, 0);
         }
     }
 }

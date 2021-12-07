@@ -8,6 +8,8 @@ namespace Project1.Levels
 
         private LevelGenerator generator;
 
+        public Dictionary<Maze.Direction, bool>[,] doorMatrix; // Necessary Coupling: need to expose this for minimap
+
         private static LevelManager instance = new LevelManager(1);
 
         public static LevelManager Instance

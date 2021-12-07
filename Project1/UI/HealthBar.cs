@@ -26,7 +26,7 @@ namespace Project1.UI
             maxValue = heartContainers * Constants.HP_PER_HEART;
             Position = position;
             Sprites = new ISprite[maxContainers];
-            SetValue(3);
+            SetValue(Constants.maxHearts);
         }
 
         public void SetValue(int newValue)
@@ -64,7 +64,6 @@ namespace Project1.UI
             }
 
         }
-
         public void AddHeartContainer()
         {
             if (heartContainers < Constants.maxHearts)
