@@ -34,7 +34,7 @@ namespace Project1.Enemy
                 case 2: State = new StalfosRightMovingState(this); break;
                 case 3: State = new StalfosLeftMovingState(this); break;
             }
-            MovingSpeed = 1f;
+            MovingSpeed = 0.7f;
             stalfosHealthState = new StalfosHealthState(this, 2);
             LootTable = new DefaultLootTable();
         }

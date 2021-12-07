@@ -40,7 +40,7 @@ namespace Project1.Enemy
                     State = new BlueGelLeftMovingState(this);
                     break;
             }
-            MovingSpeed = 1f;
+            MovingSpeed = 0.7f;
 
             blueGelHealthState = new BlueGelHealthState(this, 1);
             LootTable = new DefaultLootTable();

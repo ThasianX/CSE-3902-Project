@@ -105,6 +105,7 @@ namespace Project1
         public void SetMoveInput(Direction direction, bool isPressed) { basePlayer.SetMoveInput(direction, isPressed); }
         public void ShootArrow() { basePlayer.ShootArrow(); }
         public void ShootBullet() { basePlayer.ShootBullet(); }
+        public void ShootShotGun() { basePlayer.ShootShotGun();}
         public void ShowCollection() { basePlayer.ShowCollection(); }
         public void SwordAttack() { basePlayer.SwordAttack(); }
         public void TakeDamage(int damage) { }

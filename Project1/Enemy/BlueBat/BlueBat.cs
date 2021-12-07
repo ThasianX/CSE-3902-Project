@@ -39,7 +39,7 @@ namespace Project1.Enemy
                     State = new BlueBatLeftMovingState(this);
                     break;
             }
-            MovingSpeed = 1f;
+            MovingSpeed = 0.8f;
             blueBatHealthState = new BlueBatHealthState(this, 1);
             LootTable = new DefaultLootTable();
         }

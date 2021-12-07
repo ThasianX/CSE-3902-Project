@@ -66,6 +66,10 @@ namespace Project1.PlayerStates
         {
         }
 
+        public void ShootShotGun()
+        {
+        }
+
         public void BoomerangAttack()
         {
         }
