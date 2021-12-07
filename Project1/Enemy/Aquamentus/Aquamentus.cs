@@ -35,7 +35,7 @@ namespace Project1.Enemy
                     break;
             }
 
-            MovingSpeed = 1f;
+            MovingSpeed = 0.7f;
 
             aquamentusHealthState = new AquamentusHealthState(this, 8);
             LootTable = new DefaultLootTable();
