@@ -64,7 +64,7 @@ namespace Project1
 
         public void PlayGameWinMusic()
         {
-            MediaPlayer.Play(loadedSongs["ZeldaTheme"]);
+            //MediaPlayer.Play(loadedSongs["ZeldaTheme"]);
         }
 
         public void PlayDungeonMusic()
@@ -74,7 +74,7 @@ namespace Project1
 
         public void PlayGameOverMusic()
         {
-            MediaPlayer.Play(loadedSongs["GameOver"]);
+            //MediaPlayer.Play(loadedSongs["GameOver"]);
         }
     }
 }
