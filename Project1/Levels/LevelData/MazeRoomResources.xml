@@ -3072,7 +3072,7 @@
 			<type>Enemy</type>
 			<name>Dodongo</name>
 			<position>
-				<x>10</x>
+				<x>7</x>
 				<y>5</y>
 			</position>
 		</object>
@@ -3090,24 +3090,8 @@
 			<type>Block</type>
 			<name>Sand</name>
 			<position>
-				<x>7</x>
-				<y>3</y>
-			</position>
-		</object>
-		<object>
-			<type>Block</type>
-			<name>Sand</name>
-			<position>
-				<x>11</x>
-				<y>3</y>
-			</position>
-		</object>
-		<object>
-			<type>Block</type>
-			<name>Sand</name>
-			<position>
-				<x>12</x>
-				<y>3</y>
+				<x>3</x>
+				<y>4</y>
 			</position>
 		</object>
 		<object>
@@ -3122,88 +3106,8 @@
 			<type>Block</type>
 			<name>Sand</name>
 			<position>
-				<x>5</x>
-				<y>5</y>
-			</position>
-		</object>
-		<object>
-			<type>Block</type>
-			<name>Sand</name>
-			<position>
-				<x>7</x>
-				<y>5</y>
-			</position>
-		</object>
-		<object>
-			<type>Block</type>
-			<name>Sand</name>
-			<position>
-				<x>8</x>
-				<y>5</y>
-			</position>
-		</object>
-		<object>
-			<type>Block</type>
-			<name>Sand</name>
-			<position>
-				<x>10</x>
-				<y>5</y>
-			</position>
-		</object>
-		<object>
-			<type>Block</type>
-			<name>Sand</name>
-			<position>
-				<x>12</x>
-				<y>5</y>
-			</position>
-		</object>
-		<object>
-			<type>Block</type>
-			<name>Sand</name>
-			<position>
 				<x>3</x>
-				<y>7</y>
-			</position>
-		</object>
-		<object>
-			<type>Block</type>
-			<name>Sand</name>
-			<position>
-				<x>5</x>
-				<y>7</y>
-			</position>
-		</object>
-		<object>
-			<type>Block</type>
-			<name>Sand</name>
-			<position>
-				<x>7</x>
-				<y>7</y>
-			</position>
-		</object>
-		<object>
-			<type>Block</type>
-			<name>Sand</name>
-			<position>
-				<x>8</x>
-				<y>7</y>
-			</position>
-		</object>
-		<object>
-			<type>Block</type>
-			<name>Sand</name>
-			<position>
-				<x>10</x>
-				<y>7</y>
-			</position>
-		</object>
-		<object>
-			<type>Block</type>
-			<name>Sand</name>
-			<position>
-				<x>12</x>
-				<y>7</y>
+				<y>6</y>
 			</position>
 		</object>
 		<object>
@@ -3218,10 +3122,66 @@
 			<type>Block</type>
 			<name>Sand</name>
 			<position>
-				<x>11</x>
+				<x>5</x>
+				<y>4</y>
+			</position>
+		</object>
+		<object>
+			<type>Block</type>
+			<name>Sand</name>
+			<position>
+				<x>5</x>
 				<y>5</y>
 			</position>
 		</object>
+		<object>
+			<type>Block</type>
+			<name>Sand</name>
+			<position>
+				<x>5</x>
+				<y>6</y>
+			</position>
+		</object>
+		<object>
+			<type>Block</type>
+			<name>Sand</name>
+			<position>
+				<x>8</x>
+				<y>5</y>
+			</position>
+		</object>
+		<object>
+			<type>Block</type>
+			<name>Sand</name>
+			<position>
+				<x>9</x>
+				<y>5</y>
+			</position>
+		</object>
+		<object>
+			<type>Block</type>
+			<name>Sand</name>
+			<position>
+				<x>10</x>
+				<y>5</y>
+			</position>
+		</object>
+		<object>
+			<type>Block</type>
+			<name>Sand</name>
+			<position>
+				<x>9</x>
+				<y>4</y>
+			</position>
+		</object>
+		<object>
+			<type>Block</type>
+			<name>Sand</name>
+			<position>
+				<x>9</x>
+				<y>6</y>
+			</position>
+		</object>		
 		
 		// Item
 		<object>

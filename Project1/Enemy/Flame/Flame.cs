@@ -40,7 +40,7 @@ namespace Project1.Enemy
                     State = new FlameLeftMovingState(this);
                     break;
             }
-            MovingSpeed = 1f;
+            MovingSpeed = 0.7f;
             LootTable = new DefaultLootTable();
         }
 

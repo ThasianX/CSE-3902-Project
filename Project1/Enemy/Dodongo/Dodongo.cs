@@ -42,7 +42,7 @@ namespace Project1.Enemy
                     break;
             }
 
-            MovingSpeed = 1f;
+            MovingSpeed = 0.8f;
             dodongoHealthState = new DodongoHealthState(this, 2);
             LootTable = new DefaultLootTable();
         }
