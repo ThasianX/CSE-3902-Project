@@ -68,8 +68,8 @@ namespace Project1.Levels
                 }
             }
 
-            MakeDoor(rooms[^1], Maze.Direction.East, GetRoomId(rows, cols));
-            LoadRoom(rows, cols,
+            MakeDoor(rooms[^1], Maze.Direction.East, GetRoomId(rows - 1, cols));
+            LoadRoom(rows - 1, cols,
                 specialElements.Find(e => e.Attribute("id").Value == "triforce"),
                 new Dictionary<Maze.Direction, bool>()
                 {

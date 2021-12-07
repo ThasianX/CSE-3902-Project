@@ -46,7 +46,23 @@
 	<woodSword_left>items/weapon/woodSword/left/sprite</woodSword_left>
 	<woodSword_right>items/weapon/woodSword/right/sprite</woodSword_right>
 	<woodSword_down>items/weapon/woodSword/down/sprite</woodSword_down>
-	
+
+	<!-- Gun -->
+	<gun_up>items/weapon/gun/up/sprite</gun_up>
+	<gun_left>items/weapon/gun/left/sprite</gun_left>
+	<gun_right>items/weapon/gun/right/sprite</gun_right>
+	<gun_down>items/weapon/gun/down/sprite</gun_down>
+	<bullet_up>items/weapon/bullet/up/sprite</bullet_up>
+	<bullet_left>items/weapon/bullet/left/sprite</bullet_left>
+	<bullet_right>items/weapon/bullet/right/sprite</bullet_right>
+	<bullet_down>items/weapon/bullet/down/sprite</bullet_down>
+
+	<!-- Shotgun -->
+	<shotgun_up>items/weapon/shotgun/up/sprite</shotgun_up>
+	<shotgun_left>items/weapon/shotgun/left/sprite</shotgun_left>
+	<shotgun_right>items/weapon/shotgun/right/sprite</shotgun_right>
+	<shotgun_down>items/weapon/shotgun/down/sprite</shotgun_down>
+
   <!-- Block -->
 	<diamond_block>tiles/diamond/block/sprite</diamond_block>
 	<pyramid_block>tiles/pyramid/block/sprite</pyramid_block>
@@ -142,4 +158,5 @@
   <!-- effects -->
   <explosion>effects/explosion/sprite</explosion>
   
+
 </sprite_dictionary>

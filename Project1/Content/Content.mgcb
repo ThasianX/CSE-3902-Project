@@ -92,6 +92,18 @@
 /processorParam:TextureFormat=Compressed
 /build:GameOver.spritefont
 
+#begin GunSheet.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:GunSheet.png
+
 #begin HUDPauseScreen.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -170,6 +182,12 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:SoundEffects/Boomerang.wav
+
+#begin SoundEffects/bullet.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:SoundEffects/bullet.wav
 
 #begin SoundEffects/Candle.wav
 /importer:WavImporter
@@ -284,6 +302,12 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:SoundEffects/Shore.wav
+
+#begin SoundEffects/shotgun.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:SoundEffects/shotgun.wav
 
 #begin SoundEffects/SwordCombined.wav
 /importer:WavImporter
