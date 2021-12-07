@@ -156,6 +156,12 @@ namespace Project1
         {
             // ensure we have the static reference
             IInventoryItem staticInst = item.StaticInstance;
+
+            if (countedItems.Contains(item.GetType()))
+            {
+                UIManager.Instance.UpdateCounter(item.GetType(), itemInv[staticInst]);
+            }
+
             if (HasItem(staticInst))
             {
                 itemInv[staticInst] -= quantity;
@@ -165,13 +171,6 @@ namespace Project1
                     UIManager.Instance.UpdateInventory(GetItems());
                 }
             }
-
-            Console.WriteLine(item.GetType());
-            if (countedItems.Contains(item.GetType()))
-            {
-                UIManager.Instance.UpdateCounter(item.GetType(), itemInv[staticInst]);
-            }
-            
         }
 
         public void AddCountedItem(Type type)

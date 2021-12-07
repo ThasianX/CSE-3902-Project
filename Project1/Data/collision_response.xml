@@ -83,6 +83,11 @@
         <arg type="Project1.Player">TARGET</arg>
       </command>
     </Explosion>
+    <LockedDoor>
+      <command type="Project1.Commands.UnlockDoorCommand">
+        <arg type="Project1.Objects.LockedDoor">SOURCE</arg>
+      </command>
+    </LockedDoor>
   </Player>
 
   <DamagedPlayer>
