@@ -60,6 +60,7 @@ namespace Project1
 
 			onPressMappings.Add(Keys.Space, new PlayerUsePrimaryCommand(player));
 			onPressMappings.Add(Keys.LeftShift, new PlayerUseSecondaryCommand(player));
+			onPressMappings.Add(Keys.LeftControl, new PlayerBombAttackCommand(player));
 
 			// COMMANDS THAT EXECUTE ON RELEASE
 
