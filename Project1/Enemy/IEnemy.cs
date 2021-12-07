@@ -19,6 +19,5 @@ namespace Project1.Enemy
         public void Freeze(float freezeTime);
         public void Defreeze(GameTime gameTime);
         public bool isFreeze { get; set; }
-
     }
 }

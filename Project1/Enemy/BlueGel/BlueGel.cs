@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Project1.Interfaces;
 using Project1.Levels;
+using Project1.Objects.Effects;
 
 namespace Project1.Enemy
 {
@@ -81,7 +82,6 @@ namespace Project1.Enemy
         {
             // Update the current state
             // Possible state: direction
-            GameObjectDeletionManager.Instance.EnemyDeletionCheck(this, blueGelHealthState);
             if (!isFreeze)
             {
                 State.Update(gameTime);
@@ -116,10 +116,18 @@ namespace Project1.Enemy
                 GameObjectManager.Instance.AddOnNextFrame(new DamagedEnemy(this));
                 GameObjectManager.Instance.RemoveOnNextFrame(this);
             }
-            else
+            if (blueGelHealthState.health <= 0)
             {
-                SoundManager.Instance.PlaySound("EnemyDie");
+                EnemyDie();
             }
+        }
+        public void EnemyDie()
+        {
+            SoundManager.Instance.PlaySound("EnemyDie");
+            LevelManager.Instance.GetCurrentRoom().RemoveObject(this);
+            GameObjectManager.Instance.AddOnNextFrame(new Poof(this.Position));
+            GameObjectManager.Instance.RemoveOnNextFrame(this);
+            Loot.RandomLoot(this.LootTable, this.Position);
         }
 
         public Rectangle GetRectangle()
