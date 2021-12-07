@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using System.Diagnostics;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Project1.Interfaces;
 
@@ -16,14 +18,51 @@ namespace Project1.Objects
         private float activeTime = 5, counter = 0;
         private Direction direction;
         private Vector2 deltaVector;
+        private Vector2 bulletOffset = Vector2.Zero;
 
         ISprite bulletSprite;
 
-        public Bullet(Vector2 position, Direction direction, IGameObject owner)
+        //public Bullet(Vector2 position, Direction direction, IGameObject owner)
+        //{
+        //    this.direction = direction;
+        //    this.Position = position;
+        //    this.Owner = owner;
+        //    //this.moveSpeed = maxRange / frames;
+        //    switch (this.direction)
+        //    {
+        //        case Direction.Up:
+        //            bulletSprite = SpriteFactory.Instance.CreateSprite("bullet_up");
+        //            this.deltaVector = new Vector2(0, -moveSpeed);
+        //            break;
+
+        //        case Direction.Right:
+        //            bulletSprite = SpriteFactory.Instance.CreateSprite("bullet_right");
+        //            this.deltaVector = new Vector2(moveSpeed, 0);
+        //            break;
+
+        //        case Direction.Down:
+        //            bulletSprite = SpriteFactory.Instance.CreateSprite("bullet_down");
+        //            this.deltaVector = new Vector2(0, moveSpeed);
+        //            break;
+
+        //        case Direction.Left:
+        //            bulletSprite = SpriteFactory.Instance.CreateSprite("bullet_left");
+        //            this.deltaVector = new Vector2(-moveSpeed, 0);
+        //            break;
+
+        //        default:
+        //            break;
+        //    }
+        //    SoundManager.Instance.PlaySound("bullet");
+        //}
+
+
+        public Bullet(Vector2 position, Direction direction, Vector2 bulletOffset, IGameObject owner)
         {
             this.direction = direction;
             this.Position = position;
             this.Owner = owner;
+            this.bulletOffset = bulletOffset;
             //this.moveSpeed = maxRange / frames;
             switch (this.direction)
             {
@@ -60,13 +99,14 @@ namespace Project1.Objects
 
         public void Update(GameTime gameTime)
         {
-            this.Position += this.deltaVector;
+            this.Position += this.deltaVector + bulletOffset;
 
-            if (counter >= activeTime)
-            {
-                GameObjectManager.Instance.RemoveOnNextFrame(this);
-            }
-            counter += (float) gameTime.ElapsedGameTime.TotalSeconds;
+            //if (counter >= activeTime)
+            //{
+            //    GameObjectManager.Instance.RemoveOnNextFrame(this);
+            //}
+            bulletSprite.Update(gameTime);
+            //counter += (float) gameTime.ElapsedGameTime.TotalSeconds;
         }
 
         public Rectangle GetRectangle()
