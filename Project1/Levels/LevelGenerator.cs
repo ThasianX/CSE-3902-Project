@@ -71,9 +71,9 @@ namespace Project1.Levels
             }
 
             // Boss room door
-            MakeLockedDoor(rooms[^1], Maze.Direction.East, GetRoomId(rows, cols));
+            MakeLockedDoor(rooms[^1], Maze.Direction.East, GetRoomId(rows - 1, cols));
 
-            LoadRoom(rows, cols,
+            LoadRoom(rows - 1, cols,
                 specialElements.Find(e => e.Attribute("id").Value == "triforce"),
                 new Dictionary<Maze.Direction, bool>()
                 {
