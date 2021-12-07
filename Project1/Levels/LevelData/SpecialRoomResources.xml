@@ -1967,7 +1967,7 @@
 		// Item
 		<object>
 			<type>Item</type>
-			<name>Heart</name>
+			<name>Shotgun</name>
 			<position>
 				<x>13</x>
 				<y>5</y>
