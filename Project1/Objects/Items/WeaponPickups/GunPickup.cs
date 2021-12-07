@@ -36,7 +36,7 @@ namespace Project1.Objects
 
         public void Use(IPlayer player)
         {
-                player.ShootArrow();
+                player.ShootBullet();
 
         }
 

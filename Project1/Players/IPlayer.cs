@@ -23,6 +23,7 @@ namespace Project1
         void SetMoveInput(Direction direction, bool isPressed);
         void SwordAttack();
         void ShootArrow();
+        void ShootBullet();
         void BoomerangAttack();
         void BombAttack();
         public void TakeDamage(int damage);

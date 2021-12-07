@@ -62,6 +62,9 @@ namespace Project1.PlayerStates
         public void ShootArrow()
         {
         }
+        public void ShootBullet()
+        {
+        }
 
         public void BoomerangAttack()
         {
