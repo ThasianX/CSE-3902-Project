@@ -2979,6 +2979,15 @@
 			</position>
 		</object>
 
+		//item
+		<object>
+			<type>Item</type>
+			<name>Gun</name>
+			<position>
+				<x>7</x>
+				<y>5</y>
+			</position>
+		</object>
 	</room>
 
 	// Room 1-2. Row 1 and cloumn 2 room from the top view of the level map.

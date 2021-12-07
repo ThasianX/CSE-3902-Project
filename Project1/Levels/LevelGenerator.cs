@@ -425,6 +425,12 @@ namespace Project1.Levels
                 case "Bow":
                     room.AddObject(new BowPickup(position));
                     break;
+                case "Gun":
+                    room.AddObject(new GunPickup(position));
+                    break;
+                case "BombPickup":
+                    room.AddObject(new BombPickup(position));
+                    break;
                 case "Boomerang":
                     room.AddObject(new WoodBoomerangPickup(position));
                     break;
