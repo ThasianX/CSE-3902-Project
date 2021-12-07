@@ -42,7 +42,8 @@
       <ul>
         <li><a href="#Player">Player</a></li>
         <li><a href="#Enemy-Type">Enemy Type</a></li>
-        <li><a href="#Weapon-Type">Weapon Type</a></li>
+        <li><a href="#Projectile-Type">Projectile Type</a></li>
+        <li><a href="#Equipable-Type">Equipable Type</a></li>
         <li><a href="#Item-Type">Item Type</a></li>
       </ul>
     </li>
@@ -60,6 +61,7 @@
     <li><a href="#Version-Control">Version Control</a></li>
     <li><a href="#Author-of-README">Author of README</a></li>
     <li><a href="#Special-Thanks">Special Thanks</a></li>
+    <li><a href="#Sprite-Resources">Sprite Resources</a></li>
   </ol>
 </details>  
 
@@ -94,11 +96,14 @@ Link
 ### Enemy Type
 Stalfos, RedGloriya, BlueBat, BlueGel, Aquamentus, WallMaster, Snake, Dodongo, Flame, Spike
 
-### Weapon Type
-Bomb, Fireball, Arrow, Boomerang, Sword
+### Projectile Type
+Bomb, Fireball, Arrow
+
+### Equipable Type
+Boomerang, Sword, Bow, Gun, Shotgun
 
 ### Item Type
-Key, Heart, Triforce, Compass, Map, YellowRuby, BlueRuby, FlashingRuby, Clock, Fairy, HeartContainer
+Key, Heart, Triforce, YellowRuby, BlueRuby, FlashingRuby, Clock, Fairy, HeartContainer
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -190,6 +195,12 @@ gao.1600@osu.edu
 ## Special Thanks
 
 - [Best_README_template](https://github.com/shaojintian/Best_README_template)
+
+## Sprite Resources
+
+- [NES - The Legend of Zelda - The Spriters Resource](https://www.spriters-resource.com/nes/legendofzelda/)
+- [The Legend of Zelda Sprite Sheets - NES](http://www.zeldagalaxy.com/sprites-nes-loz/)
+- [The Legend of Zelda Sprite Sheets - NES](http://www.zeldagalaxy.com/sprites-nes-loz/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
