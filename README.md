@@ -125,7 +125,12 @@ Key, Heart, Triforce, Compass, Map, YellowRuby, BlueRuby, FlashingRuby, Clock, F
 * Keys.Z & Keys.N: Link Sword Attack
 * Keys.D1: Link Boomerang Attack
 * Keys.D2: Link Shoot Arrow
-* Keys.D3: Link Place Bomb
+* Keys.D3 & Keys.LCtrl: Link Place Bomb
+<br />
+
+* Link Ability:
+* Space: Primary Ability (A)
+* Keys.LShift: Secondary Ability (B)
 
 ### Game Control
 * Keys.Q: Quit Game

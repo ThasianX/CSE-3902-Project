@@ -26,6 +26,7 @@
     </Block>
     <Door>
       <command type="Project1.Commands.MoveToNextRoomCommand">
+        <arg type="Project1.Player">TARGET</arg>
         <arg type="Project1.Interfaces.IExit">SOURCE</arg>
       </command>
     </Door>
@@ -82,6 +83,11 @@
         <arg type="Project1.Player">TARGET</arg>
       </command>
     </Explosion>
+    <LockedDoor>
+      <command type="Project1.Commands.UnlockDoorCommand">
+        <arg type="Project1.Objects.LockedDoor">SOURCE</arg>
+      </command>
+    </LockedDoor>
   </Player>
 
   <DamagedPlayer>

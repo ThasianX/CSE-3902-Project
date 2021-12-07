@@ -46,6 +46,8 @@ namespace Project1.Levels
             DirectionDictionaryMaze dictionaryMaze = new DirectionDictionaryMaze(directionGridGraph);
             Dictionary<Maze.Direction, bool>[,] doorExists = dictionaryMaze.Dictionarify();
 
+            LevelManager.Instance.doorMatrix = doorExists; // Necessary Coupling: need to expose this for minimap
+
             int rows = dictionaryMaze.rows;
             int cols = dictionaryMaze.columns;
             int i = 0;
@@ -68,7 +70,9 @@ namespace Project1.Levels
                 }
             }
 
-            MakeDoor(rooms[^1], Maze.Direction.East, GetRoomId(rows, cols));
+            // Boss room door
+            MakeLockedDoor(rooms[^1], Maze.Direction.East, GetRoomId(rows, cols));
+
             LoadRoom(rows, cols,
                 specialElements.Find(e => e.Attribute("id").Value == "triforce"),
                 new Dictionary<Maze.Direction, bool>()
@@ -117,7 +121,10 @@ namespace Project1.Levels
         {
             foreach (var key in doors.Keys)
             {
-                if (doors[key])
+                if(row == -1 && col == -1) 
+                {
+                    MakeDoor(room, key, undergroundRoomId);
+                } else if (doors[key])
                 {
                     MakeDoor(room, key, GetNextRoomId(row, col, key));
                 }
@@ -172,7 +179,7 @@ namespace Project1.Levels
             Direction d;
             switch(direction) {
                 case Maze.Direction.North: {
-                    position = new Vector2(7*Constants.TILE_SIZE, 0);
+                    position = new Vector2(7 * Constants.TILE_SIZE, 0);
                     d = Direction.Up;
                     break;
                 }
@@ -182,7 +189,7 @@ namespace Project1.Levels
                     break;
                 }
                 case Maze.Direction.West: {
-                    position = new Vector2(0, 4.5f*Constants.TILE_SIZE);
+                    position = new Vector2(0, 4.5f * Constants.TILE_SIZE);
                     d = Direction.Left;
                     break;
                 }
@@ -201,13 +208,70 @@ namespace Project1.Levels
             if(nextRoom == -1)
             {
                 room.AddObject(new NoDoor(position, d));
+            } else if(nextRoom == undergroundRoomId) 
+            {
+                room.AddObject(new BrickBlock(position));
             } else
             {
                 room.AddObject(new Door(position, d, nextRoom));
             }
         }
 
-        private void LoadObject(Room room, string type, string name, Vector2 position) {
+        // almost duplicate room of above
+        private void MakeLockedDoor(Room room, Maze.Direction direction, int nextRoom)
+        {
+            
+            Vector2 position;
+            Direction d;
+            switch (direction)
+            {
+                case Maze.Direction.North:
+                    {
+                        position = new Vector2(7 * Constants.TILE_SIZE, 0);
+                        d = Direction.Up;
+                        break;
+                    }
+                case Maze.Direction.East:
+                    {
+                        position = new Vector2(14 * Constants.TILE_SIZE, 4.5f * Constants.TILE_SIZE);
+                        d = Direction.Right;
+                        break;
+                    }
+                case Maze.Direction.West:
+                    {
+                        position = new Vector2(0, 4.5f * Constants.TILE_SIZE);
+                        d = Direction.Left;
+                        break;
+                    }
+                case Maze.Direction.South:
+                    {
+                        position = new Vector2(7 * Constants.TILE_SIZE, 9 * Constants.TILE_SIZE);
+                        d = Direction.Down;
+                        break;
+                    }
+                default:
+                    {
+                        position = new Vector2(0, 0);
+                        d = Direction.Up;
+                        break;
+                    }
+            }
+
+            if (nextRoom == -1)
+            {
+                room.AddObject(new NoDoor(position, d));
+            }
+            else if (nextRoom == undergroundRoomId)
+            {
+                room.AddObject(new BrickBlock(position));
+            }
+            else
+            {
+                room.AddObject(new LockedDoor(position, d, nextRoom));
+            }
+        }
+
+            private void LoadObject(Room room, string type, string name, Vector2 position) {
             switch(type) {
                 case "Wall":
                     room.AddObject(new Wall(position, (Direction) Enum.Parse(typeof(Direction), name)));
