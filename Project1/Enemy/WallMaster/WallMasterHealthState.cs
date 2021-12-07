@@ -38,7 +38,8 @@ namespace Project1.Enemy
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            sprite.Draw(spriteBatch, new Vector2(wallMaster.Position.X, wallMaster.Position.Y + 20));
+            // Don't want to show this
+            //sprite.Draw(spriteBatch, new Vector2(wallMaster.Position.X, wallMaster.Position.Y + 20));
         }
 
         public void TakeDamage(int damage)

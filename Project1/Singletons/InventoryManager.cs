@@ -157,16 +157,16 @@ namespace Project1
             // ensure we have the static reference
             IInventoryItem staticInst = item.StaticInstance;
 
-            if (countedItems.Contains(item.GetType()))
-            {
-                UIManager.Instance.UpdateCounter(item.GetType(), itemInv[staticInst]);
-            }
-
             if (HasItem(staticInst))
             {
                 itemInv[staticInst] -= quantity;
                 if (itemInv[staticInst] <= 0)
                 {
+                    if (countedItems.Contains(item.GetType()) || !HasItem(staticInst))
+                    {
+                        UIManager.Instance.UpdateCounter(item.GetType(), itemInv[staticInst]);
+                    }
+
                     itemInv.Remove(staticInst);
                     UIManager.Instance.UpdateInventory(GetItems());
                 }

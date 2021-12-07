@@ -48,18 +48,18 @@ namespace Project1
 			onPressMappings.Add(Keys.S, new PlayerMoveDownCommand(player));
 			onPressMappings.Add(Keys.A, new PlayerMoveLeftCommand(player));
 
-			onPressMappings.Add(Keys.Z, new PlayerSwordAttackCommand(player));
-			onPressMappings.Add(Keys.N, new PlayerSwordAttackCommand(player));
-			onPressMappings.Add(Keys.D1, new PlayerBoomerangAttackCommand(player));
-			onPressMappings.Add(Keys.D2, new PlayerShootArrowCommand(player));
-			onPressMappings.Add(Keys.D3, new PlayerBombAttackCommand(player));
-			onPressMappings.Add(Keys.D4, new PlayerShootBulletCommand(player));
+			// For Debugging
+			//onPressMappings.Add(Keys.Z, new PlayerSwordAttackCommand(player));
+			//onPressMappings.Add(Keys.N, new PlayerSwordAttackCommand(player));
+			//onPressMappings.Add(Keys.D1, new PlayerBoomerangAttackCommand(player));
+			//onPressMappings.Add(Keys.D2, new PlayerShootArrowCommand(player));
+			//onPressMappings.Add(Keys.D3, new PlayerBombAttackCommand(player));
+			//onPressMappings.Add(Keys.D4, new PlayerShootBulletCommand(player));
+			//onPressMappings.Add(Keys.I, new PlayerShowCollectionCommand(player));
+			//onPressMappings.Add(Keys.E, new PlayerTakeDamageCommand(player, 5));
 
 			onPressMappings.Add(Keys.Space, new PlayerUsePrimaryCommand(player));
 			onPressMappings.Add(Keys.LeftShift, new PlayerUseSecondaryCommand(player));
-
-            onPressMappings.Add(Keys.I, new PlayerShowCollectionCommand(player));
-            onPressMappings.Add(Keys.E, new PlayerTakeDamageCommand(player, 5));
 
 			// COMMANDS THAT EXECUTE ON RELEASE
 

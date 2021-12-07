@@ -93,8 +93,11 @@ namespace Project1
 
         public void BombAttack()
         {
-
-            State.BombAttack();
+            if (InventoryManager.Instance.HasItem(BombPickup.staticInstance))
+            {
+                State.BombAttack();
+                InventoryManager.Instance.RemoveItem(BombPickup.staticInstance);
+            }
         }
         
         public void Update(GameTime gameTime)
@@ -115,17 +118,6 @@ namespace Project1
         {
             Sprite.Draw(spriteBatch, Position, color);
             HealthState.Draw(spriteBatch);
-        }
-
-        private void DrawRectangle(SpriteBatch spriteBatch)
-        {
-            // Visualize rectangle for testing
-            Rectangle rectangle = GetRectangle();
-            int lineWidth = 1;
-            spriteBatch.Draw(Game1.whiteRectangle, new Rectangle(rectangle.X, rectangle.Y, lineWidth, rectangle.Height + lineWidth), Color.White);
-            spriteBatch.Draw(Game1.whiteRectangle, new Rectangle(rectangle.X, rectangle.Y, rectangle.Width + lineWidth, lineWidth), Color.White);
-            spriteBatch.Draw(Game1.whiteRectangle, new Rectangle(rectangle.X + rectangle.Width, rectangle.Y, lineWidth, rectangle.Height + lineWidth), Color.White);
-            spriteBatch.Draw(Game1.whiteRectangle, new Rectangle(rectangle.X, rectangle.Y + rectangle.Height, rectangle.Width + lineWidth, lineWidth), Color.White);
         }
 
         public void KnockBack(Direction damagedDir)
