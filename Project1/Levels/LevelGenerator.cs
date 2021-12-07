@@ -71,9 +71,9 @@ namespace Project1.Levels
             }
 
             // Boss room door
-            MakeLockedDoor(rooms[^1], Maze.Direction.East, GetRoomId(rows - 1, cols));
+            MakeLockedDoor(rooms[^1], Maze.Direction.East, GetRoomId(rows, cols));
 
-            LoadRoom(rows - 1, cols,
+            LoadRoom(rows, cols,
                 specialElements.Find(e => e.Attribute("id").Value == "triforce"),
                 new Dictionary<Maze.Direction, bool>()
                 {
@@ -424,6 +424,12 @@ namespace Project1.Levels
                     break;
                 case "Bow":
                     room.AddObject(new BowPickup(position));
+                    break;
+                case "Gun":
+                    room.AddObject(new GunPickup(position));
+                    break;
+                case "BombPickup":
+                    room.AddObject(new BombPickup(position));
                     break;
                 case "Boomerang":
                     room.AddObject(new WoodBoomerangPickup(position));
