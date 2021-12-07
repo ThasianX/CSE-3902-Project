@@ -416,12 +416,6 @@ namespace Project1.Levels
                 case "YellowRuby":
                     room.AddObject(new YellowRuby(position));
                     break;
-                case "Compass":
-                    room.AddObject(new Compass(position));
-                    break;
-                case "Map":
-                    room.AddObject(new Map(position));
-                    break;
                 case "Bow":
                     room.AddObject(new BowPickup(position));
                     break;
