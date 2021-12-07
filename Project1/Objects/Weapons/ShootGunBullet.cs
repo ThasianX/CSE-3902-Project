@@ -70,7 +70,6 @@ namespace Project1.Objects
             {
                 GameObjectManager.Instance.RemoveOnNextFrame(this);
             }
-            //bulletSprite.Update(gameTime);
             counter += (float)gameTime.ElapsedGameTime.TotalSeconds;
         }
 
