@@ -40,7 +40,7 @@ namespace Project1.Enemy
                     State = new SpikeLeftMovingState(this);
                     break;
             }
-            MovingSpeed = 1f;
+            MovingSpeed = 0.8f;
             LootTable = new DefaultLootTable();
         }
 

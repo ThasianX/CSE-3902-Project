@@ -85,6 +85,10 @@ namespace Project1
         {
             State.ShootBullet();
         }
+        public void ShootShotGun()
+        {
+            State.ShootShotGun();
+        }
 
         public void BoomerangAttack()
         {

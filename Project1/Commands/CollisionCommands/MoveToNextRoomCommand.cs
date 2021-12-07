@@ -8,6 +8,7 @@ namespace Project1.Commands
     {
         IPlayer player;
         IExit exit;
+        int off = 3;
 
         public MoveToNextRoomCommand(IPlayer player, IExit exit)
         {
@@ -15,32 +16,53 @@ namespace Project1.Commands
             this.exit = exit;
         }
 
-        private int GetNewX(Rectangle rect)
+        private int GetNewX(IExit door, Rectangle rect)
         {
             int newX;
             switch(exit.direction) {
+                case Direction.Up:
+                {
+                    newX = rect.X - off;
+                    break;
+                }
                 case Direction.Left: {
-                    newX = rect.X - rect.Width / 2;
+                    newX = rect.X - rect.Width;
                     break;
                 }
                 case Direction.Right: {
-                    newX = rect.X + rect.Width + 4;
+                    newX = rect.X + rect.Width;
+                    break;
+                }
+                
+                case Direction.Down:
+                {
+                    newX = rect.X - off;
                     break;
                 }
                 default: {
-                    newX = (int)player.Position.X;
+                    newX = rect.X;
                     break;
                 }
             }
             return newX;
         }
 
-        private int GetNewY(Rectangle rect)
+        private int GetNewY(IExit door, Rectangle rect)
         {
             int newY;
             switch(exit.direction) {
                 case Direction.Up: {
-                    newY = rect.Y - rect.Height / 2;
+                    newY = rect.Y - rect.Height;
+                    break;
+                }
+                case Direction.Left:
+                {
+                    newY = rect.Y - off;
+                    break;
+                }
+                case Direction.Right:
+                {
+                    newY = rect.Y - off;
                     break;
                 }
                 case Direction.Down: {
@@ -48,7 +70,7 @@ namespace Project1.Commands
                     break;
                 }
                 default: {
-                    newY = (int)player.Position.Y;
+                    newY = rect.Y;
                     break;
                 }
             }
@@ -64,8 +86,9 @@ namespace Project1.Commands
             Game1.instance.nextRoomId = exit.nextRoom;
 
             Room nextRoom = LevelManager.Instance.ActivateNextRoom(exit.nextRoom);
-            Rectangle doorRect = nextRoom.GetCorrespondingExit(exit.direction).GetRectangle();
-            GameObjectManager.Instance.GetPlayer().Position = new Vector2(GetNewX(doorRect), GetNewY(doorRect));
+            IExit door = nextRoom.GetCorrespondingExit(exit.direction);
+            Rectangle nextRect = nextRoom.GetCorrespondingExit(exit.direction).GetRectangle();
+            GameObjectManager.Instance.GetPlayer().Position = new Vector2(GetNewX(door, nextRect), GetNewY(door, nextRect));
             WindowManager.Instance.MoveCamera(exit.direction);
         }
     }

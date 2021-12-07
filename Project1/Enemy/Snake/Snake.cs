@@ -42,7 +42,7 @@ namespace Project1.Enemy
                     break;
             }
 
-            MovingSpeed = 1f;
+            MovingSpeed = 0.8f;
             snakeHealthState = new SnakeHealthState(this, 2);
             LootTable = new DefaultLootTable();
         }

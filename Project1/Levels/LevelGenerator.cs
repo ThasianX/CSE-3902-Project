@@ -416,14 +416,14 @@ namespace Project1.Levels
                 case "YellowRuby":
                     room.AddObject(new YellowRuby(position));
                     break;
-                case "Compass":
-                    room.AddObject(new Compass(position));
-                    break;
-                case "Map":
-                    room.AddObject(new Map(position));
-                    break;
                 case "Bow":
                     room.AddObject(new BowPickup(position));
+                    break;
+                case "Gun":
+                    room.AddObject(new GunPickup(position));
+                    break;
+                case "BombPickup":
+                    room.AddObject(new BombPickup(position));
                     break;
                 case "Boomerang":
                     room.AddObject(new WoodBoomerangPickup(position));

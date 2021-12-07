@@ -13,6 +13,7 @@ namespace Project1.Objects
         ISprite sprite;
         public bool IsMover => true;
         public string CollisionType => "Door";
+        public Vector2 Dimensions = new Vector2(32, 32);
 
         public Door(Vector2 position, Direction direction, int nextRoom)
         {
@@ -50,7 +51,27 @@ namespace Project1.Objects
         public Rectangle GetRectangle()
         {
             Dimensions dimensions = sprite.GetDimensions();
-            return new Rectangle((int)Position.X, (int)Position.Y, dimensions.width, dimensions.height);
+            Rectangle rect;
+            //Direction
+            switch (this.direction)
+            {
+                case Direction.Up:
+                    rect = new Rectangle((int)Position.X + 11, (int)Position.Y + 22, 10, 10);
+                    break;
+                case Direction.Left:
+                    rect = new Rectangle((int)Position.X + 22, (int)Position.Y + 11, 10, 10);
+                    break;
+                case Direction.Right:
+                    rect = new Rectangle((int)Position.X, (int)Position.Y + 11, 10, 10);
+                    break;
+                case Direction.Down:
+                    rect = new Rectangle((int)Position.X + 11, (int)Position.Y, 10, 10);
+                    break;
+                default: 
+                    rect = new Rectangle((int)Position.X, (int)Position.Y, dimensions.width, dimensions.height);
+                    break;
+            }
+            return rect;
         }
     }
 }
