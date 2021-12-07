@@ -1,19 +1,18 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Project1.Interfaces;
 using Project1.Objects;
 
 namespace Project1.PlayerStates
 {
-    public class BombAttackPlayerState : IPlayerState
+    public class ShootBulletPlayerState : IPlayerState
     {
         private IPlayer player;
-        private IGameObject bomb;
+        private IProjectile bullet;
 
-        private int bombOffset = 16;
-        private int activeFrameCount = 5, counter = 0;
+        private int arrowOffset = 8;
+        private float activeTime = 0.1f, counter = 0f;
 
-        public BombAttackPlayerState(IPlayer player)
+        public ShootBulletPlayerState(IPlayer player)
         {
             this.player = player;
 
@@ -21,30 +20,32 @@ namespace Project1.PlayerStates
             {
                 case Direction.Up:
                     player.Sprite = SpriteFactory.Instance.CreateSprite("player_attack_up");
-                    bomb = new Bomb(player.Position + new Vector2(0, -bombOffset));
+                    bullet = new Bullet(player.Position + new Vector2(0, -arrowOffset), player.FacingDirection, player);
                     break;
 
                 case Direction.Right:
                     player.Sprite = SpriteFactory.Instance.CreateSprite("player_attack_right");
-                    bomb = new Bomb(player.Position + new Vector2(bombOffset, 0));
+                    bullet = new Bullet(player.Position + new Vector2(arrowOffset, 0), player.FacingDirection, player);
                     break;
 
                 case Direction.Down:
-                    player.Sprite = SpriteFactory.Instance.CreateSprite("player_attack_down");
-                    bomb = new Bomb(player.Position + new Vector2(0, bombOffset));
+                    player.Sprite = SpriteFactory.Instance.CreateSprite("player_attack_down"); ;
+                    bullet = new Bullet(player.Position + new Vector2(0, arrowOffset), player.FacingDirection, player);
                     break;
 
                 case Direction.Left:
                     player.Sprite = SpriteFactory.Instance.CreateSprite("player_attack_left");
-                    bomb = new Bomb(player.Position + new Vector2(-bombOffset, 0));
+                    bullet = new Bullet(player.Position + new Vector2(-arrowOffset, 0), player.FacingDirection, player);
                     break;
 
                 default:
-                    bomb = new Bomb(player.Position + new Vector2(0, bombOffset));
+                    bullet = new Bullet(player.Position + new Vector2(0, arrowOffset), player.FacingDirection, player);
                     break;
             }
-            GameObjectManager.Instance.AddOnNextFrame(bomb);
+
+            GameObjectManager.Instance.AddOnNextFrame(bullet);
         }
+
 
         public void SetMoveInput(Direction direction, bool isPressed)
         {
@@ -53,21 +54,29 @@ namespace Project1.PlayerStates
 
         public void FaceDirection(Direction direction)
         {
+            // Do nothing
         }
 
         public void SwordAttack()
         {
-        }
+            //Do nothing
 
+        }
         public void ShootArrow()
         {
+            //Do nothing
         }
         public void ShootBullet()
         {
+            //Do nothing
         }
-
         public void BoomerangAttack()
         {
+            //Do nothing
+        }
+        public void UseItem()
+        {
+            //Do nothing
         }
 
         public void BombAttack()
@@ -76,7 +85,10 @@ namespace Project1.PlayerStates
 
         public void Update(GameTime gameTime)
         {
-            if (counter++ >= activeFrameCount)
+            // TODO: Deal damage here
+
+            // End the attack after reacing its active frame count
+            if (counter >= activeTime)
             {
                 if (player.hasAnyMoveInput())
                 {
@@ -87,13 +99,7 @@ namespace Project1.PlayerStates
                     player.State = new StillPlayerState(player);
                 }
             }
-            bomb.Update(gameTime);
+            counter += (float) gameTime.ElapsedGameTime.TotalSeconds;
         }
-        // TODO: Add bomb to GameObjectManager
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            bomb.Draw(spriteBatch);
-        }
-
     }
 }
