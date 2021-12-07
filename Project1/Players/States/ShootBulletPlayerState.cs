@@ -9,7 +9,9 @@ namespace Project1.PlayerStates
         private IPlayer player;
         private IProjectile bullet;
 
-        private int arrowOffset = 8;
+
+        private int bulletOffset = 9;
+
         private float activeTime = 0.1f, counter = 0f;
 
         public ShootBulletPlayerState(IPlayer player)
@@ -20,26 +22,34 @@ namespace Project1.PlayerStates
             {
                 case Direction.Up:
                     player.Sprite = SpriteFactory.Instance.CreateSprite("player_attack_up");
-                    bullet = new Bullet(player.Position + new Vector2(0, -arrowOffset), player.FacingDirection, player);
+                    
+                    bullet = new Bullet(player.Position + new Vector2(0, -bulletOffset), player.FacingDirection, player);
+
                     break;
 
                 case Direction.Right:
                     player.Sprite = SpriteFactory.Instance.CreateSprite("player_attack_right");
-                    bullet = new Bullet(player.Position + new Vector2(arrowOffset, 0), player.FacingDirection, player);
+
+                    bullet = new Bullet(player.Position + new Vector2(bulletOffset, 0), player.FacingDirection, player);
+
                     break;
 
                 case Direction.Down:
                     player.Sprite = SpriteFactory.Instance.CreateSprite("player_attack_down"); ;
-                    bullet = new Bullet(player.Position + new Vector2(0, arrowOffset), player.FacingDirection, player);
+
+                    bullet = new Bullet(player.Position + new Vector2(0, bulletOffset), player.FacingDirection, player);
+
                     break;
 
                 case Direction.Left:
                     player.Sprite = SpriteFactory.Instance.CreateSprite("player_attack_left");
-                    bullet = new Bullet(player.Position + new Vector2(-arrowOffset, 0), player.FacingDirection, player);
+
+                    bullet = new Bullet(player.Position + new Vector2(-bulletOffset, 0), player.FacingDirection, player);
                     break;
 
                 default:
-                    bullet = new Bullet(player.Position + new Vector2(0, arrowOffset), player.FacingDirection, player);
+                    bullet = new Bullet(player.Position + new Vector2(0, bulletOffset), player.FacingDirection, player);
+
                     break;
             }
 
