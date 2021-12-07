@@ -2243,7 +2243,7 @@
 		// Item
 		<object>
 			<type>Item</type>
-			<name>Bomb</name>
+			<name>BombPickup</name>
 			<position>
 				<x>8</x>
 				<y>5</y>
