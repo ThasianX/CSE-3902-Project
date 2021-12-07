@@ -41,7 +41,7 @@ namespace Project1.Enemy
                     break;
             }
 
-            MovingSpeed = 1f;
+            MovingSpeed = 0.7f;
             redGloriyaHealthState = new RedGloriyaHealthState(this, 2);
             LootTable = new DefaultLootTable();
         }

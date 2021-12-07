@@ -88,9 +88,6 @@ namespace Project1
             InventoryManager.Instance.AddItem(WoodSwordPickup.staticInstance);
             InventoryManager.Instance.EquipPrimary(WoodSwordPickup.staticInstance);
 
-            InventoryManager.Instance.AddItem(BowPickup.staticInstance);
-            InventoryManager.Instance.EquipSecondary(BowPickup.staticInstance);
-
             // Visualize rectangle for testing
             whiteRectangle = new Texture2D(GraphicsDevice, 1, 1);
             whiteRectangle.SetData(new[] { Color.White });
@@ -141,20 +138,19 @@ namespace Project1
         public void Reset()
         {
             InventoryManager.Instance.Reset();
-            UIManager.Instance.Reset();
+            //UIManager.Instance.Reset();
             GameObjectManager.Instance.Reset();
             LevelManager.Instance.Reset();
             LevelManager.Instance.LoadLevel();
+            UIManager.Instance.Reset();
             SoundManager.Instance.PlayDungeonMusic();
-
+            
             SetupControllers();
 
             gameState = new PlayingGameState(this);
 
-            // Give link a sword to start (this should go somewhere else)
-            WoodSwordPickup temp = new WoodSwordPickup(Vector2.Zero);
-            InventoryManager.Instance.AddItem(temp);
-            InventoryManager.Instance.EquipPrimary(temp);
+            InventoryManager.Instance.AddItem(WoodSwordPickup.staticInstance);
+            InventoryManager.Instance.EquipPrimary(WoodSwordPickup.staticInstance);
         }
 
         public void RenderGameOver()

@@ -32,7 +32,8 @@ namespace Project1.PlayerStates
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            sprite.Draw(spriteBatch, new Vector2(player.Position.X, player.Position.Y + 20));
+            //Removing Health Text Sprites from game.
+            //sprite.Draw(spriteBatch, new Vector2(player.Position.X, player.Position.Y + 20));
         }
 
         public void TakeDamage(int damage)

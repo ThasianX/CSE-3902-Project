@@ -41,7 +41,7 @@ namespace Project1.Enemy
                     break;
             }
 
-            MovingSpeed = 1f;
+            MovingSpeed = 0.6f;
             wallMasterHealthState = new WallMasterHealthState(this, 1);
             LootTable = new DefaultLootTable();
         }
