@@ -20,9 +20,6 @@ namespace Project1.Commands
         {
             if (InventoryManager.Instance.HasItem(Key.staticInstance))
             {
-                InventoryManager.Instance.RemoveItem(Key.staticInstance);
-                //door.Unlock();
-
                 Door newDoor = new Door(door.Position, ((IExit)door).direction, ((IExit)door).nextRoom);
                 GameObjectManager.Instance.RemoveOnNextFrame(door);
                 GameObjectManager.Instance.AddOnNextFrame(newDoor);

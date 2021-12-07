@@ -20,7 +20,8 @@ namespace Project1.Sprites
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
-            spriteBatch.DrawString(font, "Health: " + health, location, Color.Black);
+            // Dont want to show this
+            //spriteBatch.DrawString(font, "Health: " + health, location, Color.Black);
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location, Color color) { }

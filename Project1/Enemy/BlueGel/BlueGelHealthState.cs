@@ -38,7 +38,8 @@ namespace Project1.Enemy
 
         public void Draw(SpriteBatch spriteGelch)
         {
-            sprite.Draw(spriteGelch, new Vector2(blueGel.Position.X, blueGel.Position.Y + 20));
+            // Don't want to show this
+            //sprite.Draw(spriteGelch, new Vector2(blueGel.Position.X, blueGel.Position.Y + 20));
         }
 
         public void TakeDamage(int damage)
