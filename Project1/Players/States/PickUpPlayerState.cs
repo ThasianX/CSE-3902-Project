@@ -21,6 +21,7 @@ namespace Project1.PlayerStates
         public void FaceDirection(Direction direction) { }
         public void SwordAttack() { }
         public void ShootArrow() { }
+        public void ShootBullet() { }
         public void BoomerangAttack() { }
         public void BombAttack() { }
         public void Update(GameTime gameTime) { }

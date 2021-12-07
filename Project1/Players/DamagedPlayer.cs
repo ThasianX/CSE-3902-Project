@@ -104,6 +104,7 @@ namespace Project1
         public void FaceDirection(Direction direction) { basePlayer.FaceDirection(direction); }
         public void SetMoveInput(Direction direction, bool isPressed) { basePlayer.SetMoveInput(direction, isPressed); }
         public void ShootArrow() { basePlayer.ShootArrow(); }
+        public void ShootBullet() { basePlayer.ShootBullet(); }
         public void ShowCollection() { basePlayer.ShowCollection(); }
         public void SwordAttack() { basePlayer.SwordAttack(); }
         public void TakeDamage(int damage) { }

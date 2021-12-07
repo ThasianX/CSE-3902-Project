@@ -127,7 +127,7 @@
 		// Enemy
 		<object>
 			<type>Enemy</type>
-			<name>Snake</name>
+			<name>Dodongo</name>
 			<position>
 				<x>4</x>
 				<y>2</y>
@@ -135,7 +135,7 @@
 		</object>
 		<object>
 			<type>Enemy</type>
-			<name>Snake</name>
+			<name>Dodongo</name>
 			<position>
 				<x>2</x>
 				<y>3</y>
@@ -143,7 +143,7 @@
 		</object>
 		<object>
 			<type>Enemy</type>
-			<name>Snake</name>
+			<name>Dodongo</name>
 			<position>
 				<x>5</x>
 				<y>4</y>
@@ -151,18 +151,10 @@
 		</object>
 		<object>
 			<type>Enemy</type>
-			<name>Snake</name>
+			<name>Dodongo</name>
 			<position>
 				<x>4</x>
 				<y>6</y>
-			</position>
-		</object>
-		<object>
-			<type>Enemy</type>
-			<name>Snake</name>
-			<position>
-				<x>7</x>
-				<y>5</y>
 			</position>
 		</object>
 
@@ -564,7 +556,7 @@
 		// Enemy
 		<object>
 			<type>Enemy</type>
-			<name>Snake</name>
+			<name>WallMaster</name>
 			<position>
 				<x>2</x>
 				<y>2</y>
@@ -572,7 +564,7 @@
 		</object>
 		<object>
 			<type>Enemy</type>
-			<name>Snake</name>
+			<name>WallMaster</name>
 			<position>
 				<x>3</x>
 				<y>4</y>
@@ -580,7 +572,7 @@
 		</object>
 		<object>
 			<type>Enemy</type>
-			<name>Snake</name>
+			<name>WallMaster</name>
 			<position>
 				<x>2</x>
 				<y>6</y>
@@ -1724,7 +1716,7 @@
 		// Enemy
 		<object>
 			<type>Enemy</type>
-			<name>Flame</name>
+			<name>Stalfos</name>
 			<position>
 				<x>3</x>
 				<y>5</y>
@@ -1732,7 +1724,7 @@
 		</object>
 		<object>
 			<type>Enemy</type>
-			<name>Flame</name>
+			<name>Stalfos</name>
 			<position>
 				<x>9</x>
 				<y>3</y>
@@ -1740,7 +1732,7 @@
 		</object>
 		<object>
 			<type>Enemy</type>
-			<name>Flame</name>
+			<name>Stalfos</name>
 			<position>
 				<x>12</x>
 				<y>6</y>
@@ -2251,7 +2243,7 @@
 		// Item
 		<object>
 			<type>Item</type>
-			<name>Bomb</name>
+			<name>BombPickup</name>
 			<position>
 				<x>8</x>
 				<y>5</y>
@@ -2446,7 +2438,7 @@
 		// Enemy
 		<object>
 			<type>Enemy</type>
-			<name>Snake</name>
+			<name>Stalfos</name>
 			<position>
 				<x>2</x>
 				<y>4</y>
@@ -2454,7 +2446,7 @@
 		</object>
 		<object>
 			<type>Enemy</type>
-			<name>Snake</name>
+			<name>Stalfos</name>
 			<position>
 				<x>5</x>
 				<y>2</y>
@@ -2462,7 +2454,7 @@
 		</object>
 		<object>
 			<type>Enemy</type>
-			<name>Snake</name>
+			<name>Stalfos</name>
 			<position>
 				<x>8</x>
 				<y>3</y>
@@ -2470,7 +2462,7 @@
 		</object>
 		<object>
 			<type>Enemy</type>
-			<name>Snake</name>
+			<name>Stalfos</name>
 			<position>
 				<x>6</x>
 				<y>6</y>
@@ -2478,7 +2470,7 @@
 		</object>
 		<object>
 			<type>Enemy</type>
-			<name>Snake</name>
+			<name>Stalfos</name>
 			<position>
 				<x>11</x>
 				<y>3</y>
@@ -2486,7 +2478,7 @@
 		</object>
 		<object>
 			<type>Enemy</type>
-			<name>Snake</name>
+			<name>Stalfos</name>
 			<position>
 				<x>13</x>
 				<y>3</y>

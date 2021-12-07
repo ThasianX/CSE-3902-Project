@@ -64,6 +64,10 @@ namespace Project1.PlayerStates
         {
             //Do nothing
         }
+        public void ShootBullet()
+        {
+            //Do nothing
+        }
         public void BoomerangAttack()
         {
             //Do nothing

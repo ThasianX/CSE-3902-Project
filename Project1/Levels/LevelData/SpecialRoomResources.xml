@@ -1769,6 +1769,38 @@
 				<y>4</y>
 			</position>
 		</object>
+		<object>
+			<type>Enemy</type>
+			<name>Stalfos</name>
+			<position>
+				<x>4</x>
+				<y>3</y>
+			</position>
+		</object>
+		<object>
+			<type>Enemy</type>
+			<name>Stalfos</name>
+			<position>
+				<x>4</x>
+				<y>5</y>
+			</position>
+		</object>
+		<object>
+			<type>Enemy</type>
+			<name>Flame</name>
+			<position>
+				<x>5</x>
+				<y>4</y>
+			</position>
+		</object>
+		<object>
+			<type>Enemy</type>
+			<name>Flame</name>
+			<position>
+				<x>5</x>
+				<y>5</y>
+			</position>
+		</object>
 
 		// Block
 		<object>
