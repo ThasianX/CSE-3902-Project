@@ -54,7 +54,7 @@ namespace Project1
             loadedSongs.Add("DungeonTheme", content.Load<Song>("DungeonTheme"));
             loadedSongs.Add("GameOver", content.Load<Song>("Game Over"));
 
-            MediaPlayer.Play(loadedSongs["DungeonTheme"]);
+            //MediaPlayer.Play(loadedSongs["DungeonTheme"]);
         }
 
         public SoundEffect GetSound(string soundName)
@@ -69,7 +69,7 @@ namespace Project1
 
         public void PlayDungeonMusic()
         {
-            MediaPlayer.Play(loadedSongs["DungeonTheme"]);
+            //MediaPlayer.Play(loadedSongs["DungeonTheme"]);
         }
 
         public void PlayGameOverMusic()
