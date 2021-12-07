@@ -57,6 +57,9 @@ namespace Project1.Commands
 
         public void Execute()
         {
+            // Necessary coupling given current Maze implementation
+            UIManager.Instance.UpdateMinimap(exit.direction);
+
             Game1.instance.isTransitioning = true;
             Game1.instance.nextRoomId = exit.nextRoom;
 
