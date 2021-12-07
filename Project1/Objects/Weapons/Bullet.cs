@@ -6,7 +6,7 @@ namespace Project1.Objects
 {
     public class Bullet : IProjectile, ICollidable
     {
-        public int moveSpeed = 5;
+        public int moveSpeed = 20;
         public Vector2 Position { get; set; }
         public bool IsMover => true;
         public string CollisionType => "Projectile";
