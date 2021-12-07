@@ -81,7 +81,7 @@ Devin Turvey (turvey.6)<br />
 
 ## Unique Features
 
-- Procedural Level Generation (Perfect maze generation using binary tree) <br />
+- Procedural Level Generation (Perfect maze generation using binary tree, Pre-made rooms will be connected by available doors to make a cohesive dungeon.) <br />
 - Loot Drops (Randomized based on a loot table) <br />
 - Weapon/Ability Swapping <br />
 - Additional Weapons/Abilities (Dash, Ricocheting projectile, etc.) <br />
