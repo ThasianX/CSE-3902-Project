@@ -46,6 +46,7 @@ namespace Project1.PlayerStates
             GameObjectManager.Instance.AddOnNextFrame(bullet);
         }
 
+
         public void SetMoveInput(Direction direction, bool isPressed)
         {
             player.ActiveMoveInputs[direction] = isPressed;

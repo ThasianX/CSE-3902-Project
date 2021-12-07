@@ -21,7 +21,7 @@ namespace Project1.Objects
         public GunPickup(Vector2 position)
         {
             this.Position = position;
-            Sprite = SpriteFactory.Instance.CreateSprite("gunPickup");
+            Sprite = SpriteFactory.Instance.CreateSprite("gun_right");
         }
 
         public void Draw(SpriteBatch spriteBatch)

@@ -183,6 +183,12 @@
 /processorParam:Quality=Best
 /build:SoundEffects/Boomerang.wav
 
+#begin SoundEffects/bullet.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:SoundEffects/bullet.wav
+
 #begin SoundEffects/Candle.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -296,6 +302,12 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:SoundEffects/Shore.wav
+
+#begin SoundEffects/shotgun.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:SoundEffects/shotgun.wav
 
 #begin SoundEffects/SwordCombined.wav
 /importer:WavImporter

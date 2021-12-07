@@ -6,7 +6,7 @@ namespace Project1.Objects
 {
     public class Bullet : IProjectile, ICollidable
     {
-        public int moveSpeed = 20;
+        public int moveSpeed = 5;
         public Vector2 Position { get; set; }
         public bool IsMover => true;
         public string CollisionType => "Projectile";
@@ -28,22 +28,22 @@ namespace Project1.Objects
             switch (this.direction)
             {
                 case Direction.Up:
-                    bulletSprite = SpriteFactory.Instance.CreateSprite("bullet");
+                    bulletSprite = SpriteFactory.Instance.CreateSprite("bullet_up");
                     this.deltaVector = new Vector2(0, -moveSpeed);
                     break;
 
                 case Direction.Right:
-                    bulletSprite = SpriteFactory.Instance.CreateSprite("bullet");
+                    bulletSprite = SpriteFactory.Instance.CreateSprite("bullet_right");
                     this.deltaVector = new Vector2(moveSpeed, 0);
                     break;
 
                 case Direction.Down:
-                    bulletSprite = SpriteFactory.Instance.CreateSprite("bullet");
+                    bulletSprite = SpriteFactory.Instance.CreateSprite("bullet_down");
                     this.deltaVector = new Vector2(0, moveSpeed);
                     break;
 
                 case Direction.Left:
-                    bulletSprite = SpriteFactory.Instance.CreateSprite("bullet");
+                    bulletSprite = SpriteFactory.Instance.CreateSprite("bullet_left");
                     this.deltaVector = new Vector2(-moveSpeed, 0);
                     break;
 
