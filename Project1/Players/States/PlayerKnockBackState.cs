@@ -53,7 +53,9 @@ namespace Project1.PlayerStates
         public void SetMoveInput(Direction direction, bool isPressed) { player.ActiveMoveInputs[direction] = isPressed; }
         public void ShootArrow() { }
         public void ShootBullet() { }
-
+        public void ShootShotGun()
+        {
+        }
         public void SwordAttack() { }
 
     }

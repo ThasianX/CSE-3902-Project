@@ -7,10 +7,10 @@ namespace Project1.PlayerStates
     public class ShootBulletPlayerState : IPlayerState
     {
         private IPlayer player;
-        private IProjectile bullet, bullet1, bullet2, bullet3, bullet4, bullet5;
-        private int bulletOffset = 8;
+        private IProjectile bullet;
+
+        private int arrowOffset = 8;
         private float activeTime = 0.1f, counter = 0f;
-        private float cosAmount = 0.3f;
 
         public ShootBulletPlayerState(IPlayer player)
         {
@@ -20,49 +20,30 @@ namespace Project1.PlayerStates
             {
                 case Direction.Up:
                     player.Sprite = SpriteFactory.Instance.CreateSprite("player_attack_up");
-                    bullet1 = new Bullet(player.Position + new Vector2(0, -bulletOffset), player.FacingDirection, new Vector2(-2 * cosAmount, 0), player);
-                    bullet2 = new Bullet(player.Position + new Vector2(0, -bulletOffset), player.FacingDirection, new Vector2(-cosAmount, 0), player);
-                    bullet3 = new Bullet(player.Position + new Vector2(0, -bulletOffset), player.FacingDirection, new Vector2(0, 0), player);
-                    bullet4 = new Bullet(player.Position + new Vector2(0, -bulletOffset), player.FacingDirection, new Vector2(cosAmount, 0), player);
-                    bullet5 = new Bullet(player.Position + new Vector2(0, -bulletOffset), player.FacingDirection, new Vector2(2 * cosAmount, 0), player);
+                    bullet = new Bullet(player.Position + new Vector2(0, -arrowOffset), player.FacingDirection, player);
                     break;
 
                 case Direction.Right:
                     player.Sprite = SpriteFactory.Instance.CreateSprite("player_attack_right");
-                    bullet1 = new Bullet(player.Position + new Vector2(bulletOffset, 0), player.FacingDirection, new Vector2(0, -3 * cosAmount), player);
-                    bullet2 = new Bullet(player.Position + new Vector2(bulletOffset, 0), player.FacingDirection, new Vector2(0, -cosAmount), player);
-                    bullet3 = new Bullet(player.Position + new Vector2(bulletOffset, 0), player.FacingDirection, new Vector2(0, 0), player);
-                    bullet4 = new Bullet(player.Position + new Vector2(bulletOffset, 0), player.FacingDirection, new Vector2(0, cosAmount), player);
-                    bullet5 = new Bullet(player.Position + new Vector2(bulletOffset, 0), player.FacingDirection, new Vector2(0, 3 * cosAmount), player);
+                    bullet = new Bullet(player.Position + new Vector2(arrowOffset, 0), player.FacingDirection, player);
                     break;
 
                 case Direction.Down:
                     player.Sprite = SpriteFactory.Instance.CreateSprite("player_attack_down"); ;
-                    bullet1 = new Bullet(player.Position + new Vector2(0, bulletOffset), player.FacingDirection, new Vector2(-2 * cosAmount, 0), player);
-                    bullet2 = new Bullet(player.Position + new Vector2(0, bulletOffset), player.FacingDirection, new Vector2(-cosAmount, 0), player);
-                    bullet3 = new Bullet(player.Position + new Vector2(0, bulletOffset), player.FacingDirection, new Vector2(0, 0), player);
-                    bullet4 = new Bullet(player.Position + new Vector2(0, bulletOffset), player.FacingDirection, new Vector2(cosAmount, 0), player);
-                    bullet5 = new Bullet(player.Position + new Vector2(0, bulletOffset), player.FacingDirection, new Vector2(2 * cosAmount, 0), player);
+                    bullet = new Bullet(player.Position + new Vector2(0, arrowOffset), player.FacingDirection, player);
                     break;
 
                 case Direction.Left:
                     player.Sprite = SpriteFactory.Instance.CreateSprite("player_attack_left");
-                    bullet1 = new Bullet(player.Position + new Vector2(-bulletOffset, 0), player.FacingDirection, new Vector2(0, -2 * cosAmount), player);
-                    bullet2 = new Bullet(player.Position + new Vector2(-bulletOffset, 0), player.FacingDirection, new Vector2(0, -cosAmount), player);
-                    bullet3 = new Bullet(player.Position + new Vector2(-bulletOffset, 0), player.FacingDirection, new Vector2(0, 0), player);
-                    bullet4 = new Bullet(player.Position + new Vector2(-bulletOffset, 0), player.FacingDirection, new Vector2(0, cosAmount), player);
-                    bullet5 = new Bullet(player.Position + new Vector2(-bulletOffset, 0), player.FacingDirection, new Vector2(0, 2 * cosAmount), player);
+                    bullet = new Bullet(player.Position + new Vector2(-arrowOffset, 0), player.FacingDirection, player);
                     break;
 
                 default:
+                    bullet = new Bullet(player.Position + new Vector2(0, arrowOffset), player.FacingDirection, player);
                     break;
             }
 
-            GameObjectManager.Instance.AddOnNextFrame(bullet1);
-            GameObjectManager.Instance.AddOnNextFrame(bullet2);
-            GameObjectManager.Instance.AddOnNextFrame(bullet3);
-            GameObjectManager.Instance.AddOnNextFrame(bullet4);
-            GameObjectManager.Instance.AddOnNextFrame(bullet5);
+            GameObjectManager.Instance.AddOnNextFrame(bullet);
         }
 
 
@@ -118,7 +99,12 @@ namespace Project1.PlayerStates
                     player.State = new StillPlayerState(player);
                 }
             }
-            counter += (float) gameTime.ElapsedGameTime.TotalSeconds;
+            counter += (float)gameTime.ElapsedGameTime.TotalSeconds;
+        }
+
+        public void ShootShotGun()
+        {
+           
         }
     }
 }

@@ -13,5 +13,6 @@ namespace Project1.PlayerStates
         void BombAttack();
        
         void Update(GameTime gameTime);
+        void ShootShotGun();
     }
 }
