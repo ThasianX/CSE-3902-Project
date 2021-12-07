@@ -109,7 +109,12 @@ namespace Project1.PlayerStates
                     player.State = new StillPlayerState(player);
                 }
             }
-            counter += (float) gameTime.ElapsedGameTime.TotalSeconds;
+            counter += (float)gameTime.ElapsedGameTime.TotalSeconds;
+        }
+
+        public void ShootShotGun()
+        {
+           
         }
     }
 }

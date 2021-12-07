@@ -56,6 +56,10 @@ namespace Project1.PlayerStates
         {
             player.State = new ShootBulletPlayerState(player);
         }
+        public void ShootShotGun()
+        {
+            player.State = new ShootShotGunPlayerState(player);
+        }
 
         public void BoomerangAttack()
         {

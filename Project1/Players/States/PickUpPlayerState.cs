@@ -22,6 +22,9 @@ namespace Project1.PlayerStates
         public void SwordAttack() { }
         public void ShootArrow() { }
         public void ShootBullet() { }
+        public void ShootShotGun()
+        {
+        }
         public void BoomerangAttack() { }
         public void BombAttack() { }
         public void Update(GameTime gameTime) { }

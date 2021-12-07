@@ -24,6 +24,7 @@ namespace Project1
         void SwordAttack();
         void ShootArrow();
         void ShootBullet();
+        void ShootShotGun();
         void BoomerangAttack();
         void BombAttack();
         public void TakeDamage(int damage);
